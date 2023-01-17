@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Luffy from '../Asset/images/luffy.png';
+import Luffy from '../../asset/images/luffy.png';
 
-import Icon1 from '../Asset/images/front-end.png'
-import Icon2 from '../Asset/images/spring.png'
-import Icon3 from '../Asset/images/datascience.png'
-import Icon4 from '../Asset/images/fullstack-icon.png'
+import Icon1 from '../../asset/images/front-end.png'
+import Icon2 from '../../asset/images/spring.png'
+import Icon3 from '../../asset/images/datascience.png'
+import Icon4 from '../../asset/images/fullstack-icon.png'
 
 
 import './main.css';
