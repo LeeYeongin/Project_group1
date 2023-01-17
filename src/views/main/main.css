@@ -2,8 +2,8 @@ body {
     margin: 0;
     /* display: block; */
     width: 100%;
-    height: 4080px;
-    /* background-color: aquamarine; */
+    height: 100%;
+    background-color: #e0e0e0;
 }
 
 ul {
@@ -13,18 +13,13 @@ ul {
 
 }
 
-a {
-    color: black;
-    text-decoration: none;
-}
-
 /* 해더 */
 header {
     display: flex;
     justify-content: space-around;
     height: 70px;
-    background-color: bisque;
-    /* border-bottom: 1px solid #e1e1e1; */
+    /* background-color: bisque; */
+    border-bottom: 1px solid #e1e1e1;
     margin-bottom: 10px;
 }
 
@@ -33,7 +28,7 @@ header {
     align-items: center;
     width: 65%;
     height: 100%;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 
 /* 상단 좌측 */
@@ -43,7 +38,7 @@ header {
     float: left;
     width: 250px;
     height: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .logo_box {
@@ -65,10 +60,11 @@ header {
     position: relative;
     width: 100px;
     height: 70px;
-
     font-size: 30px;
     text-align: center;
     align-items: center;
+    color: #000;
+    text-decoration: none;
 }
 
 .shappy {
@@ -76,7 +72,6 @@ header {
     position: absolute;
     top: 10px;
     left: 60px;
-
     font-size: 11px;
     line-height: 12px;
     vertical-align: middle;
@@ -89,7 +84,12 @@ header {
     float: right;
     width: 130px;
     height: 100%;
-    background-color: darkgoldenrod;
+    /* background-color: darkgoldenrod; */
+}
+
+.head_lecture_category a{
+    color: #000;
+    text-decoration: none;
 }
 
 .head_lecture_category ul {
@@ -120,60 +120,26 @@ header {
 .login_btn {
     display: flex;
     justify-content: center;
-    width: 68px;
-    height: 45px;
     padding: 20px;
-    /* color: aqua; */
-    /* border: 1px solid; */
+}
+
+.login_btn a{
+    
+    text-align: center;
+    color: #000;
+    text-decoration: none;
 }
 
 .sign_up {
     display: flex;
     justify-content: center;
-    width: 70px;
-    height: 45px;
     padding: 20px;
 }
 
-
-
-/* 배너 */
-.swipe_container {
-    display: flex;
-    justify-content: center;
-    height: 320px;
+.sign_up a{
+    color: #000;
+    text-decoration: none;
 }
-
-.box {
-    width: 100%;
-    height: 100%;
-}
-
-.box img {
-    width: 30%;
-    height: 30%;
-}
-
-#box1 {
-    background-color: #000;
-}
-
-#box2 {
-    background-color: aqua;
-}
-
-#box3 {
-    background-color: burlywood;
-}
-
-#box4 {
-    background-color: yellowgreen;
-}
-
-#box5 {
-    background-color: steelblue;
-}
-
 
 
 /* 검색 */
@@ -181,7 +147,8 @@ header {
     display: flex;
     justify-content: center;
     /* width: 100%; */
-    height: 173px;
+    margin-top: 50px;
+    height: 123px;
     /* background-color: coral; */
 }
 
@@ -191,9 +158,8 @@ header {
     /* background-color: yellow; */
 }
 
-.search_container_content h1 {
+.search_container_content h3 {
     text-align: center;
-    /* display: block; */
 }
 
 .search_wrapper {
@@ -206,7 +172,8 @@ header {
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    background-color: #4BC5EB;
+    border: 1px solid #DBA3CD;
+    background-color: #E8A5A0;
 }
 
 .m_search_input {
@@ -252,6 +219,8 @@ header {
 
 .icon_list_wrapper a {
     display: block;
+    color: #000;
+    text-decoration: none;
     /* border: 1px solid; */
 }
 
@@ -294,25 +263,30 @@ header {
 .course_dashboard {
     display: flex;
     justify-content: center;
+    /* width: 100%; */
     height: 454px;
-    /* background-color: burlywood; */
+    position: relative;
+    background-color: burlywood;
 }
 
 .course_dashboard_list {
+    display: block;
+    position: relative;
     width: 65%;
     height: 100%;
-    /* background: tomato; */
+    background: tomato;
 }
 
 .course_dashboard_title {
-    /* background-color: cadetblue; */
+    background-color: cadetblue;
 }
 
 .course_dashboard_list ul {
-
-    width: 100%;
-    height: 300px;
-    background-color: azure;
+    display: block;
+    position: relative;
+    height: 320px;
+    /* background-color: azure; */
+    /* cursor: grab; */
 }
 
 .course_dashboard_list li {
@@ -328,6 +302,7 @@ header {
 .course_face {
     width: 100%;
     height: 140px;
+    border-radius: 5px;
 }
 
 .course_title {
@@ -368,10 +343,102 @@ header {
     background-color: slateblue;
 }
 
+.next-arrow {
+    right: -25px;
+    font-size: 20px;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    /* transform: translate(0, -50%); */
+    cursor: pointer;
+    /* color: transparent; */
+    border: none;
+    outline: none;
+    /* background: transparent; */
+    /* transition: 200ms ease-in-out; */
+}
+
+.naxt-arrow ::before{
+    line-height: 1;
+    opacity: 0.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+.custom-dots {
+    position: absolute;
+    bottom: -15px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.custom-dots li {
+    /* position: relative; */
+    /* display: inline-block; */
+    width: 40px;
+    height: 20px;
+    /* margin: 0 5px; */
+    padding: 0;
+    /* cursor: pointer; */
+}
+
+.custom-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 40px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.custom-dots li button:before {
+    /* font-family: "slick"; */
+    /* font-size: 2rem; */
+    line-height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    /* content: "*"; */
+    text-align: center;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-dots li.slick-active button:before {
+    opacity: 1;
+    color: #ffffff;
+    /* content: "*"; */
+}
+
 
 
 /* 하단 */
 footer {
     height: 200px;
     background-color: darkgrey;
+}
+
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+footer li{
+    text-align: center;
 }

@@ -9,7 +9,7 @@ import MyProfile from './views/myProfile';
 
 function App() {
   return (
-    <MyProfile />
+    <Main />
   );
 }
 
