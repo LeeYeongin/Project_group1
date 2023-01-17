@@ -1,0 +1,487 @@
+* {
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+/*--------------heaer-------------------*/
+header{
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    background-color: bisque;
+}
+
+.h_nav_bar{
+    display: flex;
+    align-items: center;
+    width: 75%;
+    height: 100%;
+    background-color: blueviolet;
+}
+
+.logohappy{
+    font-size: large;
+}
+.shappy{
+    display:inline-block;
+    margin: -15px 0px 0px 2px;
+    padding: 1px,3px;
+    /* color: #AAAAAA; */
+    font-size: 11px;
+    line-height: 12px;
+    vertical-align: middle;
+}
+.luffy{
+    padding-left: 20px;
+    /* align-items: center; */
+    height: 40px;
+    width: 40px;
+}
+
+.head_lecture_category{
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    float: left;
+    width: 9%;
+    height: 100%;
+    background-color: darkgoldenrod ;
+}
+
+.head_lecture_category ul{
+    display: none;
+}
+
+
+/* 상단 우측 */
+.nav_bar_right{
+    display: flex;
+    /* position: relative; */
+    width: 300px;
+    height: 100%;
+    
+    margin-left: 62%;
+    background: yellowgreen;
+}
+
+.cart{
+    display: flex;
+    width: 44px;
+    height: 45px;
+    /* padding: 20px; */
+    color: aqua;
+    border: 1px solid;
+}
+
+.login_btn{
+    display: flex;
+    /* position: relative; */
+    width: 68px;
+    height: 48px;
+    /* padding: 20px; */
+    color: aqua;
+    border: 1px solid;
+}
+
+.sign_up{
+    display: flex;
+    /* position: relative; */
+    width: auto;
+    height: auto;
+    padding: 20px;
+    color: aqua;
+    border: 1px solid;
+}
+
+/*--------------body-------------------*/
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin: 0px 100px;
+}
+
+.cart-section {
+    margin: 0px 32px 120px 0px;
+
+    flex-grow: 2.5;
+}
+
+.cart-name {
+    margin: 0px;
+    padding: 32px 0px 16px;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.cart-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0px 0px 12px;
+
+    border-bottom: 1px solid;
+}
+
+.cancel-control {
+    padding: 0px 12px;
+
+    height: 40px;
+
+    background-color: white;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+}
+
+.cart-list {
+    display: flex;
+    align-items: flex-start;
+    height: 115px;
+
+    padding: 16px 0px;
+}
+
+.course-select {
+    flex-grow: 0;
+}
+
+.cart-course-img {
+    display: flex;
+    justify-content: center;
+
+    /* width: 118px; */
+    flex-grow: 0.5;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cart-course-info {
+    flex-grow: 3.5;
+}
+
+.course-title {
+    margin: 0px;
+    padding-bottom: 2px;
+}
+.close{
+    flex-grow: 0;
+}
+
+.close-btn {
+    padding: 4px 16px;
+
+    background-color: white;
+    border: 0px;
+}
+
+.fa-xmark {
+    color: grey;
+}
+
+.payment {
+    height: 100%;
+    border-left: 1px solid rgb(179, 179, 179);
+    text-align: right;
+
+    flex-grow: 1.5;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.side-container {
+    width: 100px;
+    height: 100px;
+
+    padding-top: 32px;
+    flex-grow: 1;
+}
+
+.buyer-info {
+    margin-bottom: 4px;
+    padding: 16px 20px;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+}
+
+.buyer-info-header {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgb(179, 179, 179);;
+}
+
+.fa-circle-question {
+    color: grey;
+}
+
+.modify-btn {
+    color: grey;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.label {
+    width: 80px;
+}
+
+dt {
+    width: 80px;
+    font-size: 14px;
+    color: grey;
+}
+
+dd {
+    margin: 0px;
+    font-size: 14px;
+    color: grey;
+}
+
+.buyer-name {
+    display: flex;
+}
+
+.buyer-email {
+    display: flex;
+}
+
+.buyer-telphone {
+    display: flex;
+}
+
+.payment-container {
+    padding: 20px;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+}
+
+.coupon-using {
+    margin-bottom: 16px;
+}
+
+.coupon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 4px;
+}
+
+.coupon-select {
+    display: flex;
+    justify-content: center;
+}
+
+.coupon-input {
+    margin-right: 8px;
+    padding: 0px 12px;
+    
+    width: 60%;
+    height: 40px;
+    /* flex-grow: 2; */
+
+    text-align: right;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+
+}
+
+.coupon-select-btn {
+    padding: 0px 12px;
+
+    width: 40%;
+    height: 40px;
+
+    /* flex-grow: 1; */
+
+    font-size: 14px;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+}
+
+.point-using {
+    margin-bottom: 16px;
+}
+
+.point-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 4px;
+}
+
+.point-select {
+    display: flex;
+    justify-content: center;
+}
+
+.point-input {
+    margin-right: 8px;
+    padding: 0px 12px;
+    
+    width: 60%;
+    height: 40px;
+    /* flex-grow: 2; */
+
+    text-align: right;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+
+}
+
+.point-select-btn {
+    padding: 0px 12px;
+
+    width: 40%;
+    height: 40px;
+
+    /* flex-grow: 1; */
+
+    font-size: 14px;
+
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+}
+
+.price-regular {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-discount {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 4px;
+}
+
+.show-detail {
+    padding: 0px;
+
+    background-color: white;
+    border: 0px;
+
+    color: grey;
+}
+
+.price-pay {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 4px;
+}
+
+.payment-btn {
+    margin-top: 16px;
+    width: 100%;
+    height: 38px;
+
+    background-color: #00c471;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.recommend-container {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin: 0px 100px;
+}
+
+.recommend-list-title {
+    text-align: left;
+    width: 100%;
+
+    font-size: 20px;
+}
+
+.recommend-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 6px 0px;
+    width: 100%;
+}
+
+.recommend-cousrse-card-wrapper {
+    position: relative;
+}
+
+.add-cart {
+    display: none;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-color: rgba(71, 70, 70, 0.352);
+
+    width: 100%;
+    height: 100%;
+}
+
+.add-cart-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10%;
+
+    height: 100%;
+}
+
+.cart-btn {
+    height: 50px;
+    width: 50px;
+
+    border: 0px;
+    background-color: rgba(98, 98, 98, 0.701);
+    border-radius: 100%;
+}
+
+.add-cart-course-info {
+    background-color: white;
+}
+
+.recommend-cousrse-card-wrapper:hover .add-cart{
+    display: block;
+}
+
+.card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 200px;
+    height: 162.5px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}

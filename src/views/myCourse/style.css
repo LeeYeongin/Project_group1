@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+body {
+    margin: 0px;
+}
+
+.mypage-select-header {
+    padding: 16px;
+    height: 68px;
+
+    background-color: rgb(41, 40, 40);
+    color: white;
+}
+
+.my-course {
+    margin: 0px;
+    font-size: 24px;
+}
+
+.my-course-container {
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.my-course-container-header {
+    font-size: 15px;
+    padding-bottom: 6px;
+    font-weight: 600;
+}
+
+.my-course-container-find {
+    padding-top: 16px;
+    /* display: flex;
+    justify-content: left; */
+    align-content: left;
+}
+
+.my-course-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.my-course-item {
+    padding: 12px 0px;
+
+    width: 265px;
+}
+
+.my-course-item-title {
+    padding: 8px 0px;
+}
+
