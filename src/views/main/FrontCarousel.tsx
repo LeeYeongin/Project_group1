@@ -49,15 +49,15 @@ function Carousel() {
         <div className="course_dashboard">
             <div className="course_dashboard_list"> 
                 <div className="course_dashboard_title">                    
-                    <span>
+                    <div>
                         <h3>프론트엔드</h3>
                         <p style={{fontSize: "13px"}}>해삐와 함께하는 프론트엔드</p>
-                    </span>
+                    </div>
                 </div> 
-                <ul>
-    	    <Slider {...settings}>
-                    <li>
-                    <img src={Course1} alt="" className="course_face"/>
+                <div className="course_dashboard_card">
+    	            <Slider {...settings}>
+                    <div className="course_card">
+                        <img src={Course1} alt="" className="course_face"/>
                         <div className="course_title">
                             React 완벽가이드
                         </div>
@@ -73,9 +73,9 @@ function Carousel() {
                         <div className="course_tag">
                             베스트셀러
                         </div>
-                    </li>
-                    <li>
-                    <img src={Course2} alt="" className="course_face"/>
+                    </div>
+                    <div className="course_card">
+                        <img src={Course2} alt="" className="course_face"/>
                         <div className="course_title">
                             React 완벽가이드
                         </div>
@@ -91,9 +91,9 @@ function Carousel() {
                         <div className="course_tag">
                             베스트셀러
                         </div>
-                    </li>
-                    <li>
-                    <img src="/images/exwebfront.png" alt="" className="course_face"/>
+                    </div>
+                    <div className="course_card">
+                        <img src={Course1} alt="" className="course_face"/>
                         <div className="course_title">
                             React 완벽가이드
                         </div>
@@ -109,9 +109,9 @@ function Carousel() {
                         <div className="course_tag">
                             베스트셀러
                         </div>
-                    </li>
-                    <li>
-                    <img src="/images/exwebfront.png" alt="" className="course_face"/>
+                    </div>
+                    <div className="course_card">
+                        <img src={Course1} alt="" className="course_face"/>
                         <div className="course_title">
                             React 완벽가이드
                         </div>
@@ -127,9 +127,9 @@ function Carousel() {
                         <div className="course_tag">
                             베스트셀러
                         </div>
-                    </li>
-                    <li>
-                    <img src="/images/exwebfront.png" alt="" className="course_face"/>
+                    </div>
+                    <div className="course_card">
+                        <img src={Course1} alt="" className="course_face"/>
                         <div className="course_title">
                             React 완벽가이드
                         </div>
@@ -145,9 +145,9 @@ function Carousel() {
                         <div className="course_tag">
                             베스트셀러
                         </div>
-                    </li>
-            </Slider>
-                </ul>
+                    </div>
+                    </Slider>
+                </div>
             </div>
         </div>
     );
