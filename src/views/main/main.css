@@ -172,17 +172,8 @@ header {
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-<<<<<<< Updated upstream
-    border: 1px solid #DBA3CD;
-    background-color: #E8A5A0;
-=======
     background-color: rgb(255, 255, 255);
     border: 2px solid #2779cc;
-}
-
-.search-icon {
-    color: #2779cc;
->>>>>>> Stashed changes
 }
 
 .m_search_input {
