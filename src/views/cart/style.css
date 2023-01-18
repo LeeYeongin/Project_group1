@@ -9,6 +9,8 @@ header{
     justify-content: center;
     height: 70px;
     background-color: bisque;
+
+    
 }
 
 .h_nav_bar{
@@ -398,7 +400,7 @@ dd {
     width: 100%;
     height: 38px;
 
-    background-color: #00c471;
+    background-color:  #2779cc;
     color: white;
     border: 0px;
     border-radius: 5px;
