@@ -6,11 +6,12 @@ import Main from './views/main/main';
 import List from './views/list';
 import MyProfile from './views/myProfile';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import FindId from './views/FindId';
 
 function App() {
   return (
 
-    <Main/>
+    <FindId/>
     // <div>
     //   <Routes>
     //     <Route path="/" element={<Layout />}>
