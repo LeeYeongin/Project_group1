@@ -4,3 +4,77 @@
   body {
     margin: 0px;
   }
+.main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+
+  width: 100%;
+  height: 600px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgb(194, 190, 190);
+  border-radius: 10px;
+
+  width: 360px;
+  height: 432px;
+}
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 20%;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 1px solid rgb(194, 190, 190);
+
+  width: 100%;
+  height: 80%;
+}
+.name {
+  margin-bottom: 30px;
+}
+.result {
+  margin-bottom: 90px;
+}
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 70%;
+}
+.password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+
+  width: 100px;
+  height: 40px;
+
+  background-color: #2779cc;
+}
+.password2 {
+  color: white;
+
+  font-size: 13px;
+}
+.login {
+  color: white;
+}

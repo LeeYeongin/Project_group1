@@ -25,7 +25,7 @@ export default function FindId() {
                     </div>
                     <div className="main4">
                         <div className="success">
-                            <div>완료</div>
+                            <div>아이디 찾기</div>
                         </div>
                     </div>
                 </div>
