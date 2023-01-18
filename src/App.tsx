@@ -9,9 +9,6 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 function App() {
   return (
-<<<<<<< Updated upstream
-    <Main />
-=======
 
     <Main/>
     // <div>
@@ -30,7 +27,6 @@ function App() {
     // </div>
 
     
->>>>>>> Stashed changes
   );
 }
 
