@@ -11,72 +11,72 @@ import './banner.css'
 
 function Banner() {
   return (
-    <div className="swipe_container">
+    <div className="swipe_container4">
       <Carousel>
         <Carousel.Item interval={3000}>
-          <div id="box1" className="box">
+          <div id="box1" className="box4">
             <a href="#">
-              <div className="box_text">
-                <div className="box_title1">
+              <div className="box_text4">
+                <div className="box_text4_title1">
                     <div>
                     프론트엔드
                     </div>
                 </div>
                 <h1>HTML부터 <br />CSS, JavaScript,<br /> React 까지</h1>
               </div>    
-              <div className="box_img">
-                <img src={Banner1} alt="" className="b-img" />
+              <div className="box_img4">
+                <img src={Banner1} alt="" className="b-img4" />
               </div>
             </a>
           </div>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
-          <div id="box2" className="box">
+          <div id="box2" className="box4">
             <a href="#">
-              <div className="box_text">
-              <div className="box_title2">
+              <div className="box_text4">
+              <div className="box_text4_title2">
                     <div>
                     백엔드
                     </div>
               </div>
                 <h1>나는야<br />백엔드 개발자!<br />우리 같이 시작하자!</h1>
               </div>
-              <div className="box_img">
-                <img src={Banner2} alt="" className="b-img" />
+              <div className="box_img4">
+                <img src={Banner2} alt="" className="b-img4" />
               </div>
             </a>
           </div>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
-          <div id="box3" className="box">
+          <div id="box3" className="box4">
             <a href="#">
-              <div className="box_text">
-              <div className="box_title3">
+              <div className="box_text4">
+              <div className="box_text4_title3">
                     <div>
                     데이터베이스
                     </div>
               </div>
-                <h1>데이터베이스<br />나에게 맞기시라<br />Vamos!</h1>
+                <h1>데이터베이스<br />나에게 맡기시라<br />Vamos!</h1>
               </div>
-              <div className="box_img">
-                <img src={Banner3} alt="" className="b-img" />
+              <div className="box_img4">
+                <img src={Banner3} alt="" className="b-img4" />
               </div>
             </a>
           </div>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
-          <div id="box4" className="box">
+          <div id="box4" className="box4">
             <a href="#">
-              <div className="box_text">
-              <div className="box_title4">
+              <div className="box_text4">
+              <div className="box_text4_title4">
                     <div>
                     풀스텍 개발자
                     </div>
               </div>
                 <h1>들어는 보았는가?<br />그 이름도 위대한<br />풀스텍 개발자</h1>
               </div>
-              <div className="box_img">
-                <img src={Banner4} alt="" className="b-img" />
+              <div className="box_img4">
+                <img src={Banner4} alt="" className="b-img4" />
               </div>
             </a>
           </div>

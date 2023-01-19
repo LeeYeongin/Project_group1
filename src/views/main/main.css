@@ -3,7 +3,7 @@ body {
     /* display: block; */
     width: 100%;
     height: 100%;
-    background-color: #e0e0e0;
+    background-color: #d4e8fd;
 }
 
 ul {
@@ -19,13 +19,12 @@ header {
     justify-content: space-around;
     height: 70px;
     /* background-color: bisque; */
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #d4e8fd;
     margin-bottom: 10px;
 }
 
-.h_nav_bar {
+.h_nav_bar4 {
     display: flex;
-    align-items: center;
     width: 65%;
     height: 100%;
     /* background-color: blueviolet; */
@@ -33,7 +32,7 @@ header {
 
 /* 상단 좌측 */
 
-.nav_bar_left {
+.nav_bar_left4 {
     display: flex;
     float: left;
     width: 250px;
@@ -41,24 +40,24 @@ header {
     /* background-color: aqua; */
 }
 
-.logo_box {
+.logo_box4 {
     cursor: pointer;
     position: relative;
     display: flex;
 }
 
-.logo_mark {
-    display: flex;
-    float: left;
-    align-items: center;
+.logo_mark4 {
+    /* display: flex; */
+    /* float: left; */
+    /* align-items: center; */
     /* height: 70px; */
     /* width: 70px; */
 }
 
-.head_lecture_category {
+.head_lecture_category4 {
     display: flex;
     align-items: center;
-    float: right;
+    /* float: right; */
 }
 
 #dropdown-basic-button{
@@ -67,9 +66,8 @@ header {
     border: none;
 }
 
-
 /* 상단 우측 */
-.nav_bar_right {
+.nav_bar_right4 {
     display: flex;
     /* position: relative; */
     width: 290px;
@@ -78,7 +76,7 @@ header {
     /* backgroun : yellowgreen; */
 }
 
-.cart {
+.cart4 {
     display: flex;
     justify-content: center;
     width: 44px;
@@ -88,33 +86,40 @@ header {
     /* border: 1px solid; */
 }
 
-.login_btn {
+.login_btn4 {
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
-.login_btn a{
-    
+.login_btn4 :hover{
+    color: #000;
+}
+
+.login_btn4 a{
     text-align: center;
     color: #000;
     text-decoration: none;
 }
 
-.sign_up {
+.sign_up4 {
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
-.sign_up a{
+.sign_up4 :hover{
+    color: #000;
+}
+
+.sign_up4 a{
     color: #000;
     text-decoration: none;
 }
 
 
 /* 검색 */
-.search_container {
+.search_container4 {
     display: flex;
     justify-content: center;
     /* width: 100%; */
@@ -123,17 +128,17 @@ header {
     /* background-color: coral; */
 }
 
-.search_container_content {
+.search_container_content4 {
     width: 65%;
     height: 100%;
     /* background-color: yellow; */
 }
 
-.search_container_content h3 {
+.search_container_content4 h3 {
     text-align: center;
 }
 
-.search_wrapper {
+.search_wrapper4 {
     /* 컬러 지우지 말것 */
     display: flex;
     margin: 0 25%;
@@ -147,7 +152,8 @@ header {
     border: 2px solid #2779cc;
 }
 
-.m_search_input {
+
+.m_search_input4 {
     display: flex;
     align-items: center;
     width: 80%;
@@ -158,7 +164,7 @@ header {
     font-size: 16px;
 }
 
-.m_search_input_submit {
+.m_search_input_submit4 {
     display: flex;
     margin-top: 13px;
     margin-left: 200px;
@@ -169,17 +175,15 @@ header {
 }
 
 
-
-
 /* 아이콘 목록 */
-.lecture_icon_list {
+.lecture_icon_list4 {
     display: flex;
     justify-content: center;
     height: 141px;
     
 }
 
-.icon_list_wrapper {
+.icon_list_wrapper4 {
     display: flex;
     justify-content: space-around;
     width: 65%;
@@ -188,7 +192,7 @@ header {
     
 }
 
-.icon_list_wrapper a {
+.icon_list_wrapper4 a {
     display: block;
     color: #000;
     text-decoration: none;
@@ -196,7 +200,7 @@ header {
 }
 
 
-.icon_list_wrapper li {
+.icon_list_wrapper4 li {
     display: flex;
     justify-content: center;
     margin: 0 30px;
@@ -204,13 +208,16 @@ header {
     float: left;
 }
 
-.icon_list_card {
+.icon_list_card4 {
     width: 110px;
     height: 90px;
-    
 }
 
-.course_icon {
+.icon_list_card4 a:hover{
+    color: #000;
+}
+
+.course_icon4 {
     display: flex;
 
     align-items: center;
@@ -222,7 +229,7 @@ header {
     margin: 0 auto;
 }
 
-.img_title {
+.img_title4 {
     text-align: center;
     width: auto;
     height: 24px;
@@ -231,16 +238,16 @@ header {
 
 /* 강의 목록 */
 
-.course_dashboard {
+.course_dashboard4 {
     display: flex;
     justify-content: center;
     /* width: 100%; */
     height: 454px;
     position: relative;
-    background-color: #d4e8fd;
+    /* background-color: #d4e8fd; */
 }
 
-.course_dashboard_list {
+.course_dashboard_list4 {
     display: block;
     position: relative;
     width: 65%;
@@ -248,28 +255,28 @@ header {
     /* background: tomato; */
 }
 
-.course_dashboard_title {
+.course_dashboard_title4 {
     /* background-color: cadetblue; */
 }
 
-.course_dashboard_card{
+.course_dashboard_card4{
     /* border: 1px solid; */
 }
 
-.course_card{
-    background-color: #d4e8fd;
+.course_card4{
+    /* background-color: #d4e8fd; */
     /* border: 1px solid; */
 }
 
 
-.course_face {
+.course_face4 {
     width: 80%;
     height: 140px;
     margin: 0 auto;
     border-radius: 5px;
 }
 
-.course_title {
+.course_title4 {
     margin: 0 auto;
     padding: 0 5%;
     width: 80%;
@@ -277,7 +284,7 @@ header {
     background-color: cadetblue;
 }
 
-.course_instructor {
+.course_instructor4 {
     margin: 0 auto;
     padding: 0 5px;
     width: 80%;
@@ -285,7 +292,7 @@ header {
     background-color: springgreen;
 }
 
-.course_rating {
+.course_rating4 {
     margin: 0 auto;
     padding: 0 5px;
     width: 80%;
@@ -293,7 +300,7 @@ header {
     background-color: burlywood;
 }
 
-.course_price {
+.course_price4 {
     margin: 0 auto;
     padding: 0 5px;
     width: 80%;
@@ -301,7 +308,7 @@ header {
     background-color: violet;
 }
 
-.course_tag {
+.course_tag4 {
     margin: 0 auto;
     padding: 0 5px;
     width: 80%;

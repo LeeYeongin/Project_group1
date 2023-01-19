@@ -1,10 +1,10 @@
 /* 배너 */
-.swipe_container {
+.swipe_container4 {
     display: block;
     justify-content: center;
 }
 
-.box {
+.box4 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -12,14 +12,14 @@
     
 }
 
-.box a{
-    text-align: center;
+.box4 a{
     text-decoration: none;
     color: #000;
+    text-align: center;
 }
 
 
-.box_text{
+.box_text4{
     display: inline-block;
     /* border: 1px solid; */
 }
@@ -29,7 +29,7 @@
     /* width: 497px; */
 }
 
-.box_title1 div{
+.box_text4_title1 div{
     display: block;
     position: absolute;
     margin-top: 20px;
@@ -44,7 +44,7 @@
     margin-top: 50px;
 }
 
-.box_title2 div{
+.box_text4_title2 div{
     display: block;
     position: absolute;
     margin-top: 20px;
@@ -59,7 +59,7 @@
     margin-top: 50px;
 }
 
-.box_title3 div{
+.box_text4_title3 div{
     display: block;
     position: absolute;
     margin-top: 20px;
@@ -74,7 +74,7 @@
     margin-top: 50px;
 }
 
-.box_title4 div{
+.box_text4_title4 div{
     display: block;
     position: absolute;
     margin-top: 20px;
@@ -88,12 +88,12 @@
     margin-top: 50px;
 }
 
-.box_img{
+.box_img4{
     display: inline-block;
     /* border: 1px solid; */
 }
 
-.b-img {
+.b-img4  {
     margin-left: 300px;
     /* float: right; */
     width: 300px;
