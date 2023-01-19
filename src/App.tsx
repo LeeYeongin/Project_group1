@@ -8,11 +8,13 @@ import MyProfile from './views/myProfile';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import FindId from './views/FindId/index';
 import IndexModule from './views/FindId/indexModule';
+import FindPassword from './views/FindPassword';
+import ChangePassword from './views/FindPassword/index2';
 
 function App() {
   return (
 
-    <IndexModule/>
+    <Main/>
     // <div>
     //   <Routes>
     //     <Route path="/" element={<Layout />}>
