@@ -47,53 +47,24 @@ header {
     display: flex;
 }
 
-.luffy {
+.logo_mark {
     display: flex;
     float: left;
     align-items: center;
-    height: 70px;
-    width: 70px;
-}
-
-.logohappy {
-    display: flex;
-    position: relative;
-    width: 100px;
-    height: 70px;
-    font-size: 30px;
-    text-align: center;
-    align-items: center;
-    color: #000;
-    text-decoration: none;
-}
-
-.shappy {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    left: 60px;
-    font-size: 11px;
-    line-height: 12px;
-    vertical-align: middle;
+    /* height: 70px; */
+    /* width: 70px; */
 }
 
 .head_lecture_category {
     display: flex;
-    /* margin-left: 135px; */
     align-items: center;
     float: right;
-    width: 130px;
-    height: 100%;
-    /* background-color: darkgoldenrod; */
 }
 
-.head_lecture_category a{
+#dropdown-basic-button{
     color: #000;
-    text-decoration: none;
-}
-
-.head_lecture_category ul {
-    display: none;
+    background: none;
+    border: none;
 }
 
 
@@ -197,7 +168,7 @@ header {
     cursor: pointer;
 }
 
-.m_search_input_submit svg {}
+
 
 
 /* 아이콘 목록 */
@@ -266,7 +237,7 @@ header {
     /* width: 100%; */
     height: 454px;
     position: relative;
-    background-color: burlywood;
+    background-color: #d4e8fd;
 }
 
 .course_dashboard_list {
@@ -278,139 +249,65 @@ header {
 }
 
 .course_dashboard_title {
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 
+.course_dashboard_card{
+    /* border: 1px solid; */
+}
+
+.course_card{
+    background-color: #d4e8fd;
+    /* border: 1px solid; */
+}
 
 
 .course_face {
     width: 80%;
     height: 140px;
-
-    margin: 0 auto;     
+    margin: 0 auto;
     border-radius: 5px;
 }
 
 .course_title {
+    margin: 0 auto;
     padding: 0 5%;
-    width: 90%;
-    height: 16px;
+    width: 80%;
+    height: 25px;
     background-color: cadetblue;
 }
 
 .course_instructor {
-    padding: 5px;
-
-    width: 90%;
-    height: 14px;
+    margin: 0 auto;
+    padding: 0 5px;
+    width: 80%;
+    height: 25px;
     background-color: springgreen;
 }
 
 .course_rating {
-    padding: 5px;
-
-    width: 90%;
-    height: 16px;
+    margin: 0 auto;
+    padding: 0 5px;
+    width: 80%;
+    height: 25px;
     background-color: burlywood;
 }
 
 .course_price {
-    padding: 5px;
-
-    width: 90%;
-    height: 16px;
+    margin: 0 auto;
+    padding: 0 5px;
+    width: 80%;
+    height: 25px;
     background-color: violet;
 }
 
 .course_tag {
-    padding: 5px;
-    width: 90%;
-    height: 16px;
+    margin: 0 auto;
+    padding: 0 5px;
+    width: 80%;
+    height: 25px;
     background-color: slateblue;
 }
-
-.next-arrow {
-    right: -25px;
-    font-size: 20px;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: flex;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    transform: translate(0, -50%);
-    cursor: pointer;
-    color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-    transition: 200ms ease-in-out;
-}
-
-.naxt-arrow ::before{
-    line-height: 1;
-    opacity: 0.75;
-    -webkit-font-smoothing: antialiased;
-}
-
-.custom-dots {
-    position: absolute;
-    bottom: -15px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-}
-
-.custom-dots li {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
-    cursor: pointer;
-}
-
-.custom-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 40px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    /* color: transparent; */
-    /* border: 0; */
-    outline: none;
-    background: transparent;
-}
-
-.custom-dots li button:before {
-    font-family: "slick";
-    font-size: 2rem;
-    line-height: 20px;
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    content: "*";
-    text-align: center;
-    opacity: 0.9;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.custom-dots li.slick-active button:before {
-    opacity: 1;
-    color: #ffffff;
-    content: "*";
-}
-
 
 
 /* 하단 */

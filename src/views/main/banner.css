@@ -11,10 +11,9 @@
     height: 350px;
     
 }
-.box :hover{
-    color: #000;
-}
+
 .box a{
+    text-align: center;
     text-decoration: none;
     color: #000;
 }

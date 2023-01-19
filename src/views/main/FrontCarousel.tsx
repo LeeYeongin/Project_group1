@@ -2,50 +2,21 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import NextArrow from "react-slick";
 
 import Course1 from '../../asset/images/exwebfront.png'
 import Course2 from '../../asset/images/htmlbasic.png'
 
 function Carousel() {
-	const settings = {
-    	dots: true,
+	const settings = {    	
         infinite: false,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 4,
-        nextArrow: <NextArrow />,
-        dotsClass: "custom-dots",
-        initialSlide: 0,
-        responsive: [
-            {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: false,
-                dots: true
-            }
-            },
-            {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-            }
-            },
-            {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-            }
-        ]
+        slidesToScroll: 1,
+        // swipeToSlide: true,        
+        initialSlide: 1
     }
-    return(        
-    
+    return(
+        
         <div className="course_dashboard">
             <div className="course_dashboard_list"> 
                 <div className="course_dashboard_title">                    

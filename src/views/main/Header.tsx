@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Luffy from '../../asset/images/luffy.png';
+import Logo from '../../asset/images/logo.png';
+import DropButton from './DropButton'
 
 function Header(){
     return(
@@ -8,17 +9,12 @@ function Header(){
             <div className="h_nav_bar">
                 <div className="nav_bar_left">
                     <div className="logo_box">
-                        <img src={Luffy} className="luffy"/>
-                        <a href="#" className="logohappy" >
-                            해-삐
-                            <small className="shappy">Happy</small>
+                        <img src={Logo} className="logo_mark"/>
+                        <a href="#">
                         </a>
                     </div>
                     <div className="head_lecture_category">
-                        <a href="#">강의목록</a>
-                        <ul>
-                            <li></li>
-                        </ul>
+                        <DropButton/>
                     </div>
                 </div>
                     <div className="nav_bar_right">
