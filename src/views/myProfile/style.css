@@ -4,7 +4,7 @@
 body {
     margin: 0px;
 }
-.head-bar {
+.head-bar1 {
     border: 1px solid black;
 
     width: 100%;
@@ -12,14 +12,14 @@ body {
 
     background-color: gray;
 }
-.profile {
+.profile1 {
     margin-top: 10px;
     margin-left: 300px;
     
     font-size: 30px;
     color: white;
 }
-.container {
+.container1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,48 +27,48 @@ body {
     width: 100%;
     height: 100vh;
 }
-.main-container {
+.main-container1 {
     display: flex;
 
     width: 1000px;
     height: 100%;
 }
-.side-menu {
+.side-menu1 {
     padding: 40px 25px;
 
     width: 200px;
     height: 100%;
 }
-.menu {
+.menu1 {
     margin-bottom: 45px;
 }
-.title {
+.title1 {
     padding-bottom: 20px;
 
     font-size: 13px;
     color: gray;
 }
-.title2 {
+.title21 {
     padding-left: 13px;
 }
-.title3 {
+.title31 {
     margin-top: 18px;
 }
-.title2 {
+.title21 {
     cursor: pointer;
 }
 /* .t:hover {
     background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
     background-color:#e9e9e9;
     } */
-.main-menu {
+.main-menu1 {
     display: flex;
     flex-wrap: wrap;
 
     width: 100%;
     height: 90%;
 }
-.head {
+.head1 {
     display: flex;
     align-items: center;
 
@@ -79,19 +79,19 @@ body {
 
     color: black;
 }
-.head1 {
+.head11 {
     font-size: 25px;
 }
-.head2 {
+.head21 {
     font-size: 15px;
 }
-.head3 {
+.head31 {
     font-size: 15px;;
 }
-.head4 {
+.head41 {
     font-size: 15px;
 }
-.ex {
+.ex1 {
     margin-bottom: 20px;
     border-bottom: 1px solid rgb(187, 186, 186);
     padding: 15px;
@@ -99,27 +99,27 @@ body {
     width: 100%;
     height: 50px;
 }
-.list {
+.list1 {
     border: 1px solid rgb(187, 186, 186);
     padding: 40px;
 
     width: 100%;
     height: 90%;
 }
-.list0 {
+.list01 {
     margin-bottom: 60px;
 }
-.list1 {
+.list11 {
     margin-bottom: 15px;
     font-size: 20px;
 }
-.image {
+.image1 {
     width: 70px;
     height: 70px;
 
     background-color: gray;
 }
-.list3 {
+.list31 {
     border-radius: 10px;
     padding: 8px;
 
@@ -128,7 +128,7 @@ body {
 
     background-color: rgb(243, 243, 243);
 }
-.introduce {
+.introduce1 {
     border-radius: 10px;
     width: 100%;
     height: 200px;

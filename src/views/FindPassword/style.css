@@ -6,7 +6,7 @@ body {
     margin: 0px;
 }
 
-.find-password-wrapper {
+.find-password-wrapper2 {
     display: flex;
 
     justify-content: center;
@@ -16,7 +16,7 @@ body {
     height: 800px;
 }
 
-.find-password-container {
+.find-password-container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,7 +26,7 @@ body {
     height: 70%;
 }
 
-.head {
+.head2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,24 +36,24 @@ body {
     height: 30%;
 }
 
-.head-container {
+.head-container2 {
     align-content: center;
     text-align: center;
 }
 
-.find-password-title {
+.find-password-title2 {
     margin: 0px 0px 15px;
     font-size: 25px;
     font-weight: 400;
 }
 
-.happy-phrase {
+.happy-phrase2 {
     margin: 0px;
     font-size: 15px;
     font-weight: 400;
 }
 
-.find-password-form {
+.find-password-form2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +63,7 @@ body {
     height: 70%;
 }
 
-.input-id-container {
+.input-id-container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,7 +73,7 @@ body {
     height: 30%;
 }
 
-.input-label {
+.input-label2 {
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 5px;
@@ -82,7 +82,7 @@ body {
     font-weight: 400;
 }
 
-.input-container {
+.input-container2 {
     border: 1px solid rgb(225, 223, 223);
     border-radius: 4px;
 
@@ -90,7 +90,7 @@ body {
     height: 40px;
 }
 
-.input-telNum-container {
+.input-telNum-container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,7 +102,7 @@ body {
     height: 30%;
 }
 
-.btn-container {
+.btn-container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +114,7 @@ body {
     height: 40%;
 }
 
-.find-password-btn {
+.find-password-btn2 {
     display: flex;
     justify-content: center;
     align-items: center;

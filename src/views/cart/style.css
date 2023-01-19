@@ -3,98 +3,6 @@
     font-size: 15px;
 }
 
-/*--------------heaer-------------------*/
-header{
-    display: flex;
-    justify-content: center;
-    height: 70px;
-    background-color: bisque;
-
-    
-}
-
-.h_nav_bar{
-    display: flex;
-    align-items: center;
-    width: 75%;
-    height: 100%;
-    background-color: blueviolet;
-}
-
-.logohappy{
-    font-size: large;
-}
-.shappy{
-    display:inline-block;
-    margin: -15px 0px 0px 2px;
-    padding: 1px,3px;
-    /* color: #AAAAAA; */
-    font-size: 11px;
-    line-height: 12px;
-    vertical-align: middle;
-}
-.luffy{
-    padding-left: 20px;
-    /* align-items: center; */
-    height: 40px;
-    width: 40px;
-}
-
-.head_lecture_category{
-    display: flex;
-    padding-left: 15px;
-    align-items: center;
-    float: left;
-    width: 9%;
-    height: 100%;
-    background-color: darkgoldenrod ;
-}
-
-.head_lecture_category ul{
-    display: none;
-}
-
-
-/* 상단 우측 */
-.nav_bar_right{
-    display: flex;
-    /* position: relative; */
-    width: 300px;
-    height: 100%;
-    
-    margin-left: 62%;
-    background: yellowgreen;
-}
-
-.cart{
-    display: flex;
-    width: 44px;
-    height: 45px;
-    /* padding: 20px; */
-    color: aqua;
-    border: 1px solid;
-}
-
-.login_btn{
-    display: flex;
-    /* position: relative; */
-    width: 68px;
-    height: 48px;
-    /* padding: 20px; */
-    color: aqua;
-    border: 1px solid;
-}
-
-.sign_up{
-    display: flex;
-    /* position: relative; */
-    width: auto;
-    height: auto;
-    padding: 20px;
-    color: aqua;
-    border: 1px solid;
-}
-
 /*--------------body-------------------*/
 
 body {
@@ -106,7 +14,7 @@ a {
     color: black;
 }
 
-.container {
+.container2 {
     display: flex;
     justify-content: center;
 
@@ -115,13 +23,13 @@ a {
     margin: 0px 100px;
 }
 
-.cart-section {
+.cart-section2 {
     margin: 0px 32px 120px 0px;
 
     flex-grow: 2.5;
 }
 
-.cart-name {
+.cart-name2 {
     margin: 0px;
     padding: 32px 0px 16px;
 
@@ -129,7 +37,7 @@ a {
     font-weight: 800;
 }
 
-.cart-control {
+.cart-control2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,7 +47,7 @@ a {
     border-bottom: 1px solid;
 }
 
-.cancel-control {
+.cancel-control2 {
     padding: 0px 12px;
 
     height: 40px;
@@ -149,7 +57,7 @@ a {
     border-radius: 5px;
 }
 
-.cart-list {
+.cart-list2 {
     display: flex;
     align-items: flex-start;
     height: 115px;
@@ -157,11 +65,11 @@ a {
     padding: 16px 0px;
 }
 
-.course-select {
+.course-select2 {
     flex-grow: 0;
 }
 
-.cart-course-img {
+.cart-course-img2 {
     display: flex;
     justify-content: center;
 
@@ -171,30 +79,30 @@ a {
     overflow: hidden;
 }
 
-.cart-course-info {
+.cart-course-info2 {
     flex-grow: 3.5;
 }
 
-.course-title {
+.course-title2 {
     margin: 0px;
     padding-bottom: 2px;
 }
-.close{
+.close2 {
     flex-grow: 0;
 }
 
-.close-btn {
+.close-btn2 {
     padding: 4px 16px;
 
     background-color: white;
     border: 0px;
 }
 
-.fa-xmark {
+.fa-xmark2 {
     color: grey;
 }
 
-.payment {
+.payment2 {
     height: 100%;
     border-left: 1px solid rgb(179, 179, 179);
     text-align: right;
@@ -204,7 +112,7 @@ a {
     font-weight: 700;
 }
 
-.side-container {
+.side-container2 {
     width: 100px;
     height: 100px;
 
@@ -212,7 +120,7 @@ a {
     flex-grow: 1;
 }
 
-.buyer-info {
+.buyer-info2 {
     margin-bottom: 4px;
     padding: 16px 20px;
 
@@ -220,7 +128,7 @@ a {
     border-radius: 5px;
 }
 
-.buyer-info-header {
+.buyer-info-header2 {
     margin-bottom: 8px;
     padding-bottom: 8px;
 
@@ -230,17 +138,17 @@ a {
     border-bottom: 1px solid rgb(179, 179, 179);;
 }
 
-.fa-circle-question {
+.fa-circle-question2 {
     color: grey;
 }
 
-.modify-btn {
+.modify-btn2 {
     color: grey;
     font-weight: 700;
     text-decoration: underline;
 }
 
-.label {
+.label2 {
     width: 80px;
 }
 
@@ -256,30 +164,30 @@ dd {
     color: grey;
 }
 
-.buyer-name {
+.buyer-name2 {
     display: flex;
 }
 
-.buyer-email {
+.buyer-email2 {
     display: flex;
 }
 
-.buyer-telphone {
+.buyer-telphone2 {
     display: flex;
 }
 
-.payment-container {
+.payment-container2 {
     padding: 20px;
 
     border: 1px solid rgb(179, 179, 179);
     border-radius: 5px;
 }
 
-.coupon-using {
+.coupon-using2 {
     margin-bottom: 16px;
 }
 
-.coupon-header {
+.coupon-header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -287,12 +195,12 @@ dd {
     margin-bottom: 4px;
 }
 
-.coupon-select {
+.coupon-select2 {
     display: flex;
     justify-content: center;
 }
 
-.coupon-input {
+.coupon-input2 {
     margin-right: 8px;
     padding: 0px 12px;
     
@@ -307,7 +215,7 @@ dd {
 
 }
 
-.coupon-select-btn {
+.coupon-select-btn2 {
     padding: 0px 12px;
 
     width: 40%;
@@ -321,11 +229,11 @@ dd {
     border-radius: 5px;
 }
 
-.point-using {
+.point-using2 {
     margin-bottom: 16px;
 }
 
-.point-header {
+.point-header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -333,12 +241,12 @@ dd {
     margin-bottom: 4px;
 }
 
-.point-select {
+.point-select2 {
     display: flex;
     justify-content: center;
 }
 
-.point-input {
+.point-input2 {
     margin-right: 8px;
     padding: 0px 12px;
     
@@ -353,7 +261,7 @@ dd {
 
 }
 
-.point-select-btn {
+.point-select-btn2 {
     padding: 0px 12px;
 
     width: 40%;
@@ -367,19 +275,19 @@ dd {
     border-radius: 5px;
 }
 
-.price-regular {
+.price-regular2 {
     display: flex;
     justify-content: space-between;
 }
 
-.price-discount {
+.price-discount2 {
     display: flex;
     justify-content: space-between;
 
     margin-top: 4px;
 }
 
-.show-detail {
+.show-detail2 {
     padding: 0px;
 
     background-color: white;
@@ -388,14 +296,14 @@ dd {
     color: grey;
 }
 
-.price-pay {
+.price-pay2 {
     display: flex;
     justify-content: space-between;
 
     margin-top: 4px;
 }
 
-.payment-btn {
+.payment-btn2 {
     margin-top: 16px;
     width: 100%;
     height: 38px;
@@ -406,7 +314,7 @@ dd {
     border-radius: 5px;
 }
 
-.recommend-container {
+.recommend-container2 {
     display: flex;
     justify-content: center;
 
@@ -415,25 +323,25 @@ dd {
     margin: 0px 100px;
 }
 
-.recommend-list-title {
+.recommend-list-title2 {
     text-align: left;
     width: 100%;
 
     font-size: 20px;
 }
 
-.recommend-list {
+.recommend-list2 {
     display: flex;
     flex-wrap: wrap;
     padding: 6px 0px;
     width: 100%;
 }
 
-.recommend-cousrse-card-wrapper {
+.recommend-cousrse-card-wrapper2 {
     position: relative;
 }
 
-.add-cart {
+.add-cart2 {
     display: none;
     top: 0px;
     left: 0px;
@@ -444,7 +352,7 @@ dd {
     height: 100%;
 }
 
-.add-cart-btn-container {
+.add-cart-btn-container2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -456,7 +364,7 @@ dd {
     height: 100%;
 }
 
-.cart-btn {
+.cart-btn2 {
     height: 50px;
     width: 50px;
 
@@ -465,15 +373,15 @@ dd {
     border-radius: 100%;
 }
 
-.add-cart-course-info {
+.add-cart-course-info2 {
     background-color: white;
 }
 
-.recommend-cousrse-card-wrapper:hover .add-cart{
+.recommend-cousrse-card-wrapper2:hover .add-cart2{
     display: block;
 }
 
-.card-img {
+.card-img2 {
     display: flex;
     justify-content: center;
     align-items: center;

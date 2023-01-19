@@ -48,16 +48,16 @@ export default function List() {
         <>
           <div className="main-container3">
               <div className="main3">
-                  <div className="container main23">
+                  <div className="container3 main23">
                       <div className="side-bar3">
-                          <div className="side-menu side-menu23" onClick={() => categoryHandler('ALL')}>전체강의</div>
-                          <div className="side-menu side-menu23" onClick={() => categoryHandler('BACK')}>백엔드</div>
-                          <div className="side-menu side-menu23" onClick={() => categoryHandler('FRONT')}>프론드엔드</div>
-                          <div className="side-menu side-menu23" onClick={() => categoryHandler('FULL')}>풀스택</div>
-                          <div className="side-menu side-menu23" onClick={() => categoryHandler('DBMS')}>데이터베이스</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('ALL')}>전체강의</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('BACK')}>백엔드</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('FRONT')}>프론드엔드</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('FULL')}>풀스택</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('DBMS')}>데이터베이스</div>
                       </div>
                   </div>
-                  <div className="container main33">
+                  <div className="container3 main33">
                       <div className="head-bar3">
                           <div className="">강의 목록</div>
                           <div className="search3">
@@ -76,6 +76,7 @@ export default function List() {
                       </div>
                       <div className="list3">
                           {itemList.map((item) => (
+                            <a href="/main5">
                               <div className="project-item3">
                                   <div className="project-container3">
                                       <div className="item-img-container3">
@@ -87,11 +88,12 @@ export default function List() {
                                           <div className="item-img-container23"><img src={STAR} />({item.score})</div>
                                           <div className="item-footer3">
                                               <div className="project-time3"><i className="fa-solid3 fa-won-sign3"></i>{item.price}</div>
-                                              <button className="btn btn-test3">{item.like}</button>
+                                              <button className="btn3 btn-test3">{item.like}</button>
                                           </div>
                                       </div>
                                   </div>
                               </div>
+                            </a>
                           ))}
                       </div>
                   </div>

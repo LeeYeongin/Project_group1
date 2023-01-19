@@ -16,7 +16,7 @@ function Main(){
     return(
         <div>
             {/* 해더 */}
-            <Header/>
+            
             {/*배너*/}
 
             <Banner/>
