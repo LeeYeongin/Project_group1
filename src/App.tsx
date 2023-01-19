@@ -15,6 +15,7 @@ import Main5 from './views/detail/detail';
 import Logo from './asset/images/logo.png';
 import DropButton from './views/main/DropButton'
 import Header from './views/main/Header';
+import WriteReview from './views/detail/board/boardWrite';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="findID" element={<FindId />} />
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
+          <Route path="writeReview" element={<WriteReview/>}/>
         </Route>
       </Routes>
     </div>

@@ -1,12 +1,11 @@
 import React from "react";
-import { Route } from "react-router";
-import { Link } from 'react-router-dom';
-import BoardWrite from "../board/boardWrite";
 import './ReviewList.css';
 
 const ReviewList = () => {
 
-  <Route path="/boardWrite" element={<BoardWrite/>}></Route>
+  const WriteReview = () => {
+    window.location.href = "/writeReview";
+  }
 
   return(
       <div className='review5_list'>
@@ -106,7 +105,7 @@ const ReviewList = () => {
                 <button id="cItem" className="">3</button>
                 <button id="cItem" className="">4</button>
               </div>
-              <button type="button" className="writeReview5"><Link to={'/boardWrite'}>작성하기</Link></button>
+              <button type="button" className="writeReview5" onClick={WriteReview}>작성하기</button>
           </div>
       </div>
   );

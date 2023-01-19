@@ -1,9 +1,88 @@
 .boardBody5{
-    width: 90%;
+    width: 400px;
+    height: 560px;
 
     margin: 0 auto;
     border: 1px solid #eee;
-    border-radius: 5px;
+    border-radius: 10px;
 
-    background-color: #2799bd;
+    background-color: #8ce4ff;
+}
+
+/* 아이디, 날짜 */
+
+.boardHead5{
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 40px;
+}
+
+.board_ID, .board_DATE{
+  margin: 0 auto;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+/* 제목 */
+
+.boardTitle5{
+  width: 100%;
+  height: 50px;
+
+  margin: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.boardTitle5 > input{
+  width: 100%;
+  height: inherit;
+
+  border: 0;
+  padding: 0 2.5%;
+}
+
+/* 리뷰 내용 */
+
+.boardText5{
+  width: 100%;
+  height: 400px;
+
+  border: 0;
+  padding: 5%;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.boardText5 > textarea{
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  resize: none;
+}
+
+/* 작성 수정 버튼 */
+
+.boardFooter{
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.writeBtn5{
+  width: 40%;
+  height: 40px;
+
+  border: 0;
+
+  font-weight: bold;
 }
