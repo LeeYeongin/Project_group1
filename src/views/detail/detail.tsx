@@ -36,6 +36,11 @@ function Main5(){
         };
     });
 
+    const putCart = () => {
+      // id와 함께 장바구니로 넘어감
+      window.location.href = ('/cart');
+    }
+
     return(
         <div className='detail5_main'>
             <div className='detail5_topbanner'>
@@ -91,7 +96,7 @@ function Main5(){
                 <div className='detail5_payment'>
                     <div className='pay_body5'>
                         <div className='money'>가격[상품별로 따로표기]</div>
-                        <button id='login_backet' className='backet5'>장바구니</button>
+                        <button id='login_backet' className='backet5' onClick={putCart}>장바구니</button>
                         <div className='sub5'>
                             <ul>
                                 <li id="teacher">강사명</li>

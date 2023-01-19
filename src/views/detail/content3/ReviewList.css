@@ -13,6 +13,9 @@
   height: 42.5%;
 
   margin: auto;
+
+  border: 1px solid #eee;
+  border-radius: 10px;
 }
 
 .reviewTitle5{
@@ -21,10 +24,14 @@
   height: 20%;
 
   margin: 0 auto;
+
+  align-items: center;
 }
 
 .reviewTitle5 > h3{
-  width: 50%
+  width: 50%;
+
+  font-size: 24px;
 }
 
 .ratingStar{

@@ -1,10 +1,11 @@
 .car5_list{
     width: 95%;
 
-    margin: 0 auto;
+    margin: 10px auto;
 
     background-color: #c9e3ff;
     border: 1px solid white;
+    border-radius: 5px;
 }
 
 .car5_title{
@@ -29,6 +30,9 @@
     height: 0;
 }
 
-.hide_item > a{
+.hide_item > span{
     color: transparent;
+
+    font-size: 0;
+    max-height: 0px;
 }
