@@ -3,7 +3,7 @@ import Carlist from './content2/CarList';
 import ReviewList from "./content3/ReviewList";
 import './detail.css';
 
-function Main(){
+function Main5(){
     // 클릭시 스크롤 이동
     const idRef1 = useRef<HTMLDivElement>(null);
     const idRef2 = useRef<HTMLDivElement>(null);
@@ -105,4 +105,4 @@ function Main(){
     );
 }
 
-export default Main;
+export default Main5;

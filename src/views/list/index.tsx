@@ -46,48 +46,48 @@ export default function List() {
 
   return (
         <>
-          <div className="main-container">
-              <div className="main">
-                  <div className="container main2">
-                      <div className="side-bar">
-                          <div className="side-menu side-menu2" onClick={() => categoryHandler('ALL')}>전체강의</div>
-                          <div className="side-menu side-menu2" onClick={() => categoryHandler('BACK')}>백엔드</div>
-                          <div className="side-menu side-menu2" onClick={() => categoryHandler('FRONT')}>프론드엔드</div>
-                          <div className="side-menu side-menu2" onClick={() => categoryHandler('FULL')}>풀스택</div>
-                          <div className="side-menu side-menu2" onClick={() => categoryHandler('DBMS')}>데이터베이스</div>
+          <div className="main-container3">
+              <div className="main3">
+                  <div className="container main23">
+                      <div className="side-bar3">
+                          <div className="side-menu side-menu23" onClick={() => categoryHandler('ALL')}>전체강의</div>
+                          <div className="side-menu side-menu23" onClick={() => categoryHandler('BACK')}>백엔드</div>
+                          <div className="side-menu side-menu23" onClick={() => categoryHandler('FRONT')}>프론드엔드</div>
+                          <div className="side-menu side-menu23" onClick={() => categoryHandler('FULL')}>풀스택</div>
+                          <div className="side-menu side-menu23" onClick={() => categoryHandler('DBMS')}>데이터베이스</div>
                       </div>
                   </div>
-                  <div className="container main3">
-                      <div className="head-bar">
+                  <div className="container main33">
+                      <div className="head-bar3">
                           <div className="">강의 목록</div>
-                          <div className="search">
-                              <input type="text" className="search-input" placeholder="개발/프로그래밍 검색" />
-                              <button className="search-btn">검색</button>
+                          <div className="search3">
+                              <input type="text" className="search-input3" placeholder="개발/프로그래밍 검색" />
+                              <button className="search-btn3">검색</button>
                           </div>
                       </div>
-                      <div className="choice-menu">
-                          <div className="myButton">전체</div>
-                          <div className="hr"></div>
-                          <div className="myButton fa-regular fa-percent">할인중</div>
-                          <div className="hr"></div>
-                          <div className="myButton fa-regular fa-star">입문</div>
-                          <div className="myButton fa-regular fa-star-half-stroke">초급</div>
-                          <div className="myButton fa-solid fa-star">중급이상</div>
+                      <div className="choice-menu3">
+                          <div className="myButton3">전체</div>
+                          <div className="hr3"></div>
+                          <div className="myButton3 fa-regular3 fa-percent3">할인중</div>
+                          <div className="hr3"></div>
+                          <div className="myButton3 fa-regular3 fa-star3">입문</div>
+                          <div className="myButton3 fa-regular3 fa-star-half-stroke3">초급</div>
+                          <div className="myButton3 fa-solid3 fa-star3">중급이상</div>
                       </div>
-                      <div className="list">
+                      <div className="list3">
                           {itemList.map((item) => (
-                              <div className="project-item">
-                                  <div className="project-container">
-                                      <div className="item-img-container">
+                              <div className="project-item3">
+                                  <div className="project-container3">
+                                      <div className="item-img-container3">
                                           <img src={DB_IMAGE} />
                                       </div>
-                                      <div className="item-content">
-                                          <a href="#" className="item-title">{item.title}</a>
-                                          <span className="item-discription">{item.discription}</span>
-                                          <div className="item-img-container2"><img src={STAR} />({item.score})</div>
-                                          <div className="item-footer">
-                                              <div className="project-time"><i className="fa-solid fa-won-sign"></i>{item.price}</div>
-                                              <button className="btn btn-test">{item.like}</button>
+                                      <div className="item-content3">
+                                          <a href="#" className="item-title3">{item.title}</a>
+                                          <span className="item-discription3">{item.discription}</span>
+                                          <div className="item-img-container23"><img src={STAR} />({item.score})</div>
+                                          <div className="item-footer3">
+                                              <div className="project-time3"><i className="fa-solid3 fa-won-sign3"></i>{item.price}</div>
+                                              <button className="btn btn-test3">{item.like}</button>
                                           </div>
                                       </div>
                                   </div>

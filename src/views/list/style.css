@@ -1,15 +1,15 @@
 * {
     box-sizing: border-box;
-  }
-  body {
+}
+body {
     margin: 0px;
-  }
+}
   a {
     text-decoration: none;
   
     color: black;
-  }
-  .main-container {
+}
+  .main-container3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,25 +18,25 @@
   
     height: 100vh;
   }
-  .container {
+  .container3 {
     height: 100%;
   }
-  .main {
+  .main3 {
     display: flex;
   
     height: 100vh; 
   }
-  .main2 {
+  .main23 {
     display: flex;
   
     flex-direction: row;
   }
   /*   */
-  .side-bar {
+  .side-bar3 {
     width: 190px;
     height: 100vh;
   }
-  .side-menu {
+  .side-menu3 {
     border: 1px solid #e4e4e4;
     height: 49px;
   
@@ -44,25 +44,25 @@
   
     background-color: #fafafa;
   }
-  .side-menu:visited {
+  .side-menu3:visited {
     background-color:#e9e9e9;
   }
-  .side-menu:hover {
+  .side-menu3:hover {
   background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
   background-color:#e9e9e9;
   }
   
-  .side-menu2 {
+  .side-menu23 {
     padding: 10px;
   }
-  .all-choice {
+  .all-choice3 {
     display: block;
   
     padding: 10px;
   
     height: 49px;
   }
-  .head-bar {
+  .head-bar3 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -73,13 +73,13 @@
   
     width: 920px;
   }
-  .search {
+  .search3 {
     border: 1px solid #e4e4e4;
     border-radius: 6px;
   
     height: 40px;
   }
-  .search-input {
+  .search-input3 {
     margin-left: 10px;
     border: none;
     outline: none;
@@ -88,12 +88,12 @@
   
     font-size: 15px;
   }
-  .search-btn{
+  .search-btn3{
     border: none;
   
     height: 100%;
   }
-  .choice-menu {
+  .choice-menu3 {
     /* display: flex; */
     margin-left: 30px;
     margin-bottom: 30px;
@@ -101,7 +101,7 @@
     width: 920px;
     
   }
-  .myButton {
+  .myButton3{
   box-shadow:inset 0px 1px 0px 0px #ffffff;
   background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
   background-color:#f9f9f9;
@@ -118,15 +118,15 @@
   text-decoration:none;
   text-shadow:0px 1px 0px #ffffff;
   }
-  .myButton:hover {
+  .myButton3:hover {
   background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
   background-color:#e9e9e9;
   }
-  .myButton:active {
+  .myButton3:active {
   position:relative;
   top:1px;
   }
-  .hr {
+  .hr3 {
     display: inline;
     margin-left: 5px;
     border: .1px solid #eee;
@@ -134,7 +134,7 @@
     height: 50px;
   }
   
-  .list {
+  .list3 {
     display: flex;
     flex-wrap: wrap;
     margin-left: 30px;
@@ -142,17 +142,17 @@
     width: 920px;
     height: auto;
   }
-  .project-item{
+  .project-item3{
     padding: 0px 15px;
     border: 1px solid white;
   }
-  .project-item:hover {
+  .project-item3:hover {
     border: 1px solid #ddd;
   background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
   background-color:#e9e9e9;
   }
   
-  .project-container{
+  .project-container3{
     margin-bottom: 20px;
     /* border: 1px solid #ddd; */
     border-radius: 4px;
@@ -160,7 +160,7 @@
   
     width: 198px;
   }
-  .item-img-container{
+  .item-img-container3{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,11 +174,11 @@
   
     /* overflow: hidden; */
   }
-  .item-img-container img{
+  .item-img-container3 img{
     width: 100%;
     height: 100%;
   }
-  .item-img-container2 {
+  .item-img-container23 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,21 +188,21 @@
   
     font-size: 5px;
   }
-  .item-img-container2 img{
+  .item-img-container23 img{
     width: 100%;
     height: 100%;
   }
-  .item-content{
+  .item-content3{
     padding: 9px;
   }
   
-  .item-title{
+  .item-title3{
     margin: 6px 0px 10px;
     font-size: 1rem;
     color: #3498db;
   }
   
-  .item-discription{
+  .item-discription3{
     margin-bottom: 3px;
     border-bottom: 1px solid #eee;
     padding-bottom: 3px;
@@ -211,18 +211,18 @@
     font-size: .9rem;
   }
   
-  .project-time{
+  .project-time3{
     margin-bottom: 5px;
   
     font-size: 12px;
     font-weight: 700;
   }
   
-  .project-time .fa-clock{
+  .project-time3 .fa-clock3{
     font-size: 12px;
   }
   
-  .btn-test{
+  .btn-test3{
     padding: 5Px 10px 5px;
     border: NONE;
     border-radius: 3PX;

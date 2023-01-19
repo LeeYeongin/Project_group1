@@ -10,11 +10,13 @@ import FindId from './views/FindId/index';
 import IndexModule from './views/FindId/indexModule';
 import FindPassword from './views/FindPassword';
 import ChangePassword from './views/FindPassword/index2';
+import ReviewList from './views/detail/content3/ReviewList';
+import Main5 from './views/detail/detail';
 
 function App() {
   return (
 
-    <Main/>
+    <Main5/>
     // <div>
     //   <Routes>
     //     <Route path="/" element={<Layout />}>
