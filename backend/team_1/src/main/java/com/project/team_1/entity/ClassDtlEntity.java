@@ -12,12 +12,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="CATEGORY")
-@Table(name="CATEGORY")
-public class CategoryEntity {
-
+@Entity(name="CLASSDTL")
+@Table(name="CLASS_DTL")
+public class ClassDtlEntity {
+	
 	@Id
-	private int idCategory;
-	private String CategoryName;
-}
+	private int idClass;
+	private String img;
+	private String className;
+	private int price;
+	private String studentNum;
+	private String classInfoSimple;
+	private String classInfoDtl;
 
+}
