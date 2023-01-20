@@ -60,7 +60,7 @@ function NextArrow(props: CustomArrowProps) {
                 </div>
                 <div className="course_card4">
                   <img src={Course2} alt="" className="course_face4" />
-                  <div className="course_title">React 완벽가이드</div>
+                  <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
                   <div className="course_rating4">4.7</div>
                   <div className="course_price4">17000원</div>
@@ -68,7 +68,7 @@ function NextArrow(props: CustomArrowProps) {
                 </div>
                 <div className="course_card4">
                   <img src={Course1} alt="" className="course_face4" />
-                  <div className="course_title">React 완벽가이드</div>
+                  <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
                   <div className="course_rating4">4.7</div>
                   <div className="course_price4">17000원</div>

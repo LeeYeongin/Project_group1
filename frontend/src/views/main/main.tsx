@@ -393,7 +393,6 @@ function Main(){
             </div> */}
 
             {/* footer */}
-            <Footer/>
         </div>
     );
 }

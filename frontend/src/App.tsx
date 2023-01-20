@@ -16,6 +16,7 @@ import Logo from './asset/images/logo.png';
 import DropButton from './views/main/DropButton'
 import Header from './views/main/Header';
 import WriteReview from './views/detail/board/boardWrite';
+import Footer from './views/main/Footer';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function Layout() {
     <div>
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 }

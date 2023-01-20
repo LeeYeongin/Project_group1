@@ -319,7 +319,8 @@ header {
 /* 하단 */
 footer {
     height: 200px;
-    background-color: darkgrey;
+    color: white;
+    background-color: #303740;
 }
 
 footer ul{
@@ -330,4 +331,8 @@ footer ul{
 
 footer li{
     text-align: center;
+}
+
+footer li :last-child {
+    color: #bdbdbd;
 }
