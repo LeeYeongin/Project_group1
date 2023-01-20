@@ -103,6 +103,8 @@ h1{
     position:fixed;
     top: 0;
 
+    border-bottom: 1px solid #eee;
+
     background-color: #fff;
 }
 /* 메뉴 리스트 */
@@ -135,6 +137,13 @@ h1{
 }
 
 /* 상세보기[강의소개, 커리큘럼, 수강평]*/
+
+#content1{
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 .detail5_content{
     height: 3240px;
 
@@ -160,15 +169,16 @@ h1{
 .con5 > p { 
     padding-left: 20px;
     
+    font-size: 20px;
     font-weight: bold;
 }
 
-/* 강의 소개 */
+.con5 .explan{
+    padding-top: 10px;
+    padding-left: 20px;
 
-#content1{
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* 커리큘럼 */

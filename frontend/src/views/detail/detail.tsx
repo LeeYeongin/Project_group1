@@ -66,16 +66,12 @@ function Main5(){
                 <div className='detail5_content_main'>
                     <div id='content1' className= {ScrollActive ? 'con5 scroll' : 'con5'} ref={idRef1}>
                         <h1>강의소개</h1>
-                        <p>강의 설명<br/>
-                            - 이강의는 ~~~~~~~~~~~하는 강의입니다.<br/>
-                        </p>
-                        <p>도움되실 대상(필요없으면 제거)<br/>
-                            1. aa<br/>
-                            2. bb<br/>
-                            3. cc
-                        </p>
-                        <p style={{fontSize: '32px', fontWeight: 'bold'}}>강의 특징</p>
-                        <p style={{lineHeight: '34px'}}>
+                        <div className="explan">
+                            <p>강의 설명</p>
+                            <p>- 이강의는 ~~~~~~~~~~~하는 강의입니다.</p>
+                        </div>
+                        <p>강의 특징</p>
+                        <p>
                             사용언어 : xxx<br/>
                             학습방법<br/>
                             * 1. AAA<br/>
