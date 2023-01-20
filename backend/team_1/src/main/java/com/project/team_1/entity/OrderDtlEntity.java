@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="discount")
-@Table(name="discount")
-public class DiscountEntity {
-
+@Entity(name="orderDtl")
+@Table(name="order_dtl")
+public class OrderDtlEntity {
 	@Id
-	private int idDiscount;
-	private int discountRate;
+	private int idOrder;
+	private int idClass;
+	private int price;
 }
