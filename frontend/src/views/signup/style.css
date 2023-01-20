@@ -1,0 +1,45 @@
+* {
+    box-sizing: inherit;
+}
+
+.signup__title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.signup__message {
+    flex-shrink: 0;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+p {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.6;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+label {
+    cursor: default;
+}
+
+.form__label {
+    line-height: 1.43;
+    letter-spacing: -.3px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e4042;
+}
+
+.signup__form {
+    display: flex;
+    flex-direction: column;
+}
+
+
