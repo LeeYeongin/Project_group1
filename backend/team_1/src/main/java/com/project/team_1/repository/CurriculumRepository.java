@@ -11,7 +11,7 @@ import com.project.team_1.entity.CurriculumEntity;
 @Repository
 public interface CurriculumRepository extends JpaRepository<CurriculumEntity, Integer> {
 
-	@Query("select distinct section form CURRICULUM c where c.idClass = ? order by section")
+	@Query("select distinct section from CURRICULUM c where c.idClass = ?1 order by section")
 	List<CurriculumEntity> findAllSection(int idClass);
 }
 

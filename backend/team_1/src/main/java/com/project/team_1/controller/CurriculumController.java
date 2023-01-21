@@ -13,14 +13,14 @@ import com.project.team_1.dto.curriculum.GetCurriculumResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 
 @RestController
-@RequestMapping("/main5")
+@RequestMapping("main5/")
 public class CurriculumController {
 
 	@Autowired CurriculumService curriculumService;
 	
 	@GetMapping("{idClass}")
-	public ResponseDto<List<GetCurriculumResponseDto>> getCurriculum(@PathVariable("idClass") int idClass){
-		return curriculumService.findSection(idClass);
+	public ResponseDto<List<GetCurriculumResponseDto>> getAllCurriculumSection(@PathVariable("idClass") int idClass){
+		return curriculumService.findAllSection(idClass);
 	}
 	
 }

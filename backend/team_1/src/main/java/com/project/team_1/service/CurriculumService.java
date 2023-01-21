@@ -10,21 +10,19 @@ import com.project.team_1.dto.curriculum.GetCurriculumResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.CurriculumEntity;
 import com.project.team_1.repository.CurriculumRepository;
-import com.yeongin.board.dto.user.GetUserResponseDto;
-import com.yeongin.board.entity.MemberEntity;
 
 @Service
 public class CurriculumService {
 	@Autowired
 	CurriculumRepository curriculumRepository;
 	
-	public ResponseDto<List<GetCurriculumResponseDto>> findSection(int idClass){
+	public ResponseDto<List<GetCurriculumResponseDto>> findAllSection(int idClass){
 		List<CurriculumEntity> curriculumList = curriculumRepository.findAllSection(idClass);
 		List<GetCurriculumResponseDto> data = new ArrayList<GetCurriculumResponseDto>();
-		for (CurriculumEntity member: curriculumList) {
-			data.add(new GetCurriculumResponseDto(member));
+		for (CurriculumEntity curriculum: curriculumList) {
+			data.add(new GetCurriculumResponseDto(curriculum));
 		}
-		
+		    
 		return ResponseDto.setSuccess("Get User List Success", data);
 	}
 }
