@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+// import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 import Course1 from '../../asset/images/exwebfront.png'
 import Course2 from '../../asset/images/htmlbasic.png'
@@ -27,6 +29,11 @@ function NextArrow(props: CustomArrowProps) {
       />
     );
   }
+// 별점보기 수강평 등록후 평균 읽어오기
+  function ReadOnly() {
+  const [value] = React.useState<number>(5);
+  <Rating name="read-only" value={value} readOnly />
+}
   
   export default class CustomArrows extends Component {
     render() {
@@ -54,7 +61,7 @@ function NextArrow(props: CustomArrowProps) {
                   <img src={Course1} alt="" className="course_face4" />
                   <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
-                  <div className="course_rating4">4.7</div>
+                  <div className="course_rating4"><Rating/></div>
                   <div className="course_price4">17000원</div>
                   <div className="course_tag4">베스트셀러</div>
                 </div>
@@ -62,7 +69,7 @@ function NextArrow(props: CustomArrowProps) {
                   <img src={Course2} alt="" className="course_face4" />
                   <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
-                  <div className="course_rating4">4.7</div>
+                  <div className="course_rating4"><Rating/></div>
                   <div className="course_price4">17000원</div>
                   <div className="course_tag4">베스트셀러</div>
                 </div>
@@ -70,7 +77,7 @@ function NextArrow(props: CustomArrowProps) {
                   <img src={Course1} alt="" className="course_face4" />
                   <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
-                  <div className="course_rating4">4.7</div>
+                  <div className="course_rating4"><Rating/></div>
                   <div className="course_price4">17000원</div>
                   <div className="course_tag4">베스트셀러</div>
                 </div>
@@ -78,7 +85,7 @@ function NextArrow(props: CustomArrowProps) {
                   <img src={Course1} alt="" className="course_face4" />
                   <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
-                  <div className="course_rating4">4.7</div>
+                  <div className="course_rating4"><Rating/></div>
                   <div className="course_price4">17000원</div>
                   <div className="course_tag4">베스트셀러</div>
                 </div>
@@ -86,7 +93,7 @@ function NextArrow(props: CustomArrowProps) {
                   <img src={Course1} alt="" className="course_face4" />
                   <div className="course_title4">React 완벽가이드</div>
                   <div className="course_instructor4">해피코딩</div>
-                  <div className="course_rating4">4.7</div>
+                  <div className="course_rating4"><Rating/></div>
                   <div className="course_price4">17000원</div>
                   <div className="course_tag4">베스트셀러</div>
                 </div>
