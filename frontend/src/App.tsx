@@ -7,7 +7,7 @@ import List from './views/list';
 import MyProfile from './views/myProfile';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import FindId from './views/FindId/index';
-import IndexModule from './views/FindId/indexModule';
+import IndexModule from './views/FindId/indexModal';
 import FindPassword from './views/FindPassword';
 import ChangePassword from './views/FindPassword/index2';
 import ReviewList from './views/detail/content3/ReviewList';
@@ -38,7 +38,7 @@ function App() {
       </Routes>
     </div>
 
-    
+
   );
 }
 

@@ -69,11 +69,11 @@ export default function Login({open, setOpen}: props) {
             <button className="login-button">로그인</button>
           </form>
           <p className="sign-in-modal__more-action">
-            <a href="#아이디찾기" className="more-action__text">
+            <a href="/findID" className="more-action__text">
               아이디(이메일) 찾기
             </a>
             <span className="more-action-divider"></span>
-            <a href="#비밀번호찾기" className="more-action__text">
+            <a href="/findPassword" className="more-action__text">
               비밀번호 찾기
             </a>
             <span className="more-action-divider"></span>
