@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
 
-function BoardWrite() {
+function BoardUpdate() {
   const [value, setValue] = React.useState<number | null>(5);
 
   const WriteBtn = () => {
@@ -13,12 +13,16 @@ function BoardWrite() {
   }
   return(
       <div className="boardBody5">
+          <div className="boardTitle5">
+            <div className="board_title">제목</div>
+            <div className="input_title"><input type="text" placeholder="제목을 입력해주세요"/></div>
+          </div>
           <div className="boardHead5">
               <div className="board_ID">아이디</div>
               <div className="input_ID">로그인한 아이디</div>
           </div>
           <div className="boardText5">
-            <textarea className="reviewArea" placeholder="수정하는 내용"/>
+            <textarea className="reviewArea" placeholder="리뷰를 작성해 주세요"/>
             {/* 별점기능 */}
             <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
               <Rating className="WriteRating" value={value} size='large' onChange={(event, newValue) => {setValue(newValue);}}/>
@@ -31,4 +35,4 @@ function BoardWrite() {
   );
 }
 
-export default BoardWrite;
+export default BoardUpdate;

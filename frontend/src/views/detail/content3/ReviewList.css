@@ -19,27 +19,36 @@
 }
 
 .reviewTitle5{
-  display: flex;
-  width: 90%;
+  width: 50%;
   height: 15%;
 
   margin: 0 auto;
+  padding: 15px 0;
 
-  align-items: center;
-}
-
-.reviewTitle5 > h3{
   font-size: 24px;
   font-weight: bold;
 
-  margin: 0;
+  text-align: center;
 }
 
 .ratingStar{
-  width: 100%;
+  width: 80%;
 
-  margin: auto 0;
+  margin: 5px 10%;
+
+  text-align: center;
 }
+
+.ratingStar span{
+  position: inherit;
+}
+
+.ratingStar svg{
+  width: 20px;
+  height: 20px;
+}
+
+/*  */
 
 .reviewBody{
   margin: 0 auto;
@@ -91,13 +100,15 @@
 
 .reviewCollect5{
   width: 80%;
+
+  display: flex;
+  justify-content: space-around;
 }
 
 .reviewCollect5 > button{
   width: 30px;
   height: 30px;
 
-  margin-right: 10px;
   border: 1px solid #aad3ff;
   border-radius: 25px;
 
@@ -106,6 +117,10 @@
 
 .selectItem{
   background-color: #87c1ff;
+}
+
+.disabled{
+  background-color: #aad3ff;
 }
 
 #cItem:hover{
@@ -126,49 +141,4 @@
 
 .writeReview5:hover{
   background-color: rgb(255, 233, 233);
-}
-
-/* 별점 css[ 출처 : https://codepen.io/chris22smith/pen/MJzLJN */
-.star-rating {
-  display:flex;
-
-  flex-direction: row-reverse;
-  font-size: 20px;
-
-  justify-content:space-around;
-  padding:0 .2em;
-  text-align:center;
-  width: 100%;
-  height: 30px;
-}
-
-.star-rating input {
-  display:none;
-}
-
-.star-rating label {
-  color:#ccc;
-  cursor:pointer;
-}
-
-.star-rating :checked ~ label {
-  color:rgb(60, 255, 0);
-}
-
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-  color:rgb(60, 255, 0);
-}
-
-/* explanation */
-
-article {
-  background-color:#ffe;
-  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
-  color:#006;
-  font-family:cursive;
-  font-style:italic;
-  margin:4em;
-  max-width:10em;
-  padding:2em;
 }

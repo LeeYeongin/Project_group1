@@ -16,6 +16,7 @@ import Logo from './asset/images/logo.png';
 import DropButton from './views/main/DropButton'
 import Header from './views/main/Header';
 import WriteReview from './views/detail/board/boardWrite';
+import UpdateReview from './views/detail/board/updateWrite';
 import Footer from './views/main/Footer';
 import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
@@ -35,18 +36,18 @@ function App() {
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
           <Route path="writeReview" element={<WriteReview/>}/>
+          <Route path="updateReview" element={<UpdateReview/>}/>
           <Route path="indexModal" element={<IndexModal />}/>
         </Route>
       </Routes>
     </div>
 
-
+    
   );
 }
 
 function Layout() {
   const [open, setOpen] = useState(false);
-  
   return (
     <div className={open ? 'enable-scroll' : ''}>
       <Login open={open} setOpen={setOpen} />
