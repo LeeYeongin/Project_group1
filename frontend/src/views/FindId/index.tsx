@@ -25,7 +25,9 @@ export default function FindId() {
                     </div>
                     <div className="main433">
                         <div className="success33">
-                            <div>아이디 찾기</div>
+                            <a href="/indexModal">
+                            <div className='findID-btn'>아이디 찾기</div>
+                            </a>
                         </div>
                     </div>
                 </div>

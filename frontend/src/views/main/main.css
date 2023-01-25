@@ -20,12 +20,11 @@ header {
     height: 70px;
     /* background-color: bisque; */
     border-bottom: 1px solid #d4e8fd;
-    margin-bottom: 10px;
 }
 
 .h_nav_bar4 {
     display: flex;
-    width: 65%;
+    width: 80%;
     height: 100%;
     /* background-color: blueviolet; */
 }
@@ -37,6 +36,7 @@ header {
     float: left;
     width: 250px;
     height: 100%;
+    margin-left: 90px;
     /* background-color: aqua; */
 }
 
@@ -72,7 +72,7 @@ header {
     /* position: relative; */
     width: 290px;
     height: 100%;
-    margin-left: 45.4%;
+    margin-left: 50%;
     /* backgroun : yellowgreen; */
 }
 

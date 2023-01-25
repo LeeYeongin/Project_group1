@@ -18,6 +18,7 @@ import Header from './views/main/Header';
 import WriteReview from './views/detail/board/boardWrite';
 import Footer from './views/main/Footer';
 import Login from './views/login';
+import IndexModal from './views/FindId/indexModal';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
           <Route path="writeReview" element={<WriteReview/>}/>
+          <Route path="indexModal" element={<IndexModal />}/>
         </Route>
       </Routes>
     </div>
