@@ -3,7 +3,11 @@ import React from 'react';
 import Logo from '../../asset/images/logo.png';
 import DropButton from './DropButton'
 
-function Header(){
+interface props {
+  setOpen: any;
+}
+
+function Header({setOpen}: props){
     return (
       <header>
         <div className="h_nav_bar4">
@@ -26,7 +30,7 @@ function Header(){
               </a>
             </div>
             <div className="login_btn4">
-              <a href="#">로그인</a>
+              <a onClick={() => setOpen(true)}>로그인</a>
             </div>
             <div className="sign_up4">
               <a href="#">회원가입</a>

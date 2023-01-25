@@ -5,9 +5,13 @@ import google from '../../asset/images/icon_google.png';
 import naver from '../../asset/images/icon_naver.png';
 import './style.css';
 
-export default function Login() {
+interface props {
+  open: boolean;
+  setOpen: any;
+}
+
+export default function Login({open, setOpen}: props) {
   const [passwordView, setPasswordView] = useState<string>('password');
-  const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

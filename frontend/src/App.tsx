@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Cart from './views/cart';
 import MyCourse from './views/myCourse';
@@ -17,6 +17,7 @@ import DropButton from './views/main/DropButton'
 import Header from './views/main/Header';
 import WriteReview from './views/detail/board/boardWrite';
 import Footer from './views/main/Footer';
+import Login from './views/login';
 
 function App() {
   return (
@@ -42,9 +43,12 @@ function App() {
 }
 
 function Layout() {
+  const [open, setOpen] = useState(false);
+  
   return (
-    <div>
-      <Header />
+    <div className={open ? 'enable-scroll' : ''}>
+      <Login open={open} setOpen={setOpen} />
+      <Header setOpen={setOpen} />
       <Outlet />
       <Footer />
     </div>
