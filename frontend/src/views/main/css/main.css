@@ -239,16 +239,15 @@ header {
 /* 강의 목록 */
 
 .course_dashboard4 {
-    display: flex;
-    justify-content: center;
-    /* width: 100%; */
-    height: 454px;
-    /* position: relative; */
+    margin-left: 18vw;
+    display: block;
+    width: 100%;
+    position: relative;
     /* background-color: #d4e8fd; */
 }
 
 .course_dashboard_list4 {
-    /* display: block; */
+    display: block;
     position: relative;
     width: 65%;
     /* height: 100%; */
@@ -260,6 +259,7 @@ header {
 }
 
 .course_dashboard_card4{
+    margin-bottom: 30px;
     /* border: 1px solid; */
 }
 
