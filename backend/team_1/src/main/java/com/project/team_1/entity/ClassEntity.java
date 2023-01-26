@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="CLASSDTL")
-@Table(name="CLASS_DTL")
-public class ClassDtlEntity {
+@Entity(name="CLASS")
+@Table(name="CLASS")
+public class ClassEntity {
 	
 	@Id
 	private int idClass;
@@ -27,5 +27,7 @@ public class ClassDtlEntity {
 	private String category;
 	private String difficulty;
 	private int discountRate;
+	private String instructor;
+	
 
 }
