@@ -7,7 +7,7 @@ import Banner2 from "../../asset/images/Isometric_Illustration.png";
 import Banner3 from "../../asset/images/database-unscreen.gif";
 import Banner4 from "../../asset/images/PremiumVector.jpg";
 
-import './banner.css'
+import '../main/css/banner.css'
 
 function Banner() {
   return (

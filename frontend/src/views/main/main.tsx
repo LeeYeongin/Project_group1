@@ -5,7 +5,7 @@ import Icon2 from '../../asset/images/spring.png'
 import Icon3 from '../../asset/images/datascience.png'
 import Icon4 from '../../asset/images/fullstack-icon.png'
 
-import './main.css';
+import '../main/css/main.css';
 import Banner from './Banner';
 import FrontCarousel from './FrontCarousel';
 import Footer from './Footer';
