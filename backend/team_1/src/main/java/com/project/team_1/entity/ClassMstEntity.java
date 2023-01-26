@@ -18,8 +18,6 @@ public class ClassMstEntity {
 
 	@Id
 	private int idClass;
-	private int idCatrgory;
-	private int idDifficulty;
 	private int idInstructor;
-	private int idDiscount;
+	
 }

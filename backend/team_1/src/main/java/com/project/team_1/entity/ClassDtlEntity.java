@@ -21,8 +21,11 @@ public class ClassDtlEntity {
 	private String img;
 	private String className;
 	private int price;
-	private String studentNum;
+	private String studentCount;
 	private String classInfoSimple;
 	private String classInfoDtl;
+	private String category;
+	private String difficulty;
+	private int discountRate;
 
 }

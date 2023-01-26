@@ -18,10 +18,9 @@ public class ReviewEntity {
 	
 	@Id
 	private int idReview;
-	private String title;
 	private String idUser;
 	private String contents;
-	private String idClass;
-	private float grade;
+	private int idClass;
+	private int grade;
 
 }
