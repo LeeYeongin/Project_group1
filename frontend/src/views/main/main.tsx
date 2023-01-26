@@ -83,15 +83,6 @@ function Main(){
             {/* 프론트엔드 */}
             <FrontCarousel/>
             
-            {/* 백엔드 */}
-            <FrontCarousel/>
-            
-            {/* 데이터베이스 */}
-            <FrontCarousel/>
-            
-            {/* 풀스텍 */}
-            <FrontCarousel/>
-            
             {/* footer */}
             
         </div>
