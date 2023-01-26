@@ -115,12 +115,22 @@
   text-align: center;
 }
 
+.leftBtn, .rightBtn{
+  width: 20px;
+  height: 20px;
+}
+
+.off{
+  width: 0;
+  height: 0;
+}
+
 .selectItem{
   background-color: #87c1ff;
 }
 
 .disabled{
-  background-color: #aad3ff;
+  background-color: #ffffff;
 }
 
 #cItem:hover{
