@@ -7,5 +7,5 @@ import com.project.team_1.entity.ClassEntity;
 
 @Repository
 public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
-
+	
 }
