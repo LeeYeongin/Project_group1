@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.team_1.dto.cart.GetCartClassListDto;
 import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
@@ -22,9 +23,10 @@ public class CartController {
 	@Autowired CartService cartService;
 	
 	@PostMapping("")
-	public ResponseDto<List<GetCartResponseDto>> getCartList(@RequestBody GetCartListDto requestBody){
+	public ResponseDto<List<GetCartClassListDto>> getCartList(@RequestBody GetCartListDto requestBody){
 		return cartService.getCartList(requestBody);
 	}
+	
 	
 //	@GetMapping("{idUser}")
 //	public ResponseDto<List<GetCartResponseDto>> getCartList(@PathVariable("idUser") String idUser){
