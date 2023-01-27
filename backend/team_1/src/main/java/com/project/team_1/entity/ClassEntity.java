@@ -22,7 +22,7 @@ public class ClassEntity {
 	private String img;
 	private String className;
 	private int price;
-	private String studentCount;
+	private int studentCount;
 	private String classInfoSimple;
 	private String classInfoDtl;
 	private String category;
