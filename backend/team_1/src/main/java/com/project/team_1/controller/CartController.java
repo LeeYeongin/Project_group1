@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.CartService;
@@ -18,9 +21,14 @@ public class CartController {
 	
 	@Autowired CartService cartService;
 	
-	@GetMapping("{idUser}")
-	public ResponseDto<List<GetCartResponseDto>> getCartList(@PathVariable("idUser") String idUser){
-		return cartService.getCartList(idUser);
+	@PostMapping("")
+	public ResponseDto<List<GetCartResponseDto>> getCartList(@RequestBody GetCartListDto requestBody){
+		return cartService.getCartList(requestBody);
 	}
+	
+//	@GetMapping("{idUser}")
+//	public ResponseDto<List<GetCartResponseDto>> getCartList(@PathVariable("idUser") String idUser){
+//		return cartService.getCartList(idUser);
+//	}
 
 }
