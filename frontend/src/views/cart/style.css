@@ -19,6 +19,7 @@ a {
     justify-content: center;
 
     flex-wrap: wrap;
+    height: 100vh;
 
     margin: 0px 100px;
 }
@@ -63,6 +64,8 @@ a {
     height: 115px;
 
     padding: 16px 0px;
+
+    border-bottom: 1px solid #dcddde;
 }
 
 .course-select2 {
@@ -397,3 +400,7 @@ dd {
 
     cursor: pointer;
 }
+
+/* .container-wrapper2{
+    display: flex;
+} */
