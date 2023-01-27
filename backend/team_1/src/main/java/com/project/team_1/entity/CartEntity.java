@@ -4,6 +4,8 @@ package com.project.team_1.entity;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,7 +22,8 @@ import lombok.NoArgsConstructor;
 public class CartEntity {
 
 	@Id
-	private int id_cart;
-	private String id_user;
-	private int id_class;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idCart;
+	private String idUser;
+	private int idClass;
 }
