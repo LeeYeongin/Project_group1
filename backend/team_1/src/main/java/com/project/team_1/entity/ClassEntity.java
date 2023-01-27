@@ -1,5 +1,6 @@
 package com.project.team_1.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -26,7 +27,8 @@ public class ClassEntity {
 	private String classInfoDtl;
 	private String category;
 	private String difficulty;
-	private int discountRate;
+	@Column
+	private Integer discountRate;
 	private String instructor;
 	
 
