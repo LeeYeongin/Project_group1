@@ -225,7 +225,8 @@ const STUDY = CarouselMap.map((cm) => {
     <div className="course_dashboard_card4">
       <Slider {...settings}>
         {cm.lectures.map((item) => (
-          <div className="course_card4">
+          <a href="/main5">
+            <div className="course_card4">
           <img src={Course1} alt="" className="course_face4" />
           <div className="course_title4">{item.title}</div>
           <div className="course_instructor4">{item.name}</div>
@@ -233,6 +234,8 @@ const STUDY = CarouselMap.map((cm) => {
           <div className="course_price4">{item.price} 원</div>
           <div className="course_tag4">{item.tag && '베스트셀러'}</div>
         </div>
+          </a>
+          
         ))}
       </Slider>
     </div>

@@ -179,7 +179,6 @@ export default function Cart() {
               </div>
             </div>
           </div>
-
           <div className="recommend-cousrse-card-wrapper2">
             <div className="recommend-course-card2">
               <div className="card-img2">
