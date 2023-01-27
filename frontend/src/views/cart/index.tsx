@@ -1,8 +1,26 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import Totoro from '../../asset/img/totoro.png';
 import './style.css';
 
 export default function Cart() {
+  const [requestResult, setRequestResult] = useState<string>('')
+
+  const cartHandler = () => {
+    const getdata = {
+      idUser: "aaa"
+    };
+  
+    axios.post("http://localhost:4040/cart/", getdata)
+    .then((Response) => {
+      setRequestResult('Success!!');
+      console.log(Response.data.data[0].idUser)
+    })
+    .catch((error) => {
+      setRequestResult('Failed!!');
+    })
+  }
+  
 
   return (
     <>
@@ -145,8 +163,9 @@ export default function Cart() {
             <div className="price-pay2">
               <span>총 결제금액</span>
               <span>176000원</span>
+              <div>{requestResult}</div>
             </div>
-            <button className="payment-btn2">결제하기</button>
+            <button className="payment-btn2" onClick={()=>cartHandler()}>결제하기</button>
           </div>
         </div>
       </div>
