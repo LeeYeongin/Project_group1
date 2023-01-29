@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.project.team_1.dto.cart.GetCartClassListDto;
 import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
+import com.project.team_1.dto.cart.GetCartUserInfoDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.CartEntity;
 import com.project.team_1.entity.ClassEntity;
+import com.project.team_1.entity.UserEntity;
 import com.project.team_1.repository.CartRepository;
 import com.project.team_1.repository.ClassRepository;
+import com.project.team_1.repository.UserRepository;
 
 @Service
 public class CartService {
@@ -22,6 +25,8 @@ public class CartService {
 	CartRepository cartRepository;
 	@Autowired 
 	ClassRepository classRepository;
+	@Autowired
+	UserRepository userRepository;
 	
 	public ResponseDto<List<GetCartClassListDto>> getCartList(GetCartListDto dto){
 		
@@ -56,6 +61,19 @@ public class CartService {
 		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
 	}
 	
+	
+	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(GetCartListDto dto){
+		UserEntity user;
+		try {
+			user = userRepository.findById(dto.getIdUser()).get();
+			
+		}catch (Exception e) {
+			return ResponseDto.setFailed("error");
+		}
+		
+		return ResponseDto.setSuccess("Get Cart User Informaiton Success", new GetCartUserInfoDto(user));
+		
+	}
 	
 
 }

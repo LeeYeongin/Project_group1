@@ -6,6 +6,9 @@ import './style.css';
 export default function Cart() {
   const [requestResult, setRequestResult] = useState<string>('')
   const [itemList, setItemList] = useState<any[]>([]);
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [telNum, setTelNum] = useState<string>('')
 
   const cartHandler = () => {
     const getdata = {
@@ -18,6 +21,17 @@ export default function Cart() {
     .then((Response) => {
       const tmp = [];
       setRequestResult('Success!!');
+
+      axios.post("http://localhost:4040/cart/user", getdata)
+      .then((Response) => {
+          setName(Response.data.data.name)
+          setEmail(Response.data.data.email)
+          setTelNum(Response.data.data.telNum)
+      })
+      .catch((error) => {
+        setRequestResult('Failed!!');
+      })
+
       // console.log(Response.data.data.length);
       // console.log(Response.data.data[0].img);
       // console.log(Response.data.data.className);
@@ -80,51 +94,6 @@ export default function Cart() {
                   </div>
                 </>
               ))}
-
-              {/* <div className="cart-list2">
-              <input type="checkbox" className="course-select2" />
-              <div className="cart-course-img2">
-                <img src="img/github.png" alt="course-img" />
-              </div>
-              <div className="cart-course-info2">
-                <h3 className="course-title2">
-                  <a href="#">깃허브-깃허브 사용법 배우기</a>
-                </h3>
-                <div>
-                  <span>김영한</span>
-                  <span>|</span>
-                  <span>무제한 수강</span>
-                </div>
-              </div>
-              <div className="close2">
-                <button className="close-btn2">
-                  <i className="fa-solid2 fa-xmark2"></i>
-                </button>
-              </div>
-              <div className="payment2">77,000원</div>
-            </div>
-            <div className="cart-list2">
-              <input type="checkbox" className="course-select2" />
-              <div className="cart-course-img2">
-                <img src="img/github.png" alt="course-img" />
-              </div>
-              <div className="cart-course-info2">
-                <h3 className="course-title2">
-                  <a href="#">깃허브-깃허브 사용법 배우기</a>
-                </h3>
-                <div>
-                  <span>김영한</span>
-                  <span>|</span>
-                  <span>무제한 수강</span>
-                </div>
-              </div>
-              <div className="close2">
-                <button className="close-btn2">
-                  <i className="fa-solid2 fa-xmark2"></i>
-                </button>
-              </div>
-              <div className="payment2">77,000원</div>
-            </div> */}
             </div>
           </div>
           <div className="side-container2">
@@ -140,15 +109,15 @@ export default function Cart() {
               </div>
               <div className="buyer-name2">
                 <dt>이름</dt>
-                <dd>이영인</dd>
+                <dd>{name}</dd>
               </div>
               <div className="buyer-email2">
                 <dt>이메일</dt>
-                <dd>abc@naver.com</dd>
+                <dd>{email}</dd>
               </div>
               <div className="buyer-telphone2">
                 <dt>전화번호</dt>
-                <dd>010-1234-5678</dd>
+                <dd>{telNum}</dd>
               </div>
             </div>
             <div className="payment-container2">

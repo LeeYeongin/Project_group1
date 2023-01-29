@@ -23,5 +23,5 @@ public class UserEntity {
 	private String profile;
 	private String nickname;
 	private String email;
-	private String telNum;
+	private String telnum;
 }
