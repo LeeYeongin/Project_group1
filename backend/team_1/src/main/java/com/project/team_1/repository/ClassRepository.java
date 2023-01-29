@@ -22,4 +22,10 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	
 	@Query("select c from CLASS c LIMIT 5 where c.category = front")
 	List<ClassEntity> showFullStackList();
+	
+	@Query("select c from CLASS c like *?1*")
+	List<ClassEntity> searchClassList(String search);
+	
+	@Query("select c from CLASS c where c.category = ?1")
+	List<ClassEntity> categoryClassList(String category);
 }
