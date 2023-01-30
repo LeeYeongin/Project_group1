@@ -9,6 +9,16 @@ export default function Cart() {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [telNum, setTelNum] = useState<string>('')
+  const [checkValue, setCheckValue] = useState<number[]>([]);
+
+  const cartCheckHandler = (cartId: any) => {
+    let tmp = checkValue;
+    if (tmp.includes(cartId))
+      tmp = checkValue.filter((item) => item !== cartId);
+    else 
+      tmp.push(cartId);
+    setCheckValue(tmp);
+  }
 
   const cartHandler = () => {
     const getdata = {
@@ -37,6 +47,7 @@ export default function Cart() {
       // console.log(Response.data.data.className);
       // console.log(Response.data.data.price);
       // console.log(Response.data.data.instructor);
+
       for (let i = 0; i < Response.data.data.length; i++) {
         tmp.push({
           img: Response.data.data[i].img,
@@ -71,7 +82,7 @@ export default function Cart() {
               {itemList.map((item) => (
                 <>
                   <div className="cart-list2">
-                    <input type="checkbox" className="course-select2" />
+                    <input type="checkbox" value={item.idCart} onChange={(e) => cartCheckHandler(e.currentTarget.value)} className="course-select2" />
                     <div className="cart-course-img2">
                       <img src={item.img} alt="course-img" />
                     </div>
