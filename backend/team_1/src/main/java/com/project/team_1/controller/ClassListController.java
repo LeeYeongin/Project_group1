@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.team_1.dto.Class.GetCategoryClassListDto;
 import com.project.team_1.dto.Class.GetCateoryClassListResponseDto;
 import com.project.team_1.dto.Class.GetSearchClassResponseDto;
 import com.project.team_1.dto.cart.GetCartClassListDto;
@@ -30,7 +31,7 @@ public class ClassListController {
 	}
 	
 	@PostMapping("")
-	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(@RequestBody GetCartClassListDto requestBody){
-		return classService
+	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(@RequestBody GetCategoryClassListDto requestBody){
+		return classService.getCategoryClassList(requestBody);
 	}
 }
