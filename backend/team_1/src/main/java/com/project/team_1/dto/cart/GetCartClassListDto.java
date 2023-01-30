@@ -12,17 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetCartClassListDto {
-	private String img;
-	private String className;
-	private int price;
-	private String instructor;
+	private int idCart;
+	GetCartClassInfoDto classInfo;
 	
-	public GetCartClassListDto(ClassEntity classEntity) {
-		this.img = classEntity.getImg();
-		this.className = classEntity.getClassName();
-		this.price = classEntity.getPrice();
-		this.instructor = classEntity.getInstructor();
-	}
+	
+//	public GetCartClassListDto(int idCart, GetCartClassInfoDto classInfo) {
+//		this.idCart = idCart;
+//		this.classInfo = classInfo;
+//	}
 	
 	
 }

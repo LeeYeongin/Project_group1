@@ -63,10 +63,10 @@ public class CartService {
 //		         dataClass.add(new GetCartClassListDto(classEntity));
 //		     }
 			
-//			List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
-//			for(CartEntity cart: CartList) {
-//				dataClass.add(new GetCartClassListDto(cart.getIdClass(), new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
-//			}
+			List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
+			for(CartEntity cart: CartList) {
+				dataClass.add(new GetCartClassListDto(cart.getIdCart(), new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
+			}
 			
 			return ResponseDto.setSuccess("Get Cart List Success", dataClass);
 		}
