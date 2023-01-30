@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
 import com.project.team_1.dto.Class.GetCateoryClassListResponseDto;
+import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListResponseDto;
 import com.project.team_1.dto.Class.GetSearchClassResponseDto;
@@ -17,25 +18,39 @@ import com.project.team_1.dto.Class.GetShowFrontListResponseDto;
 import com.project.team_1.dto.Class.GetShowFullStackListResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
+import com.project.team_1.entity.ReviewEntity;
 import com.project.team_1.repository.ClassRepository;
+import com.project.team_1.repository.ReviewRepository;
 
 @Service
 public class ClassService {
 
 	@Autowired
 	ClassRepository classRepository;
+	@Autowired
+	ReviewRepository reviewRepository;
+
 
 	// FrontEnd List
-	public ResponseDto<List<GetShowFrontListResponseDto>> showFrontList() {
-		String category = "front";
-		List<ClassEntity> showFrontList = classRepository.findFirst5ByCategory(category);
-		List<GetShowFrontListResponseDto> data = new ArrayList<GetShowFrontListResponseDto>();
-		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFrontList) {
-			data.add(new GetShowFrontListResponseDto(classEntity));
-		}
-		return ResponseDto.setSuccess("getFrontCarousel", data);	
-	}
+		public ResponseDto<List<GetClassInfoDto>> showFrontList() {
+			String category = "front";
+			
+			List<ClassEntity> showFrontList = classRepository.findFirst5ByCategory(category);
+			List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 
+			for (ClassEntity classEntity: showFrontList) {
+				List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+				int avg = 0;
+				reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+				for (ReviewEntity review: reviewList) {
+					avg += review.getGrade();
+				}
+				avg = avg/reviewList.size();
+				data.add(new GetClassInfoDto(classEntity, avg));	
+			}	
+			
+			return ResponseDto.setSuccess("getFrontCarousel", data);
+		}
 	// BackEnd List
 	public ResponseDto<List<GetShowBackListResponseDto>> showBackList() {
 		String category = "back";

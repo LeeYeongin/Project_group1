@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetShowFrontListResponseDto;
 
 import com.project.team_1.dto.response.ResponseDto;
@@ -19,9 +20,11 @@ public class FrontCarouselController {
 	@Autowired ClassService classService;
 	
 	@GetMapping("front")
-	public ResponseDto<List<GetShowFrontListResponseDto>>getShowFrontList(){
+	public ResponseDto<List<GetClassInfoDto>>getShowFrontList(){
 		return classService.showFrontList();
 	}
+
+
 	
 
 }
