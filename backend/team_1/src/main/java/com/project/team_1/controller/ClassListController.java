@@ -25,6 +25,7 @@ public class ClassListController {
 
 	@Autowired ClassService classService;
 	
+
 	@GetMapping("{search}")
 	public ResponseDto<List<GetSearchClassResponseDto>> getSearchClass (@PathVariable("search") String search) {
 		return  classService.SearchClassList(search);
@@ -34,4 +35,6 @@ public class ClassListController {
 	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(@RequestBody GetCategoryClassListDto requestBody){
 		return classService.getCategoryClassList(requestBody);
 	}
+
+
 }

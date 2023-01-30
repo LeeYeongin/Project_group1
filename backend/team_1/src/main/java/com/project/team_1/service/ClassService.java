@@ -69,22 +69,23 @@ public class ClassService {
 	
 	
 	// searchClass List
-	public ResponseDto<List<GetSearchClassResponseDto>> SearchClassList(String search) {
-		List<ClassEntity> searchClassList = classRepository.searchClassList(search);
-		List<GetSearchClassResponseDto> data = new ArrayList<GetSearchClassResponseDto>();
-		for(ClassEntity classEntity: searchClassList) {
-			data.add(new GetSearchClassResponseDto(classEntity));
+		public ResponseDto<List<GetSearchClassResponseDto>> SearchClassList(String search) {
+			List<ClassEntity> searchClassList = classRepository.findByClassNameContaining(search);
+			List<GetSearchClassResponseDto> data = new ArrayList<GetSearchClassResponseDto>();
+			for(ClassEntity classEntity: searchClassList) {
+				data.add(new GetSearchClassResponseDto(classEntity));
+			}
+			return ResponseDto.setSuccess("success", data);
 		}
-		return ResponseDto.setSuccess("success", data);
-	}
-	
-	// categoryClass List
-	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(GetCategoryClassListDto dto){
-		List<ClassEntity> getCategoryClassList = classRepository.categoryClassList(dto.getCategory());
-		List<GetCateoryClassListResponseDto> data = new ArrayList<GetCateoryClassListResponseDto>();
-		for(ClassEntity classEntity: getCategoryClassList) {
-			data.add(new GetCateoryClassListResponseDto(classEntity));
+		
+		// categoryClass List
+		public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(GetCategoryClassListDto dto){
+			List<ClassEntity> getCategoryClassList = classRepository.findByCategory(dto.getCategory());
+			List<GetCateoryClassListResponseDto> data = new ArrayList<GetCateoryClassListResponseDto>();
+			for(ClassEntity classEntity: getCategoryClassList) {
+				data.add(new GetCateoryClassListResponseDto(classEntity));
+			}
+			return ResponseDto.setSuccess("success", data);
 		}
-		return ResponseDto.setSuccess("success", data);
-	}
+
 }
