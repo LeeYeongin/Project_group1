@@ -25,17 +25,19 @@ public class ClassService {
 
 	// FrontEnd List
 	public ResponseDto<List<GetShowFrontListResponseDto>> showFrontList() {
-		List<ClassEntity> showFrontList = classRepository.showFrontList();
+		String category = "front";
+		List<ClassEntity> showFrontList = classRepository.findFirst5ByCategory(category);
 		List<GetShowFrontListResponseDto> data = new ArrayList<GetShowFrontListResponseDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFrontList) {
 			data.add(new GetShowFrontListResponseDto(classEntity));
 		}
-		return ResponseDto.setSuccess("getFrontCarousel", data);
+		return ResponseDto.setSuccess("getFrontCarousel", data);	
 	}
 
 	// BackEnd List
 	public ResponseDto<List<GetShowBackListResponseDto>> showBackList() {
-		List<ClassEntity> showBackList = classRepository.showBackList();
+		String category = "back";
+		List<ClassEntity> showBackList = classRepository.findFirst5ByCategory(category);
 		List<GetShowBackListResponseDto> data = new ArrayList<GetShowBackListResponseDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showBackList) {
 			data.add(new GetShowBackListResponseDto(classEntity));
@@ -45,7 +47,8 @@ public class ClassService {
 
 	// Database List
 	public ResponseDto<List<GetShowDatabaseListResponseDto>> showDatabaseList() {
-		List<ClassEntity> showDatabaseList = classRepository.showDatabaseList();
+		String category = "database";
+		List<ClassEntity> showDatabaseList = classRepository.findFirst5ByCategory(category);
 		List<GetShowDatabaseListResponseDto> data = new ArrayList<GetShowDatabaseListResponseDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showDatabaseList) {
 			data.add(new GetShowDatabaseListResponseDto(classEntity));
@@ -55,7 +58,8 @@ public class ClassService {
 
 	// FullStack List
 	public ResponseDto<List<GetShowFullStackListResponseDto>> showFullStackList() {
-		List<ClassEntity> showFullStackList = classRepository.showFullStackList();
+		String category = "fullstack";
+		List<ClassEntity> showFullStackList = classRepository.findFirst5ByCategory(category);
 		List<GetShowFullStackListResponseDto> data = new ArrayList<GetShowFullStackListResponseDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFullStackList) {
 			data.add(new GetShowFullStackListResponseDto(classEntity));

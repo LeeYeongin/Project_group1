@@ -11,17 +11,9 @@ import com.project.team_1.entity.ClassEntity;
 @Repository
 public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	
-	@Query("select c from CLASS c LIMIT 5 where c.category = front")
-	List<ClassEntity> showFrontList();
-	
-	@Query("select c from CLASS c LIMIT 5 where c.category = back")
-	List<ClassEntity> showBackList();
-	
-	@Query("select c from CLASS c LIMIT 5 where c.category = front")
-	List<ClassEntity> showDatabaseList();
-	
-	@Query("select c from CLASS c LIMIT 5 where c.category = front")
-	List<ClassEntity> showFullStackList();
+//	@Query("select c from CLASS c where c.category = front")
+//	List<ClassEntity> showFrontList();
+	List<ClassEntity> findFirst5ByCategory(String category);
 	
 	@Query("select c from CLASS c like *?1*")
 	List<ClassEntity> searchClassList(String search);
