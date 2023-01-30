@@ -7,33 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.team_1.dto.Class.GetShowBackListResponseDto;
-import com.project.team_1.dto.Class.GetShowDatabaseListResponseDto;
-import com.project.team_1.dto.Class.GetShowFrontListResponseDto;
 import com.project.team_1.dto.Class.GetShowFullStackListResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.ClassService;
 
 @RestController
 @RequestMapping("main/")
-public class ClassController {
+public class FullStackCarouselController {
 	
 	@Autowired ClassService classService;
 	
-	@GetMapping("")
-	public ResponseDto<List<GetShowFrontListResponseDto>>getShowFrontList(){
-		return classService.showFrontList();
-	}
-	
-	@GetMapping("")
-	public ResponseDto<List<GetShowBackListResponseDto>>getShowBackList(){
-		return classService.showBackList();
-	}
-	@GetMapping("")
-	public ResponseDto<List<GetShowDatabaseListResponseDto>>getShowDatabaseList(){
-		return classService.showDatabaseList();
-	}
-	@GetMapping("")
+	@GetMapping("full")
 	public ResponseDto<List<GetShowFullStackListResponseDto>>getShowFullStackList(){
 		return classService.showFullStackList();
 	}
