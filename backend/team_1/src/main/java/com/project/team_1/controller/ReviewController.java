@@ -19,27 +19,25 @@ import com.project.team_1.dto.review.ReviewDTO;
 import com.project.team_1.service.ReviewService;
 
 @RestController
-@RequestMapping("main5/") // 여기에 강의 ID가 들어가야 한다
+@RequestMapping("review/") // 여기에 강의 ID가 들어가야 한다
 public class ReviewController {
-	
-	static final String REVIEW = "review/";
 	
 	@Autowired ReviewService reviewService;
 	
 	// 리뷰 작성
-	@PostMapping(REVIEW + "write")
+	@PostMapping("write")
 	public ResponseDto<ResultResponseDTO> writeReview(@RequestBody ReviewDTO reviewDto) {
 		return reviewService.ReviewWrite(reviewDto);
 	}
 	
 	// 리뷰 불러오기(강의ID에 따른 내용가져오기)
-	@GetMapping(REVIEW + "{idClass}")
+	@GetMapping("/re/"+"{idClass}")
 	public ResponseDto<List<GetReviewResponseDTO>> getReview(@PathVariable("idClass") int idClass){
 		return reviewService.getReview(idClass);
 	}
 	
 	// 리뷰 수정
-	@PatchMapping(REVIEW + "update")
+	@PatchMapping("update")
 	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto){
 		return reviewService.ReviewUpdate(patchDto);
 	}

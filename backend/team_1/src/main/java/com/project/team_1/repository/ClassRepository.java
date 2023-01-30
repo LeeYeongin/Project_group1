@@ -20,4 +20,7 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	List<ClassEntity> findByCategory(String category);
 	
 	List<ClassEntity> findByDifficulty(String difficulty);
+	
+	@Query("select c from CLASS c where c.idClass = ?1")
+	List<ClassEntity> findAllDetail(int idClass);
 }
