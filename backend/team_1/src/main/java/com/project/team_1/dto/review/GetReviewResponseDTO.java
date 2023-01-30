@@ -3,12 +3,14 @@ package com.project.team_1.dto.review;
 import com.project.team_1.entity.ReviewEntity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class GetReviewResponseDTO {
 	private int ReviewID;
 	private String UserID;

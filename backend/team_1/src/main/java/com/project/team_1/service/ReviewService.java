@@ -1,10 +1,14 @@
 package com.project.team_1.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
+import com.project.team_1.dto.review.GetReviewResponseDTO;
 import com.project.team_1.dto.review.PatchReviewDTO;
 import com.project.team_1.dto.review.ReviewDTO;
 import com.project.team_1.entity.ReviewEntity;
@@ -15,7 +19,22 @@ public class ReviewService {
 	
 	@Autowired
 	ReviewRepository reviewRepository;
+	
+	// 리뷰 읽기(상세에서 읽는용도)
+	public ResponseDto<List<GetReviewResponseDTO>> getReview(int idClass){
+		
+		List<ReviewEntity> reviewList = reviewRepository.findAllReview(idClass);
+		
+		List<GetReviewResponseDTO> data = new ArrayList<GetReviewResponseDTO>();
+		
+		for(ReviewEntity review : reviewList) {
+			data.add(new GetReviewResponseDTO(review));
+		}
+		
+		return ResponseDto.setSuccess("리뷰 불러오기 성공", data);
+	}
 
+	// 리뷰 작성
 	public ResponseDto<ResultResponseDTO> ReviewWrite(ReviewDTO dto) {
 		
 		ReviewEntity review = ReviewEntity.builder()
@@ -26,11 +45,10 @@ public class ReviewService {
 				.build();
 		reviewRepository.save(review);
 		
-		System.out.println(reviewRepository);
-		
 		return ResponseDto.setSuccess("리뷰 작성 성공", new ResultResponseDTO(true));
 	}
 
+	// 리뷰 수정
 	public ResponseDto<ResultResponseDTO> ReviewUpdate(PatchReviewDTO dto) {
 		
 		int reviewId = dto.getReviewId();
@@ -49,5 +67,4 @@ public class ReviewService {
 
 		return ResponseDto.setSuccess("수정 성공", new ResultResponseDTO(true));
 	}
-
 }

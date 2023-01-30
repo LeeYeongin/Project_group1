@@ -11,6 +11,6 @@ import com.project.team_1.entity.ReviewEntity;
 @Repository
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer>{
 	
-	@Query("select r from review r where r.idReview = ?1")
-	List<String> findAllReview(int idClass);
+	@Query("select r from review r where r.idClass = ?1")
+	List<ReviewEntity> findAllReview(int idClass);
 }
