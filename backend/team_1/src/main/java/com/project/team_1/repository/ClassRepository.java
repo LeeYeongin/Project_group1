@@ -18,4 +18,6 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	List<ClassEntity> findByClassNameContaining(String search);
 	
 	List<ClassEntity> findByCategory(String category);
+	
+	List<ClassEntity> findByDifficulty(String difficulty);
 }
