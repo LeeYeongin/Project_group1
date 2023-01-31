@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { error } from 'console';
 import React, { useState } from 'react'
 import Totoro from '../../asset/img/totoro.png';
 import './style.css';
@@ -23,7 +24,13 @@ export default function Cart() {
   }
 
   const deleteHandler = () => {
-    console.log(checkValue);
+    axios.post("http://localhost:4040/cart/delete", checkValue)
+    .then((Response) => {
+      setRequestResult('Success!!');
+    })
+    .catch((error) => {
+      setRequestResult('Failed!!');
+    })
   }
 
   const cartHandler = () => {
@@ -91,32 +98,32 @@ export default function Cart() {
                 </div>
                 <button className="cancel-control2" onClick={() => deleteHandler()}>선택삭제 X</button>
               </div>
-
               {itemList.map((item) => (
                 <>
-                  <div className="cart-list2">
-                    <input type="checkbox" value={item.idCart} onChange={(e) => cartCheckHandler(e.currentTarget.value)} className="course-select2" />
-                    <div className="cart-course-img2">
-                      <img src={item.img} alt="course-img" />
-                    </div>
-                    <div className="cart-course-info2">
-                      <h3 className="course-title2">
-                        <a href="#">{item.className}</a>
-                      </h3>
-                      <div>
-                        <span>{item.instructor}</span>
-                      </div>
-                    </div>
-                    <div className="close2">
-                      <button className="close-btn2">
-                        <i className="fa-solid2 fa-xmark2"></i>
-                      </button>
-                    </div>
-                    <div className="payment2">
-                      {item.price}
+                
+                <div className="cart-list2">
+                  <input type="checkbox" value={item.idCart} onChange={(e) => cartCheckHandler(e.currentTarget.value)} className="course-select2" />
+                  <div className="cart-course-img2">
+                    <img src={item.img} alt="course-img" />
+                  </div>
+                  <div className="cart-course-info2">
+                    <h3 className="course-title2">
+                      <a href="#">{item.className}</a>
+                    </h3>
+                    <div>
+                      <span>{item.instructor}</span>
                     </div>
                   </div>
-                </>
+                  <div className="close2">
+                    <button className="close-btn2">
+                      <i className="fa-solid2 fa-xmark2"></i>
+                    </button>
+                  </div>
+                  <div className="payment2">
+                    {item.price}
+                  </div>
+                </div>
+              </>
               ))}
             </div>
           </div>
