@@ -45,8 +45,11 @@ public class ClassDetailService {
 				.img(classEntity.getImg())
 				.className(classEntity.getClassName())
 				.instructor(classEntity.getInstructor())
+				.classInfoSimple(classEntity.getClassInfoSimple())
 				.price(classEntity.getPrice())
+				.classInfoDtl(classEntity.getClassInfoDtl())
 				.category(classEntity.getCategory())
+				.difficulty(classEntity.getDifficulty())
 				.curriculumList(curriculumList)
 				.reviewList(reviewList)
 				.build();

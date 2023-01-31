@@ -21,8 +21,11 @@ public class GetClassDetailResponseDto {
 	private String img;
 	private String className;
 	private String instructor;
+	private String classInfoSimple;
+	private String classInfoDtl;
 	private int price;
 	private String category;
+	private String difficulty;
 	private List<CurriculumEntity> curriculumList;
 	private List<ReviewEntity> reviewList;
 	
@@ -31,8 +34,11 @@ public class GetClassDetailResponseDto {
 		this.img = classEntity.getImg();
 		this.className = classEntity.getClassName();
 		this.instructor = classEntity.getInstructor();
+		this.classInfoSimple = classEntity.getClassInfoSimple();
 		this.price = classEntity.getPrice();
+		this.classInfoDtl = classEntity.getClassInfoDtl();
 		this.category = classEntity.getCategory();
+		this.difficulty = classEntity.getDifficulty();
 		this.curriculumList = curriculumList;
 		this.reviewList	= reviewList;
 	}

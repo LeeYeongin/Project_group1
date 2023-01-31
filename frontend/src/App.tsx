@@ -33,7 +33,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path="cart" element={<Cart />} />
           <Route path="list" element={<List />} />
-          <Route path="main5" element={<Main5 />} />
+          <Route path="main5/:idClass" element={<Main5 />} />
           <Route path="findID" element={<FindId />} />
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
