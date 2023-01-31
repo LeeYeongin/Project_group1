@@ -31,7 +31,7 @@ export default function Login({open, setOpen}: props) {
               <i className="fa-solid fa-xmark"></i>
             </div>
           </div>
-
+          {/* <hr className="social-sign-in__line" /> */}
           <div className="header--logo">
             <img className="icon-brand-logo" src={mainIcon} alt="메인아이콘" />
           </div>
@@ -47,7 +47,7 @@ export default function Login({open, setOpen}: props) {
               <div className="form__input form__input--password">
                 <input
                   className="e-sign-in-input"
-                  value="password"
+                  // value="password"
                   type={passwordView}
                   spellCheck="false"
                   placeholder="비밀번호"
@@ -67,6 +67,7 @@ export default function Login({open, setOpen}: props) {
               </div>
             </div>
             <button className="login-button">로그인</button>
+            <hr className="social-sign-in__line" />
           </form>
           <p className="sign-in-modal__more-action">
             <a href="/findID" className="more-action__text">
@@ -82,8 +83,7 @@ export default function Login({open, setOpen}: props) {
             </a>
           </p>
           <div className="sign-in-modal__social-sign-in">
-            <hr className="social-sign-in__line" />
-            <span className="social-sign-in__title">간편 로그인</span>
+            {/* <span className="social-sign-in__title">간편 로그인</span>
             <div className="social__sign-in-buttons">
               <button className="kakao">
                 <img
@@ -105,8 +105,8 @@ export default function Login({open, setOpen}: props) {
                   src={naver}
                   alt="네이버 간편 로그인"
                 />
-              </button>
-            </div>
+              </button> 
+            </div>*/}
           </div>
         </div>
       </div>

@@ -67,7 +67,7 @@
 
 .icon-brand-logo {
 
-    margin: 0px 2px;
+    margin: 0px 2px  10px;
 
     width: 188px;
     height: 98px;
@@ -99,18 +99,21 @@
 
 
 .form__input--email {
-    width: 98.5%;
+    width: 95%;
     height: 48px;
     margin-bottom: 12px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid rgb(194, 190, 190);
-    border-radius: 8px;
+    border: 0px;
+    border-bottom: 1px solid #2779cc;
+    outline: none;
 
     padding-left: 15px;
     font-size: 14px;
+
+ 
 }
 
 .form__input--password {
@@ -121,14 +124,13 @@
     
     align-items: center;
 
-    width: 100%;
+    width: 95%;
     height: 48px;
     padding-left: 15px;
-    
-    
-    border: 1px solid rgb(194, 190, 190);
-    border-radius: 8px;
 
+    border: 0px;
+    border-bottom: 1px solid #2779cc;
+    
 }
 
 .e-sign-in-input{
@@ -140,17 +142,19 @@
     height: 48px;
 
     font-size: 14px;
+    outline: none;
 }
 
 .login-button {
 
-    margin-top: 15px;
+    margin-top: 30px;
+    margin-bottom: 5px;
     
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    width: 312px;
+    width: 95%;
     height: 48px;
 
     color: #fff;
@@ -168,6 +172,8 @@
 
 .toggle-password {
     margin-right: 15px;
+    margin-bottom: 10px;
+
 }
 
 .sign-in-modal .sign-in-modal__social-sign-in {
@@ -177,17 +183,19 @@
 }
 
 .sign-in-modal .social-sign-in__line {
+
     position: relative;
     bottom: -8px;
     display: block;
-    margin: 0;
-    width: 100%;
+    margin-top: 15px;
+    width: 95%;
     height: 1px;
     background-color: #2779cc;
     border: none;
 }
 
 .sign-in-modal .sign-in-modal__more-action {
+    
     display: flex;
     justify-content: center;
     align-items: center;

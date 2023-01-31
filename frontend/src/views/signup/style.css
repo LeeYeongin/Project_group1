@@ -1,45 +1,167 @@
 * {
-    box-sizing: inherit;
+   box-sizing: inherit;
+}
+#main {
+   min-height: 800px;
+}
+main {
+   display: block;
+}
+.signup {
+   margin: 80px auto auto;
+   width: 320px;
+   height: 676px;
+}
+section {
+   display: block;
 }
 
-.signup__title {
-    text-align: center;
-    font-weight: 500;
-    font-size: 26px;
+.brand-logo{
+   display: block;
+   margin: 0 auto;
+   width: 188px;
+   height: 98px;
+   color: transparent;
+   font-size: 0;
+
 }
 
-.signup__message {
-    flex-shrink: 0;
-    min-width: 100%;
-    max-width: 100%;
+.signup--title{
+   margin-bottom: 50px;
+   text-align: center;
+   font-weight: 500;
+   font-size: 26px;
 }
 
-p {
-    font-size: 16px;
-    margin: 0;
-    line-height: 1.6;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+.h2 {
+   display: block;
+   margin-block-start: 0.83em;
+   margin-block-end: 0.83em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
 }
 
-label {
-    cursor: default;
+.form--label {
+   line-height: 1.43;
+   letter-spacing: -.3px;
+   font-size: 14px;
+   font-weight: 400;
+   color: #3e4042;
+
+   appearance: none;
+   margin-top: 4px;
+   width: 320px;
 }
 
-.form__label {
-    line-height: 1.43;
-    letter-spacing: -.3px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #3e4042;
+/* .form--input {
+   appearance: none;
+   margin-top: 4px;
+   width: 320px;
+} */
+
+.form--input-block {
+   width: 320px;
+   height: 76px;
+   margin-bottom: 16px;
 }
 
-.signup__form {
-    display: flex;
-    flex-direction: column;
+.label {
+   cursor: default;
+   
 }
 
+.e-sign-up-input--e-email {
+   /* padding: 13px 12px 13px 12px; */
+   /* width: 240px; */
+   width: 315px;
+   height: 48px;
+   line-height: 1.47;
+
+   font-size: 12px;
+   /* border: 1px solid #dee2e6; */
+   /* letter-spacing: -.3px; */
+   outline: none;
+   display: flex;
+   justify-content: space-between;
+   border: 0px;
+   border-bottom: 1px solid #2779cc;
+}
+
+.e-password {
+   /* width: 265px; */
+   width: 320px;
+   height: 48px;
+   display: flex;
+   font-size: 12px;
+   justify-content: space-between;
+   border-bottom: 1px solid #2779cc;
+}
+.e-sign-up-input--password {
+   border: 0px;
+   color: #a5a6a8;
+   outline: none;
+
+}
+
+.e-password-confirm {
+   /* width: 265px; */
+   width: 320px;
+   height: 48px;
+   display: flex;
+   font-size: 12px;
+   justify-content: space-between;
+   border-bottom: 1px solid #2779cc;
+   
+}
+.e-sign-up-input--e-password-confirm {
+   border: 0px;
+   color: #a5a6a8;
+   outline: none;
+}
+
+.name1 {
+   width: 315px;
+   height: 48px;
+   display: flex;
+   justify-content: space-between;
+   border: 0px;
+   border-bottom: 1px solid #2779cc;
+   outline: none;
+}
+.phone1 {
+   width: 315px;
+   height: 48px;
+   display: flex;
+   justify-content: space-between;
+   border: 0px;
+   border-bottom: 1px solid #2779cc;
+   outline: none;
+
+}
+
+.toggle-password {
+   color: #7dbbfa;
+   margin-top: 10px;
+   margin-right: 10px;
+
+}
+
+.e-signup-button {
+   width: 315px;
+   height: 48px;
+
+   
+   /* margin-bottom: 12px; */
+   font-weight: 700;
+   font-size: large;
+   background-color: #2779cc;
+   color: rgba(256,256,256,0.7);
+   border:0;
+   border-radius: 10px;
+   display: block;
+   margin: 40px auto; 
+   
+   font-size: 16px;
+   font-weight: bold;
+}
 
