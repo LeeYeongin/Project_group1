@@ -15,6 +15,7 @@ import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.cart.GetCartUserInfoDto;
 import com.project.team_1.dto.cart.PostCartDto;
+import com.project.team_1.dto.cart.PostCartId;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.service.CartService;
@@ -36,7 +37,7 @@ public class CartController {
 	}
 	
 	@PostMapping("delete")
-	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<PostCartDto> requestBody){
+	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<PostCartId> requestBody){
 		return cartService.deleteCartList(requestBody);
 	}
 

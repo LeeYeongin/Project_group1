@@ -13,6 +13,7 @@ import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.cart.GetCartUserInfoDto;
 import com.project.team_1.dto.cart.PostCartDto;
+import com.project.team_1.dto.cart.PostCartId;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.entity.CartEntity;
@@ -86,10 +87,14 @@ public class CartService {
 	}
 	
 	// 선택한 강의정보 삭제
-	public ResponseDto<ResultResponseDTO> deleteCartList(List<PostCartDto> requestBody) {
+	public ResponseDto<ResultResponseDTO> deleteCartList(List<PostCartId> requestBody) {
 		List<Integer> idCart = new ArrayList<Integer>();
-		for(PostCartDto cartdto: requestBody) {
+		for(PostCartId cartdto: requestBody) {
 			idCart.add(cartdto.getIdCart());
+//			System.out.println(cartdto.getIdCart());
+		}
+		for(Integer id: idCart) {
+			System.out.println(id);
 		}
 		cartRepository.deleteAllById(idCart);
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
