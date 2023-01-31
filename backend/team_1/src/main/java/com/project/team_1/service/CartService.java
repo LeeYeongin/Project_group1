@@ -36,13 +36,13 @@ public class CartService {
 		public ResponseDto<List<GetCartClassListDto>> getCartList(GetCartListDto dto){
 			
 			List<CartEntity> CartList = null;
-			List<ClassEntity> ClassList = new ArrayList<ClassEntity>();
+//			List<ClassEntity> ClassList = new ArrayList<ClassEntity>();
 			
 			try {
 				CartList = cartRepository.findByIdUser(dto.getIdUser());
-				
-				if(CartList.isEmpty())
-					return ResponseDto.setFailed("Not Exist");
+//				
+//				if(CartList.isEmpty())
+//					return ResponseDto.setFailed("Not Exist");
 			}
 			catch (Exception e) {
 				return ResponseDto.setFailed("error");
@@ -87,16 +87,31 @@ public class CartService {
 	}
 	
 	// 선택한 강의정보 삭제
-	public ResponseDto<ResultResponseDTO> deleteCartList(List<PostCartId> requestBody) {
-		List<Integer> idCart = new ArrayList<Integer>();
-		for(PostCartId cartdto: requestBody) {
-			idCart.add(cartdto.getIdCart());
-//			System.out.println(cartdto.getIdCart());
-		}
-		for(Integer id: idCart) {
-			System.out.println(id);
-		}
-		cartRepository.deleteAllById(idCart);
+//	public ResponseDto<ResultResponseDTO> deleteCartList(List<PostCartId> requestBody) {
+//		List<Integer> idCart = new ArrayList<Integer>();
+//		for(PostCartId cartdto: requestBody) {
+//			idCart.add(cartdto.getIdCart());
+////			System.out.println(cartdto.getIdCart());
+//		}
+//		for(Integer id: idCart) {
+//			System.out.println(id);
+//		}
+//		cartRepository.deleteAllById(idCart);
+//		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
+//	}
+//	
+	
+	public ResponseDto<ResultResponseDTO> deleteCartList(List<Integer> requestBody) {
+//		List<Integer> idCart = new ArrayList<Integer>();
+//		for(PostCartId cartdto: requestBody) {
+//			idCart.add(cartdto.getIdCart());
+////			System.out.println(cartdto.getIdCart());
+//		}
+//		for(Integer id: idCart) {
+//			System.out.println(id);
+//		}
+		System.out.println(requestBody.toString());
+		cartRepository.deleteAllById(requestBody);
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 	

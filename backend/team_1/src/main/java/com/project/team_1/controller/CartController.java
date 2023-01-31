@@ -36,8 +36,13 @@ public class CartController {
 		return cartService.getCartUserInfo(requestBody);
 	}
 	
+//	@PostMapping("delete")
+//	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<PostCartId> requestBody){
+//		return cartService.deleteCartList(requestBody);
+//	}
+	
 	@PostMapping("delete")
-	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<PostCartId> requestBody){
+	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<Integer> requestBody){
 		return cartService.deleteCartList(requestBody);
 	}
 
