@@ -18,6 +18,11 @@ export default function Cart() {
     else 
       tmp.push(cartId);
     setCheckValue(tmp);
+
+  }
+
+  const deleteHandler = () => {
+    console.log(checkValue);
   }
 
   const cartHandler = () => {
@@ -43,17 +48,18 @@ export default function Cart() {
       })
 
       // console.log(Response.data.data.length);
-      // console.log(Response.data.data[0].img);
-      // console.log(Response.data.data.className);
+      // console.log(Response.data.data[0].idCart);
+      // console.log( Response.data.data[0].classInfo.img);
       // console.log(Response.data.data.price);
       // console.log(Response.data.data.instructor);
 
       for (let i = 0; i < Response.data.data.length; i++) {
         tmp.push({
-          img: Response.data.data[i].img,
-          className: Response.data.data[i].className,
-          price: Response.data.data[i].price + "원",
-          instructor: Response.data.data[i].instructor
+          idCart: Response.data.data[i].idCart,
+          img: Response.data.data[i].classInfo.img,
+          className: Response.data.data[i].classInfo.className,
+          price: Response.data.data[i].classInfo.price + "원",
+          instructor: Response.data.data[i].classInfo.instructor
         })
       }
 
@@ -76,7 +82,7 @@ export default function Cart() {
                   <input type="checkbox" />
                   <span>전체선택</span>
                 </div>
-                <button className="cancel-control2">선택삭제 X</button>
+                <button className="cancel-control2" onClick={() => deleteHandler()}>선택삭제 X</button>
               </div>
 
               {itemList.map((item) => (
