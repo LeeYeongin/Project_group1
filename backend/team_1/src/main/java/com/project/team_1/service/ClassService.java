@@ -12,10 +12,6 @@ import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListResponseDto;
 import com.project.team_1.dto.Class.GetSearchClassResponseDto;
-import com.project.team_1.dto.Class.GetShowBackListResponseDto;
-import com.project.team_1.dto.Class.GetShowDatabaseListResponseDto;
-import com.project.team_1.dto.Class.GetShowFrontListResponseDto;
-import com.project.team_1.dto.Class.GetShowFullStackListResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
 import com.project.team_1.entity.ReviewEntity;
@@ -52,34 +48,58 @@ public class ClassService {
 			return ResponseDto.setSuccess("getFrontCarousel", data);
 		}
 	// BackEnd List
-	public ResponseDto<List<GetShowBackListResponseDto>> showBackList() {
+	public ResponseDto<List<GetClassInfoDto>> showBackList() {
 		String category = "back";
+		
 		List<ClassEntity> showBackList = classRepository.findFirst5ByCategory(category);
-		List<GetShowBackListResponseDto> data = new ArrayList<GetShowBackListResponseDto>();
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showBackList) {
-			data.add(new GetShowBackListResponseDto(classEntity));
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			avg = avg/reviewList.size();
+			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getBackCarousel", data);
 	}
 
 	// Database List
-	public ResponseDto<List<GetShowDatabaseListResponseDto>> showDatabaseList() {
+	public ResponseDto<List<GetClassInfoDto>> showDatabaseList() {
 		String category = "database";
+		
 		List<ClassEntity> showDatabaseList = classRepository.findFirst5ByCategory(category);
-		List<GetShowDatabaseListResponseDto> data = new ArrayList<GetShowDatabaseListResponseDto>();
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showDatabaseList) {
-			data.add(new GetShowDatabaseListResponseDto(classEntity));
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			avg = avg/reviewList.size();
+			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getDatabaseCarousel", data);
 	}
 
 	// FullStack List
-	public ResponseDto<List<GetShowFullStackListResponseDto>> showFullStackList() {
+	public ResponseDto<List<GetClassInfoDto>> showFullStackList() {
 		String category = "fullstack";
 		List<ClassEntity> showFullStackList = classRepository.findFirst5ByCategory(category);
-		List<GetShowFullStackListResponseDto> data = new ArrayList<GetShowFullStackListResponseDto>();
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFullStackList) {
-			data.add(new GetShowFullStackListResponseDto(classEntity));
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			avg = avg/reviewList.size();
+			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getFullStackCarousel", data);
 	}
