@@ -36,7 +36,7 @@ public class ClassDetailService {
 		// 커리큘럼 가져오기
 		List<CurriculumEntity> curriculumList = curriRepo.findAllCurriculum(idClass);
 		// 리뷰 가져오기
-		List<ReviewEntity> reviewList = reviewRepo.findAllReview(idClass);
+		List<ReviewEntity> reviewList = reviewRepo.findByIdClass(idClass);
 		
 		GetClassDetailResponseDto responseData =
 				GetClassDetailResponseDto

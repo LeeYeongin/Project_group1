@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
 import com.project.team_1.dto.Class.GetCateoryClassListResponseDto;
+import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListResponseDto;
 import com.project.team_1.dto.Class.GetSearchClassResponseDto;
@@ -29,17 +30,17 @@ public class ClassListController {
 	
 
 	@GetMapping("{search}")
-	public ResponseDto<List<GetSearchClassResponseDto>> getSearchClass (@PathVariable("search") String search) {
+	public ResponseDto<List<GetClassInfoDto>> getSearchClass (@PathVariable("search") String search) {
 		return  classService.SearchClassList(search);
 	}
 	
 	@PostMapping("")
-	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(@RequestBody GetCategoryClassListDto requestBody){
+	public ResponseDto<List<GetClassInfoDto>> getCategoryClassList(@RequestBody GetCategoryClassListDto requestBody){
 		return classService.getCategoryClassList(requestBody);
 	}
 	
 	@PostMapping("difficulty/")
-	public ResponseDto<List<GetDifficultyClassListResponseDto>> getDifficultyClassList(@RequestBody GetDifficultyClassListDto requestBody){
+	public ResponseDto<List<GetClassInfoDto>> getDifficultyClassList(@RequestBody GetDifficultyClassListDto requestBody){
 		return classService.getDifficultyClassList(requestBody);
 	}
 }

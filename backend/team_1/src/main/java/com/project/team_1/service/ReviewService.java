@@ -23,7 +23,7 @@ public class ReviewService {
 	// 리뷰 읽기(상세에서 읽는용도)
 	public ResponseDto<List<GetReviewResponseDTO>> getReview(int idClass){
 		
-		List<ReviewEntity> reviewList = reviewRepository.findAllReview(idClass);
+		List<ReviewEntity> reviewList = reviewRepository.findByIdClass(idClass);
 		
 		List<GetReviewResponseDTO> data = new ArrayList<GetReviewResponseDTO>();
 		

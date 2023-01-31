@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
-import com.project.team_1.dto.Class.GetCateoryClassListResponseDto;
 import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
-import com.project.team_1.dto.Class.GetDifficultyClassListResponseDto;
 import com.project.team_1.dto.Class.GetSearchClassResponseDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
@@ -41,7 +39,11 @@ public class ClassService {
 				for (ReviewEntity review: reviewList) {
 					avg += review.getGrade();
 				}
-				avg = avg/reviewList.size();
+				
+				if(reviewList.size() != 0) {
+					avg = avg/reviewList.size();
+				}
+
 				data.add(new GetClassInfoDto(classEntity, avg));	
 			}	
 			
@@ -61,7 +63,9 @@ public class ClassService {
 			for (ReviewEntity review: reviewList) {
 				avg += review.getGrade();
 			}
-			avg = avg/reviewList.size();
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
 			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getBackCarousel", data);
@@ -80,7 +84,9 @@ public class ClassService {
 			for (ReviewEntity review: reviewList) {
 				avg += review.getGrade();
 			}
-			avg = avg/reviewList.size();
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			};
 			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getDatabaseCarousel", data);
@@ -98,7 +104,9 @@ public class ClassService {
 			for (ReviewEntity review: reviewList) {
 				avg += review.getGrade();
 			}
-			avg = avg/reviewList.size();
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
 			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("getFullStackCarousel", data);
@@ -106,34 +114,92 @@ public class ClassService {
 	
 	
 	// searchClass List
-	public ResponseDto<List<GetSearchClassResponseDto>> SearchClassList(String search) {
+	public ResponseDto<List<GetClassInfoDto>> SearchClassList(String search) {
 		List<ClassEntity> searchClassList = classRepository.findByClassNameContaining(search);
-		List<GetSearchClassResponseDto> data = new ArrayList<GetSearchClassResponseDto>();
-		for(ClassEntity classEntity: searchClassList) {
-			data.add(new GetSearchClassResponseDto(classEntity));
-		}
-		return ResponseDto.setSuccess("success", data);
-	}
-		
-	// categoryClass List
-	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(GetCategoryClassListDto dto){
-		List<ClassEntity> getCategoryClassList = classRepository.findByCategory(dto.getCategory());
-		List<GetCateoryClassListResponseDto> data = new ArrayList<GetCateoryClassListResponseDto>();
-		for(ClassEntity classEntity: getCategoryClassList) {
-			data.add(new GetCateoryClassListResponseDto(classEntity));
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : searchClassList) {
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
+			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("success", data);
 	}
 	
-	// difficultyClass list
-	public ResponseDto<List<GetDifficultyClassListResponseDto>> getDifficultyClassList(GetDifficultyClassListDto dto){
-		List<ClassEntity> getDifficultyClassList = classRepository.findByDifficulty(dto.getDifficulty());
-		List<GetDifficultyClassListResponseDto> data = new ArrayList<GetDifficultyClassListResponseDto>();
-		for(ClassEntity classEntity: getDifficultyClassList) {
-			data.add(new GetDifficultyClassListResponseDto(classEntity));
+	
+	
+//	public ResponseDto<List<GetSearchClassResponseDto>> SearchClassList(String search) {
+//		List<ClassEntity> searchClassList = classRepository.findByClassNameContaining(search);
+//		List<GetSearchClassResponseDto> data = new ArrayList<GetSearchClassResponseDto>();
+//		for(ClassEntity classEntity: searchClassList) {
+//			data.add(new GetSearchClassResponseDto(classEntity));
+//		}
+//		return ResponseDto.setSuccess("success", data);
+//	}
+		
+	// categoryClass List
+	
+	public ResponseDto<List<GetClassInfoDto>> getCategoryClassList(GetCategoryClassListDto dto) {
+		List<ClassEntity> getCategoryClassList = classRepository.findByCategory(dto.getCategory());
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : getCategoryClassList) {
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
+			data.add(new GetClassInfoDto(classEntity, avg));
 		}
 		return ResponseDto.setSuccess("success", data);
 	}
+	
+//	public ResponseDto<List<GetCateoryClassListResponseDto>> getCategoryClassList(GetCategoryClassListDto dto){
+//		List<ClassEntity> getCategoryClassList = classRepository.findByCategory(dto.getCategory());
+//		List<GetCateoryClassListResponseDto> data = new ArrayList<GetCateoryClassListResponseDto>();
+//		for(ClassEntity classEntity: getCategoryClassList) {
+//			data.add(new GetCateoryClassListResponseDto(classEntity));
+//		}
+//		return ResponseDto.setSuccess("success", data);
+//	}
+//	
+	// difficultyClass list
+	
+	public ResponseDto<List<GetClassInfoDto>> getDifficultyClassList(GetDifficultyClassListDto dto) {
+		List<ClassEntity> getDifficultyClassList = classRepository.findByDifficulty(dto.getDifficulty());
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : getDifficultyClassList) {
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
+			data.add(new GetClassInfoDto(classEntity, avg));
+		}
+		return ResponseDto.setSuccess("success", data);
+	}
+	
+//	public ResponseDto<List<GetDifficultyClassListResponseDto>> getDifficultyClassList(GetDifficultyClassListDto dto){
+//		List<ClassEntity> getDifficultyClassList = classRepository.findByDifficulty(dto.getDifficulty());
+//		List<GetDifficultyClassListResponseDto> data = new ArrayList<GetDifficultyClassListResponseDto>();
+//		for(ClassEntity classEntity: getDifficultyClassList) {
+//			data.add(new GetDifficultyClassListResponseDto(classEntity));
+//		}
+//		return ResponseDto.setSuccess("success", data);
+//	}
 	
 
 }
