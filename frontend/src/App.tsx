@@ -20,6 +20,7 @@ import UpdateReview from './views/detail/board/updateWrite';
 import Footer from './views/main/Footer';
 import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
+import Signup from './views/signup';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="writeReview" element={<WriteReview/>}/>
           <Route path="updateReview" element={<UpdateReview/>}/>
           <Route path="indexModal" element={<IndexModal />}/>
+          <Route path="signup" element={<Signup />}/>
         </Route>
       </Routes>
     </div>

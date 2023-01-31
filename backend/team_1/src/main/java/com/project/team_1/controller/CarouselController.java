@@ -38,6 +38,8 @@ public class CarouselController {
 	public ResponseDto<List<GetClassInfoDto>>getShowFullStackList(){
 		return classService.showFullStackList();
 	}
+	
+	
 
 	
 

@@ -33,7 +33,7 @@ function Header({setOpen}: props){
               <a onClick={() => setOpen(true)}>로그인</a>
             </div>
             <div className="sign_up4">
-              <a href="#">회원가입</a>
+              <a href="/signup">회원가입</a>
             </div>
           </div>
         </div>

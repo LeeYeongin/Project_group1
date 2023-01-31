@@ -21,6 +21,8 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	
 	List<ClassEntity> findByDifficulty(String difficulty);
 	
+	List<ClassEntity> findByDiscountRate(int discountRate);
+	
 	@Query("select c from CLASS c where c.idClass = ?1")
 	List<ClassEntity> findAllDetail(int idClass);
 }

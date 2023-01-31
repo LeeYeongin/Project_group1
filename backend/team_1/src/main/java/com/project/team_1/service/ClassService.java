@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
 import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
-import com.project.team_1.dto.Class.GetSearchClassResponseDto;
+import com.project.team_1.dto.Class.GetDiscountRateClassListDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
 import com.project.team_1.entity.ReviewEntity;
@@ -200,6 +200,26 @@ public class ClassService {
 //		}
 //		return ResponseDto.setSuccess("success", data);
 //	}
+	
+	// discountClass list
+	
+	public ResponseDto<List<GetClassInfoDto>> getDiscountClassList(GetDiscountRateClassListDto dto) {
+		List<ClassEntity> getDiscountRateClassList = classRepository.findByDiscountRate(dto.getDiscountRate());
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : getDiscountRateClassList) {
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
+			data.add(new GetClassInfoDto(classEntity, avg));
+		}
+		return ResponseDto.setSuccess("success", data);
+	}
 	
 
 }
