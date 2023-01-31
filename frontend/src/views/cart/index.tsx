@@ -10,6 +10,7 @@ export default function Cart() {
   const [email, setEmail] = useState<string>('')
   const [telNum, setTelNum] = useState<string>('')
   const [checkValue, setCheckValue] = useState<number[]>([]);
+  const [priceSum, setPriceSum] = useState<number>();
 
   const cartCheckHandler = (cartId: any) => {
     let tmp = checkValue;
@@ -35,6 +36,7 @@ export default function Cart() {
     axios.post("http://localhost:4040/cart/", getdata)
     .then((Response) => {
       const tmp = [];
+      const sum = 0;
       setRequestResult('Success!!');
 
       axios.post("http://localhost:4040/cart/user", getdata)
@@ -61,9 +63,14 @@ export default function Cart() {
           price: Response.data.data[i].classInfo.price + "원",
           instructor: Response.data.data[i].classInfo.instructor
         })
-      }
 
+        // setPriceSum(priceSum+parseInt(tmp[i].price));
+
+      // console.log(priceSum);
+      }
+      
       setItemList(tmp);
+      
     })
     .catch((error) => {
       setRequestResult('Failed!!');
