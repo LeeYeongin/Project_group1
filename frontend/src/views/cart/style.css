@@ -401,6 +401,20 @@ dd {
     cursor: pointer;
 }
 
-/* .container-wrapper2{
+.btn-container2{
+    width: 100%;
     display: flex;
-} */
+    justify-content: center;
+    align-items: center;
+}
+
+.show-more-class-btn {
+    margin-top: 150px;
+    padding: 1px 70px;
+    height: 38px;
+
+    background-color:  #2779cc;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}

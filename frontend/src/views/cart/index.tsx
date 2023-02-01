@@ -2,6 +2,8 @@ import axios from 'axios';
 import { error } from 'console';
 import React, { useState } from 'react'
 import Totoro from '../../asset/img/totoro.png';
+import CartList from './cartlist';
+import NoCartList from './nocartlist';
 import './style.css';
 
 export default function Cart() {
@@ -12,33 +14,26 @@ export default function Cart() {
   const [telNum, setTelNum] = useState<string>('')
   const [checkValue, setCheckValue] = useState<number[]>([]);
   const [priceSum, setPriceSum] = useState<number>();
-
-  const cartCheckHandler = (cartId: any) => {
-    let tmp = checkValue;
-    if (tmp.includes(cartId))
-      tmp = checkValue.filter((item) => item !== cartId);
-    else 
-      tmp.push(cartId);
-    setCheckValue(tmp);
-
-  }
+  const [showList, setShowList] = useState<boolean>(false);
 
   const deleteHandler = () => {
     axios.post("http://localhost:4040/cart/delete", checkValue)
     .then((Response) => {
       setRequestResult('Success!!');
+      setCheckValue([])
     })
     .catch((error) => {
       setRequestResult('Failed!!');
     })
+
+    cartHandler();
+    showListHandler();
   }
 
   const cartHandler = () => {
     const getdata = {
       idUser: "aaa"
     };
-
-    
     
     axios.post("http://localhost:4040/cart/", getdata)
     .then((Response) => {
@@ -55,33 +50,41 @@ export default function Cart() {
       .catch((error) => {
         setRequestResult('Failed!!');
       })
-
-      // console.log(Response.data.data.length);
-      // console.log(Response.data.data[0].idCart);
-      // console.log( Response.data.data[0].classInfo.img);
-      // console.log(Response.data.data.price);
-      // console.log(Response.data.data.instructor);
-
-      for (let i = 0; i < Response.data.data.length; i++) {
-        tmp.push({
-          idCart: Response.data.data[i].idCart,
-          img: Response.data.data[i].classInfo.img,
-          className: Response.data.data[i].classInfo.className,
-          price: Response.data.data[i].classInfo.price + "원",
-          instructor: Response.data.data[i].classInfo.instructor
-        })
-
+      console.log(Response.data.data.length);
+      if(Response.data.data.length === 0){
+        setShowList(false);
+      }else{
+        console.log(Response.data);
+        for (let i = 0; i < Response.data.data.length; i++) {
+          tmp.push({
+            idCart: Response.data.data[i].idCart,
+            img: Response.data.data[i].classInfo.img,
+            className: Response.data.data[i].classInfo.className,
+            price: Response.data.data[i].classInfo.price + "원",
+            instructor: Response.data.data[i].classInfo.instructor
+          })
+          setItemList(tmp);
+        }
+        setShowList(true);
         // setPriceSum(priceSum+parseInt(tmp[i].price));
-
+        
       // console.log(priceSum);
       }
-      
-      setItemList(tmp);
-      
+      console.log(requestResult);
     })
     .catch((error) => {
       setRequestResult('Failed!!');
+      console.log(requestResult);
     })
+  }
+
+  const showListHandler = () => {
+    console.log(showList);
+    if(!showList){
+      return <NoCartList/>
+    }else{
+      return <CartList itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue}/>
+    }
   }
   
   return (
@@ -91,6 +94,7 @@ export default function Cart() {
           <div className="cart-section2">
             <h1 className="cart-name2">수강바구니</h1>
             <div className="cart-container2">
+              <>
               <div className="cart-control2">
                 <div className="select-control2">
                   <input type="checkbox" />
@@ -98,33 +102,8 @@ export default function Cart() {
                 </div>
                 <button className="cancel-control2" onClick={() => deleteHandler()}>선택삭제 X</button>
               </div>
-              {itemList.map((item) => (
-                <>
-                
-                <div className="cart-list2">
-                  <input type="checkbox" value={item.idCart} onChange={(e) => cartCheckHandler(e.currentTarget.value)} className="course-select2" />
-                  <div className="cart-course-img2">
-                    <img src={item.img} alt="course-img" />
-                  </div>
-                  <div className="cart-course-info2">
-                    <h3 className="course-title2">
-                      <a href="#">{item.className}</a>
-                    </h3>
-                    <div>
-                      <span>{item.instructor}</span>
-                    </div>
-                  </div>
-                  <div className="close2">
-                    <button className="close-btn2">
-                      <i className="fa-solid2 fa-xmark2"></i>
-                    </button>
-                  </div>
-                  <div className="payment2">
-                    {item.price}
-                  </div>
-                </div>
+              {showListHandler()}
               </>
-              ))}
             </div>
           </div>
           <div className="side-container2">
