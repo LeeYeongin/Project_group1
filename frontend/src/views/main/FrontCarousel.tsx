@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Rating from '@mui/material/Rating';
+import axios from "axios";
+// import { useEffect } from "react";
 
 import '../main/css/CarouselArrow.css';
 
 import Course1 from '../../asset/images/exwebfront.png'
 import Course2 from '../../asset/images/htmlbasic.png'
+import { useParams } from "react-router-dom";
 
 
 // 별점보기 수강평 등록후 평균 읽어오기
@@ -17,11 +20,28 @@ import Course2 from '../../asset/images/htmlbasic.png'
       <Rating name="read-only" value={value} readOnly />
     )
   }
-  
+
+  const [connection, setConnection] = useState<string>('');
+
+  const connectionTest = () =>{
+    axios.get('http://localhost:4040/front').then((response) => {
+      setConnection("success!");
+
+    }).catch((error)=>{
+      setConnection(error.message);
+    })
+  }
+
+  useEffect(() => {
+    connectionTest();
+  },[]);
+
+
+    
   const CarouselMap = [
 
   {
-      category:'프론트엔드',
+      category:'connection',
       subtitle: 'forntend',
       lectures:[
               {
@@ -217,8 +237,8 @@ const STUDY = CarouselMap.map((cm) => {
   return(
     <div className="course_dashboard_list4">
     <div className="course_dashboard_title4">
-      <div key={cm.category}>
-          <h3>{cm.category}</h3>
+      <div key = {cm.category}>
+          <p>{connection}</p>
           <p style={{ fontSize: "13px" }}>{cm.subtitle}</p>
       </div>
     </div>
@@ -243,14 +263,9 @@ const STUDY = CarouselMap.map((cm) => {
   )
 })
 
-export default class CustomArrows extends Component {
+export default class CustomCarousel extends Component {
   render() {
-    const settings = {
-      dots: false,
-      infinite: false,
-      slidesToShow: 4,
-      slidesToScroll: 2
-    };
+    
 
     return (
       <div className="course_dashboard4">

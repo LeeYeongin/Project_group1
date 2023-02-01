@@ -14,7 +14,7 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.ClassService;
 
 @RestController
-@RequestMapping("main/")
+@RequestMapping("/")
 public class CarouselController {
 	
 	@Autowired ClassService classService;

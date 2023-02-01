@@ -21,12 +21,14 @@ import Footer from './views/main/Footer';
 import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
 import Signup from './views/signup';
+import axios from 'axios';
 
 function App() {
 
+  
+
   return (
 
-    // <Main5/>
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
