@@ -66,6 +66,10 @@ h1{
     background-color: rgb(255, 192, 192);
 }
 
+.detail5_img img{
+    width: 100%;
+}
+
 /* 강의 설명및 제목 */
 .detail5_title{
     margin: auto;
@@ -225,6 +229,9 @@ h1{
     margin: 0 auto;
     padding-top: 10px;
     width: 90%;
+
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .backet5{
@@ -256,6 +263,13 @@ h1{
     font-size: 14px;
 }
 
-.sub5 > ul{
-  padding-left: 5%;
+.sub5 ul{
+    padding-left: 5%;
+}
+
+.sub5 li{
+    padding-bottom: 10px;
+
+    font-size: 20px;
+    font-weight: bold;
 }

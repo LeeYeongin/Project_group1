@@ -1,7 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import './CarList.css';
 
-function CarList(){
+const CarList = () => {
     // 3개만 있을때 발생, 3개이상 될시 ul에 갯수에따른 useState값과 토글메뉴가 따로 생성되어야 한다.
     const [isOpen1, setMenu1] = useState(false);  // 메뉴의 초기값을 false로 설정
     const [isOpen2, setMenu2] = useState(false);  // 메뉴의 초기값을 false로 설정

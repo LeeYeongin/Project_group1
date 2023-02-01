@@ -12,6 +12,7 @@ function Main5(){
     const idRef2 = useRef<HTMLDivElement>(null);
     const idRef3 = useRef<HTMLDivElement>(null);
 
+    // idClass 입력시 파람으로 받도록 설정
     const { idClass } = useParams();
 
     const onScrollClick = (id : string) => {
@@ -46,9 +47,10 @@ function Main5(){
 
     useEffect(() => {
         axios.get(`http://localhost:4040/main5/${idClass}/`).then((response) => {
-            setDetailItems(response.data);
+            setDetailItems(response.data.data);
         })  
     }, []);
+
     const putCart = () => {
         // id와 함께 장바구니로 넘어감
         axios.post('http://localhost:4040/cart/')
@@ -63,13 +65,14 @@ function Main5(){
                 <div className='detail5_main' key={detailItems.idClass}>
                     <div className='detail5_topbanner'>
                         <div className='detail5_top_body'>
-                            <div className='detail5_img' style={{backgroundImage: `${detailItems.img}`}}>
+                            <div className='detail5_img'>
+                                <img src={detailItems.img}/>
                             </div>
                             <div className='detail5_title'>
                                 <p>{detailItems.category}</p>
                                 <p id='item5_title'>{detailItems.className}</p>
                                 <p id='item5_teacher'>{detailItems.instrouctor}</p>
-                                <p>강의 간단 설명란</p>
+                                <p>{detailItems.classInfoSimple}</p>
                             </div>
                         </div>
                     </div> 
@@ -85,17 +88,10 @@ function Main5(){
                             <div id='content1' className= {ScrollActive ? 'con5 scroll' : 'con5'} ref={idRef1}>
                                 <h1>강의소개</h1>
                                 <div className="explan">
-                                    <p>강의 설명</p>
-                                    <p>- 이강의는 ~~~~~~~~~~~하는 강의입니다.</p>
+                                    <p>{detailItems.classInfoDtl}</p>
+                                    <br/>
+                                    <p>{detailItems.classInfoDtl}</p>
                                 </div>
-                                <p>강의 특징</p>
-                                <p>
-                                    사용언어 : xxx<br/>
-                                    학습방법<br/>
-                                    * 1. AAA<br/>
-                                    * 2. BBB
-                                </p>
-                                <p>연관강의 링크</p>
                             </div>
                             <div id='content2' className= 'con5' ref={idRef2}>
                                 <h1>커리큘럼</h1>
@@ -109,12 +105,12 @@ function Main5(){
                         {/* 장바구니 */}
                         <div className='detail5_payment'>
                             <div className='pay_body5'>
-                                <div className='money'>가격[상품별로 따로표기]</div>
+                                <div className='money'>{detailItems.price}원</div>
                                 <button id='login_backet' className='backet5' onClick={putCart}>장바구니</button>
                                 <div className='sub5'>
                                     <ul>
-                                        <li id="teacher">강사명</li>
-                                        <li id="">난이도</li>
+                                        <li id="teacher">{detailItems.instructor}</li>
+                                        <li id="">{detailItems.difficulty}</li>
                                     </ul>
                                 </div>
                             </div>
