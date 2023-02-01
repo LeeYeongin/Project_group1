@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 
 // 별점보기 수강평 등록후 평균 읽어오기
   function ReadOnly() {
-  const [value] = React.useState<number>();
+  const [value] = React.useState<number>(5);
     return(
       <Rating name="read-only" value={value} readOnly />
     )
@@ -207,48 +207,52 @@ import { useParams } from "react-router-dom";
   }
 ]
 
-const STUDY = CarouselMap.map((cm) => {  
+// const STUDY = CarouselMap.map((cm) => {  
 
-  const settings = {
-    dots: false,
-    infinite: false,
-    slidesToShow: 4,
-    slidesToScroll: 2
-  };
-
-  return(
-    <div className="course_dashboard_list4">
-    <div className="course_dashboard_title4">
-      <div key = {cm.category}>
-          <h3>{cm.category}</h3>
-          <p style={{ fontSize: "13px" }}>{cm.subtitle}</p>
+  const STUDY = (itemList: any[]) => {
+    const settings = {
+      dots: false,
+      infinite: false,
+      slidesToShow: 4,
+      slidesToScroll: 2
+    };
+  
+    return(
+      <div className="course_dashboard_list4">
+      <div className="course_dashboard_title4">
+        {/* <div key = {cm.category}> */}
+        <div>
+            {/* <h3>{cm.category}</h3> */}
+            <h3>프런트엔드</h3>
+            {/* <p style={{ fontSize: "13px" }}>{cm.subtitle}</p> */}
+            <p style={{ fontSize: "13px" }}>frontend</p>
+        </div>
+      </div>
+      <div className="course_dashboard_card4">
+        <Slider {...settings}>
+          {itemList.map((item) => (
+            <a href="/main5">
+            <div className="course_card4">
+              <img src={Course1} alt="" className="course_face4" />
+              <div className="course_title4">{item.className}</div>
+              <div className="course_instructor4">{item.instructor}</div>
+              <div className="course_rating4"><ReadOnly/></div>
+              <div className="course_price4">{item.price}</div>
+              <div className="course_studentCount4">{item.studentCount}</div>
+            </div>
+            </a>
+          ))}
+        </Slider>
       </div>
     </div>
-    <div className="course_dashboard_card4">
-      <Slider {...settings}>
-        {cm.lectures.map((item) => (
-          <a href="/main5">
-          <div className="course_card4">
-            <img src={Course1} alt="" className="course_face4" />
-            <div className="course_title4">{item.title}</div>
-            <div className="course_instructor4">{item.name}</div>
-            <div className="course_rating4"><ReadOnly/></div>
-            <div className="course_price4">{item.price} 원</div>
-            <div className="course_studentCount4">{item.studentCount}</div>
-          </div>
-          </a>
-        ))}
-      </Slider>
-    </div>
-  </div>
-  )
-})
+    )
+
+  }
+
 
 export default function CustomCarousel() {
 
-  const [cm, setcm] = useState<any[]>([]);
-
-  
+  const [itemList, setItemList] = useState<any[]>([]);
   const [connection, setConnection] = useState<any>();
 
   const connectionTest = () =>{
@@ -268,7 +272,7 @@ export default function CustomCarousel() {
 
           })
           console.log(Response.data.data[0].className);
-          setcm(tmp);
+          setItemList(tmp);
       }
       setConnection(Response.data.data);
 
@@ -283,7 +287,7 @@ export default function CustomCarousel() {
 
     return (
       <div className="course_dashboard4">
-        {STUDY}
+        {STUDY(itemList)}
         {/* {connection} */}
       </div>
     );
