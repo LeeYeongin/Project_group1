@@ -16,9 +16,9 @@ function Main5(){
     const { idClass } = useParams();
 
     const onScrollClick = (id : string) => {
-        if(id === 'con5tent1') idRef1.current?.scrollIntoView({ behavior: 'smooth' });
-        if(id === 'con5tent2') idRef2.current?.scrollIntoView({ behavior: 'smooth' });
-        if(id === 'con5tent3') idRef3.current?.scrollIntoView({ behavior: 'smooth' });
+        if(id === 'content1') idRef1.current?.scrollIntoView({ behavior: 'smooth' });
+        if(id === 'content2') idRef2.current?.scrollIntoView({ behavior: 'smooth' });
+        if(id === 'content3') idRef3.current?.scrollIntoView({ behavior: 'smooth' });
     };
     // 스크롤시 상단 고정
     const [ScrollY, setScrollY] = useState(0);
@@ -53,7 +53,7 @@ function Main5(){
 
     const putCart = () => {
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/cart/')
+        axios.post('http://localhost:4040/cart' + idClass);
         window.location.href = ('/cart');
     }
 
@@ -78,9 +78,9 @@ function Main5(){
                     </div> 
                     <div className= {ScrollActive ? 'detail5_menu5 fixed' : 'detail5_menu5'}>
                         <div className='menu5_list'>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('con5tent1')}>강의소개</button></div>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('con5tent2')}>커리큘럼</button></div>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('con5tent3')}>수강평</button></div>
+                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content1')}>강의소개</button></div>
+                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content2')}>커리큘럼</button></div>
+                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content3')}>수강평</button></div>
                         </div>
                     </div> 
                     <div className='detail5_content'>
@@ -95,7 +95,7 @@ function Main5(){
                             </div>
                             <div id='content2' className= 'con5' ref={idRef2}>
                                 <h1>커리큘럼</h1>
-                                <Carlist/>
+                                <Carlist curriItems = {detailItems.curriculumList}/>
                             </div>
                             <div id='content3' className= 'con5'  ref={idRef3}>
                                 <h1>수강평</h1>
