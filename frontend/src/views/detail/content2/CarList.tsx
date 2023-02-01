@@ -13,11 +13,11 @@ const CarList = ({curriItems}: ItemProps) => {
 
     return(
         <div className="car5_list">
-            {curriItems.map((item) => (
-                <ul className="car5_title" onClick={() => toggleMenu1()} key={item.section}>강의 {item.section}
-                    {curriItems.filter((key = item.section) => {
-                        <li className={isOpen1 ? "car5_item" : "hide_item"}><span>강의 {item.part} {item.video}</span></li>
-                    })}
+            {curriItems.filter((arr, index, callback) => index === callback.findIndex((item) => item.section === arr.section)).map((item) => (
+                <ul className="car5_title" onClick={() => toggleMenu1()} key={item.idCurriculum}>강의 {item.section}
+                {curriItems.filter((arr, index, callback) => index === callback.findIndex((item2) => item2.section === arr.section)).map((item2) => (
+                    <li className={isOpen1 ? "car5_item" : "hide_item"}><span>강의 {item2.part} {item2.video}</span></li>
+                ))}
                 </ul>
             ))}
         </div>

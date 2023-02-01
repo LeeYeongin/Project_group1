@@ -65,9 +65,7 @@ function Main5(){
                 <div className='detail5_main' key={detailItems.idClass}>
                     <div className='detail5_topbanner'>
                         <div className='detail5_top_body'>
-                            <div className='detail5_img'>
-                                <img src={detailItems.img}/>
-                            </div>
+                            <div className='detail5_img' style={{backgroundImage: `${detailItems.img}`}}/>
                             <div className='detail5_title'>
                                 <p>{detailItems.category}</p>
                                 <p id='item5_title'>{detailItems.className}</p>
@@ -99,7 +97,7 @@ function Main5(){
                             </div>
                             <div id='content3' className= 'con5'  ref={idRef3}>
                                 <h1>수강평</h1>
-                                <ReviewList/>
+                                <ReviewList reviewItems = {detailItems.reviewList}/>
                             </div>
                         </div>
                         {/* 장바구니 */}

@@ -66,10 +66,6 @@ h1{
     background-color: rgb(255, 192, 192);
 }
 
-.detail5_img img{
-    width: 100%;
-}
-
 /* 강의 설명및 제목 */
 .detail5_title{
     margin: auto;

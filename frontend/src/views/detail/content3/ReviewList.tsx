@@ -3,49 +3,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import './ReviewList.css';
 
+interface ItemProps{
+  reviewItems: any[]
+}
+
 // 데이터는 id로 찾고 order by로 구분해서 해당 내용만 가져오게 설정
-const ReviewList = () => {
-  const contentItem = [
-    { id: 1, title: '제목1번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 2, title: '제목2번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 3, title: '제목3번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 4, title: '제목4번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 5, title: '제목5번', starValue: 4, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 6, title: '제목6번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 7, title: '제목7번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 8, title: '제목8번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 9, title: '제목9번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 10, title: '제목10번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 11, title: '제목11번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 12, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 13, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 14, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 15, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 16, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 17, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 18, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 19, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 20, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 21, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 22, title: '제목12번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 23, title: '제목3번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 24, title: '제목4번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 25, title: '제목5번', starValue: 4, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 26, title: '제목6번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 27, title: '제목7번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 28, title: '제목8번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 29, title: '제목9번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 30, title: '제목1번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 31, title: '제목2번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 32, title: '제목3번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 33, title: '제목4번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 34, title: '제목5번', starValue: 4, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 35, title: '제목6번', starValue: 1, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 36, title: '제목7번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 37, title: '제목8번', starValue: 2, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 38, title: '제목9번', starValue: 5, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-    { id: 39, title: '제목10번', starValue: 3, contents: '리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.' + <br/> + ' 리뷰내용들어가는 란입니다.'},
-  ]
+const ReviewList = ({reviewItems}: ItemProps) => {
   // 시작페이지
   const [page, setPage] = useState<number>(1);
   // 페이지가 위치한 섹션
@@ -65,19 +28,19 @@ const ReviewList = () => {
   useEffect (() => {
     const list = [];
     for (let i = (section - 1) * 5; i < section * 5; i++) {
-      if (i < ((contentItem.length - 1) / 4))
+      if (i < ((reviewItems.length - 1) / 4))
         list.push(i);
     }
 
     setPageList(list)
   }, [section]);
 
-  const ReviewItem = contentItem.slice(offset, offset + LIMIT).map((CONTENT) => {
+  const ReviewItem = reviewItems.slice(offset, offset + LIMIT).map((CONTENT) => {
     return(
-      <div className='review5_main' key={CONTENT.id}>
+      <div className='review5_main' key={CONTENT.idReview}>
         <h3 className="reviewTitle5">{CONTENT.title}</h3>
         <div className="ratingStar">
-          <Rating name="read-only" value={CONTENT.starValue} readOnly />
+          <Rating name="read-only" value={CONTENT.grade} readOnly />
         </div>
         <div className="reviewBody">
           <p>{CONTENT.contents}</p>
@@ -103,7 +66,7 @@ const ReviewList = () => {
                 {index + 1}
               </button>
             ))}
-            <button className="rightBtn" onClick={() => setSection(section + 1)} disabled={section * 5 >= (contentItem.length - 1) / 4}>&gt;</button>
+            <button className="rightBtn" onClick={() => setSection(section + 1)} disabled={section * 5 >= (reviewItems.length - 1) / 4}>&gt;</button>
           </div>
          <button type="button" className="writeReview5" onClick={WriteReview}>작성하기</button>
        </div>
