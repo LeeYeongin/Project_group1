@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 
 // 별점보기 수강평 등록후 평균 읽어오기
   function ReadOnly() {
-  const [value] = React.useState<number>(5);
+  const [value] = React.useState<number>();
     return(
       <Rating name="read-only" value={value} readOnly />
     )
@@ -284,7 +284,7 @@ export default function CustomCarousel() {
     return (
       <div className="course_dashboard4">
         {STUDY}
-        {connection}
+        {/* {connection} */}
       </div>
     );
   

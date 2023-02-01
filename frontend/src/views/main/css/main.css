@@ -1,9 +1,10 @@
 body {
     margin: 0;
     /* display: block; */
-    width: 100%;
+    /* width: 100%; */
+    max-width:100%;
     height: 100%;
-    background-color: #d4e8fd;
+    /* background-color: #d4e8fd; */
 }
 
 ul {
@@ -18,6 +19,7 @@ header {
     display: flex;
     justify-content: space-around;
     height: 70px;
+    /* max-width: 1400px; */
     /* background-color: bisque; */
     border-bottom: 1px solid #d4e8fd;
 }
@@ -73,7 +75,7 @@ header {
     width: 290px;
     height: 100%;
     margin-left: 50%;
-    /* backgroun : yellowgreen; */
+    /* background : yellowgreen; */
 }
 
 .cart4 {
@@ -240,17 +242,20 @@ header {
 /* 강의 목록 */
 
 .course_dashboard4 {
-    margin-left: 18vw;
-    display: block;
+    /* padding: 0 1px; */
+    padding-left: 18vw;
+    /* display: block; */
     width: 100%;
-    position: relative;
+    /* max-width: 1400px; */
+    /* position: absolute; */
     /* background-color: #d4e8fd; */
+    align-items: center;
 }
 
 .course_dashboard_list4 {
     display: block;
     position: relative;
-    width: 65%;
+    width: 75%;
     /* height: 100%; */
     /* background: tomato; */
 }
@@ -319,7 +324,7 @@ header {
     padding: 0 5px;
     width: fit-content;
     height: 25px;
-    background-color: #F6d5ea;
+    /* background-color: #F6d5ea; */
     border-radius: 3px;
 }
 
