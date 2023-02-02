@@ -4,17 +4,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Rating from '@mui/material/Rating';
 import axios, { AxiosResponse } from "axios";
-
 import '../main/css/CarouselArrow.css';
 
 import Course1 from '../../asset/images/exwebfront.png'
-import Course2 from '../../asset/images/htmlbasic.png'
+// import Course2 from '../../asset/images/htmlbasic.png'
+import { useParams } from "react-router-dom";
+import ReviewList from "../detail/content3/ReviewList";
 
 
 
 // 별점보기 평균 읽어오기
-  function ReadOnly() {
-  const [value] = React.useState<number>(1);
+  function ReadOnly(grade: any) {
+    console.log(grade)
+  const [value] = React.useState<number>(parseInt(grade));
     return(
       <Rating name="read-only" value={value} readOnly />
     )
@@ -47,17 +49,17 @@ const Study = ({ carouselMap }: StudyProps) => {
             <div className="course_dashboard_card4">
               <Slider {...settings}>
                 {cm.lectures.map((item: any) => (
-                  <a href="/main5">
+                  <a href= "">                                    
                     <div className="course_card4">
                       <img src={Course1} alt="" className="course_face4" />
                       <div className="course_title4">{item.className}</div>
                       <div className="course_instructor4">{item.instructor}</div>
                       <div className="course_rating4">
-                        <ReadOnly />
+                        <ReadOnly grade={item.grade}/>
                       </div>
                       <div className="course_price4">{item.price}</div>
                       <div className="course_studentCount4">
-                        {item.studentCount}
+                        +{item.studentCount}명
                       </div>
                     </div>
                   </a>
