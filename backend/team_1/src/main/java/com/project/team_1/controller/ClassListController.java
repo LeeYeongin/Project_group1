@@ -39,12 +39,17 @@ public class ClassListController {
 		return classService.getCategoryClassList(requestBody);
 	}
 	
-	@PostMapping("difficulty/")
+	@GetMapping("all")
+	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(){
+		return classService.showAllClassList();
+	}
+	
+	@PostMapping("difficulty")
 	public ResponseDto<List<GetClassInfoDto>> getDifficultyClassList(@RequestBody GetDifficultyClassListDto requestBody){
 		return classService.getDifficultyClassList(requestBody);
 	}
 	
-	@PostMapping("discountRate/")
+	@PostMapping("discountRate")
 	public ResponseDto<List<GetClassInfoDto>> getDiscountRateClassList(@RequestBody GetDiscountRateClassListDto requestBody){
 		return classService.getDiscountClassList(requestBody);
 	}
