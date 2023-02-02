@@ -81,7 +81,7 @@ function Main(){
             
             {/* 프론트엔드 */}
 
-            <FrontCarousel/>
+            <FrontCarousel />
 
             {/* footer */}
             
