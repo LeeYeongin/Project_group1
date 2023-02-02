@@ -1,12 +1,13 @@
-import React from 'react'
 import { useEffect, useState } from 'react';
 import './style.css';
 
 import axios from 'axios';
+
 export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
     const [itemList, setItemList] = useState<any[]>([]);
     const [grade, setgrade] = useState<number>(0);
+    const [search, setSearch] = useState<string>('')
 
     const showStar = (grade: number) =>{
       
@@ -14,16 +15,16 @@ export default function List() {
         ;
       }
     };
-    
+
     const allCategoryHandler = () => {
       setItemList([]);
       setgrade(0);
-    
+
       axios.get("http://localhost:4040/list/all")
       .then((Response) => {
         const tmp = [];
         setRequestResult('success!');
-    
+  
         for(let i = 0; i < Response.data.data.length; i++){
           tmp.push({
             img: Response.data.data[i].img,
@@ -36,44 +37,43 @@ export default function List() {
           })
         }
         setItemList(tmp);
-        
       })
       .catch((error) =>{
         setRequestResult('Failed!');
       })
     }
-    
-    const categoryHandler = (arg: string) => {
-      setItemList([]);
-      setgrade(0);
-    
-      const getdata = {
-        category: arg
-      };
-    
-      axios.post("http://localhost:4040/list/", getdata)
-      .then((Response) => {
-        const tmp = [];
-        setRequestResult('success!');
-    
-        for(let i = 0; i < Response.data.data.length; i++){
-          tmp.push({
-            img: Response.data.data[i].img,
-            className: Response.data.data[i].className,
-            instructor: Response.data.data[i].instructor,
-            price: Response.data.data[i].price,
-            discountRate: Response.data.data[i].discountRate,
-            studentCount: Response.data.data[i].studentCount,
-            grade: Response.data.data[i].grade
-          })
-        }
-        setItemList(tmp);
-        
-      })
-      .catch((error) =>{
-        setRequestResult('Failed!');
-      })
-    }
+
+  const categoryHandler = (arg: string) => {
+    setItemList([]);
+    setgrade(0);
+
+    const getdata = {
+      category: arg
+    };
+
+    axios.post("http://localhost:4040/list/", getdata)
+    .then((Response) => {
+      const tmp = [];
+      setRequestResult('success!');
+
+      for(let i = 0; i < Response.data.data.length; i++){
+        tmp.push({
+          img: Response.data.data[i].img,
+          className: Response.data.data[i].className,
+          instructor: Response.data.data[i].instructor,
+          price: Response.data.data[i].price,
+          discountRate: Response.data.data[i].discountRate,
+          studentCount: Response.data.data[i].studentCount,
+          grade: Response.data.data[i].grade
+        })
+      }
+      setItemList(tmp);
+      
+    })
+    .catch((error) =>{
+      setRequestResult('Failed!');
+    })
+  }
 
   useEffect(() => {
     const tmp = [];
@@ -90,6 +90,36 @@ export default function List() {
 
     setItemList(tmp);
   }, [])
+
+  const searchHandler = () => {
+
+    axios.get("http://localhost:4040/list/" + search)
+    .then((Response) => {
+      const tmp = [];
+      setRequestResult('success!');
+
+      for(let i = 0; i < Response.data.data.length; i++){
+        tmp.push({
+          img: Response.data.data[i].img,
+          className: Response.data.data[i].className,
+          instructor: Response.data.data[i].instructor,
+          price: Response.data.data[i].price,
+          discountRate: Response.data.data[i].discountRate,
+          studentCount: Response.data.data[i].studentCount,
+          grade: Response.data.data[i].grade
+        })
+      }
+      setItemList(tmp);
+
+    })
+    .catch((error) =>{
+      setRequestResult('Failed!');
+    })
+  }
+
+  const difficultyHandler = () => {
+    
+  }
 
   return (
         <>
@@ -108,8 +138,8 @@ export default function List() {
                       <div className="head-bar3">
                           <div className="">강의 목록</div>
                           <div className="search3">
-                              <input type="text" className="search-input3" placeholder="개발/프로그래밍 검색" />
-                              <button className="search-btn3">검색</button>
+                              <input type="text" id='search' className="search-input3" placeholder="개발/프로그래밍 검색" onChange={(e) => setSearch(e.target.value)}/>
+                              <input type='button' className="search-btn3" value='검색' onClick={() => searchHandler()}></input>
                           </div>
                       </div>
                       <div className="choice-menu3">
