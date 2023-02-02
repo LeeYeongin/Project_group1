@@ -8,8 +8,7 @@ import Icon4 from '../../asset/images/fullstack-icon.png'
 import '../main/css/main.css';
 import Banner from './Banner';
 import FrontCarousel from './FrontCarousel';
-import Footer from './Footer';
-import Header from './Header';
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 
 function Main(){
@@ -81,8 +80,9 @@ function Main(){
             {/* 강의 목록 */}
             
             {/* 프론트엔드 */}
+
             <FrontCarousel/>
-            
+
             {/* footer */}
             
         </div>
