@@ -1,6 +1,7 @@
 import { Rating } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import './ReviewList.css';
 
 interface ItemProps{
@@ -21,8 +22,12 @@ const ReviewList = ({reviewItems}: ItemProps) => {
   // 버튼당 보여줄 페이지
   const offset = (page - 1) * LIMIT;
 
+  const { idClass } = useParams();
   // 페이지 이동
-  const WriteReview = () => { window.location.href = "/writeReview"; }
+  const WriteReview = () => { 
+    axios.post("/writeReview", idClass);
+    window.location.href = "/writeReview";
+  }
   const UpdateReview = () => { window.location.href = "/updateReview"; }
 
   useEffect (() => {
@@ -38,7 +43,7 @@ const ReviewList = ({reviewItems}: ItemProps) => {
   const ReviewItem = reviewItems.slice(offset, offset + LIMIT).map((CONTENT) => {
     return(
       <div className='review5_main' key={CONTENT.idReview}>
-        <h3 className="reviewTitle5">{CONTENT.title}</h3>
+        <h3 className="reviewTitle5">{CONTENT.idUser}님</h3>
         <div className="ratingStar">
           <Rating name="read-only" value={CONTENT.grade} readOnly />
         </div>

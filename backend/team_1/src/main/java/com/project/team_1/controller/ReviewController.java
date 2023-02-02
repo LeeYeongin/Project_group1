@@ -19,13 +19,13 @@ import com.project.team_1.dto.review.ReviewDTO;
 import com.project.team_1.service.ReviewService;
 
 @RestController
-@RequestMapping("review/") // 여기에 강의 ID가 들어가야 한다
+@RequestMapping("/") // 여기에 강의 ID가 들어가야 한다
 public class ReviewController {
 	
 	@Autowired ReviewService reviewService;
 	
 	// 리뷰 작성
-	@PostMapping("write")
+	@PostMapping("writeReview")
 	public ResponseDto<ResultResponseDTO> writeReview(@RequestBody ReviewDTO reviewDto) {
 		return reviewService.ReviewWrite(reviewDto);
 	}
@@ -37,7 +37,7 @@ public class ReviewController {
 	}
 	
 	// 리뷰 수정
-	@PatchMapping("update")
+	@PatchMapping("updateReview")
 	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto){
 		return reviewService.ReviewUpdate(patchDto);
 	}

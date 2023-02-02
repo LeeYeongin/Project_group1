@@ -4,11 +4,13 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
 
-function BoardWrite() {
+const BoardWrite = (idClass: Number) => {
   const [value, setValue] = React.useState<number | null>(5);
+  const [detailItems, setDetailItems] = React.useState<any>(null);
+  console.log(idClass);
 
   const WriteBtn = () => {
-    window.location.href = "/main5";
+    window.location.href = `http://localhost:4040/main5/${idClass}/`;
     // 이동과 동시에 DB에 리뷰 저장
     // + 돌아갔을때 해당 페이지의 리뷰모음에 첫번째 자리에 들어있어야 한다.
   }
