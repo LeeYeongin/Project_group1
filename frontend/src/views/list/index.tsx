@@ -1,10 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import './style.css';
-import * as list from './fucntion';
 
-import DB_IMAGE from '../../asset/image_list/DB.png';
-import STAR from '../../asset/image_list/star.png';
 import axios from 'axios';
 export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
@@ -17,16 +14,16 @@ export default function List() {
         ;
       }
     };
-
+    
     const allCategoryHandler = () => {
       setItemList([]);
       setgrade(0);
-
+    
       axios.get("http://localhost:4040/list/all")
       .then((Response) => {
         const tmp = [];
         setRequestResult('success!');
-  
+    
         for(let i = 0; i < Response.data.data.length; i++){
           tmp.push({
             img: Response.data.data[i].img,
@@ -39,7 +36,6 @@ export default function List() {
           })
         }
         setItemList(tmp);
-  
         
       })
       .catch((error) =>{
@@ -47,41 +43,37 @@ export default function List() {
       })
     }
     
-
-  const categoryHandler = (arg: string) => {
-    setItemList([]);
-    setgrade(0);
-
-    const getdata = {
-      category: arg
-    };
-
+    const categoryHandler = (arg: string) => {
+      setItemList([]);
+      setgrade(0);
     
-
-    axios.post("http://localhost:4040/list/", getdata)
-    .then((Response) => {
-      const tmp = [];
-      setRequestResult('success!');
-
-      for(let i = 0; i < Response.data.data.length; i++){
-        tmp.push({
-          img: Response.data.data[i].img,
-          className: Response.data.data[i].className,
-          instructor: Response.data.data[i].instructor,
-          price: Response.data.data[i].price,
-          discountRate: Response.data.data[i].discountRate,
-          studentCount: Response.data.data[i].studentCount,
-          grade: Response.data.data[i].grade
-        })
-      }
-      setItemList(tmp);
-
-      
-    })
-    .catch((error) =>{
-      setRequestResult('Failed!');
-    })
-  }
+      const getdata = {
+        category: arg
+      };
+    
+      axios.post("http://localhost:4040/list/", getdata)
+      .then((Response) => {
+        const tmp = [];
+        setRequestResult('success!');
+    
+        for(let i = 0; i < Response.data.data.length; i++){
+          tmp.push({
+            img: Response.data.data[i].img,
+            className: Response.data.data[i].className,
+            instructor: Response.data.data[i].instructor,
+            price: Response.data.data[i].price,
+            discountRate: Response.data.data[i].discountRate,
+            studentCount: Response.data.data[i].studentCount,
+            grade: Response.data.data[i].grade
+          })
+        }
+        setItemList(tmp);
+        
+      })
+      .catch((error) =>{
+        setRequestResult('Failed!');
+      })
+    }
 
   useEffect(() => {
     const tmp = [];
@@ -105,11 +97,11 @@ export default function List() {
               <div className="main3">
                   <div className="container3 main23">
                       <div className="side-bar3">
-                          <div className="side-menu3 side-menu23" onClick={() => list.allCategoryHandler()}>전체강의</div>
-                          <div className="side-menu3 side-menu23" onClick={() => list.categoryHandler('back')}>백엔드</div>
-                          <div className="side-menu3 side-menu23" onClick={() => list.categoryHandler('front')}>프론드엔드</div>
-                          <div className="side-menu3 side-menu23" onClick={() => list.categoryHandler('full')}>풀스택</div>
-                          <div className="side-menu3 side-menu23" onClick={() => list.categoryHandler('dbms')}>데이터베이스</div>
+                          <div className="side-menu3 side-menu23" onClick={() => allCategoryHandler()}>전체강의</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('back')}>백엔드</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('front')}>프론드엔드</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('full')}>풀스택</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('dbms')}>데이터베이스</div>
                       </div>
                   </div>
                   <div className="container3 main33">
@@ -140,7 +132,7 @@ export default function List() {
                                       <div className="item-content3">
                                           <a href="#" className="item-title3">{item.className}</a>
                                           <span className="item-discription3">{item.instructor}</span>
-                                          <div className="item-img-container23">{list.showStar(0)}({item.grade});</div>
+                                          <div className="item-img-container23">{showStar(0)}({item.grade});</div>
                                           <div className="item-footer3">
                                               <div className="project-time3"><i className="fa-solid3 fa-won-sign3"></i>{item.price}</div>
                                               <button className="btn3 btn-test3">{item.studentCount}</button>
