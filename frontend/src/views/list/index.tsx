@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './style.css';
 
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
@@ -12,6 +13,8 @@ export default function List() {
     const [category, setCategory] = useState<string>('all');
     const [discountRate, setDiscountRate] = useState<boolean>(false);
     const [difficulty, setDifficulty] = useState<string>('notSelect');
+
+    const { getcategory } = useParams<string>();
 
     const showStar = (grade: number) =>{
       
@@ -81,19 +84,36 @@ export default function List() {
   }
 
   useEffect(() => {
-    const tmp = [];
+    // const tmp = [];
 
-    for (let i = 0; i < 8; i++) {
-      tmp.push({
-        title: "스프링 DB 1편 - 데이터 접근 핵심 원리",
-        discription: "김영한",
-        score: 50,
-        price: '80,000',
-        like: '+500명'
-      })
-    }
+    // for (let i = 0; i < 8; i++) {
+    //   tmp.push({
+    //     title: "스프링 DB 1편 - 데이터 접근 핵심 원리",
+    //     discription: "김영한",
+    //     score: 50,
+    //     price: '80,000',
+    //     like: '+500명'
+    //   })
+    // }
+    axios.get(`http://localhost:4040/list/${getcategory}`).then((Response) => {
+      console.log(getcategory)
+      const tmp = [];
+      setRequestResult('success!');
 
-    setItemList(tmp);
+      for(let i = 0; i < Response.data.data.length; i++){
+        tmp.push({
+          img: Response.data.data[i].img,
+          className: Response.data.data[i].className,
+          instructor: Response.data.data[i].instructor,
+          price: Response.data.data[i].price,
+          discountRateRate: Response.data.data[i].discountRateRate,
+          studentCount: Response.data.data[i].studentCount,
+          grade: Response.data.data[i].grade
+        })
+      }
+      setItemList(tmp);
+    })
+
   }, [])
 
   const searchHandler = () => {
@@ -174,11 +194,12 @@ export default function List() {
               <div className="main3">
                   <div className="container3 main23">
                       <div className="side-bar3">
+                        {/*ClassService category 명과 일치 할것 아니면 못 읽어들임 */}
                           <div className="side-menu3 side-menu23" onClick={() => allCategoryHandler()}>전체강의</div>
-                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('back')}>백엔드</div>
                           <div className="side-menu3 side-menu23" onClick={() => categoryHandler('front')}>프론드엔드</div>
-                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('full')}>풀스택</div>
-                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('dbms')}>데이터베이스</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('back')}>백엔드</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('database')}>데이터베이스</div>
+                          <div className="side-menu3 side-menu23" onClick={() => categoryHandler('fullstack')}>풀스택</div>
                       </div>
                   </div>
                   <div className="container3 main33">

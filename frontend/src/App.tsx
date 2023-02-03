@@ -34,7 +34,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="list" element={<List />} />
+          <Route path="list/:getcategory" element={<List />} />
           <Route path="main5/:idClass" element={<Main5 />} />
           <Route path="findID" element={<FindId />} />
           <Route path="findPassword" element={<FindPassword />} />

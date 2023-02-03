@@ -78,8 +78,6 @@ function Main(){
                 </div>
             </div>
             {/* 강의 목록 */}
-            
-            {/* 프론트엔드 */}
 
             <FrontCarousel />
 

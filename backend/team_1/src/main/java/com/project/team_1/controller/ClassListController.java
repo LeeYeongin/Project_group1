@@ -39,8 +39,42 @@ public class ClassListController {
 		return classService.getCategoryClassList(requestBody);
 	}
 	
+//	@PostMapping("back")
+//	public ResponseDto<List<GetClassInfoDto>> getCategoryClassList1(@RequestBody GetCategoryClassListDto requestBody){
+//		return classService.getCategoryClassList(requestBody);
+//	}
+	
+	//Header 목록에서 database Read
+	@GetMapping("front")
+	public ResponseDto<List<GetClassInfoDto>> showAllFrontClassList(){
+		return classService.showAllFrontClassList();
+	}
+	
+	@GetMapping("back")
+	public ResponseDto<List<GetClassInfoDto>> showAllBackClassList(){
+		return classService.showAllBackClassList();
+	}
+	
+	@GetMapping("db")
+	public ResponseDto<List<GetClassInfoDto>> showAllDatabaseClassList(){
+		return classService. showAllDatabaseClassList();
+	}
+	
+	@GetMapping("full")
+	public ResponseDto<List<GetClassInfoDto>> showAllFullStackClassList(){
+		return classService. showAllFullStackClassList();
+	}
+
+	
+	
 	@GetMapping("all")
 	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(){
+		return classService.showAllClassList();
+	}
+	
+	@PostMapping("all")
+	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(@RequestBody GetClassInfoDto requestBody){
+//		System.out.println(requestBody);
 		return classService.showAllClassList();
 	}
 	

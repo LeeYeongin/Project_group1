@@ -6,8 +6,6 @@ import Rating from '@mui/material/Rating';
 import axios, { AxiosResponse } from "axios";
 import '../main/css/CarouselArrow.css';
 
-import Course1 from '../../asset/images/exwebfront.png'
-// import Course2 from '../../asset/images/htmlbasic.png'
 import { useParams } from "react-router-dom";
 
 
@@ -26,15 +24,16 @@ interface StudyProps {
 
 const Study = ({ carouselMap }: StudyProps) => {
   const settings = {
+    
     dots: false,
     infinite: false,
     slidesToShow: 4,
-    slidesToScroll: 2,
+    slidesToScroll: 1
   };
 
   //상세페이지 이동
   const gotopage = (idClass:number) => {
-    axios.post(`http://localhost:4040/main5/${idClass}`);
+    // axios.post(`http://localhost:4040/main5/${idClass}`);
     window.location.href = `http://localhost:3000/main5/${idClass}`;
   }
   
@@ -56,13 +55,13 @@ const Study = ({ carouselMap }: StudyProps) => {
                 {cm.lectures.map((item: any) => (
                   <a href= "#" onClick={() => gotopage(item.idClass)}>
                     <div className="course_card4">
-                      <img src={Course1} alt="" className="course_face4" />
+                      <img src={item.img} alt="" className="course_face4"/>
                       <div className="course_title4">{item.className}</div>
                       <div className="course_instructor4">{item.instructor}</div>
                       <div className="course_rating4">
                         <ReadOnly grade={item.grade}/>
                       </div>
-                      <div className="course_price4">{item.price}</div>
+                      <div className="course_price4">{item.price}원</div>
                       <div className="course_studentCount4">
                         +{item.studentCount}명
                       </div>
@@ -124,7 +123,7 @@ export default function CustomCarousel() {
 
     //CarouselMap에 넣을배열(풀스텍) 임시변수 tmp에 push
     tmp.push({
-      category: '풀스텍',
+      category: '풀스택',
       subtitle: 'fullstack',
       lectures: (fullstackList as AxiosResponse<any, any>).data.data
     });
