@@ -9,9 +9,6 @@ import '../main/css/CarouselArrow.css';
 import Course1 from '../../asset/images/exwebfront.png'
 // import Course2 from '../../asset/images/htmlbasic.png'
 import { useParams } from "react-router-dom";
-import ReviewList from "../detail/content3/ReviewList";
-import Main5 from "../detail/detail";
-
 
 
 // 별점보기 평균 읽어오기
@@ -36,12 +33,11 @@ const Study = ({ carouselMap }: StudyProps) => {
   };
 
   //상세페이지 이동
-  const gotopage = ({idClass}: any) => {
-    axios.post('http://localhost:4040/main5/', idClass);
-    
-  window.location.href = 'http://localhost:3000/main5/' + idClass;
-  
+  const gotopage = (idClass:number) => {
+    axios.post(`http://localhost:4040/main5/${idClass}`);
+    window.location.href = `http://localhost:3000/main5/${idClass}`;
   }
+  
 
   return (
     <>
@@ -58,7 +54,7 @@ const Study = ({ carouselMap }: StudyProps) => {
             <div className="course_dashboard_card4">
               <Slider {...settings}>
                 {cm.lectures.map((item: any) => (
-                  <a href= "#" onClick={gotopage}>
+                  <a href= "#" onClick={() => gotopage(item.idClass)}>
                     <div className="course_card4">
                       <img src={Course1} alt="" className="course_face4" />
                       <div className="course_title4">{item.className}</div>
