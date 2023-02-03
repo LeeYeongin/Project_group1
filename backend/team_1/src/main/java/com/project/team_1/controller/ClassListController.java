@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
-
+import com.project.team_1.dto.Class.GetCategoryDto;
 import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDiscountRateClassListDto;
@@ -52,6 +52,11 @@ public class ClassListController {
 	@PostMapping("discountRate")
 	public ResponseDto<List<GetClassInfoDto>> getDiscountRateClassList(@RequestBody GetDiscountRateClassListDto requestBody){
 		return classService.getDiscountClassList(requestBody);
+	}
+	
+	@PostMapping("category")
+	public ResponseDto<List<GetClassInfoDto>> getSubcategoryClassList(@RequestBody GetCategoryDto requsetBody){
+		return classService.getSubcategoryClassList(requsetBody);
 	}
 	
 	

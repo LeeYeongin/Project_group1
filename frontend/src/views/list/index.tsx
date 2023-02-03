@@ -7,7 +7,11 @@ export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
     const [itemList, setItemList] = useState<any[]>([]);
     const [grade, setgrade] = useState<number>(0);
-    const [search, setSearch] = useState<string>('')
+    const [search, setSearch] = useState<string>('');
+    
+    const [category, setCategory] = useState<string>('all');
+    const [discountRate, setDiscountRate] = useState<boolean>(false);
+    const [difficulty, setDifficulty] = useState<string>('notSelect');
 
     const showStar = (grade: number) =>{
       
@@ -31,12 +35,13 @@ export default function List() {
             className: Response.data.data[i].className,
             instructor: Response.data.data[i].instructor,
             price: Response.data.data[i].price,
-            discountRate: Response.data.data[i].discountRate,
+            discountRateRate: Response.data.data[i].discountRateRate,
             studentCount: Response.data.data[i].studentCount,
             grade: Response.data.data[i].grade
           })
         }
         setItemList(tmp);
+        setCategory('all');
       })
       .catch((error) =>{
         setRequestResult('Failed!');
@@ -62,13 +67,13 @@ export default function List() {
           className: Response.data.data[i].className,
           instructor: Response.data.data[i].instructor,
           price: Response.data.data[i].price,
-          discountRate: Response.data.data[i].discountRate,
+          discountRateRate: Response.data.data[i].discountRateRate,
           studentCount: Response.data.data[i].studentCount,
           grade: Response.data.data[i].grade
         })
       }
       setItemList(tmp);
-      
+      setCategory(arg);
     })
     .catch((error) =>{
       setRequestResult('Failed!');
@@ -104,7 +109,7 @@ export default function List() {
           className: Response.data.data[i].className,
           instructor: Response.data.data[i].instructor,
           price: Response.data.data[i].price,
-          discountRate: Response.data.data[i].discountRate,
+          discountRateRate: Response.data.data[i].discountRateRate,
           studentCount: Response.data.data[i].studentCount,
           grade: Response.data.data[i].grade
         })
@@ -121,6 +126,48 @@ export default function List() {
     
   }
 
+//--------------------------------------------------------------------------------------
+  const listHandler = (arg: string, arg2: string, arg3: boolean) => {
+    const getdata = {
+      category: arg, 
+      difficulty: arg2,
+      discountRate: arg3
+    };
+
+    axios.post("http://localhost:4040/list/category", getdata)
+    .then((Response) => {
+      const tmp = [];
+      setRequestResult('success!');
+
+      for(let i = 0; i < Response.data.data.length; i++){
+        tmp.push({
+          img: Response.data.data[i].img,
+          className: Response.data.data[i].className,
+          instructor: Response.data.data[i].instructor,
+          price: Response.data.data[i].price,
+          discountRateRate: Response.data.data[i].discountRateRate,
+          studentCount: Response.data.data[i].studentCount,
+          grade: Response.data.data[i].grade
+        })
+      }
+      setItemList(tmp);
+      
+    })
+    .catch((error) =>{
+      setRequestResult('Failed!');
+    })
+  }
+
+  const discount = () => {
+    setDiscountRate(discountRate? false: true)
+  }
+
+  // const difficulty = () => {
+  //   setDiscountRate({discountRate}? false: true)
+  // }
+
+
+
   return (
         <>
           <div className="main-container3">
@@ -135,23 +182,21 @@ export default function List() {
                       </div>
                   </div>
                   <div className="container3 main33">
-                    <div className= "container3 wrapper3">
-                    <div className="head-bar3">
+                      <div className="head-bar3">
                           <div className="">강의 목록</div>
                           <div className="search3">
                               <input type="text" id='search' className="search-input3" placeholder="개발/프로그래밍 검색" onChange={(e) => setSearch(e.target.value)}/>
                               <input type='button' className="search-btn3" value='검색' onClick={() => searchHandler()}></input>
                           </div>
                       </div>
-                    </div>
                       <div className="choice-menu3">
-                          <div className="myButton3">전체</div>
+                          <div className="myButton3" onClick={() => {setDifficulty('notSelect'); (category==='all') ? allCategoryHandler():categoryHandler(category)}}>전체</div>
                           <div className="hr3"></div>
-                          <div className="myButton3 fa-regular3 fa-percent3">할인중</div>
+                          <div className="myButton3 fa-regular3 fa-percent3" onClick={() => {discount(); listHandler(category, difficulty, discountRate)}}>할인중</div>
                           <div className="hr3"></div>
-                          <div className="myButton3 fa-regular3 fa-star3">입문</div>
-                          <div className="myButton3 fa-regular3 fa-star-half-stroke3">초급</div>
-                          <div className="myButton3 fa-solid3 fa-star3">중급이상</div>
+                          <div className="myButton3 fa-regular3 fa-star3" onClick={() => {setDifficulty('easy'); listHandler(category, difficulty, discountRate)}}>입문</div>
+                          <div className="myButton3 fa-regular3 fa-star-half-stroke3"  onClick={() => {setDifficulty('middle'); listHandler(category, difficulty, discountRate)}}>초급</div>
+                          <div className="myButton3 fa-solid3 fa-star3"  onClick={() => {setDifficulty('hard'); listHandler(category, difficulty, discountRate)}}>중급이상</div>
                       </div>
                       <div className="list3">
                           {itemList.map((item) => (

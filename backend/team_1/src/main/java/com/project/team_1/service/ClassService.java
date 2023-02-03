@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
+import com.project.team_1.dto.Class.GetCategoryDto;
 import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDiscountRateClassListDto;
@@ -205,6 +206,62 @@ public class ClassService {
 			}
 			data.add(new GetClassInfoDto(classEntity, avg));
 		}
+		return ResponseDto.setSuccess("success", data);
+	}
+	
+	// SubcategoryClass List
+	public ResponseDto<List<GetClassInfoDto>> getSubcategoryClassList(GetCategoryDto dto) {
+		String category = dto.getCategory();
+		String difficulty = dto.getDifficulty();
+		boolean discountRate = dto.getDiscountRate();
+		
+		List<ClassEntity> getSubcategoryClassList;
+		
+		if(discountRate) {
+			if(category.equals("all")) {
+				if(difficulty.equals("notSelect")) {
+					getSubcategoryClassList = classRepository.findByDiscountRateNot(0);
+				}else {
+					getSubcategoryClassList = classRepository.findByDiscountRateNotAndDifficulty(0, difficulty);
+				}
+			} else {
+				if(difficulty.equals("notSelect")) {
+					getSubcategoryClassList = classRepository.findByDiscountRateNotAndCategory(0, category);
+				}else {
+					getSubcategoryClassList = classRepository.findByDiscountRateNotAndCategoryAndDifficulty(0, category, difficulty);
+				}
+			}
+		} else {
+			if(category.equals("all")) {
+				if(difficulty.equals("notSelect")) {
+					getSubcategoryClassList = classRepository.findAll();
+				}else {
+					getSubcategoryClassList = classRepository.findByDifficulty(difficulty);
+				}
+			} else {
+				if(difficulty.equals("notSelect")) {
+					getSubcategoryClassList = classRepository.findByCategory(category);
+				}else {
+					getSubcategoryClassList = classRepository.findByCategoryAndDifficulty(category, difficulty);
+				}
+			}
+		}
+		
+		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : getSubcategoryClassList) {
+			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+			int avg = 0;
+			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+			for (ReviewEntity review: reviewList) {
+				avg += review.getGrade();
+			}
+			if(reviewList.size() != 0) {
+				avg = avg/reviewList.size();
+			}
+			data.add(new GetClassInfoDto(classEntity, avg));
+		}
+		
+		
 		return ResponseDto.setSuccess("success", data);
 	}
 	
