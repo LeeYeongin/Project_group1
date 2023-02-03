@@ -135,13 +135,15 @@ export default function List() {
                       </div>
                   </div>
                   <div className="container3 main33">
-                      <div className="head-bar3">
+                    <div className= "container3 wrapper3">
+                    <div className="head-bar3">
                           <div className="">강의 목록</div>
                           <div className="search3">
                               <input type="text" id='search' className="search-input3" placeholder="개발/프로그래밍 검색" onChange={(e) => setSearch(e.target.value)}/>
                               <input type='button' className="search-btn3" value='검색' onClick={() => searchHandler()}></input>
                           </div>
                       </div>
+                    </div>
                       <div className="choice-menu3">
                           <div className="myButton3">전체</div>
                           <div className="hr3"></div>
