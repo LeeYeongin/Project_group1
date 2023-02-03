@@ -18,7 +18,7 @@ import ReviewList from "../detail/content3/ReviewList";
     console.log(grade)
   const [value] = React.useState<number>(parseInt(grade));
     return(
-      <Rating name="read-only" value={value} readOnly />
+      <Rating name="read-only" value={grade} readOnly />
     )
   }
 
@@ -33,6 +33,13 @@ const Study = ({ carouselMap }: StudyProps) => {
     slidesToShow: 4,
     slidesToScroll: 2,
   };
+
+  //상세페이지 이동
+  const gotopage = () => {
+    axios.post('http://localhost:4040/main5',);
+
+  window.location.href = `http://localhost:3000/main5/1`;
+  }
 
   return (
     <>
@@ -49,7 +56,7 @@ const Study = ({ carouselMap }: StudyProps) => {
             <div className="course_dashboard_card4">
               <Slider {...settings}>
                 {cm.lectures.map((item: any) => (
-                  <a href= "">                                    
+                  <a href= "#" onClick={gotopage}>
                     <div className="course_card4">
                       <img src={Course1} alt="" className="course_face4" />
                       <div className="course_title4">{item.className}</div>
@@ -76,6 +83,7 @@ const Study = ({ carouselMap }: StudyProps) => {
 
 export default function CustomCarousel() {
   const [carouselMap, setCarouselMap] = useState<any[]>([]);
+  const [click, setClick] = useState<any[]>([]);
 
   const connectionCarousel = async () => {
     const tmp = [];
@@ -88,7 +96,7 @@ export default function CustomCarousel() {
       category: '프론트',
       subtitle: 'front',
       lectures: (frontList as AxiosResponse<any, any>).data.data
-    });
+    });console.log(tmp)
 
     //back강의 가져오기
     const backList = await axios
