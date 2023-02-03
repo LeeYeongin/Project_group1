@@ -13,7 +13,7 @@ function Main5(){
     const idRef3 = useRef<HTMLDivElement>(null);
 
     // idClass 입력시 파람으로 받도록 설정
-    const { idClass } = useParams();
+    const { idClass } = useParams<string>();
 
     const onScrollClick = (id : string) => {
         if(id === 'content1') idRef1.current?.scrollIntoView({ behavior: 'smooth' });
@@ -97,7 +97,7 @@ function Main5(){
                             </div>
                             <div id='content3' className= 'con5'  ref={idRef3}>
                                 <h1>수강평</h1>
-                                <ReviewList reviewItems = {detailItems.reviewList}/>
+                                <ReviewList idClass={idClass} reviewItems = {detailItems.reviewList}/>
                             </div>
                         </div>
                         {/* 장바구니 */}

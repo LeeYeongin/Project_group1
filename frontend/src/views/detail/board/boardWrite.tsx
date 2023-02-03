@@ -3,33 +3,26 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
+import { useParams } from "react-router-dom";
 
 const BoardWrite = () => {
-  const [value, setValue] = useState<number | null>(5);
+  const [grade, setGrade] = useState<number | null>(5);
   const [idUser, setIdUser] = useState<string>('aaa');
-  const [text, setText] = useState<string>('');
+  const [contents, setContents] = useState<string>('');
 
-  // 클래스id저장[받아와야함]
-  const idClass:number = (1);
-
-  // 별점 저장
-  const changeGrade = (event: HTMLInputElement, newValue: number | null) => {
-    setValue(newValue);
-  }
+  // idClass 받아오는 값
+  const idClass2 = useParams<string>();
+  const idClass = idClass2.idClass;
 
   // 리뷰내용 저장
   const handleTextArea = (e: any) => {
-    setText(e.target.value)
+    setContents(e.target.value)
   }
-
-  // const postReview = [ idUser, text, idClass, value ];
-  const [postReview, setPostReview] = useState<any[]>([]);
-
-  console.log(postReview);
   
   const WriteBtn = () => {
-    axios.post('http://localhost:4040/reviewWrite', postReview);
-
+    const postReview = {idUser, contents, idClass, grade};
+    console.log(postReview);
+    axios.post('http://localhost:4040/writeReview', postReview).catch((error) => console.log(error.message));
     window.location.href = `http://localhost:3000/main5/${idClass}`;
   }
 
@@ -40,10 +33,10 @@ const BoardWrite = () => {
               <div className="input_ID">{idUser}</div>
           </div>
           <div className="boardText5">
-            <textarea className="reviewArea" placeholder="수정하는 내용" onChange={handleTextArea}/>
+            <textarea className="reviewArea" placeholder="리뷰작성" onChange={handleTextArea}/>
             {/* 별점기능 */}
             <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
-              <Rating className="WriteRating" value={value} size='large' onChange={(event, newValue) => {setValue(newValue);}}/>
+              <Rating className="WriteRating" value={grade} size='large' onChange={(event, newgrade) => {setGrade(newgrade);}}/>
             </Box> 
           </div>
           <div className="boardFooter">

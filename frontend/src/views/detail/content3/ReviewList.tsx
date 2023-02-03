@@ -1,34 +1,39 @@
 import { Rating } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './ReviewList.css';
 
 interface ItemProps{
-  reviewItems: any[]
+  reviewItems: any[];
+  idClass: string | undefined;
 }
 
 // 데이터는 id로 찾고 order by로 구분해서 해당 내용만 가져오게 설정
-const ReviewList = ({reviewItems}: ItemProps) => {
+const ReviewList = ({reviewItems, idClass}: ItemProps) => {
   // 시작페이지
   const [page, setPage] = useState<number>(1);
   // 페이지가 위치한 섹션
   const [section, setSection] = useState<number>(1);
   // 섹션의 최대 갯수
   const [pageList, setPageList] = useState<number[]> ([]);
+
+  const navigator = useNavigate();
+  console.log(reviewItems);
   
   // 임의의 표시제한
   const LIMIT = 4;
   // 버튼당 보여줄 페이지
   const offset = (page - 1) * LIMIT;
 
-  const { idClass } = useParams();
   // 페이지 이동
-  const WriteReview = () => { 
-    axios.post("/writeReview", idClass);
-    window.location.href = "/writeReview";
+  const WriteReview = () => {
+    navigator(`/writeReview/${idClass}`);
   }
-  const UpdateReview = () => { window.location.href = "/updateReview"; }
+
+  const UpdateReview = () => {
+    navigator(`/updateReview/${idClass}`);
+  }
 
   useEffect (() => {
     const list = [];

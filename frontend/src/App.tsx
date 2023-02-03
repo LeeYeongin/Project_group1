@@ -39,8 +39,8 @@ function App() {
           <Route path="findID" element={<FindId />} />
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
-          <Route path="writeReview" element={<WriteReview/>}/>
-          <Route path="updateReview" element={<UpdateReview/>}/>
+          <Route path="writeReview/:idClass" element={<WriteReview/>}/>
+          <Route path="updateReview/:idClass" element={<UpdateReview/>}/>
           <Route path="indexModal" element={<IndexModal />}/>
           <Route path="signup" element={<Signup />}/>
         </Route>
