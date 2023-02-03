@@ -10,6 +10,7 @@ import Course1 from '../../asset/images/exwebfront.png'
 // import Course2 from '../../asset/images/htmlbasic.png'
 import { useParams } from "react-router-dom";
 import ReviewList from "../detail/content3/ReviewList";
+import Main5 from "../detail/detail";
 
 
 
@@ -35,10 +36,11 @@ const Study = ({ carouselMap }: StudyProps) => {
   };
 
   //상세페이지 이동
-  const gotopage = () => {
-    axios.post('http://localhost:4040/main5',);
-
-  window.location.href = `http://localhost:3000/main5/1`;
+  const gotopage = ({idClass}: any) => {
+    axios.post('http://localhost:4040/main5/', idClass);
+    
+  window.location.href = 'http://localhost:3000/main5/' + idClass;
+  
   }
 
   return (
