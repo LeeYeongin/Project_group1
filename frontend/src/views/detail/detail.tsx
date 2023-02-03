@@ -53,7 +53,7 @@ function Main5(){
 
     const putCart = () => {
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/cart', idClass);
+        axios.post('http://localhost:4040/cart/add', idClass);
         window.location.href = ('/cart');
     }
 

@@ -45,5 +45,11 @@ public class CartController {
 	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<Integer> requestBody){
 		return cartService.deleteCartList(requestBody);
 	}
+	
+	@PostMapping("add")
+	public ResponseDto<ResultResponseDTO> addCartList(@RequestBody GetCartResponseDto requestBoydy){
+		return cartService.addCartList(requestBoydy);
+	}
+
 
 }

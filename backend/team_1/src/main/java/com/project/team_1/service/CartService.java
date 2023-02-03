@@ -110,8 +110,12 @@ public class CartService {
 //		for(Integer id: idCart) {
 //			System.out.println(id);
 //		}
-		System.out.println(requestBody.toString());
 		cartRepository.deleteAllById(requestBody);
+		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
+	}
+	
+	public ResponseDto<ResultResponseDTO> addCartList(GetCartResponseDto requestBody) {
+		cartRepository.save(new CartEntity(requestBody.getIdUser(), requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 	

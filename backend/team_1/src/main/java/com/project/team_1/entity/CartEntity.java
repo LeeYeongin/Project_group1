@@ -26,4 +26,9 @@ public class CartEntity {
 	private int idCart;
 	private String idUser;
 	private int idClass;
+	
+	public CartEntity(String idUser, int idClass){
+		this.idUser = idUser;
+		this.idClass = idClass;
+	}
 }
