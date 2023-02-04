@@ -3,6 +3,7 @@ package com.project.team_1.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,5 +41,12 @@ public class ReviewController {
 	@PatchMapping("updateReview")
 	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto){
 		return reviewService.ReviewUpdate(patchDto);
+	}
+	
+	// 리뷰 삭제
+	@DeleteMapping("/deleteReview/{idReview}")
+	public ResponseDto<?> deleteReview(@PathVariable("idReview") int idReview){
+		
+		return reviewService.ReviewDelete(idReview);
 	}
 }

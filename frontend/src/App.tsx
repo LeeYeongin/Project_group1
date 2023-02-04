@@ -40,7 +40,7 @@ function App() {
           <Route path="findPassword" element={<FindPassword />} />
           <Route path="myProfile" element={<MyProfile />} />
           <Route path="writeReview/:idClass" element={<WriteReview/>}/>
-          <Route path="updateReview/:idClass" element={<UpdateReview/>}/>
+          <Route path="updateReview/:idClass/:idReview" element={<UpdateReview/>}/>
           <Route path="indexModal" element={<IndexModal />}/>
           <Route path="signup" element={<Signup />}/>
         </Route>

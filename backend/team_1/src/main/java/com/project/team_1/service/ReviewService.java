@@ -68,4 +68,10 @@ public class ReviewService {
 		return ResponseDto.setSuccess("수정 성공", new ResultResponseDTO(true));
 	}
 
+	public ResponseDto<?> ReviewDelete(int idReview) {
+		reviewRepository.deleteById(idReview);
+		
+		return ResponseDto.setSuccess("리뷰 삭제", new ResultResponseDTO(true));
+	}
+
 }

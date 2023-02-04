@@ -10,9 +10,8 @@ function BoardUpdate() {
   const [idUser, setIdUser] = useState<string>('aaa');
   const [contents, setContents] = useState<string>('');
 
-  // idClass 받아오는 값
-  // const idClass2 = useParams<string>();
-  // const idClass = idClass2.idClass;
+  const idClass = useParams<string>();
+  const idReview = useParams<string>();
 
   // 리뷰내용 저장
   const handleTextArea = (e: any) => {
@@ -20,10 +19,10 @@ function BoardUpdate() {
   }
   
   const UpdateBtn = () => {
-    const petchReview = {contents, grade};
+    const petchReview = {idReview, contents, grade};
     axios.patch('http://localhost:4040/updateReview', petchReview).catch((error) => console.log(error.message));
 
-    // window.location.href = `http://localhost:3000/main5/${idClass}`;
+    window.location.href = `http://localhost:3000/main5/${idClass}`;
   }
 
   return(

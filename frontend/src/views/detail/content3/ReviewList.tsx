@@ -19,20 +19,25 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
   const [pageList, setPageList] = useState<number[]> ([]);
 
   const navigator = useNavigate();
-  console.log(reviewItems);
   
   // 임의의 표시제한
   const LIMIT = 4;
   // 버튼당 보여줄 페이지
   const offset = (page - 1) * LIMIT;
 
+  // const idReview = reviewItems.idReview;
+
   // 페이지 이동
   const WriteReview = () => {
     navigator(`/writeReview/${idClass}`);
   }
 
-  const UpdateReview = () => {
-    navigator(`/updateReview/${idClass}`);
+  const UpdateReview = (idReview?: number) => {
+    navigator(`/updateReview/${idClass}/${idReview}`);
+  }
+
+  const DeleteReview = (idReview?: number) => {
+    axios.delete(`http://localhost:4040/deleteReview/${idReview}`).catch((error) => console.log(error.message));;
   }
 
   useEffect (() => {
@@ -56,8 +61,8 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
           <p>{CONTENT.contents}</p>
         </div>
         <div className='reviewSubmit'>
-            <button type="button" onClick={UpdateReview}>수정하기</button>
-            <button type="button">삭제하기</button>
+            <button type="button" onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
+            <button type="button" onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button>
         </div>
       </div>
     )
