@@ -288,7 +288,7 @@ export default function List() {
                                       <div className="item-content3">
                                           <a href="#" className="item-title3">{item.className}</a>
                                           <span className="item-discription3">{item.instructor}</span>
-                                          <div className="item-img-container23"><Rating name="read-only" value={item.grade} readOnly />;</div>
+                                          <div className="item-img-container23"><Rating name="read-only" value={item.grade} readOnly />{item.grade}</div>
                                           <div className="item-footer3">
                                               <div className="project-time3"><i className="fa-solid3 fa-won-sign3"></i>{item.price}</div>
                                               <button className="btn3 btn-test3">{item.studentCount}</button>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import './style.css';
-import MyCourse from '../myCourse';
+
 
  //수강바구니 이동
 const gotocart = () => {
@@ -9,9 +9,16 @@ const gotocart = () => {
     window.location.href = `http://localhost:3000/cart`;
 }
 
+// 내 학습 이동
 const gotomystudy = () => {
     // axios.post(`http://localhost:4040/main5/${idClass}`);
     window.location.href = `http://localhost:3000/myCourse`;
+}
+
+//구매내역 이동0
+const gotoOrderlist = () => {
+
+    window.location.href = `http://localhost:3000/orderlist`;
 }
 
 
@@ -36,7 +43,7 @@ export default function MyProfile() {
                 <div className="menu1">
                     <div className="title1">수강신청 관리</div>
                     <div className="title21" onClick={gotocart}>수강 바구니</div>
-                    <div className="title21 title31">구매내역</div>
+                    <div className="title21 title31" onClick={gotoOrderlist}>구매내역</div>
                 </div>
                 <div className="menu1">
                     <div className="title1">설정</div>

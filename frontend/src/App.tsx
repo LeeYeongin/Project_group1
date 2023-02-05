@@ -22,6 +22,7 @@ import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
 import Signup from './views/signup';
 import axios from 'axios';
+import OrderList from './views/orderList';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="indexModal" element={<IndexModal />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="myCourse" element={<MyCourse />}/>
+          <Route path="orderList" element={<OrderList/>}/>
         </Route>
       </Routes>
     </div>
