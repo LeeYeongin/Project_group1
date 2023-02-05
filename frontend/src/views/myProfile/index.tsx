@@ -1,5 +1,19 @@
+import axios from 'axios';
 import React from 'react'
 import './style.css';
+import MyCourse from '../myCourse';
+
+ //수강바구니 이동
+const gotocart = () => {
+    // axios.post(`http://localhost:4040/main5/${idClass}`);
+    window.location.href = `http://localhost:3000/cart`;
+}
+
+const gotomystudy = () => {
+    // axios.post(`http://localhost:4040/main5/${idClass}`);
+    window.location.href = `http://localhost:3000/myCourse`;
+}
+
 
 export default function MyProfile() {
   return (
@@ -16,12 +30,12 @@ export default function MyProfile() {
                 </div>
                 <div className="menu">
                     <div className="title1">학습관리</div>
-                    <div className="title21">내 학습</div>
+                    <div className="title21" onClick={gotomystudy}>내 학습</div>
                     <div className="title21 title31">작성한 게시글</div>
                 </div>
                 <div className="menu1">
                     <div className="title1">수강신청 관리</div>
-                    <div className="title21">수강 바구니</div>
+                    <div className="title21" onClick={gotocart}>수강 바구니</div>
                     <div className="title21 title31">구매내역</div>
                 </div>
                 <div className="menu1">

@@ -43,6 +43,7 @@ function App() {
           <Route path="updateReview/:idClass/:idReview" element={<UpdateReview/>}/>
           <Route path="indexModal" element={<IndexModal />}/>
           <Route path="signup" element={<Signup />}/>
+          <Route path="myCourse" element={<MyCourse />}/>
         </Route>
       </Routes>
     </div>
