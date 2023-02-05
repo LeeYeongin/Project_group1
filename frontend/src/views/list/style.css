@@ -161,6 +161,13 @@ body {
     width: 920px;
     height: auto;
   }
+
+  /* 리스트 호버 할때 제목 보이게 하기 */
+  .list3 :hover{
+    overflow: visible;
+    -webkit-line-clamp: initial;
+  }
+
   .project-item3{
     padding: 0px 15px;
     border: 1px solid white;
@@ -219,6 +226,14 @@ body {
     margin: 6px 0px 10px;
     font-size: 1rem;
     color: #3498db;
+
+    /* 말줄임표 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
   }
   
   .item-discription3{
