@@ -97,25 +97,64 @@ export default function List() {
     //     like: '+500명'
     //   })
     // }
-    axios.get(`http://localhost:4040/list/show/${getcategory}`).then((Response) => {
-      console.log(getcategory)
-      const tmp = [];
-      setRequestResult('success!');
+    const searchFlag =
+      getcategory === 'all'
+        ? false
+        : getcategory === 'frontend'
+        ? false
+        : getcategory === 'fullstack'
+        ? false
+        : getcategory === 'database'
+        ? false
+        : getcategory === 'back'
+        ? false
+        : true;
 
-      for(let i = 0; i < Response.data.data.length; i++){
-        tmp.push({
-          img: Response.data.data[i].img,
-          className: Response.data.data[i].className,
-          instructor: Response.data.data[i].instructor,
-          price: Response.data.data[i].price,
-          discountRateRate: Response.data.data[i].discountRateRate,
-          studentCount: Response.data.data[i].studentCount,
-          grade: Response.data.data[i].grade
+    if (searchFlag) {
+      axios
+        .get('http://localhost:4040/list/' + getcategory)
+        .then((Response) => {
+          const tmp = [];
+          setRequestResult('success!');
+
+          for (let i = 0; i < Response.data.data.length; i++) {
+            tmp.push({
+              img: Response.data.data[i].img,
+              className: Response.data.data[i].className,
+              instructor: Response.data.data[i].instructor,
+              price: Response.data.data[i].price,
+              discountRateRate: Response.data.data[i].discountRateRate,
+              studentCount: Response.data.data[i].studentCount,
+              grade: Response.data.data[i].grade,
+            });
+          }
+          setItemList(tmp);
         })
-      }
-      setItemList(tmp);
-    })
+        .catch((error) => {
+          setRequestResult('Failed!');
+        });
+    } else {
+      axios
+        .get(`http://localhost:4040/list/show/${getcategory}`)
+        .then((Response) => {
+          console.log(getcategory);
+          const tmp = [];
+          setRequestResult('success!');
 
+          for (let i = 0; i < Response.data.data.length; i++) {
+            tmp.push({
+              img: Response.data.data[i].img,
+              className: Response.data.data[i].className,
+              instructor: Response.data.data[i].instructor,
+              price: Response.data.data[i].price,
+              discountRateRate: Response.data.data[i].discountRateRate,
+              studentCount: Response.data.data[i].studentCount,
+              grade: Response.data.data[i].grade,
+            });
+          }
+          setItemList(tmp);
+        });
+    }
   }, [])
 
   const searchHandler = () => {
