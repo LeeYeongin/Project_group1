@@ -4,6 +4,9 @@ import { Rating } from "@mui/material";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+
+   
+
 export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
     const [itemList, setItemList] = useState<any[]>([]);
@@ -16,6 +19,12 @@ export default function List() {
 
     const { getcategory } = useParams<string>();
 
+     //상세페이지 이동
+     const gotodetail = (idClass:number) => {
+      axios.post(`http://localhost:3000/main5/${idClass}`);
+      window.location.href = `http://localhost:3000/main5/${idClass}`;
+    }
+
     // 별점보기 평균 읽어오기
   function ReadOnly(grade: any) {
     console.log(grade)
@@ -23,7 +32,7 @@ export default function List() {
     return(
       <Rating name="read-only" value={grade} readOnly />
     )
-  }
+  }   
 
     const allCategoryHandler = () => {
       setItemList([]);
@@ -119,6 +128,8 @@ export default function List() {
 
           for (let i = 0; i < Response.data.data.length; i++) {
             tmp.push({
+              // idClass 추가
+              idClass: Response.data.data[i].idClass,
               img: Response.data.data[i].img,
               className: Response.data.data[i].className,
               instructor: Response.data.data[i].instructor,
@@ -127,8 +138,10 @@ export default function List() {
               studentCount: Response.data.data[i].studentCount,
               grade: Response.data.data[i].grade,
             });
+            console.log(Response.data.data[i].idClass)
           }
           setItemList(tmp);
+          
         })
         .catch((error) => {
           setRequestResult('Failed!');
@@ -143,6 +156,7 @@ export default function List() {
 
           for (let i = 0; i < Response.data.data.length; i++) {
             tmp.push({
+              idClass: Response.data.data[i].idClass,
               img: Response.data.data[i].img,
               className: Response.data.data[i].className,
               instructor: Response.data.data[i].instructor,
@@ -151,6 +165,7 @@ export default function List() {
               studentCount: Response.data.data[i].studentCount,
               grade: Response.data.data[i].grade,
             });
+            console.log(Response.data.data[i].idClass)
           }
           setItemList(tmp);
         });
@@ -229,6 +244,8 @@ export default function List() {
 
 
 
+
+
   return (
         <>
           <div className="main-container3">
@@ -261,8 +278,8 @@ export default function List() {
                           <div className="myButton3 fa-solid3 fa-star3"  onClick={() => {setDifficulty('hard'); listHandler(category, difficulty, discountRate)}}>중급이상</div>
                       </div>
                       <div className="list3">
-                          {itemList.map((item) => (
-                            <a href="/main5">
+                          {itemList.map((item:any) => (
+                            <a href= "#" onClick={() => gotodetail(item.idClass)}>
                               <div className="project-item3">
                                   <div className="project-container3">
                                       <div className="item-img-container3">
