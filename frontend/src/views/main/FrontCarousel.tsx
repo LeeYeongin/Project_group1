@@ -59,7 +59,7 @@ const Study = ({ carouselMap }: StudyProps) => {
                       <div className="course_title4">{item.className}</div>
                       <div className="course_instructor4">{item.instructor}</div>
                       <div className="course_rating4">
-                        <ReadOnly grade={item.grade}/>
+                      <Rating name="read-only" value={item.grade} readOnly />
                       </div>
                       <div className="course_price4">{item.price}원</div>
                       <div className="course_studentCount4">
