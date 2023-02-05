@@ -51,13 +51,40 @@ public class ClassService {
 	}
 
 	// all FrontList
-	public ResponseDto<List<GetClassInfoDto>> showAllFrontClassList() {
-		String category = "front";
-
-		List<ClassEntity> showFrontList = classRepository.findByCategory(category);
+//	public ResponseDto<List<GetClassInfoDto>> showAllFrontClassList() {
+//		String category = "front";
+//
+//		List<ClassEntity> showFrontList = classRepository.findByCategory(category);
+//		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
+//
+//		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFrontList) {
+//			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
+//			int avg = 0;
+//			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
+//			for (ReviewEntity review : reviewList) {
+//				avg += review.getGrade();
+//			}
+//			if (reviewList.size() != 0) {
+//				avg = avg / reviewList.size();
+//			}
+//			data.add(new GetClassInfoDto(classEntity, avg));
+//		}
+//		return ResponseDto.setSuccess("getFrontList", data);
+//	}
+	
+	public ResponseDto<List<GetClassInfoDto>> showClassList(String getcategory) {
+		String category = getcategory;
+		List<ClassEntity> showClassList;
 		List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 
-		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showFrontList) {
+		if(category.equals("all")) {
+			showClassList = classRepository.findAll();
+		} else {
+			showClassList = classRepository.findByCategory(category);
+		}
+//		List<ClassEntity> showFrontList = classRepository.findByCategory(category);
+		
+		for (ClassEntity classEntity/* 변수 내맘대로 써도됨 */ : showClassList) {
 			List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
 			int avg = 0;
 			reviewList = reviewRepository.findByIdClass(classEntity.getIdClass());
@@ -69,7 +96,7 @@ public class ClassService {
 			}
 			data.add(new GetClassInfoDto(classEntity, avg));
 		}
-		return ResponseDto.setSuccess("getFrontList", data);
+		return ResponseDto.setSuccess("getClassList success", data);
 	}
 
 	// BackEnd List

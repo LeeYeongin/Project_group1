@@ -27,7 +27,7 @@ export default function List() {
       setItemList([]);
       setgrade(0);
 
-      axios.get("http://localhost:4040/list/all")
+      axios.get("http://localhost:4040/list/show/all")
       .then((Response) => {
         const tmp = [];
         setRequestResult('success!');
@@ -95,7 +95,7 @@ export default function List() {
     //     like: '+500명'
     //   })
     // }
-    axios.get(`http://localhost:4040/list/${getcategory}`).then((Response) => {
+    axios.get(`http://localhost:4040/list/show/${getcategory}`).then((Response) => {
       console.log(getcategory)
       const tmp = [];
       setRequestResult('success!');

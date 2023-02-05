@@ -39,38 +39,40 @@ public class ClassListController {
 		return classService.getCategoryClassList(requestBody);
 	}
 	
-//	@PostMapping("back")
-//	public ResponseDto<List<GetClassInfoDto>> getCategoryClassList1(@RequestBody GetCategoryClassListDto requestBody){
-//		return classService.getCategoryClassList(requestBody);
-//	}
-	
-	//Header 목록에서 database Read
-	@GetMapping("front")
-	public ResponseDto<List<GetClassInfoDto>> showAllFrontClassList(){
-		return classService.showAllFrontClassList();
+	@GetMapping("show/{getcategory}")
+	public ResponseDto<List<GetClassInfoDto>> showClassList(@PathVariable("getcategory") String getcategory){
+		return classService.showClassList(getcategory);
 	}
 	
-	@GetMapping("back")
-	public ResponseDto<List<GetClassInfoDto>> showAllBackClassList(){
-		return classService.showAllBackClassList();
-	}
-	
-	@GetMapping("db")
-	public ResponseDto<List<GetClassInfoDto>> showAllDatabaseClassList(){
-		return classService. showAllDatabaseClassList();
-	}
-	
-	@GetMapping("full")
-	public ResponseDto<List<GetClassInfoDto>> showAllFullStackClassList(){
-		return classService. showAllFullStackClassList();
-	}
 
 	
+	//Header 목록에서 database Read
+//	@GetMapping("front")
+//	public ResponseDto<List<GetClassInfoDto>> showAllFrontClassList(){
+//		return classService.showAllFrontClassList();
+//	}
 	
-	@GetMapping("all")
-	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(){
-		return classService.showAllClassList();
-	}
+//	@GetMapping("back")
+//	public ResponseDto<List<GetClassInfoDto>> showAllBackClassList(){
+//		return classService.showAllBackClassList();
+//	}
+//	
+//	@GetMapping("db")
+//	public ResponseDto<List<GetClassInfoDto>> showAllDatabaseClassList(){
+//		return classService. showAllDatabaseClassList();
+//	}
+//	
+//	@GetMapping("full")
+//	public ResponseDto<List<GetClassInfoDto>> showAllFullStackClassList(){
+//		return classService. showAllFullStackClassList();
+//	}
+
+//	
+//	
+//	@GetMapping("all")
+//	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(){
+//		return classService.showAllClassList();
+//	}
 	
 	@PostMapping("all")
 	public ResponseDto<List<GetClassInfoDto>> getAllCategoryClassList(@RequestBody GetClassInfoDto requestBody){
@@ -91,6 +93,11 @@ public class ClassListController {
 	@PostMapping("category")
 	public ResponseDto<List<GetClassInfoDto>> getSubcategoryClassList(@RequestBody GetCategoryDto requsetBody){
 		return classService.getSubcategoryClassList(requsetBody);
+	}
+	
+	@PostMapping("back")
+	public ResponseDto<List<GetClassInfoDto>> getCategoryClassList1(@RequestBody GetCategoryClassListDto requestBody){
+		return classService.getCategoryClassList(requestBody);
 	}
 	
 	

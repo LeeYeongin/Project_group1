@@ -19,8 +19,8 @@ const gotolist = (getcategory:any) => {
         <Dropdown.Item href="#" onClick={() => gotolist("all")}>전체강의</Dropdown.Item>
         <Dropdown.Item href="#" onClick={() => gotolist("front")}>프론트엔드</Dropdown.Item>
         <Dropdown.Item href="#" onClick={() => gotolist("back")}>백엔드</Dropdown.Item>
-        <Dropdown.Item href="#" onClick={() => gotolist("db")}>데이테베이스</Dropdown.Item>
-        <Dropdown.Item href="#" onClick={() => gotolist("full")}>풀스택</Dropdown.Item>
+        <Dropdown.Item href="#" onClick={() => gotolist("database")}>데이테베이스</Dropdown.Item>
+        <Dropdown.Item href="#" onClick={() => gotolist("fullstack")}>풀스택</Dropdown.Item>
     </DropdownButton>
     );
 }
