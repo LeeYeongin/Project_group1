@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
-
+import { Rating } from "@mui/material";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -16,12 +16,14 @@ export default function List() {
 
     const { getcategory } = useParams<string>();
 
-    const showStar = (grade: number) =>{
-      
-      for(let i = 0; i < grade; i++){
-        ;
-      }
-    };
+    // 별점보기 평균 읽어오기
+  function ReadOnly(grade: any) {
+    console.log(grade)
+  const [value] = React.useState<number>(parseInt(grade));
+    return(
+      <Rating name="read-only" value={grade} readOnly />
+    )
+  }
 
     const allCategoryHandler = () => {
       setItemList([]);
@@ -230,7 +232,7 @@ export default function List() {
                                       <div className="item-content3">
                                           <a href="#" className="item-title3">{item.className}</a>
                                           <span className="item-discription3">{item.instructor}</span>
-                                          <div className="item-img-container23">{showStar(0)}({item.grade});</div>
+                                          <div className="item-img-container23"><Rating name="read-only" value={item.grade} readOnly />;</div>
                                           <div className="item-footer3">
                                               <div className="project-time3"><i className="fa-solid3 fa-won-sign3"></i>{item.price}</div>
                                               <button className="btn3 btn-test3">{item.studentCount}</button>
