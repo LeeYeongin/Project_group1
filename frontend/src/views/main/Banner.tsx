@@ -15,7 +15,7 @@ function Banner() {
       <Carousel>
         <Carousel.Item interval={3000}>
           <div id="box1" className="box4">
-            <a href="#">
+            <a href="/list/front">
               <div className="box_text4">
                 <div className="box_text4_title1">
                     <div>
@@ -32,7 +32,7 @@ function Banner() {
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <div id="box2" className="box4">
-            <a href="#">
+            <a href="list/back">
               <div className="box_text4">
               <div className="box_text4_title2">
                     <div>
@@ -49,7 +49,7 @@ function Banner() {
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <div id="box3" className="box4">
-            <a href="#">
+            <a href="list/database">
               <div className="box_text4">
               <div className="box_text4_title3">
                     <div>
@@ -66,7 +66,7 @@ function Banner() {
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <div id="box4" className="box4">
-            <a href="#">
+            <a href="list/fullstack">
               <div className="box_text4">
               <div className="box_text4_title4">
                     <div>

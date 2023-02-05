@@ -100,7 +100,7 @@ export default function List() {
     const searchFlag =
       getcategory === 'all'
         ? false
-        : getcategory === 'frontend'
+        : getcategory === 'front'
         ? false
         : getcategory === 'fullstack'
         ? false

@@ -30,7 +30,7 @@ function Main(){
             <Banner/>
 
             {/* 검색 */}
-           <div className="search_container4">
+            <div className="search_container4">
                 <div className="search_container_content4">
                     <h3>Happy에서 가치를 높이세요</h3>
                     <div className="search_wrapper4">
@@ -47,7 +47,7 @@ function Main(){
                     <ul>
                         <li>
                             <div className="icon_list_card4">
-                                <a href= "#">
+                                <a href= "list/front">
                                     <img src={Icon1} alt="" className="course_icon4"/>
                                     <p className="img_title4">#프론트엔드</p>
                                 </a>
@@ -55,7 +55,7 @@ function Main(){
                         </li>
                         <li>
                             <div className="icon_list_card4">
-                                <a href="#">
+                                <a href="list/back">
                                     <img src={Icon2} alt="" className="course_icon4"/>
                                     
                                         <p className="img_title4">#백엔드</p>
@@ -65,7 +65,7 @@ function Main(){
                         </li>
                         <li>
                             <div className="icon_list_card4">
-                                <a href="#">
+                                <a href="list/database">
                                     <img src={Icon3} alt=""  className="course_icon4"/>
                                     
                                         <p className="img_title4" >#데이터베이스</p>
@@ -75,7 +75,7 @@ function Main(){
                         </li>
                         <li>
                             <div className="icon_list_card4">
-                                <a href="#">
+                                <a href="list/fullstack">
                                     <img src={Icon4} alt=""  className="course_icon4"/>
                                     
                                         <p className="img_title4">#풀스텍</p>
