@@ -14,6 +14,7 @@ import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.cart.GetCartUserInfoDto;
 import com.project.team_1.dto.cart.PostCartDto;
 import com.project.team_1.dto.cart.PostCartId;
+import com.project.team_1.dto.payment.PaymentInfoDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.entity.CartEntity;
@@ -117,6 +118,11 @@ public class CartService {
 	public ResponseDto<ResultResponseDTO> addCartList(GetCartResponseDto requestBody) {
 		cartRepository.save(new CartEntity(requestBody.getIdUser(), requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
+	}
+	
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody){
+		
+		return ResponseDto.setSuccess("Payment success", new ResultResponseDTO(true));
 	}
 	
 

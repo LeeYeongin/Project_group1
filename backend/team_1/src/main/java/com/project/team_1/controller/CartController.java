@@ -16,6 +16,7 @@ import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.cart.GetCartUserInfoDto;
 import com.project.team_1.dto.cart.PostCartDto;
 import com.project.team_1.dto.cart.PostCartId;
+import com.project.team_1.dto.payment.PaymentInfoDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.service.CartService;
@@ -51,5 +52,8 @@ public class CartController {
 		return cartService.addCartList(requestBoydy);
 	}
 
-
+	@PostMapping("payment")
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody){
+		return cartService.payClass(requestBody);
+	}
 }
