@@ -96,6 +96,15 @@ header {
     cursor: pointer;
 }
 
+.disable{
+    width: 0;
+    height: 0;
+}
+
+.disable > a{
+    font-size: 0;
+}
+
 .login_btn4 :hover{
     color: #000;
 }

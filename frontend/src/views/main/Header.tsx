@@ -1,4 +1,6 @@
-import React from 'react';
+import { Logout } from '@mui/icons-material';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 import Logo from '../../asset/images/logo.png';
 import DropButton from './DropButton'
@@ -30,11 +32,19 @@ function Header({email, setOpen}: props){
                 </svg>
               </a>
             </div>
-            <div className="login_btn4">
+            {/* 비로그인 */}
+            <div className={email ? 'disable' : 'login_btn4'}>
               <a onClick={() => setOpen(true)}>로그인</a>
             </div>
-            <div className="sign_up4">
+            <div className={email ? 'disable' : 'sign_up4'}>
               <a href="/signup">회원가입</a>
+            </div>
+            {/* 로그인 상태 */}
+            <div className={email ? 'login_btn4' : 'disable'} >
+              <a href="">{email} /logout</a>
+            </div>
+            <div className={email ? 'sing_up4 ' : 'disable'}>
+              <a href="">{email} / mypage</a>
             </div>
           </div>
         </div>
