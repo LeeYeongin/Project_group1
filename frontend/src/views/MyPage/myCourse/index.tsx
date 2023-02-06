@@ -26,6 +26,13 @@ const gotoOrderlist = () => {
   window.location.href = `http://localhost:3000/orderlist`;
 }
 
+//정보수정 이동0
+const gotoModifiy = () => {
+
+  window.location.href = `http://localhost:3000/modifiyProfile`;
+}
+
+
 
 export default function MyCourse() {
   return (
@@ -61,7 +68,7 @@ export default function MyCourse() {
               </div>
               <div className="menu1">
                 <div className="title1">설정</div>
-                <div className="title21 title31">계정 정보</div>
+                <div className="title21 title31" onClick={gotoModifiy}>계정 정보</div>
               </div>
             </div>
             <div className="my-course-container">

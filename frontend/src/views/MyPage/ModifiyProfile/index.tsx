@@ -26,6 +26,13 @@ const gotoMyCourse = () => {
   window.location.href = `http://localhost:3000/myCourse`;
 }
 
+//정보수정 이동0
+const gotoModifiy = () => {
+
+  window.location.href = `http://localhost:3000/modifiyProfile`;
+}
+
+
 export default function ModifiyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
     const getUserInfoHandler = () => {
@@ -38,7 +45,7 @@ export default function ModifiyProfile() {
         
         // setUserProfile((userInfo as AxiosResponse<any, any>).data.data)
 
-        axios.post("http://localhost:4040/myProfile", getdata)
+        axios.post("http://localhost:4040/modifiyProfile", getdata)
         .then((Response) => {
             const tmp = [];
             tmp.push({
@@ -51,8 +58,6 @@ export default function ModifiyProfile() {
             description: Response.data.data.description
           })
           setUserProfile(tmp)
-          console.log(userProfile?.at(0).email)
-          console.log(userProfile?.at(0).description)
         })
         .catch((error) => {
       
@@ -63,6 +68,20 @@ export default function ModifiyProfile() {
     useEffect(() => {
        getUserInfoHandler();
     }, []);
+
+    const deleteUser = (arg: any) => {
+      const getdata = 'aaa'
+
+      axios.get("http://localhost:4040/modifiyProfile/" + getdata)
+      .then((Response) => {
+        console.log('sss')
+        alert('회원탈퇴 성공!!!')
+      })
+      .catch((error) => {
+        
+      })
+
+    }
 
   return (
     <>
@@ -93,7 +112,7 @@ export default function ModifiyProfile() {
               </div>
               <div className="menu1">
                 <div className="title1">설정</div>
-                <div className="title21 title31" onClick={gotoOrderlist}>계정 정보</div>
+                <div className="title21 title31" onClick={gotoModifiy}>계정 정보</div>
               </div>
             </div>
             <div className="main-menu1">
@@ -112,7 +131,9 @@ export default function ModifiyProfile() {
                 </div>
                 <div className="list01">
                   <div className="list11">이름</div>
-                  <div className="list31">{userProfile?.at(0).name}</div>
+                  <div className="list31">
+                    <input className='userInput' type="text" value={userProfile?.at(0).name}/>
+                  </div>
                 </div>
                 <div className="list01">
                   <div className="list11">닉네임</div>
@@ -137,8 +158,8 @@ export default function ModifiyProfile() {
                   </div>
                 </div>
                 <div className="list01">
-                  <div className="list11">회원탈퇴</div>
-                  <div className="list31"></div>
+                  <div className="list11">계정</div>
+                  <div className="delete" onClick={deleteUser}>회원탈퇴</div>
                 </div>
               </div>
             </div>

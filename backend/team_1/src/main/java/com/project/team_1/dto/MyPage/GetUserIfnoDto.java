@@ -14,13 +14,19 @@ import lombok.NoArgsConstructor;
 public class GetUserIfnoDto {
 	private String img;
 	private String nickName;
+	private String name;
 	private String email;
+	private String password;
+	private String telNum;
 	private String description;
 	
 	public GetUserIfnoDto(UserEntity user) {
 		this.img = user.getProfile();
 		this.nickName = user.getNickname();
+		this.name = user.getName();
 		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.telNum = user.getTelnum();
 		this.description = user.getDescription();
 	}
 }

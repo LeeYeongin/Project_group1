@@ -17,6 +17,7 @@ import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
 import Signup from './views/signup';
 import OrderList from './views/orderList';
+import ModifiyProfile from './views/MyPage/modifiyProfile';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="signup" element={<Signup />}/>
           <Route path="myCourse" element={<MyCourse />}/>
           <Route path="orderList" element={<OrderList/>}/>
+          <Route path="modifiyProfile" element={<ModifiyProfile/>}/>
         </Route>
       </Routes>
     </div>
