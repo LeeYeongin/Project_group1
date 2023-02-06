@@ -49,13 +49,14 @@ public class ReviewService {
 	}
 
 	// 리뷰 수정
-	public ResponseDto<ResultResponseDTO> ReviewUpdate(PatchReviewDTO dto) {
-		
-		int reviewId = dto.getReviewId();
+	public ResponseDto<ResultResponseDTO> ReviewUpdate(PatchReviewDTO dto, int idReview) {
+
 		ReviewEntity review = null;
 		
+		System.out.println(idReview);
+		
 		try {
-			review = reviewRepository.findById(reviewId).get();
+			review = reviewRepository.findById(idReview).get();
 		}catch(Exception e) {
 			return ResponseDto.setFailed("해당 리뷰는 존재하지 않습니다.");
 		}

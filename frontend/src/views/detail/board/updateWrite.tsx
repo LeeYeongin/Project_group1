@@ -17,12 +17,14 @@ function BoardUpdate() {
   const handleTextArea = (e: any) => {
     setContents(e.target.value)
   }
-  
-  const UpdateBtn = () => {
-    const petchReview = {idReview, contents, grade};
-    axios.patch('http://localhost:4040/updateReview', petchReview).catch((error) => console.log(error.message));
 
-    window.location.href = `http://localhost:3000/main5/${idClass}`;
+  const UpdateBtn = () => {
+    const patchReview = {contents, grade};
+    axios.patch(`http://localhost:4040/updateReview/${idReview.idReview}`, patchReview)
+    .then((respo) => { console.log(respo.data) })
+    .catch((error) => console.log(error.message));
+
+    window.location.href = `http://localhost:3000/main5/${idClass.idClass}`;
   }
 
   return(

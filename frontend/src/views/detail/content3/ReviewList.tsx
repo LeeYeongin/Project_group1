@@ -25,8 +25,6 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
   // 버튼당 보여줄 페이지
   const offset = (page - 1) * LIMIT;
 
-  // const idReview = reviewItems.idReview;
-
   // 페이지 이동
   const WriteReview = () => {
     navigator(`/writeReview/${idClass}`);
@@ -75,12 +73,15 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
        <div className='review5_change'>
           <div className="reviewCollect5">
             {/* 페이지 관리 */}
+            {/* section이 첫번째 섹션일때 비활성화 */}
             <button className="leftBtn" onClick={() => setSection(section - 1)} disabled={section === 1}>&lt;</button>
             {pageList.map((index) => (
+              // 섹션 속 페이지 출력
               <button key={index + 1} onClick={() => setPage(index + 1)} className={index + 1 === page ? "selectItem" : "selectItem disabled"}>
                 {index + 1}
               </button>
             ))}
+            {/* section이 마지막 섹션이면 비활성화 */}
             <button className="rightBtn" onClick={() => setSection(section + 1)} disabled={section * 5 >= (reviewItems.length - 1) / 4}>&gt;</button>
           </div>
          <button type="button" className="writeReview5" onClick={WriteReview}>작성하기</button>

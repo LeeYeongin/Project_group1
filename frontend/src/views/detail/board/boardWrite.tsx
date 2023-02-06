@@ -21,7 +21,6 @@ const BoardWrite = () => {
   
   const WriteBtn = () => {
     const postReview = {idUser, contents, idClass, grade};
-    console.log(postReview);
     axios.post('http://localhost:4040/writeReview', postReview).catch((error) => console.log(error.message));
     window.location.href = `http://localhost:3000/main5/${idClass}`;
   }

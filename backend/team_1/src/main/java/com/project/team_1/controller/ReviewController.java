@@ -38,9 +38,9 @@ public class ReviewController {
 	}
 	
 	// 리뷰 수정
-	@PatchMapping("updateReview")
-	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto){
-		return reviewService.ReviewUpdate(patchDto);
+	@PatchMapping("updateReview"+"/{idReview}")
+	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto, @PathVariable("idReview") int idReview){
+		return reviewService.ReviewUpdate(patchDto, idReview);
 	}
 	
 	// 리뷰 삭제
