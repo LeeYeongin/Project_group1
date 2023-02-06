@@ -5,9 +5,10 @@ import DropButton from './DropButton'
 
 interface props {
   setOpen: any;
+  email: string | undefined;
 }
 
-function Header({setOpen}: props){
+function Header({email, setOpen}: props){
     return (
       <header>
         <div className="h_nav_bar4">
