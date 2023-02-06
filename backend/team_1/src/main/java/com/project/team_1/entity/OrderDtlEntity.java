@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name="order_dtl")
 public class OrderDtlEntity {
 	@Id
+	private int idOrderDtl;
 	private int idOrder;
 	private int idClass;
 	private int price;
