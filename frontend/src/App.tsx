@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Cart from './views/cart';
-import MyCourse from './views/myCourse';
+import MyCourse from './views/MyPage/myCourse';
 import Main from './views/main/main';
 import List from './views/list';
-import MyProfile from './views/myProfile';
+import MyProfile from './views/MyPage/myProfile';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import FindId from './views/FindId/index';
 import IndexModule from './views/FindId/indexModal';

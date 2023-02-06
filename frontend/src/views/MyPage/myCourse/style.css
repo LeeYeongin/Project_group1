@@ -7,23 +7,28 @@ body {
     margin: 0px;
 }
 
-.mypage-select-header {
-    padding: 16px;
-    height: 68px;
-
-    background-color: rgb(41, 40, 40);
-    color: white;
-}
-
-.my-course {
-    margin: 0px;
-    font-size: 24px;
-}
-
 .my-course-container {
     padding: 8px;
     margin-top: 8px;
+
+    width: 100%;
+    height: 100%;
 }
+.list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    /* border-top: 1px solid rgb(187, 186, 186); */
+    padding: 5px;
+
+    width: 100%;
+    height: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
 
 .my-course-container-header {
     font-size: 15px;
@@ -39,8 +44,8 @@ body {
 }
 
 .my-course-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
+    /* flex-wrap: wrap; */
 }
 
 .my-course-item {
