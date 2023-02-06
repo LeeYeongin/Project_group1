@@ -17,7 +17,7 @@ import Login from './views/login';
 import IndexModal from './views/FindId/indexModal';
 import Signup from './views/signup';
 import OrderList from './views/orderList';
-import ModifiyProfile from './views/MyPage/modifiyProfile';
+import ModifiyProfile from './views/MyPage/ModifyProfile';
 
 function App() {
 
