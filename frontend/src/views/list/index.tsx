@@ -45,6 +45,7 @@ export default function List() {
   
         for(let i = 0; i < Response.data.data.length; i++){
           tmp.push({
+            idClass: Response.data.data[i].idClass,
             img: Response.data.data[i].img,
             className: Response.data.data[i].className,
             instructor: Response.data.data[i].instructor,
@@ -77,6 +78,7 @@ export default function List() {
 
       for(let i = 0; i < Response.data.data.length; i++){
         tmp.push({
+          idClass: Response.data.data[i].idClass,
           img: Response.data.data[i].img,
           className: Response.data.data[i].className,
           instructor: Response.data.data[i].instructor,
@@ -181,6 +183,7 @@ export default function List() {
 
       for(let i = 0; i < Response.data.data.length; i++){
         tmp.push({
+          idClass: Response.data.data[i].idClass,
           img: Response.data.data[i].img,
           className: Response.data.data[i].className,
           instructor: Response.data.data[i].instructor,
@@ -217,6 +220,7 @@ export default function List() {
 
       for(let i = 0; i < Response.data.data.length; i++){
         tmp.push({
+          idClass: Response.data.data[i].idClass,
           img: Response.data.data[i].img,
           className: Response.data.data[i].className,
           instructor: Response.data.data[i].instructor,
@@ -282,9 +286,9 @@ export default function List() {
                             <a href= "#" onClick={() => gotodetail(item.idClass)}>
                               <div className="project-item3">
                                   <div className="project-container3">
-                                      <div className="item-img-container3">
-                                          <img src={item.img} />
-                                      </div>
+                                      {/* <div className="item-img-container3"> */}
+                                          <img src={item.img} className="item-img-container3" />
+                                      {/* </div> */}
                                       <div className="item-content3">
                                           <a href="#" className="item-title3">{item.className}</a>
                                           <span className="item-discription3">{item.instructor}</span>
