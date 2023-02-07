@@ -15,7 +15,7 @@ export default function Cart() {
   const [checkValue, setCheckValue] = useState<number[]>([]);
   const [priceSum, setPriceSum] = useState<number>(0);
   const [showList, setShowList] = useState<boolean>(false);
-  let sum = 0;
+  const [isAllCheck, setIsAllCheck] = useState<boolean>(true);
 
   const deleteHandler = () => {
     axios.post("http://localhost:4040/cart/delete", checkValue)
@@ -52,7 +52,6 @@ export default function Cart() {
         setRequestResult('Failed!!');
       })
 
-      // console.log(Response.data.data.length);
       if(Response.data.data.length === 0){
         setShowList(false);
       }else{
@@ -63,18 +62,13 @@ export default function Cart() {
             img: Response.data.data[i].classInfo.img,
             className: Response.data.data[i].classInfo.className,
             price: Response.data.data[i].classInfo.price,
-            instructor: Response.data.data[i].classInfo.instructor
+            instructor: Response.data.data[i].classInfo.instructor,
+            isCheck: false
           })
-          // sum = sum + parseInt(Response.data.data[i].classInfo.price);
-          
         }
 
         setItemList(tmp);
-        // setPriceSum(sum);
         setShowList(true);
-        // setPriceSum(priceSum+parseInt(tmp[i].price));
-        
-      // console.log(priceSum);
       }
       console.log(requestResult);
     })
@@ -84,23 +78,20 @@ export default function Cart() {
     })
   }
 
-  const sumPriceFucntion = (price: number) => {
-    sum = sum + price;
-    setPriceSum(sum)
-  }
-
   const showListHandler = () => {
-    console.log(showList);
     if(!showList){
       return <NoCartList/>
     }else{
-      return <CartList itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue} setPriceSum={setPriceSum} priceSum={priceSum}/>
+      return <CartList 
+      itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue} setPriceSum={setPriceSum} priceSum={priceSum}/>
     }
   }
 
   useEffect(() => {
     cartHandler()
   },[])
+
+  
   
   return (
     <>
@@ -112,8 +103,8 @@ export default function Cart() {
               <>
               <div className="cart-control2">
                 <div className="select-control2">
-                  <input type="checkbox" />
-                  <span>전체선택</span>
+                  <input type="checkbox" checked={isAllCheck} onClick={()=>setIsAllCheck(isAllCheck?false:true)}/>
+                  <span> 전체선택</span>
                 </div>
                 <button className="cancel-control2" onClick={() => deleteHandler()}>선택삭제 X</button>
               </div>
@@ -128,9 +119,6 @@ export default function Cart() {
                   <span>구매자정보</span>
                   <i className="fa-regular2 fa-circle-question2"></i>
                 </div>
-                <a className="modify-btn2" href="#">
-                  수정
-                </a>
               </div>
               <div className="buyer-name2">
                 <dt>이름</dt>
@@ -146,7 +134,7 @@ export default function Cart() {
               </div>
             </div>
             <div className="payment-container2">
-              <div className="coupon-using2">
+              {/* <div className="coupon-using2">
                 <div className="coupon-header2">
                   <div>
                     <span>쿠폰</span>
@@ -186,7 +174,7 @@ export default function Cart() {
                   />
                   <button className="point-select-btn2">전액사용</button>
                 </div>
-              </div>
+              </div> */}
               <div className="price-regular2">
                 <span>선택상품 금액</span>
                 <span>{priceSum}원</span>

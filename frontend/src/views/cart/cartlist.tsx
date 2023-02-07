@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface props {
     itemList: any[];
@@ -7,8 +7,8 @@ interface props {
     setPriceSum: any;
     priceSum: number;
 }
-export default function CartList({itemList, checkValue, setCheckValue, setPriceSum, priceSum}: props) {
 
+export default function CartList({itemList, checkValue, setCheckValue, setPriceSum, priceSum}: props) {
   const plusPriceFucntion = (price: number) => {
     let sum = priceSum;
     sum = sum + price;
@@ -22,31 +22,17 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
   }
 
     const cartCheckHandler = (data: any) => {
-        // let tmp = checkValue;
-        // if (tmp.includes(cartId)){
-        //   tmp = checkValue.filter((item) => item !== cartId);
-        // }
-          
-        // else 
-        //   tmp.push(cartId);
-        
-        // setCheckValue(tmp);
-        // console.log(checkValue);
-        const obj = JSON.parse(data);
-
         let tmp = checkValue;
-        const id = obj.idCart;
-        console.log(id)
+        const obj = JSON.parse(data);
+        let id = obj.idCart
         if (tmp.includes(id)){
           tmp = checkValue.filter((item) => item !== id);
           minusPriceFucntion(parseInt(obj.price))
         }
-        else {
+        else{
           tmp.push(id);
           plusPriceFucntion(parseInt(obj.price))
-        }
-         
-        
+        } 
         setCheckValue(tmp);
         console.log(checkValue);
       }
