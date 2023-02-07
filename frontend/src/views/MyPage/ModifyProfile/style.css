@@ -150,10 +150,13 @@ body {
     height: auto;
     background-color: rgb(243, 243, 243);
 }
+.box {
+    display: flex;
+    justify-content: space-around;
+}
 
 .delete {
     padding: 15px;
-
     border-radius: 8px;
 
     width: 95px;
@@ -164,6 +167,20 @@ body {
 
     cursor: pointer;
 
+}
+.modifiy{
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+
+    width: 95px;
+    height: 50px;
+
+    background-color: #2779cc;
+    color: white;
+
+    cursor: pointer;
+    outline: none;
 }
 
 

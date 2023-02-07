@@ -8,10 +8,10 @@ import './style.css';
   window.location.href = `http://localhost:3000/cart`;
 }
 
-// 내 학습 이동
-const gotomystudy = () => {
+// 프로필로 이동
+const gotoProfile = () => {
   // axios.post(`http://localhost:4040/main5/${idClass}`);
-  window.location.href = `http://localhost:3000/myCourse`;
+  window.location.href = `http://localhost:3000/myProfile`;
 }
 
 //구매내역 이동0
@@ -83,6 +83,34 @@ export default function ModifiyProfile() {
 
     }
 
+    const modifiyHandler = () => {
+      const getdata = {
+        idUser: "aaa"
+    };
+
+      axios.patch("http://localhost:4040/modifiyProfile/")
+      .then((Response) => {
+        const tmp = [];
+  
+        for(let i = 0; i < Response.data.data.length; i++){
+          tmp.push({
+            img: Response.data.data.img,
+            name: Response.data.data.name,
+            nickName:Response.data.data.nickName,
+            email: Response.data.data.email,
+            password: Response.data.data.password,
+            telNum: Response.data.data.telNum,
+            description: Response.data.data.description
+          })
+        }
+        setUserProfile(tmp);
+  
+      })
+      .catch((error) =>{
+
+      })
+    }
+
   return (
     <>
       <div className="head-bar1">
@@ -94,7 +122,7 @@ export default function ModifiyProfile() {
             <div className="side-menu1">
               <div className="menu1">
                 <div className="title1">HOME</div>
-                <div className="title21">프로필</div>
+                <div className="title21" onClick={gotoProfile}>프로필</div>
               </div>
               <div className="menu">
                 <div className="title1">학습관리</div>
@@ -132,34 +160,45 @@ export default function ModifiyProfile() {
                 <div className="list01">
                   <div className="list11">이름</div>
                   <div className="list31">
-                    <input className='userInput' type="text" value={userProfile?.at(0).name}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).name}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">닉네임</div>
-                  <div className="list31">{userProfile?.at(0).nickName}</div>
+                  <div className="list31">
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).nickName}/>
+                  </div>
                 </div>
                 <div className="list01">
                   <div className="list11">이메일</div>
-                  <div className="list31">{userProfile?.at(0).email}</div>
+                  <div className="list31">
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).email}/>
+                  </div>
                 </div>
                 <div className="list01">
                   <div className="list11">비밀번호</div>
-                  <div className="list31">{userProfile?.at(0).password}</div>
+                  <div className="list31">
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).password}/>
+                  </div>
                 </div>
                 <div className="list01">
                   <div className="list11">전화번호</div>
-                  <div className="list31">{userProfile?.at(0).telNum}</div>
+                  <div className="list31">
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).telNum}/>
+                  </div>
                 </div>
                 <div className="list01">
                   <div className="list11">자기소개</div>
                   <div className="introduce1">
-                    {userProfile?.at(0).description}
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).description}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">계정</div>
-                  <div className="delete" onClick={deleteUser}>회원탈퇴</div>
+                  <div className='box'>
+                    <div className="delete" onClick={deleteUser}>회원탈퇴</div>
+                    <input type='button' value='수정하기' className='modifiy' onClick={modifiyHandler}/>
+                  </div>
                 </div>
               </div>
             </div>
