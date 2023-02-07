@@ -45,7 +45,7 @@ export default function orderList(){
                     <div className="subtitle-title">
                         금액
                     </div>
-                    <div className="subtitle-data" id="count-data" >
+                    <div className="subtitle-data">
                         100원
                     </div>
                 </div>       

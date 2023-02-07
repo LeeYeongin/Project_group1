@@ -1,5 +1,7 @@
 package com.project.team_1.dto.orderList;
 
+import java.util.List;
+
 import com.project.team_1.entity.OrderDtlEntity;
 import com.project.team_1.entity.OrderMstEntity;
 
@@ -18,16 +20,14 @@ public class GetOrderListDto {
 	private int idOrder;
 	private String orderDate;
 	private String status;
-	private int idClass;
-	private int price;
+	private List<OrderDtlEntity> orderDtlList;
 	
-	public GetOrderListDto(OrderMstEntity orderMstEntity, OrderDtlEntity orderDtlEntity) {
+	public GetOrderListDto(OrderMstEntity orderMstEntity, List<OrderDtlEntity> orderDtlEntity) {
 		this.idUser = orderMstEntity.getIdUser();
 		this.idOrder = orderMstEntity.getIdOrder();
 		this.orderDate = orderMstEntity.getOrderDate();
 		this.status = orderMstEntity.getStatus();
-		this.idClass = orderDtlEntity.getIdClass();
-		this.price = orderDtlEntity.getPrice();
+		this.orderDtlList = orderDtlEntity;
 	}
 
 }
