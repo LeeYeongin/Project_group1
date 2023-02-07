@@ -1,5 +1,6 @@
 package com.project.team_1.dto.orderList;
 
+import java.util.Date;
 import java.util.List;
 
 import com.project.team_1.entity.OrderDtlEntity;
@@ -17,14 +18,14 @@ import lombok.NoArgsConstructor;
 public class GetOrderListDto {
 	
 	private String idUser;
-	private int idOrder;
-	private String orderDate;
+	private String orderNumber;
+	private Date orderDate;
 	private String status;
 	private List<OrderDtlEntity> orderDtlList;
 	
 	public GetOrderListDto(OrderMstEntity orderMstEntity, List<OrderDtlEntity> orderDtlEntity) {
 		this.idUser = orderMstEntity.getIdUser();
-		this.idOrder = orderMstEntity.getIdOrder();
+		this.orderNumber = orderMstEntity.getOrderNumber();
 		this.orderDate = orderMstEntity.getOrderDate();
 		this.status = orderMstEntity.getStatus();
 		this.orderDtlList = orderDtlEntity;

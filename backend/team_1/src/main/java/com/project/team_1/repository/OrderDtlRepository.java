@@ -12,6 +12,6 @@ import com.project.team_1.entity.OrderDtlEntity;
 @Repository
 public interface OrderDtlRepository extends JpaRepository<OrderDtlEntity, Integer>{
 //	@Query("select od as OrderDtl")
-	List<OrderDtlEntity>findByidOrder(int orderId);
+	List<OrderDtlEntity>findByOrderNumber(String orderNumber);
 	
 }

@@ -33,12 +33,13 @@ public class OrderListService {
 			return ResponseDto.setFailed("xxx");
 		}
 		
-		List<OrderDtlEntity> orderDtl = orderDtlRepository.findByidOrder(orderMstEntity.getIdOrder());
+		List<OrderDtlEntity> orderDtl = orderDtlRepository.findByOrderNumber(orderMstEntity.getOrderNumber());
 		
 		GetOrderListDto data = 
 				GetOrderListDto
 				.builder()
-				.idOrder(orderMstEntity.getIdOrder())
+				.idUser(idUser)
+				.orderNumber(orderMstEntity.getOrderNumber())
 				.orderDate(orderMstEntity.getOrderDate())
 				.status(orderMstEntity.getStatus())
 				.orderDtlList(orderDtl)

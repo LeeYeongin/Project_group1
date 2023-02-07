@@ -1,6 +1,8 @@
 package com.project.team_1.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,13 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.entity.CartEntity;
 import com.project.team_1.entity.ClassEntity;
+import com.project.team_1.entity.OrderDtlEntity;
+import com.project.team_1.entity.OrderMstEntity;
 import com.project.team_1.entity.UserEntity;
 import com.project.team_1.repository.CartRepository;
 import com.project.team_1.repository.ClassRepository;
+import com.project.team_1.repository.OrderDtlRepository;
+import com.project.team_1.repository.OrderMstRepository;
 import com.project.team_1.repository.UserRepository;
 
 @Service
@@ -32,6 +38,10 @@ public class CartService {
 	ClassRepository classRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	OrderMstRepository orderMstRepository;
+	@Autowired
+	OrderDtlRepository orderDtlRepository;
 	
 	// cart에 담긴 강의정보 불러오기
 		public ResponseDto<List<GetCartClassListDto>> getCartList(GetCartListDto dto){
@@ -120,7 +130,21 @@ public class CartService {
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 	
-	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody){
+
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto dto){
+		Date now = new Date();
+		SimpleDateFormat data = new SimpleDateFormat("yyyyMMdd");
+		String date = data.format(now);
+		int randomNum = (int)(Math.random()*100);
+		String orderNumber = "H" + date + String.valueOf(randomNum) + String.valueOf(orderMstRepository.count()+1);
+		
+		orderMstRepository.save(new OrderMstEntity(now, dto.getIdUser(), "결제 완료", orderNumber));
+		
+		for(int classid : dto.getIdClass()) {
+			ClassEntity classEntity = classRepository.findById(classid).get();
+			int price = classEntity.getPrice();
+			orderDtlRepository.save(new OrderDtlEntity(orderNumber, classid, price));
+		}
 		
 		return ResponseDto.setSuccess("Payment success", new ResultResponseDTO(true));
 	}
