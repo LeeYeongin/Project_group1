@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetUserIfnoDto {
-	private String img;
-	private String nickName;
+	private String profile;
+	private String nickname;
 	private String name;
 	private String email;
 	private String password;
@@ -21,8 +21,8 @@ public class GetUserIfnoDto {
 	private String description;
 	
 	public GetUserIfnoDto(UserEntity user) {
-		this.img = user.getProfile();
-		this.nickName = user.getNickname();
+		this.profile = user.getProfile();
+		this.nickname = user.getNickname();
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.password = user.getPassword();

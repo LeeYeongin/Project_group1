@@ -35,6 +35,13 @@ const gotoModifiy = () => {
 
 export default function ModifiyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
+  const [profile, setProfile] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [telNum, setTelNum] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+
     const getUserInfoHandler = () => {
         const getdata = {
             idUser: "aaa"
@@ -49,20 +56,27 @@ export default function ModifiyProfile() {
         .then((Response) => {
             const tmp = [];
             tmp.push({
-            img: Response.data.data.img,
+            profile: Response.data.data.img,
             name: Response.data.data.name,
-            nickName:Response.data.data.nickName,
+            nickname:Response.data.data.nickname,
             email: Response.data.data.email,
             password: Response.data.data.password,
             telNum: Response.data.data.telNum,
             description: Response.data.data.description
           })
+          setProfile(Response.data.data.profile)
+          setNickname(Response.data.data.nickname)
+          setEmail(Response.data.data.email)
+          setProfile(Response.data.data.profile)
+          setPassword(Response.data.data.password)
+          setTelNum(Response.data.data.telNum)
+          setDescription(Response.data.data.description)
+          
           setUserProfile(tmp)
+         
         })
         .catch((error) => {
-      
         })
-
     }
 
     useEffect(() => {
@@ -74,7 +88,7 @@ export default function ModifiyProfile() {
 
       axios.get("http://localhost:4040/modifiyProfile/" + getdata)
       .then((Response) => {
-        console.log('sss')
+        
         alert('회원탈퇴 성공!!!')
       })
       .catch((error) => {
@@ -85,10 +99,16 @@ export default function ModifiyProfile() {
 
     const modifiyHandler = () => {
       const getdata = {
-        idUser: "aaa"
-    };
+        profile: profile,
+        name: userProfile?.at(0).name,
+        nickname: nickname,
+        email: email,
+        password: password,
+        telNum: telNum,
+        description: description,
+      };
 
-      axios.patch("http://localhost:4040/modifiyProfile/")
+      axios.patch("http://localhost:4040/modifiyProfile", getdata)
       .then((Response) => {
         const tmp = [];
   
@@ -96,7 +116,7 @@ export default function ModifiyProfile() {
           tmp.push({
             img: Response.data.data.img,
             name: Response.data.data.name,
-            nickName:Response.data.data.nickName,
+            nickname:Response.data.data.nickname,
             email: Response.data.data.email,
             password: Response.data.data.password,
             telNum: Response.data.data.telNum,
@@ -109,6 +129,7 @@ export default function ModifiyProfile() {
       .catch((error) =>{
 
       })
+      gotoModifiy()
     }
 
   return (
@@ -160,37 +181,37 @@ export default function ModifiyProfile() {
                 <div className="list01">
                   <div className="list11">이름</div>
                   <div className="list31">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).name}/>
+                    <input className='userInput' type="text" value={userProfile?.at(0).name} readOnly/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">닉네임</div>
                   <div className="list31">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).nickName}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).nickname} onChange={(e) => setNickname(e.target.value)}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">이메일</div>
                   <div className="list31">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).email}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).email} onChange={(e) => setEmail(e.target.value)}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">비밀번호</div>
                   <div className="list31">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).password}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).password} onChange={(e) => setPassword(e.target.value)}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">전화번호</div>
                   <div className="list31">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).telNum}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).telNum} onChange={(e) => setTelNum(e.target.value)}/>
                   </div>
                 </div>
                 <div className="list01">
                   <div className="list11">자기소개</div>
                   <div className="introduce1">
-                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).description}/>
+                    <input className='userInput' type="text" defaultValue={userProfile?.at(0).description} onChange={(e) => setDescription(e.target.value)}/>
                   </div>
                 </div>
                 <div className="list01">

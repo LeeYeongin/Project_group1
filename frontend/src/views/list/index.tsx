@@ -201,9 +201,7 @@ export default function List() {
     })
   }
 
-  const difficultyHandler = () => {
-    
-  }
+
 
 //--------------------------------------------------------------------------------------
   const listHandler = (arg: string, arg2: string, arg3: boolean) => {
@@ -241,13 +239,6 @@ export default function List() {
   const discount = () => {
     setDiscountRate(discountRate? false: true)
   }
-
-  // const difficulty = () => {
-  //   setDiscountRate({discountRate}? false: true)
-  // }
-
-
-
 
 
   return (
