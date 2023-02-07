@@ -6,6 +6,7 @@ import ReviewList from "./content3/ReviewList";
 import './detail.css';
 
 function Main5(){
+
     // 클릭시 스크롤 이동
     const idRef1 = useRef<HTMLDivElement>(null);
     const idRef2 = useRef<HTMLDivElement>(null);
@@ -14,13 +15,45 @@ function Main5(){
     // idClass 입력시 파람으로 받도록 설정
     const { idClass } = useParams<string>();
 
+    const [idUser, setIdUser] = useState<string>('aaa');
+
     const navigator = useNavigate();
+
+    // 클릭시 클래스 추가 이벤트
+    const [select, setSelect] = useState<string>('');
 
     const onScrollClick = (id : string) => {
         if(id === 'content1') idRef1.current?.scrollIntoView({ behavior: 'smooth' });
         if(id === 'content2') idRef2.current?.scrollIntoView({ behavior: 'smooth' });
         if(id === 'content3') idRef3.current?.scrollIntoView({ behavior: 'smooth' });
+
+        setSelect(id);
     };
+
+    const btnList = [
+        {
+            id: 1,
+            divId: 'content1',
+            divTitle: '강의소개'
+        },
+        {
+            id: 2,
+            divId: 'content2',
+            divTitle: '커리큘럼'
+        },
+        {
+            id: 3,
+            divId: 'content3',
+            divTitle: '수강평'
+        }
+    ]
+
+    const ScrollBtn = btnList.map((BTN) => {
+        return(
+            <button key={BTN.id} className={`${select === BTN.divId ? 'menu5 view' : 'menu5'}`} type="button" onClick={() => onScrollClick(BTN.divId)}>{BTN.divTitle}</button>
+        )
+    })
+
     // 스크롤시 상단 고정
     const [ScrollY, setScrollY] = useState(0);
     const [ScrollActive, setScrollActive] = useState(false);
@@ -52,9 +85,11 @@ function Main5(){
         })  
     }, []);
 
+    // 장바구니 이동
     const putCart = () => {
+        const addCart = { idUser, idClass }
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/cart/add', idClass);
+        axios.post('http://localhost:4040/cart/add', addCart);
         navigator('/cart');
     }
 
@@ -76,20 +111,16 @@ function Main5(){
                         </div>
                     </div> 
                     <div className= {ScrollActive ? 'detail5_menu5 fixed' : 'detail5_menu5'}>
-                        <div className='menu5_list'>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content1')}>강의소개</button></div>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content2')}>커리큘럼</button></div>
-                            <div className='menu5'><button type="button" onClick={() => onScrollClick('content3')}>수강평</button></div>
-                        </div>
+                        <div className='menu5_list'>{ScrollBtn}</div>
                     </div> 
                     <div className='detail5_content'>
                         <div className='detail5_content_main'>
                             <div id='content1' className= {ScrollActive ? 'con5 scroll' : 'con5'} ref={idRef1}>
                                 <h1>강의소개</h1>
                                 <div className="explan">
-                                    <p>{detailItems.classInfoDtl}</p>
+                                    <p id="item5_infoDtl">{detailItems.classInfoDtl}</p>
                                     <br/>
-                                    <p>{detailItems.classInfoDtl}</p>
+                                    <p id="item5_infoDtl">{detailItems.classInfoDtl}</p>
                                 </div>
                             </div>
                             <div id='content2' className= 'con5' ref={idRef2}>
@@ -98,7 +129,7 @@ function Main5(){
                             </div>
                             <div id='content3' className= 'con5'  ref={idRef3}>
                                 <h1>수강평</h1>
-                                <ReviewList idClass={idClass} reviewItems = {detailItems.reviewList}/>
+                                <ReviewList idUser={idUser} idClass={idClass} reviewItems = {detailItems.reviewList}/>
                             </div>
                         </div>
                         {/* 장바구니 */}

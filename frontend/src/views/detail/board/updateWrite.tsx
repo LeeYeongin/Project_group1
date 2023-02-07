@@ -3,11 +3,11 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function BoardUpdate() {
   const [grade, setGrade] = useState<number | null>(5);
-  const [idUser, setIdUser] = useState<string>('aaa');
+  const [idUser] = useState<string>(useLocation().state);
   const [contents, setContents] = useState<string>('');
 
   const idClass = useParams<string>();

@@ -7,10 +7,12 @@ import './ReviewList.css';
 interface ItemProps{
   reviewItems: any[];
   idClass: string | undefined;
+  idUser: string;
 }
 
 // 데이터는 id로 찾고 order by로 구분해서 해당 내용만 가져오게 설정
-const ReviewList = ({reviewItems, idClass}: ItemProps) => {
+const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
+
   // 시작페이지
   const [page, setPage] = useState<number>(1);
   // 페이지가 위치한 섹션
@@ -27,11 +29,11 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
 
   // 페이지 이동
   const WriteReview = () => {
-    navigator(`/writeReview/${idClass}`);
+    navigator(`/writeReview/${idClass}`, {state: idUser});
   }
 
   const UpdateReview = (idReview?: number) => {
-    navigator(`/updateReview/${idClass}/${idReview}`);
+    navigator(`/updateReview/${idClass}/${idReview}`, {state: idUser});
   }
 
   const DeleteReview = (idReview?: number) => {
@@ -59,8 +61,10 @@ const ReviewList = ({reviewItems, idClass}: ItemProps) => {
           <p>{CONTENT.contents}</p>
         </div>
         <div className='reviewSubmit'>
-            <button type="button" onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
-            <button type="button" onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button>
+            <button type="button" className={idUser === CONTENT.idUser ? 'loginEnable' : 'loginDisable'} onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
+            <button type="button" className={idUser === CONTENT.idUser ? 'loginEnable' : 'loginDisable'} onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button>
+            {/* <button type="button" onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
+            <button type="button" onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button> */}
         </div>
       </div>
     )

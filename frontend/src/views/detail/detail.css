@@ -109,19 +109,10 @@ h1{
 }
 /* 메뉴 리스트 */
 .menu5{
-  margin-right: 20px;
-  align-items: center;
-}
-
-.position{
-    border-bottom: 1px solid #000;
-}
-
-.menu5 > button{
     width: 80px;
     height: 60px;
 
-    margin: 10px 0;
+    margin: 10px;
 
     background-color: transparent;
     border: none;
@@ -130,10 +121,8 @@ h1{
     font-weight: bold;
 }
 
-.menu5:last-child{ margin: 0; }
-
-.menu5_view{
-    border-bottom: 2px solid #fff;
+.view{
+    background-color: #eee;
 }
 
 /* 상세보기[강의소개, 커리큘럼, 수강평]*/
@@ -173,9 +162,13 @@ h1{
     font-weight: bold;
 }
 
-.con5 .explan{
+.explan{
     padding-top: 10px;
     padding-left: 20px;
+}
+
+.explan > #item5_infoDtl{
+    margin-top: 20px;
 
     font-size: 20px;
     font-weight: bold;

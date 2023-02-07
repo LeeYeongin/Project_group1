@@ -71,7 +71,7 @@
   justify-content: space-between;
 }
 
-.reviewSubmit > button{
+.loginEnable{
   margin: 0 5%;
 
   width: 80%;
@@ -85,8 +85,12 @@
   background-color: transparent;
 }
 
-.reviewSubmit > button:hover{
+.loginEnable:hover{
   background-color: #89c2ff;
+}
+
+.loginDisable{
+  display: none;
 }
 
 /* 보여주는 항목 변경 */
