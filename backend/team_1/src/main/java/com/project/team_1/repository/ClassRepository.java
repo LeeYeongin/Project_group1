@@ -37,4 +37,6 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	List<ClassEntity> findByDiscountRateNotAndCategory(int discountRate, String Category);
 	
 	List<ClassEntity> findByDiscountRateNotAndCategoryAndDifficulty(int discountRate, String Category, String difficulty);
+	
+	List<ClassEntity> findByClassName(String className);
 }

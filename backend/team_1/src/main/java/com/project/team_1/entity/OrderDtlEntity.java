@@ -26,6 +26,8 @@ public class OrderDtlEntity {
 	   private int idClass;
 	   private int price;
 	   
+	   
+	   
 	   public OrderDtlEntity(String orderNumber, int idClass, int price) {
 	      this.orderNumber = orderNumber;
 	      this.idClass = idClass;

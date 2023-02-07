@@ -32,5 +32,7 @@ public class ClassEntity {
 	private Integer discountRate;
 	private String instructor;
 	
+	
+	
 
 }
