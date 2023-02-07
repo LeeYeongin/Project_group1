@@ -12,7 +12,7 @@ const BoardWrite = () => {
 
   // idClass 받아오는 값
   const idClass2 = useParams<string>();
-  const idClass = useParams<string>();
+  const idClass = idClass2.idClass;
 
   const navigator = useNavigate();
 
