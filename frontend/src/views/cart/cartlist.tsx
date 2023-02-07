@@ -4,18 +4,51 @@ interface props {
     itemList: any[];
     checkValue: number[];
     setCheckValue: any;
+    setPriceSum: any;
+    priceSum: number;
 }
-export default function CartList({itemList, checkValue, setCheckValue}: props) {
-    const cartCheckHandler = (cartId: any) => {
+export default function CartList({itemList, checkValue, setCheckValue, setPriceSum, priceSum}: props) {
+
+  const plusPriceFucntion = (price: number) => {
+    let sum = priceSum;
+    sum = sum + price;
+    setPriceSum(sum)
+  }
+
+  const minusPriceFucntion = (price: number) => {
+    let sum = priceSum;
+    sum = sum - price;
+    setPriceSum(sum)
+  }
+
+    const cartCheckHandler = (data: any) => {
+        // let tmp = checkValue;
+        // if (tmp.includes(cartId)){
+        //   tmp = checkValue.filter((item) => item !== cartId);
+        // }
+          
+        // else 
+        //   tmp.push(cartId);
+        
+        // setCheckValue(tmp);
+        // console.log(checkValue);
+        const obj = JSON.parse(data);
+
         let tmp = checkValue;
-        if (tmp.includes(cartId))
-          tmp = checkValue.filter((item) => item !== cartId);
-        else 
-          tmp.push(cartId);
+        const id = obj.idCart;
+        console.log(id)
+        if (tmp.includes(id)){
+          tmp = checkValue.filter((item) => item !== id);
+          minusPriceFucntion(parseInt(obj.price))
+        }
+        else {
+          tmp.push(id);
+          plusPriceFucntion(parseInt(obj.price))
+        }
+         
         
         setCheckValue(tmp);
         console.log(checkValue);
-    
       }
 
   return (
@@ -23,7 +56,7 @@ export default function CartList({itemList, checkValue, setCheckValue}: props) {
         {itemList.map((item) => (
                 <>
                 <div className="cart-list2">
-                  <input type="checkbox" value={item.idCart} onChange={(e) => cartCheckHandler(e.currentTarget.value)} className="course-select2" />
+                  <input type="checkbox" value={JSON.stringify(item)} onChange={(e) => {cartCheckHandler(e.currentTarget.value)}} className="course-select2" />
                   <div className="cart-course-img2">
                     <img src={item.img} alt="course-img" />
                   </div>
@@ -41,7 +74,7 @@ export default function CartList({itemList, checkValue, setCheckValue}: props) {
                     </button>
                   </div>
                   <div className="payment2">
-                    {item.price}
+                    {item.price}원
                   </div>
                 </div>
               </>

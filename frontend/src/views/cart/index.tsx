@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { error } from 'console';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Totoro from '../../asset/img/totoro.png';
 import CartList from './cartlist';
 import NoCartList from './nocartlist';
@@ -13,8 +13,9 @@ export default function Cart() {
   const [email, setEmail] = useState<string>('')
   const [telNum, setTelNum] = useState<string>('')
   const [checkValue, setCheckValue] = useState<number[]>([]);
-  const [priceSum, setPriceSum] = useState<number>();
+  const [priceSum, setPriceSum] = useState<number>(0);
   const [showList, setShowList] = useState<boolean>(false);
+  let sum = 0;
 
   const deleteHandler = () => {
     axios.post("http://localhost:4040/cart/delete", checkValue)
@@ -38,7 +39,7 @@ export default function Cart() {
     axios.post("http://localhost:4040/cart/", getdata)
     .then((Response) => {
       const tmp = [];
-      const sum = 0;
+      // let sum = 0;
       setRequestResult('Success!!');
 
       axios.post("http://localhost:4040/cart/user", getdata)
@@ -50,7 +51,8 @@ export default function Cart() {
       .catch((error) => {
         setRequestResult('Failed!!');
       })
-      console.log(Response.data.data.length);
+
+      // console.log(Response.data.data.length);
       if(Response.data.data.length === 0){
         setShowList(false);
       }else{
@@ -60,11 +62,15 @@ export default function Cart() {
             idCart: Response.data.data[i].idCart,
             img: Response.data.data[i].classInfo.img,
             className: Response.data.data[i].classInfo.className,
-            price: Response.data.data[i].classInfo.price + "원",
+            price: Response.data.data[i].classInfo.price,
             instructor: Response.data.data[i].classInfo.instructor
           })
-          setItemList(tmp);
+          // sum = sum + parseInt(Response.data.data[i].classInfo.price);
+          
         }
+
+        setItemList(tmp);
+        // setPriceSum(sum);
         setShowList(true);
         // setPriceSum(priceSum+parseInt(tmp[i].price));
         
@@ -78,14 +84,23 @@ export default function Cart() {
     })
   }
 
+  const sumPriceFucntion = (price: number) => {
+    sum = sum + price;
+    setPriceSum(sum)
+  }
+
   const showListHandler = () => {
     console.log(showList);
     if(!showList){
       return <NoCartList/>
     }else{
-      return <CartList itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue}/>
+      return <CartList itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue} setPriceSum={setPriceSum} priceSum={priceSum}/>
     }
   }
+
+  useEffect(() => {
+    cartHandler()
+  },[])
   
   return (
     <>
@@ -174,7 +189,7 @@ export default function Cart() {
               </div>
               <div className="price-regular2">
                 <span>선택상품 금액</span>
-                <span>176000원</span>
+                <span>{priceSum}원</span>
               </div>
               <div className="price-discount2">
                 <div>
@@ -187,7 +202,7 @@ export default function Cart() {
               </div>
               <div className="price-pay2">
                 <span>총 결제금액</span>
-                <span>176000원</span>
+                <span>{priceSum}원</span>
                 {/* <div>{requestResult}</div> */}
               </div>
               <button className="payment-btn2" onClick={() => cartHandler()}>
