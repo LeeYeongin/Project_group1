@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Carlist from './content2/CarList';
 import ReviewList from "./content3/ReviewList";
 import './detail.css';
@@ -13,6 +13,8 @@ function Main5(){
 
     // idClass 입력시 파람으로 받도록 설정
     const { idClass } = useParams<string>();
+
+    const navigator = useNavigate();
 
     const onScrollClick = (id : string) => {
         if(id === 'content1') idRef1.current?.scrollIntoView({ behavior: 'smooth' });
@@ -53,7 +55,7 @@ function Main5(){
     const putCart = () => {
         // id와 함께 장바구니로 넘어감
         axios.post('http://localhost:4040/cart/add', idClass);
-        window.location.href = ('/cart');
+        navigator('/cart');
     }
 
     console.log(detailItems);
@@ -64,7 +66,7 @@ function Main5(){
                 <div className='detail5_main' key={detailItems.idClass}>
                     <div className='detail5_topbanner'>
                         <div className='detail5_top_body'>
-                            <div className='detail5_img' style={{backgroundImage: `${detailItems.img}`}}/>
+                            <img className='detail5_img' src={detailItems.img}/>
                             <div className='detail5_title'>
                                 <p>{detailItems.category}</p>
                                 <p id='item5_title'>{detailItems.className}</p>

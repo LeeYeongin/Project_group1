@@ -3,7 +3,7 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BoardWrite = () => {
   const [grade, setGrade] = useState<number | null>(5);
@@ -12,7 +12,9 @@ const BoardWrite = () => {
 
   // idClass 받아오는 값
   const idClass2 = useParams<string>();
-  const idClass = idClass2.idClass;
+  const idClass = useParams<string>();
+
+  const navigator = useNavigate();
 
   // 리뷰내용 저장
   const handleTextArea = (e: any) => {
@@ -22,7 +24,7 @@ const BoardWrite = () => {
   const WriteBtn = () => {
     const postReview = {idUser, contents, idClass, grade};
     axios.post('http://localhost:4040/writeReview', postReview).catch((error) => console.log(error.message));
-    window.location.href = `http://localhost:3000/main5/${idClass}`;
+    navigator(`/main5/${idClass2.idClass}`);
   }
 
   return(

@@ -3,7 +3,7 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import './board.css';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function BoardUpdate() {
   const [grade, setGrade] = useState<number | null>(5);
@@ -12,6 +12,8 @@ function BoardUpdate() {
 
   const idClass = useParams<string>();
   const idReview = useParams<string>();
+
+  const navigator = useNavigate();
 
   // 리뷰내용 저장
   const handleTextArea = (e: any) => {
@@ -24,7 +26,7 @@ function BoardUpdate() {
     .then((respo) => { console.log(respo.data) })
     .catch((error) => console.log(error.message));
 
-    window.location.href = `http://localhost:3000/main5/${idClass.idClass}`;
+    navigator(`/main5/${idClass.idClass}`);
   }
 
   return(
