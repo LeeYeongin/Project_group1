@@ -37,17 +37,16 @@ const gotoModifiy = () => {
 
 export default function MyCourse() {
   const [myCourseList, setMyCourseList] = useState<any[]>([]);
+  
   const getMyCourseList = () => {
-    const getdata = {
-        'aaa'
-    };
+    const getdata = 'aaa';
 
     // const userInfo = await axios
     //     .post("http://localhost:4040/myProfile", getdata);
     
     // setUserProfile((userInfo as AxiosResponse<any, any>).data.data)
 
-    axios.get("http://localhost:4040/myCourse" + getdata)
+    axios.get("http://localhost:4040/myCourse/" + getdata)
     .then((Response) => {
         const tmp = [];
         for(let i = 0; i < Response.data.data.length; i++){
