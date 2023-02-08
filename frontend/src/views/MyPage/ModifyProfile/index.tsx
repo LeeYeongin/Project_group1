@@ -130,6 +130,8 @@ export default function ModifiyProfile() {
 
       })
       gotoModifiy()
+
+      alert('회원수정 성공')
     }
 
   return (

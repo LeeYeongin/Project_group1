@@ -1,4 +1,4 @@
-package com.project.team_1.service;
+ package com.project.team_1.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +53,9 @@ public class OrderListService {
 			int priceSum = 0;
 			for(OrderDtlEntity orderDtlEntity : orderDtl) {
 				int idClass = classRepository.findById(orderDtlEntity.getIdClass()).get().getIdClass();
+				String img = classRepository.findById(orderDtlEntity.getIdClass()).get().getImg();
 				String name = classRepository.findById(orderDtlEntity.getIdClass()).get().getClassName();
-				className.add(new ClassNameDto(idClass, name));
+				className.add(new ClassNameDto(idClass, img, name));
 				priceSum +=  classRepository.findById(orderDtlEntity.getIdClass()).get().getPrice();
 			}
 			

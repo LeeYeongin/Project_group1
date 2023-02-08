@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.project.team_1.dto.Class.GetClassInfoDto;
+import com.project.team_1.dto.Class.GetMyCourseDto;
+import com.project.team_1.dto.MyPage.GetUserIfnoDto;
 import com.project.team_1.entity.ClassEntity;
 
 @Repository
@@ -39,4 +42,6 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	List<ClassEntity> findByDiscountRateNotAndCategoryAndDifficulty(int discountRate, String Category, String difficulty);
 	
 	List<ClassEntity> findByClassName(String className);
+	
+	ClassEntity findByIdClass(String UserID);
 }

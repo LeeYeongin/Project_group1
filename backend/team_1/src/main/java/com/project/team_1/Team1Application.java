@@ -20,7 +20,7 @@ public class Team1Application {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 				.allowedOriginPatterns()
-				.allowedMethods("GET", "POST", "PATCH", "DELETE");
+				.allowedMethods("GET", "POST", "PATCH", "DELETE", "OPTIONS");
 			}
 		};
 	}

@@ -5,17 +5,28 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.project.team_1.dto.Class.GetCategoryClassListDto;
 import com.project.team_1.dto.Class.GetCategoryDto;
 import com.project.team_1.dto.Class.GetClassInfoDto;
 import com.project.team_1.dto.Class.GetDifficultyClassListDto;
 import com.project.team_1.dto.Class.GetDiscountRateClassListDto;
+import com.project.team_1.dto.Class.GetMyCourseDto;
+import com.project.team_1.dto.MyPage.GetUserIfnoDto;
+import com.project.team_1.dto.MyPage.UserIdDto;
+import com.project.team_1.dto.orderList.ClassNameDto;
+import com.project.team_1.dto.orderList.GetOrderListDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
+import com.project.team_1.entity.OrderDtlEntity;
+import com.project.team_1.entity.OrderMstEntity;
 import com.project.team_1.entity.ReviewEntity;
 import com.project.team_1.repository.ClassRepository;
+import com.project.team_1.repository.OrderDtlRepository;
+import com.project.team_1.repository.OrderMstRepository;
 import com.project.team_1.repository.ReviewRepository;
+import com.project.team_1.repository.UserRepository;
 
 @Service
 public class ClassService {
@@ -24,6 +35,10 @@ public class ClassService {
 	ClassRepository classRepository;
 	@Autowired
 	ReviewRepository reviewRepository;
+	@Autowired
+	OrderDtlRepository orderDtlRepository;
+	@Autowired
+	OrderMstRepository orderMstRepository;
 
 	// FrontEnd List
 	public ResponseDto<List<GetClassInfoDto>> showFrontList() {
@@ -379,6 +394,49 @@ public class ClassService {
 		}
 
 		return ResponseDto.setSuccess("success", data);
+	}
+	
+	// MyCourse List
+	public ResponseDto<List<GetOrderListDto>>showOrderList(String idUser){
+		List<GetOrderListDto> data = new ArrayList<GetOrderListDto>();
+		List<OrderMstEntity> orderMst;
+		
+		try {
+			orderMst = orderMstRepository.findByIdUser(idUser);
+		}catch(Exception e){
+			return ResponseDto.setFailed("xxx");
+		}
+		
+		for(OrderMstEntity orderMstEntity : orderMst) {
+			List<OrderDtlEntity> orderDtl = orderDtlRepository.findByOrderNumber(orderMstEntity.getOrderNumber());
+//			List<ClassEntity> classEntity = new ArrayList<ClassEntity>();
+//			List<String> className = new ArrayList<String>();
+			List<ClassNameDto> className = new ArrayList<ClassNameDto>();
+			int priceSum = 0;
+			for(OrderDtlEntity orderDtlEntity : orderDtl) {
+				int idClass = classRepository.findById(orderDtlEntity.getIdClass()).get().getIdClass();
+				String img = classRepository.findById(orderDtlEntity.getIdClass()).get().getImg();
+				String name = classRepository.findById(orderDtlEntity.getIdClass()).get().getClassName();
+				className.add(new ClassNameDto(idClass, img, name));
+				priceSum +=  classRepository.findById(orderDtlEntity.getIdClass()).get().getPrice();
+			}
+			
+			data.add( new GetOrderListDto(orderMstEntity, className, priceSum));
+		}
+		
+		
+//		GetOrderListDto data = 
+//				GetOrderListDto
+//				.builder()
+//				.idUser(idUser)
+//				.orderNumber(orderMstEntity.getOrderNumber())
+//				.orderDate(orderMstEntity.getOrderDate())
+//				.status(orderMstEntity.getStatus())
+//				.orderDtlList(orderDtl)
+//				.classEntity(classEntity)
+//				.build();
+		
+		return ResponseDto.setSuccess("getClassList success", data);
 	}
 
 }

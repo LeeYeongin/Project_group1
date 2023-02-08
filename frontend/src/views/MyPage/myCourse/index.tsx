@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import Totoro from '../../../asset/img/totoro.png';
 import './style.css';
 
@@ -35,6 +36,37 @@ const gotoModifiy = () => {
 
 
 export default function MyCourse() {
+  const [myCourseList, setMyCourseList] = useState<any[]>([]);
+  const getMyCourseList = () => {
+    const getdata = {
+        'aaa'
+    };
+
+    // const userInfo = await axios
+    //     .post("http://localhost:4040/myProfile", getdata);
+    
+    // setUserProfile((userInfo as AxiosResponse<any, any>).data.data)
+
+    axios.get("http://localhost:4040/myCourse" + getdata)
+    .then((Response) => {
+        const tmp = [];
+        for(let i = 0; i < Response.data.data.length; i++){
+          tmp.push({
+            img: Response.data.data[i].className,
+            className: Response.data.data[i].className,
+          })
+        }
+        console.log(tmp)
+        setMyCourseList(tmp);
+        console.log(myCourseList)
+    })
+    .catch((error) => {
+    })
+  }
+
+  useEffect(() =>{
+    getMyCourseList();
+  });
   return (
     <>
       <div className="head-bar1">
@@ -74,56 +106,18 @@ export default function MyCourse() {
             <div className="my-course-container">
               <div className="ex1">보유한 강의</div>
               <div className="list">
-                <div className="my-course-wrapper">
-                  <div className="my-course-item">
-                    <div className="my-course-item-img">
-                      <img src={Totoro} alt="임시사진" />
-                    </div>
-                    <div className="my-course-item-title">
-                      React & Express 를 이용한 웹 어플리케이션 개발하기
-                    </div>
-                  </div>
-                </div>
-                <div className="my-course-wrapper">
-                  <div className="my-course-item">
-                    <div className="my-course-item-img">
-                      <img src={Totoro} alt="임시사진" />
-                    </div>
-                    <div className="my-course-item-title">
-                      React & Express 를 이용한 웹 어플리케이션 개발하기
+                {myCourseList.map((list:any) => (
+                  <div className="my-course-wrapper">
+                    <div className="my-course-item">
+                      <div className="my-course-item-img">
+                        <img src={list.classImg} alt="" />
+                      </div>
+                      <div className="my-course-item-title">
+                        {list.className}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="my-course-wrapper">
-                  <div className="my-course-item">
-                    <div className="my-course-item-img">
-                      <img src={Totoro} alt="임시사진" />
-                    </div>
-                    <div className="my-course-item-title">
-                      React & Express 를 이용한 웹 어플리케이션 개발하기
-                    </div>
-                  </div>
-                </div>
-                <div className="my-course-wrapper">
-                  <div className="my-course-item">
-                    <div className="my-course-item-img">
-                      <img src={Totoro} alt="임시사진" />
-                    </div>
-                    <div className="my-course-item-title">
-                      React & Express 를 이용한 웹 어플리케이션 개발하기
-                    </div>
-                  </div>
-                </div>
-                <div className="my-course-wrapper">
-                  <div className="my-course-item">
-                    <div className="my-course-item-img">
-                      <img src={Totoro} alt="임시사진" />
-                    </div>
-                    <div className="my-course-item-title">
-                      React & Express 를 이용한 웹 어플리케이션 개발하기
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </>
