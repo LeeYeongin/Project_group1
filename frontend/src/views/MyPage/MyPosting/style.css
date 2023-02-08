@@ -1,0 +1,28 @@
+.myPosting-main-contianer {
+    width: 100%;
+    height: 100vh;
+}
+.posting-sub-title {
+    margin-top: 20px;
+    font-size: 20px;
+    /* font-weight: 600; */
+}
+
+.posting-list-wrapper {
+    margin-top: 30px;
+    border-bottom: 1px solid #c6c6c6;
+    width: 100%;
+    height: 110px;
+}
+
+.posting-title {
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.posting-contents {
+    padding: 15px;
+    height: 80px;
+
+}
