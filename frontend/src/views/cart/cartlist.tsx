@@ -26,47 +26,42 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
     setPriceSum(sum)
   }
 
-  const handleCartCheckAllHandler = (data: any, checked:boolean) => {
+  const handleCartCheckAllHandler = (checked:boolean) => {
+    let num:number[] = [];
+    const idArray: any[] = [];
+    let num2 = 0;
+
+    itemList.forEach((el:any) => idArray.push(el.idCart));
+    itemList.forEach((el:any) => num.push(el.price));
+
+    num.map((number) => {
+      num2 += number;
+    })
+
+    console.log(num2);
+
     if(checked){
-      const idArray: any[] = [];
-      itemList.forEach((el:any) => idArray.push(el.idCart));
       setCheckValue(idArray);
-
-      let tmp = checkValue;
-      const obj = JSON.parse(data);
-      let id = obj.idCart;
-      if (tmp.includes(id)){
-        tmp = checkValue.filter((item) => item !== id);
-        minusPriceFucntion(parseInt(obj.price))
-      }
-      else{
-        tmp.push(id);
-        plusPriceFucntion(parseInt(obj.price))
-      }
-      setCheckValue(tmp);
-
+      plusPriceFucntion(num2);
     }else{
       setCheckValue([]);
+      minusPriceFucntion(num2);
     }
   }
 
-  const cartCheckHandler = (data: any, checked:boolean) => {
-    if(checked){
-      let tmp = checkValue;
-      const obj = JSON.parse(data);
-      let id = obj.idCart;
-      if (tmp.includes(id)){
-        tmp = checkValue.filter((item) => item !== id);
-        minusPriceFucntion(parseInt(obj.price))
-      }
-      else{
-        tmp.push(id);
-        plusPriceFucntion(parseInt(obj.price))
-      }
-      setCheckValue(tmp);
-    }else{
-      setCheckValue(checkValue.filter((el:any) => el !== checkValue));
+  const cartCheckHandler = (data: any) => {
+    let tmp = checkValue;
+    const obj = JSON.parse(data);
+    let id = obj.idCart;
+    if (tmp.includes(id)){
+      tmp = checkValue.filter((item) => item !== id);
+      minusPriceFucntion(parseInt(obj.price))
     }
+    else{
+      tmp.push(id);
+      plusPriceFucntion(parseInt(obj.price))
+    }
+    setCheckValue(tmp);
   }
 
   const deleteHandler = () => {
@@ -87,7 +82,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
         <div className="select-control2">
           <input type="checkbox"
           checked={checkValue.length === itemList.length ? true : false}
-          onChange={(e)=>handleCartCheckAllHandler(itemList.map((item) => {JSON.stringify(item)}), e.target.checked)}/>
+          onChange={(e)=>handleCartCheckAllHandler(e.target.checked)}/>
           <span> 전체선택</span>
         </div>
         <button className="cancel-control2" onClick={() => deleteHandler()}>선택삭제 X</button>
@@ -95,7 +90,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
       {itemList.map((item) => (
         <div className="cart-list2">
           <input type="checkbox" value={JSON.stringify(item)}
-          onChange={(e) => {cartCheckHandler(e.currentTarget.value, e.target.checked)}}
+          onChange={(e) => {cartCheckHandler(e.currentTarget.value)}}
           checked={checkValue.includes(item.idCart) ? true : false} 
           className="course-select2"/>
           <div className="cart-course-img2">
