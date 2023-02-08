@@ -33,6 +33,12 @@ const gotoModifiy = () => {
   window.location.href = `http://localhost:3000/modifiyProfile`;
 }
 
+//게시글 이동
+const gotoMyPosting = () => {
+  window.location.href = `http://localhost:3000/myProfile/writed/aaa`;
+}
+
+
 
 
 export default function MyCourse() {
@@ -90,7 +96,7 @@ export default function MyCourse() {
                 <div className="title21" onClick={gotoMyCourse}>
                   내 학습
                 </div>
-                <div className="title21 title31">작성한 게시글</div>
+                <div className="title21 title31" onClick={gotoMyPosting}>작성한 게시글</div>
               </div>
               <div className="menu1">
                 <div className="title1">수강신청 관리</div>
