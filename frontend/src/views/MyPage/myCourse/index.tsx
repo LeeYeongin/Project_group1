@@ -37,7 +37,7 @@ const gotoModifiy = () => {
 
 export default function MyCourse() {
   const [myCourseList, setMyCourseList] = useState<any[]>([]);
-  
+
   const getMyCourseList = () => {
     const getdata = 'aaa';
 
@@ -49,15 +49,19 @@ export default function MyCourse() {
     axios.get("http://localhost:4040/myCourse/" + getdata)
     .then((Response) => {
         const tmp = [];
+        console.log(Response.data.data.length);
         for(let i = 0; i < Response.data.data.length; i++){
-          tmp.push({
-            img: Response.data.data[i].className,
-            className: Response.data.data[i].className,
+          for(let j = 0; j < Response.data.data[i].className.length; j++){
+            tmp.push({
+            img: Response.data.data[i].className[j].img,
+            className: Response.data.data[i].className[j].className
           })
+          console.log(tmp);
+          }
         }
-        console.log(tmp)
+        console.log(tmp);
         setMyCourseList(tmp);
-        console.log(myCourseList)
+        console.log(myCourseList);
     })
     .catch((error) => {
     })
@@ -109,7 +113,7 @@ export default function MyCourse() {
                   <div className="my-course-wrapper">
                     <div className="my-course-item">
                       <div className="my-course-item-img">
-                        <img src={list.classImg} alt="" />
+                        <img src={list.img} alt="" />
                       </div>
                       <div className="my-course-item-title">
                         {list.className}

@@ -23,7 +23,7 @@ public class MyCourseController {
 
 	@Autowired ClassService classService;
 	
-	@GetMapping("/{idUser}")
+	@GetMapping("{idUser}")
 	public ResponseDto<List<GetOrderListDto>>getShowOrderList(@PathVariable("idUser") String idUser){
 		return classService.showOrderList(idUser);
 	}
