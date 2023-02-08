@@ -56,7 +56,7 @@ export default function ModifiyProfile() {
         .then((Response) => {
             const tmp = [];
             tmp.push({
-            profile: Response.data.data.img,
+            profile: Response.data.data.profile,
             name: Response.data.data.name,
             nickname:Response.data.data.nickname,
             email: Response.data.data.email,
@@ -114,7 +114,7 @@ export default function ModifiyProfile() {
   
         for(let i = 0; i < Response.data.data.length; i++){
           tmp.push({
-            img: Response.data.data.img,
+            profile: Response.data.data.profile,
             name: Response.data.data.name,
             nickname:Response.data.data.nickname,
             email: Response.data.data.email,
@@ -171,7 +171,7 @@ export default function ModifiyProfile() {
                   <div className="list21">
                     <div className="image1">
                       <img
-                        src={userProfile?.at(0).img}
+                        src={userProfile?.at(0).profile}
                         alt=""
                         className="img1"
                       />

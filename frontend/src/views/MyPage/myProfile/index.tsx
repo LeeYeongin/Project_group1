@@ -14,7 +14,6 @@ const gotocart = () => {
     // axios.post(`http://localhost:4040/main5/${idClass}`);
     window.location.href = `http://localhost:3000/cart`;
 }
-
 // 내학습으로 이동
 const gotoMyCourse = () => {
   // axios.post(`http://localhost:4040/main5/${idClass}`);
@@ -25,14 +24,11 @@ const gotoOrderlist = () => {
 
     window.location.href = `http://localhost:3000/orderlist`;
 }
-
 //정보수정 이동0
 const gotoModifiy = () => {
 
   window.location.href = `http://localhost:3000/modifiyProfile`;
 }
-
-
 
 export default function MyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
@@ -50,18 +46,20 @@ export default function MyProfile() {
         .then((Response) => {
             const tmp = [];
             tmp.push({
-            img: Response.data.data.img,
-            nickName:Response.data.data.nickName,
+            profile: Response.data.data.profile,
+            nickname:Response.data.data.nickname,
             email: Response.data.data.email,
             description: Response.data.data.description
           })
           setUserProfile(tmp)
           console.log(userProfile?.at(0).email)
           console.log(userProfile?.at(0).description)
+          console.log(userProfile?.at(0).nickname)
         })
         .catch((error) => {
       
         })
+        
 
     }
 
@@ -107,7 +105,7 @@ export default function MyProfile() {
                   <div className="list21">
                     <div className="image1">
                       <img
-                        src={userProfile?.at(0).img}
+                        src={userProfile?.at(0).profile}
                         alt=""
                         className="img1"
                       />
@@ -116,7 +114,7 @@ export default function MyProfile() {
                 </div>
                 <div className="list01">
                   <div className="list11">닉네임</div>
-                  <div className="list31">{userProfile?.at(0).nickName}</div>
+                  <div className="list31">{userProfile?.at(0).nickname}</div>
                 </div>
                 <div className="list01">
                   <div className="list11">이메일</div>
