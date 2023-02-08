@@ -13,7 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
-
+import com.project.team_1.dto.orderList.ClassNameDto;
 import com.project.team_1.dto.orderList.GetOrderListDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.entity.ClassEntity;
@@ -35,34 +35,43 @@ public class OrderListService {
 	@Autowired
 	ClassRepository classRepository;
 	
-	public ResponseDto<GetOrderListDto>showOrderList(String idUser){
-		
-		OrderMstEntity orderMstEntity;
+	public ResponseDto<List<GetOrderListDto>>showOrderList(String idUser){
+		List<GetOrderListDto> data = new ArrayList<GetOrderListDto>();
+		List<OrderMstEntity> orderMst;
 		
 		try {
-			orderMstEntity = orderMstRepository.findByIdUser(idUser).get(0);
+			orderMst = orderMstRepository.findByIdUser(idUser);
 		}catch(Exception e){
 			return ResponseDto.setFailed("xxx");
 		}
 		
-		List<OrderDtlEntity> orderDtl = orderDtlRepository.findByOrderNumber(orderMstEntity.getOrderNumber());
-		List<ClassEntity> classEntity = new ArrayList<ClassEntity>();
-		for(OrderDtlEntity orderDtlEntity : orderDtl) {
-			classEntity.add(classRepository.findById(orderDtlEntity.getIdClass()).get());
+		for(OrderMstEntity orderMstEntity : orderMst) {
+			List<OrderDtlEntity> orderDtl = orderDtlRepository.findByOrderNumber(orderMstEntity.getOrderNumber());
+//			List<ClassEntity> classEntity = new ArrayList<ClassEntity>();
+//			List<String> className = new ArrayList<String>();
+			List<ClassNameDto> className = new ArrayList<ClassNameDto>();
+			int priceSum = 0;
+			for(OrderDtlEntity orderDtlEntity : orderDtl) {
+				int idClass = classRepository.findById(orderDtlEntity.getIdClass()).get().getIdClass();
+				String name = classRepository.findById(orderDtlEntity.getIdClass()).get().getClassName();
+				className.add(new ClassNameDto(idClass, name));
+				priceSum +=  classRepository.findById(orderDtlEntity.getIdClass()).get().getPrice();
+			}
+			
+			data.add( new GetOrderListDto(orderMstEntity, className, priceSum));
 		}
-//		 = classRepository.findById(orderDtl.);
 		
-		GetOrderListDto data = 
-				GetOrderListDto
-				.builder()
-				.idUser(idUser)
-				.orderNumber(orderMstEntity.getOrderNumber())
-				.orderDate(orderMstEntity.getOrderDate())
-				.status(orderMstEntity.getStatus())
-				.orderDtlList(orderDtl)
-				.classEntity(classEntity)
-				.build();
-				
+		
+//		GetOrderListDto data = 
+//				GetOrderListDto
+//				.builder()
+//				.idUser(idUser)
+//				.orderNumber(orderMstEntity.getOrderNumber())
+//				.orderDate(orderMstEntity.getOrderDate())
+//				.status(orderMstEntity.getStatus())
+//				.orderDtlList(orderDtl)
+//				.classEntity(classEntity)
+//				.build();
 		
 		return ResponseDto.setSuccess("getClassList success", data);
 	}

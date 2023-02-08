@@ -12,7 +12,7 @@ interface OrderList{
     orderNumber: string;
     orderDate: any;
     status: string;
-    idClass: number[];
+    classInfo: any[];
     price:number;
 }
 
@@ -21,34 +21,34 @@ interface ClassInfo {
     className: string;
 }
 
+//상세페이지 이동
+const gotopage = (idClass:number) => {
+    // axios.post(`http://localhost:4040/main5/${idClass}`);
+    window.location.href = `http://localhost:3000/main5/${idClass}`;
+}
+
 function BasicExample() {
 
     const [orders, setOrders] = useState<OrderList[]>([]);
-    const [classInfo, setClassInfo] = useState<ClassInfo[]>([]);
 
     useEffect(() => {
     async function fetchData(){
         try{
             const response = await axios.get(url);
             console.log(response.data);
-            console.log(response.data.data.orderDtlList.length);
             const orderInfo = []
-            const idClassTmp = []
-            let sum = 0
-            for(let i = 0; i < response.data.data.orderDtlList.length; i++){
-                idClassTmp.push(response.data.data.orderDtlList[i].idClass)
-                sum = sum + response.data.data.orderDtlList[i].price
-            }
             
-            orderInfo.push({
-                orderNumber: response.data.data.orderNumber,
-                orderDate: response.data.data.orderDate,
-                status: response.data.data.status,
-                idClass: idClassTmp,
-                price: sum
-            })
-
+            for(let i = 0; i < response.data.data.length; i++){
+                orderInfo.push({
+                    orderNumber: response.data.data[i].orderNumber,
+                    orderDate: response.data.data[i].orderDate,
+                    status: response.data.data[i].status,
+                    classInfo: response.data.data[i].className,
+                    price: response.data.data[i].price
+                })
+            }
             setOrders(orderInfo)
+            console.log(orders)
         }catch(error){
             console.error(error);
         }
@@ -63,7 +63,7 @@ function BasicExample() {
         <div className="orderList_title1">
             <h3>내 구매 내역</h3>
         </div>
-        <Table striped bordered hover className="test">
+        <Table striped bordered className="test">
             <thead className="dashboard-wrapper1">
                 <tr className="orderList_dashboard1">
                     <th className="subtitle-title">주문번호</th>
@@ -86,10 +86,10 @@ function BasicExample() {
                         {order.status}
                     </td>
                     <td className="subtitle-data order-item">
-                        {order.idClass.map((item) => (
+                        {order.classInfo.map((item) => (
                             <React.Fragment>
-                                <a href="#">
-                                    {item}
+                                <a onClick={() => gotopage(item.idClass)} className="name-link">
+                                    {item.className}
                                 </a>
                                 <br />
                             </React.Fragment>

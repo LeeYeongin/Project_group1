@@ -1,5 +1,7 @@
 package com.project.team_1.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,7 @@ public class OrderListController {
 	OrderListService orderListService;
 	
 	@GetMapping("/{idUser}")
-	public ResponseDto<GetOrderListDto>getShowOrderList(@PathVariable("idUser") String idUser){
+	public ResponseDto<List<GetOrderListDto>>getShowOrderList(@PathVariable("idUser") String idUser){
 		return orderListService.showOrderList(idUser);
 	}
 	

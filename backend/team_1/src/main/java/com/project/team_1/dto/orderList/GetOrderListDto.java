@@ -22,16 +22,28 @@ public class GetOrderListDto {
 	private String orderNumber;
 	private Date orderDate;
 	private String status;
-	private List<OrderDtlEntity> orderDtlList;
-	private List<ClassEntity> classEntity;
+	private List<ClassNameDto> className;
+	private int price;
+//	private List<OrderDtlEntity> orderDtlList;
+//	private List<ClassEntity> classEntity;
 	
-	public GetOrderListDto(OrderMstEntity orderMstEntity, List<OrderDtlEntity> orderDtlEntity, List<ClassEntity> classEntity) {
+//	public GetOrderListDto(OrderMstEntity orderMstEntity, List<OrderDtlEntity> orderDtlEntity, List<ClassEntity> classEntity) {
+//		this.idUser = orderMstEntity.getIdUser();
+//		this.orderNumber = orderMstEntity.getOrderNumber();
+//		this.orderDate = orderMstEntity.getOrderDate();
+//		this.status = orderMstEntity.getStatus();
+//		this.orderDtlList = orderDtlEntity;
+//		this.classEntity = classEntity;
+//	}
+	
+	public GetOrderListDto(OrderMstEntity orderMstEntity, List<ClassNameDto> className, int price) {
 		this.idUser = orderMstEntity.getIdUser();
 		this.orderNumber = orderMstEntity.getOrderNumber();
 		this.orderDate = orderMstEntity.getOrderDate();
 		this.status = orderMstEntity.getStatus();
-		this.orderDtlList = orderDtlEntity;
-		this.classEntity = classEntity;
+//		this.className = new ClassNameDto(className);
+		this.className = className;
+		this.price = price;
 	}
 
 }
