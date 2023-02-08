@@ -8,6 +8,8 @@ import './style.css';
 const url = `http://localhost:4040/orderlist/aaa`;
 const classUrl = `http://localhost:4040/classlist`;
 
+
+
 interface OrderList{
     orderNumber: string;
     orderDate: any;
@@ -27,9 +29,11 @@ const gotopage = (idClass:number) => {
     window.location.href = `http://localhost:3000/main5/${idClass}`;
 }
 
+
+
 function BasicExample() {
 
-    const [orders, setOrders] = useState<OrderList[]>([]);
+    const [orders, setOrders] = useState<OrderList[]>([]);  
 
     useEffect(() => {
     async function fetchData(){
@@ -80,7 +84,7 @@ function BasicExample() {
                         {order.orderNumber}
                     </td>
                     <td className="subtitle-data">
-                        {order.orderDate}
+                        {new Date(order.orderDate).toLocaleDateString()}
                     </td>
                     <td className="subtitle-data">
                         {order.status}
@@ -96,7 +100,7 @@ function BasicExample() {
                         ))}
                     </td>
                     <td className="subtitle-data">
-                    {order.price}
+                        {order.price}원
                     </td>
                 </tr>
                 ))}
