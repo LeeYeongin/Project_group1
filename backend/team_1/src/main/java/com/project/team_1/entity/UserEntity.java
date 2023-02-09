@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class UserEntity {
 
 	@Id
-	private String id;
+	private String userId;
 	private String password;
 	private String name;
 	private String profile;
@@ -29,11 +29,11 @@ public class UserEntity {
 	private String description;
 	
 	public UserEntity(SignupDto dto) {
-		this.id = dto.getId();
+		this.userId = dto.getUserId();
 		this.password = dto.getPassword();
 		this.name = dto.getName();
 		this.telnum = dto.getTelNum();
-		this.email = dto.getId();
-		this.nickname = dto.getId().substring(0,dto.getId().indexOf('@'));
+		this.email = dto.getUserId();
+		this.nickname = dto.getUserId().substring(0,dto.getUserId().indexOf('@'));
 	}
 }

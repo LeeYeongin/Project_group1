@@ -87,7 +87,7 @@ export default function CustomCarousel() {
     
     //front강의 가져오기
     const frontList = await axios
-      .get('http://localhost:4040/front');
+      .get('http://localhost:4040/api/carousel/front');
 
     tmp.push({
       category: '프론트',
@@ -97,7 +97,7 @@ export default function CustomCarousel() {
 
     //back강의 가져오기
     const backList = await axios
-      .get('http://localhost:4040/back');
+      .get('http://localhost:4040/api/carousel/back');
 
       //CarouselMap에 넣을배열(백엔드) 임시변수 tmp에 push
     tmp.push({
@@ -108,7 +108,7 @@ export default function CustomCarousel() {
 
       //database강의 가져오기
     const databaseList = await axios
-      .get('http://localhost:4040/db');
+      .get('http://localhost:4040/api/carousel/db');
 
     //CarouselMap에 넣을배열(데이터베이스) 임시변수 tmp에 push
     tmp.push({
@@ -119,7 +119,7 @@ export default function CustomCarousel() {
 
       //Fullstack강의 가져오기
     const fullstackList = await axios
-      .get('http://localhost:4040/full');
+      .get('http://localhost:4040/api/carousel/full');
 
     //CarouselMap에 넣을배열(풀스텍) 임시변수 tmp에 push
     tmp.push({

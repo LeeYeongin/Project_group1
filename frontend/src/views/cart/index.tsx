@@ -21,13 +21,13 @@ export default function Cart() {
       idUser: "aaa"
     };
     
-    axios.post("http://localhost:4040/cart/", getdata)
+    axios.post("http://localhost:4040/api/cart/", getdata)
     .then((Response) => {
       const tmp = [];
       // let sum = 0;
       setRequestResult('Success!!');
 
-      axios.post("http://localhost:4040/cart/user", getdata)
+      axios.post("http://localhost:4040/api/cart/user", getdata)
       .then((Response) => {
           setName(Response.data.data.name)
           setEmail(Response.data.data.email)

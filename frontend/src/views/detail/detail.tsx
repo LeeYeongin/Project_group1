@@ -102,7 +102,7 @@ function Main5(){
     const [detailItems, setDetailItems] = useState<any>(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:4040/main5/${idClass}/`).then((response) => {
+        axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
             setDetailItems(response.data.data);
         })  
     }, []);
@@ -111,7 +111,7 @@ function Main5(){
     const putCart = () => {
         const addCart = { idUser, idClass }
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/cart/add', addCart);
+        axios.post('http://localhost:4040/api/cart/add', addCart);
         navigator('/list/all');
     }
 

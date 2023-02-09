@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
-import mainIcon from '../../asset/images/main.png';
-import kakao from '../../asset/images/icon_kakao.png';
-import google from '../../asset/images/icon_google.png';
-import naver from '../../asset/images/icon_naver.png';
+// import axios from 'axios';
+import { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { signInApi } from '../../../apis';
+
+import mainIcon from '../../../asset/images/main.png';
+import { useUserStore } from '../../../stores';
+// import kakao from '../../asset/images/icon_kakao.png';
+// import google from '../../asset/images/icon_google.png';
+// import naver from '../../asset/images/icon_naver.png';
 import './style.css';
 
 interface props {
@@ -10,7 +15,13 @@ interface props {
   setOpen: any;
 }
 
-export default function Login({open, setOpen}: props) {
+export default function Login({ open, setOpen }: props) {
+  const [userEmail, setEmail] = useState<string>('');
+  const [userPassword, setPassword] = useState<string>('');
+  const [cookies, setCookies] = useCookies();
+
+  const { setUser } = useUserStore();
+
   const [passwordView, setPasswordView] = useState<string>('password');
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -19,6 +30,43 @@ export default function Login({open, setOpen}: props) {
     if (passwordView === 'password') setPasswordView('text');
     if (passwordView === 'text') setPasswordView('password');
   };
+
+  const signInHandler = async () => {
+    if (userEmail.length === 0 || userPassword.length === 0) {
+      alert('이메일과 비밀번호를 입력하세요. ');
+      return;
+    }
+    const data = {
+      userId: userEmail,
+      password: userPassword,
+    };
+
+    const signInResponse = await signInApi(data);
+
+    console.log(data)
+    
+    if (!signInResponse) {
+      // console.log(signInResponse)
+      alert('로그인에 실패했습니다.');
+      return;
+    }
+    if (!signInResponse.status) {
+      console.log(signInResponse)
+      alert('로그인에 실패했습니다.');
+      return;
+    }
+    alert('로그인 성공');
+    const { token, exprTime, user } = signInResponse.data;
+    const expires = new Date();
+    expires.setMilliseconds(expires.setMilliseconds + exprTime);
+
+    setCookies('token', token, { expires });
+    setUser(user);
+  };
+  // if(!email.includes('@')) {
+  //   alert('이메일 형식이 아닙니다');
+  //   return;
+  // }
   return (
     <>
       <div className={open ? 'modal-background' : 'modal-hide'}></div>
@@ -26,7 +74,6 @@ export default function Login({open, setOpen}: props) {
         {/* <div className="dimmed"></div> */}
         <div className="sign-in-modal">
           <div className="closeButton">
-            
             <div className="header-close-button" onClick={() => handleClose()}>
               <i className="fa-solid fa-xmark"></i>
             </div>
@@ -36,13 +83,14 @@ export default function Login({open, setOpen}: props) {
             <img className="icon-brand-logo" src={mainIcon} alt="메인아이콘" />
           </div>
 
-          <form className="sign-in-modal--form">
+          <div className="sign-in-modal--form">
             <div className="form__input-block">
               <input
                 placeholder="이메일"
                 data-kv="email"
                 className="form__input form__input--email"
-                type="email"
+                // type="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <div className="form__input form__input--password">
                 <input
@@ -51,6 +99,7 @@ export default function Login({open, setOpen}: props) {
                   type={passwordView}
                   spellCheck="false"
                   placeholder="비밀번호"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <span
                   className="toggle-password"
@@ -66,9 +115,11 @@ export default function Login({open, setOpen}: props) {
                 </span>
               </div>
             </div>
-            <button className="login-button">로그인</button>
+            <button className="login-button" onClick={() => signInHandler()}>
+              로그인
+            </button>
             <hr className="social-sign-in__line" />
-          </form>
+          </div>
           <p className="sign-in-modal__more-action">
             <a href="/findID" className="more-action__text">
               아이디(이메일) 찾기
@@ -78,7 +129,7 @@ export default function Login({open, setOpen}: props) {
               비밀번호 찾기
             </a>
             <span className="more-action-divider"></span>
-            <a href="#회원가입" className="more-action__text">
+            <a href="/signUp" className="more-action__text">
               회원가입
             </a>
           </p>

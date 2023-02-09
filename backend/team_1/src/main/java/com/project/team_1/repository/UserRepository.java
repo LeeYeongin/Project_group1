@@ -7,7 +7,11 @@ import com.project.team_1.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
-	public boolean existsByIdAndPassword(String id, String password);
-
+	
+	public boolean existsByUserIdAndPassword(String UserId, String password);
+	
 	UserEntity findByName(String name);
+	
+	public UserEntity findByUserId(String userId); 
+	//********************************************
 }

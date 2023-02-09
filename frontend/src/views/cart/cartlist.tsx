@@ -65,7 +65,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
   }
 
   const deleteHandler = () => {
-    axios.post("http://localhost:4040/cart/delete", checkValue)
+    axios.post("http://localhost:4040/api/cart/delete", checkValue)
     .then((Response) => {
       setRequestResult('Success!!');
       setCheckValue([])

@@ -38,7 +38,7 @@ export default function List() {
       setItemList([]);
       setgrade(0);
 
-      axios.get("http://localhost:4040/list/show/all")
+      axios.get("http://localhost:4040/api/list/show/all")
       .then((Response) => {
         const tmp = [];
         setRequestResult('success!');
@@ -71,7 +71,7 @@ export default function List() {
       category: arg
     };
 
-    axios.post("http://localhost:4040/list/", getdata)
+    axios.post("http://localhost:4040/api/list/", getdata)
     .then((Response) => {
       const tmp = [];
       setRequestResult('success!');
@@ -123,7 +123,7 @@ export default function List() {
 
     if (searchFlag) {
       axios
-        .get('http://localhost:4040/list/' + getcategory)
+        .get('http://localhost:4040/api/list/' + getcategory)
         .then((Response) => {
           const tmp = [];
           setRequestResult('success!');
@@ -150,7 +150,7 @@ export default function List() {
         });
     } else {
       axios
-        .get(`http://localhost:4040/list/show/${getcategory}`)
+        .get(`http://localhost:4040/api/list/show/${getcategory}`)
         .then((Response) => {
           console.log(getcategory);
           const tmp = [];
@@ -176,7 +176,7 @@ export default function List() {
 
   const searchHandler = () => {
 
-    axios.get("http://localhost:4040/list/" + search)
+    axios.get("http://localhost:4040/api/list/" + search)
     .then((Response) => {
       const tmp = [];
       setRequestResult('success!');
@@ -211,7 +211,7 @@ export default function List() {
       discountRate: arg3
     };
 
-    axios.post("http://localhost:4040/list/category", getdata)
+    axios.post("http://localhost:4040/api/list/category", getdata)
     .then((Response) => {
       const tmp = [];
       setRequestResult('success!');

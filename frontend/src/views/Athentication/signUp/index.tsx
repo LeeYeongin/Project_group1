@@ -1,8 +1,43 @@
 import React, { useState } from 'react';
-import mainIcon from '../../asset/images/main.png';
+// import mainIcon from '../../asset/images/main.png';
 import './style.css';
+// import axios from 'axios';
+
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+import { signUpApi } from '../../../apis';
 
 export default function Signup() {
+  const [userEmail, setUserEmail] = useState<string>('');
+  const [userPassword, setUserPassword] = useState<string>('');
+  const [userPasswordConfirm, setUserPasswordConfirm] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
+  const [userPhone, setUserPhone] = useState<string>('');
+
+  // const [requestResult, setRequestResult] = useState<string>('');
+
+  const signupHandler = async () => {
+    const data = {
+      userId: userEmail,
+      password: userPassword,
+      passwordConfirm: userPasswordConfirm,
+      name: userName,
+      telNum: userPhone,
+    };
+    const signUpResponse = await signUpApi(data);
+
+    if (!signUpResponse) {
+      alert('회원가입에 실패했습니다.');
+      return;
+    }
+    if (!signUpResponse.status) {
+      console.log(signUpResponse)
+      alert('회원가입에 실패했습니다.');
+      return;
+    }
+    alert('회원가입이 되었습니다!');
+  };
+
   const [passwordView, setPasswordView] = useState<string>('password');
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
@@ -46,6 +81,7 @@ export default function Signup() {
                       type="email"
                       className="e-sign-up-input--e-email"
                       placeholder="example@habby.com"
+                      onChange={(e) => setUserEmail(e.target.value)}
                     />
                     {/* <span className="form--error--email--hide">
                     이메일 형식이 올바르지 않습니다.
@@ -64,6 +100,7 @@ export default function Signup() {
                       spellCheck="false"
                       id="password"
                       placeholder="비밀번호"
+                      onChange={(e) => setUserPassword(e.target.value)}
                     />
                     <span
                       className="toggle-password"
@@ -108,6 +145,7 @@ export default function Signup() {
                       spellCheck="false"
                       id="passwordConfirm"
                       placeholder="비밀번호 확인"
+                      onChange={(e) => setUserPasswordConfirm(e.target.value)}
                     />
                     <span
                       className="toggle-password"
@@ -137,6 +175,7 @@ export default function Signup() {
                       name="username"
                       id="name"
                       className="form--input name1"
+                      onChange={(e) => setUserName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -150,10 +189,25 @@ export default function Signup() {
                       name="phone"
                       id="phone"
                       className="form--input phone1"
+                      onChange={(e) => setUserPhone(e.target.value)}
                     />
                   </div>
                 </div>
-                <button className="e-signup-button">회원 가입</button>
+                {/* <Box>
+                  <TextField
+                    id="standard-basic"
+                    label="Standard"
+                    variant="standard"
+                  /> */}
+                {/* <h3>{requestResult}</h3> */}
+                <button
+                  onClick={() => signupHandler()}
+                  className="e-signup-button"
+                >
+                  회원 가입
+                </button>
+                {/* </Box> */}
+
                 {/* <div className="form-footer">
               <span className="footer--policy">
                 " 가입 시, 통합 계정으로 인프랩이 제공하는 서비스를 모두 이용하실 수 있습니다. "

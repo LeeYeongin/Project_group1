@@ -23,7 +23,7 @@ import com.project.team_1.service.ClassService;
 import com.project.team_1.service.CurriculumService;
 
 @RestController
-@RequestMapping("list/")
+@RequestMapping("/api/list/")
 public class ClassListController {
 
 	@Autowired ClassService classService;

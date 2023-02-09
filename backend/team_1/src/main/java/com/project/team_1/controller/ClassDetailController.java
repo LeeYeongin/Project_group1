@@ -11,7 +11,7 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.ClassDetailService;
 
 @RestController
-@RequestMapping("main5/")
+@RequestMapping("/api/main5/")
 public class ClassDetailController {
 	
 	@Autowired ClassDetailService service;

@@ -16,7 +16,7 @@ import com.project.team_1.service.ClassDetailService;
 import com.project.team_1.service.ClassService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/carousel/")
 public class CarouselController {
 	
 	@Autowired ClassService classService;

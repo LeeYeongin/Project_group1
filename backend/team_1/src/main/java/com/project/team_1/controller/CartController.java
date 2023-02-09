@@ -22,7 +22,7 @@ import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.service.CartService;
 
 @RestController
-@RequestMapping("cart/")
+@RequestMapping("/api/cart/")
 public class CartController {
 	
 	@Autowired CartService cartService;
