@@ -21,22 +21,27 @@ function Main5(){
     const [status, setStatus] = useState<boolean>(true);
     const [statusItem, setSetatusItem] = useState<any[]>([]);
     let classItem:any[] = [];
+    let classItem2:any = [];
+    let num = 0;
 
     useEffect(() => {
         async function URL() {
-            await axios.get((`http://localhost:4040/orderlist/${idUser}`)).then((response) => {
+            await axios.get((`http://localhost:4040/api/orderlist/${idUser}`)).then((response) => {
             setSetatusItem(response.data.data);
             })
         }
         URL();
         console.log("받은값2", statusItem);
-
-        statusItem.forEach((item) => {
-            classItem.push(item.className);
-        });
-
-        console.log("현재값", classItem);
-        let num = 0;
+        
+        statusItem.map((test) => {
+            classItem = test.className;
+            classItem.map((test2) => {
+                classItem2 = test2.idClass;
+                if(classItem2 == idClass){
+                    setStatus(false);
+                }
+            })
+        })
     }, []);
 
     const navigator = useNavigate();

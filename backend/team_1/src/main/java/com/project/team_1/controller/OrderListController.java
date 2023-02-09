@@ -13,7 +13,7 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.OrderListService;
 
 @RestController
-@RequestMapping("/orderlist")
+@RequestMapping("/api/orderlist")
 public class OrderListController {
 	
 	@Autowired
