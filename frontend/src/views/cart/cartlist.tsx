@@ -15,7 +15,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
   const [requestResult, setRequestResult] = useState<string>('')
 
   const plusPriceFucntion = (price: number) => {
-    let sum = priceSum;
+    let sum = priceSum; 
     sum = sum + price;
     setPriceSum(sum)
   }
