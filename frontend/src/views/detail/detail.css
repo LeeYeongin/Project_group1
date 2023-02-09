@@ -262,3 +262,12 @@ h1{
     font-size: 20px;
     font-weight: bold;
 }
+
+.disabled{
+    width: 0;
+    height: 0;
+
+    border: none;
+
+    font-size: 0;
+}

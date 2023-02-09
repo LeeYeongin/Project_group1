@@ -19,7 +19,7 @@ a {
     justify-content: center;
 
     flex-wrap: wrap;
-    height: 100vh;
+    min-height: 100vh;
 
     margin: 0px 100px;
 }

@@ -17,6 +17,28 @@ function Main5(){
 
     const [idUser, setIdUser] = useState<string>('aaa');
 
+    // 구매 여부 확인
+    const [status, setStatus] = useState<boolean>(true);
+    const [statusItem, setSetatusItem] = useState<any[]>([]);
+    let classItem:any[] = [];
+
+    useEffect(() => {
+        async function URL() {
+            await axios.get((`http://localhost:4040/orderlist/${idUser}`)).then((response) => {
+            setSetatusItem(response.data.data);
+            })
+        }
+        URL();
+        console.log("받은값2", statusItem);
+
+        statusItem.forEach((item) => {
+            classItem.push(item.className);
+        });
+
+        console.log("현재값", classItem);
+        let num = 0;
+    }, []);
+
     const navigator = useNavigate();
 
     // 클릭시 클래스 추가 이벤트
@@ -90,10 +112,13 @@ function Main5(){
         const addCart = { idUser, idClass }
         // id와 함께 장바구니로 넘어감
         axios.post('http://localhost:4040/cart/add', addCart);
-        navigator('/cart');
+        navigator('/list/all');
     }
 
-    console.log(detailItems);
+    const moveMyPage = () => {
+        navigator('/myCourse');
+    }
+
     // 출력부분
     return(
         <>
@@ -136,7 +161,8 @@ function Main5(){
                         <div className='detail5_payment'>
                             <div className='pay_body5'>
                                 <div className='money'>{detailItems.price}원</div>
-                                <button id='login_backet' className='backet5' onClick={putCart}>장바구니</button>
+                                <button id='login_backet' className={status ? 'backet5' : 'disabled'} onClick={putCart}>장바구니</button>
+                                <button id='login_backet' className={status ? 'disabled' : 'backet5'} onClick={moveMyPage}>마이페이지로 이동</button>
                                 <div className='sub5'>
                                     <ul>
                                         <li id="teacher">{detailItems.instructor}</li>
