@@ -130,6 +130,28 @@ header {
     text-decoration: none;
 }
 
+.myprofile4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout_btn4{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.logout_btn4 :hover{
+    color: #000;
+}
+
+.logout_btn4 a{
+    color: #000;
+    text-decoration: none;
+}
+
 
 /* 검색 */
 .search_container4 {
