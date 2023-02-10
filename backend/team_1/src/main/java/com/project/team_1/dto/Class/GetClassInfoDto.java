@@ -16,7 +16,7 @@ public class GetClassInfoDto {
 	private int idClass;
 	private String img;
 	private String className;
-	private String instructor;
+	private int instructor;
 	private int price;
 	private int discountRate;
 	private int studentCount;

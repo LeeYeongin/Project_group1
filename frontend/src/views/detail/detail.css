@@ -167,10 +167,26 @@ h1{
     padding-left: 20px;
 }
 
-.explan > #item5_infoDtl{
+#item5_infoDtl{
     margin-top: 20px;
 
     font-size: 20px;
+    font-weight: bold;
+}
+
+.instruct5{
+    display: flex;
+}
+
+.instruct_img{
+    width: 150px;
+    height: 150px;
+
+    margin-right: 20px;
+}
+
+.instruct_dtl{
+    font-size: 16px;
     font-weight: bold;
 }
 

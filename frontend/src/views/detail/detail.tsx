@@ -22,7 +22,6 @@ function Main5(){
     const [statusItem, setSetatusItem] = useState<any[]>([]);
     let classItem:any[] = [];
     let classItem2:any = [];
-    let num = 0;
 
     useEffect(() => {
         async function URL() {
@@ -105,10 +104,12 @@ function Main5(){
 
     // 클래스ID를 받아 출력하기위한 함수 부분
     const [detailItems, setDetailItems] = useState<any>(null);
+    const [instruct, setInstruct] = useState<any>([]);
 
     useEffect(() => {
         axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
             setDetailItems(response.data.data);
+            setInstruct(response.data.data.instructor);
         })  
     }, []);
 
@@ -127,7 +128,7 @@ function Main5(){
     // 출력부분
     return(
         <>
-            {detailItems && (
+            {detailItems && instruct && (
                 <div className='detail5_main' key={detailItems.idClass}>
                     <div className='detail5_topbanner'>
                         <div className='detail5_top_body'>
@@ -150,7 +151,10 @@ function Main5(){
                                 <div className="explan">
                                     <p id="item5_infoDtl">{detailItems.classInfoDtl}</p>
                                     <br/>
-                                    <p id="item5_infoDtl">{detailItems.classInfoDtl}</p>
+                                    <div className="instruct5">
+                                        <img className="instruct_img" src={instruct[0].instructorImg}/>                                    
+                                        <p className="instruct_dtl">{instruct[0].instructorInfo}</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id='content2' className= 'con5' ref={idRef2}>
@@ -170,8 +174,16 @@ function Main5(){
                                 <button id='login_backet' className={status ? 'disabled' : 'backet5'} onClick={moveMyPage}>마이페이지로 이동</button>
                                 <div className='sub5'>
                                     <ul>
-                                        <li id="teacher">{detailItems.instructor}</li>
-                                        <li id="">{detailItems.difficulty}</li>
+                                        <li id="teacher" key={instruct[0].idInstructor}>
+                                            {instruct[0].instructorName}
+                                        </li>
+                                        <li>
+                                            { 
+                                                detailItems.difficulty === 'easy' && '입문' ||
+                                                detailItems.difficulty === 'middle' && '초급' ||
+                                                detailItems.difficulty === 'hard' && '중급'
+                                            }
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

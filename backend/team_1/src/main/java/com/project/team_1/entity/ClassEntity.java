@@ -30,7 +30,7 @@ public class ClassEntity {
 	private String difficulty;
 	@Column
 	private Integer discountRate;
-	private String instructor;
+	private int instructor;
 	
 	
 	
