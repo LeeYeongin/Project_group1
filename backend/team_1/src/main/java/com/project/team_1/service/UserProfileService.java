@@ -32,7 +32,7 @@ public class UserProfileService {
 	public ResponseDto<GetUserIfnoDto> getUserProfile(UserIdDto dto){
 		GetUserIfnoDto userinfo;
 		try {
-			userinfo = new GetUserIfnoDto(userRepository.findById(dto.getIdUser()).get());
+			userinfo = new GetUserIfnoDto(userRepository.findById(dto.getUserId()).get());
 		}catch (Exception e) {
 			return ResponseDto.setFailed("error");
 		}

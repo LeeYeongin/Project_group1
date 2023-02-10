@@ -26,6 +26,10 @@ function Header({setOpen}: props){
     setCookies('token', '', {expires: new Date()});
     removeUser();
   }
+
+  const gotoSignup = () => {
+    window.location.href = `http://localhost:3000/signup`;
+  };
     return (
       <header>
         <div className="h_nav_bar4">
@@ -46,8 +50,8 @@ function Header({setOpen}: props){
                 <div className="login_btn4">
                   <a onClick={() => setOpen(true)}>로그인</a>
                 </div>
-                <div className="sign_up4">
-                  <a href="/signup">회원가입</a>
+                <div className="sign_up4" onClick={() => gotoSignup()}>
+                  <a>회원가입</a>
                 </div>
               </>
             ) : (
@@ -71,7 +75,7 @@ function Header({setOpen}: props){
                     <a href=""> /logout</a>
                   </div> */}
                 <div className="myprofile4">
-                  <a href="">
+                  <a href='/myProfile'>
                     <AccountCircleIcon fontSize="large"/>
                   </a>
                 </div>

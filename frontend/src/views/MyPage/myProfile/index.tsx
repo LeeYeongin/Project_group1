@@ -1,18 +1,36 @@
 import axios, { Axios, AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { useUserStore } from '../../../stores';
 import MyCourse from '../myCourse';
 import SideBar from '../MyPageSideBar';
 import './style.css';
 
 export default function MyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
-  const getUserInfoHandler = () => {
+  const [cookies, setCookies] = useCookies();
+  const {user} = useUserStore();
+  console.log(user)
+
+  useEffect(() => {
+    console.log(cookies);
+    console.log(user);
+  }, [cookies]);
+
+  const getUserInfoHandler = async (token: string) => {
+    console.log(token)
+    console.log(user)
+    const requestOption = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
     const getdata = {
-      idUser: 'aaa',
+      userId: user.userId
     };
 
     axios
-      .post('http://localhost:4040/myProfile', getdata)
+      .post('http://localhost:4040/myProfile', getdata, requestOption)
       .then((Response) => {
         const tmp = [];
         tmp.push({
@@ -30,8 +48,10 @@ export default function MyProfile() {
   };
 
   useEffect(() => {
-    getUserInfoHandler();
+    getUserInfoHandler(cookies.token);
   }, []);
+
+  
   return (
     <>
       <div className="head-bar1">
