@@ -19,6 +19,9 @@ import IndexModal from './views/FindId/indexModal';
 import OrderList from './views/orderList';
 import ModifiyProfile from './views/MyPage/ModifyProfile';
 import MyPosting from './views/MyPage/MyPosting';
+import { useCookies } from 'react-cookie';
+import { useUserStore } from './stores';
+import axios from 'axios';
 
 function App() {
 
@@ -51,12 +54,10 @@ function App() {
 
 function Layout() {
   const [open, setOpen] = useState(false);
-
-  const {email} = useParams<string>();
   return (
     <div className={open ? 'enable-scroll' : ''}>
       <Login open={open} setOpen={setOpen} />
-      <Header email={email} setOpen={setOpen} />
+      <Header setOpen={setOpen} />
       <Outlet />
       <Footer />
     </div>
