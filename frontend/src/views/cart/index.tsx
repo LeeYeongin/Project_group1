@@ -18,7 +18,7 @@ export default function Cart() {
 
   const cartHandler = () => {
     const getdata = {
-      idUser: "aaa"
+      idUser: " "
     };
     
     axios.post("http://localhost:4040/api/cart/", getdata)

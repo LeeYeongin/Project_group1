@@ -1,6 +1,6 @@
 import { Logout } from '@mui/icons-material';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Logo from '../../asset/images/logo.png';
 import DropButton from './DropButton'
@@ -10,7 +10,20 @@ interface props {
   email: string | undefined;
 }
 
+const EmailData = () => {
+  const [emailData,  setEmailData] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/signin')
+      .then(res => setEmailData(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  return emailData;
+};
+
 function Header({email, setOpen}: props){
+  const emailData = EmailData();
     return (
       <header>
         <div className="h_nav_bar4">
@@ -32,14 +45,14 @@ function Header({email, setOpen}: props){
                 </svg>
               </a>
             </div>
-            {/* 비로그인 */}
+            {/* not-login when customer visit now */}
             <div className={email ? 'disable' : 'login_btn4'}>
-              <a onClick={() => setOpen(true)}>로그인</a>
+              <a onClick={() => setOpen(true)}>{email? '로그아웃' : '로그인'}</a>
             </div>
             <div className={email ? 'disable' : 'sign_up4'}>
               <a href="/signup">회원가입</a>
             </div>
-            {/* 로그인 상태 */}
+            {/* loged - in status display */}
             <div className={email ? 'login_btn4' : 'disable'} >
               <a href="">{email} /logout</a>
             </div>

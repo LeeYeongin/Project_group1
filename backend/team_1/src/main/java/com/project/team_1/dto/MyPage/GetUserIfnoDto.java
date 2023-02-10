@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetUserIfnoDto {
+	private String userId;
 	private String profile;
 	private String nickname;
 	private String name;
@@ -21,6 +22,7 @@ public class GetUserIfnoDto {
 	private String description;
 	
 	public GetUserIfnoDto(UserEntity user) {
+		this.userId = user.getUserId();
 		this.profile = user.getProfile();
 		this.nickname = user.getNickname();
 		this.name = user.getName();

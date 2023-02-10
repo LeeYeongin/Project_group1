@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.project.team_1.dto.MyPage.GetUserIfnoDto;
 import com.project.team_1.dto.SignIn.SignInDto;
 import com.project.team_1.dto.Signup.SigninResponseDto;
 import com.project.team_1.dto.Signup.SignupDto;
@@ -94,6 +95,17 @@ public class AuthService {
 		SigninResponseDto signInResponseDto = new SigninResponseDto(token, exprTime, userEntity);
 		return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
 
+	}
+
+	public ResponseDto<GetUserIfnoDto> getSignIn(String userid) {
+		UserEntity userEntity;
+		
+		try {
+			userEntity = userRepository.findByUserId(userid);
+		}catch(Exception e) {
+			return ResponseDto.setFailed("잘못된 아이디입니다");
+		}
+		return ResponseDto.setSuccess("불러오기 성공", new GetUserIfnoDto(userEntity));
 	}
 
 }
