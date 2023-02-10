@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Icon1 from '../../asset/images/front-end.png'
 import Icon2 from '../../asset/images/spring.png'
@@ -9,11 +9,13 @@ import '../main/css/main.css';
 import Banner from './Banner';
 import FrontCarousel from './FrontCarousel';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 
 function Main(){
 
     const [search, setSearch] = useState<string>('');
+
     const gotolist = (getcategory:any) => {
         if(getcategory.trim().length != 0){
             window.location.href = `http://localhost:3000/list/${getcategory}`;

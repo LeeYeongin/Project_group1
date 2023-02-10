@@ -60,6 +60,7 @@ export default function Login({ open, setOpen }: props) {
     setCookies('token', token, { expires });
     setUser(user);
     // window.location.href=window.location.href;
+    setOpen(false)
   };
   // if(!email.includes('@')) {
   //   alert('이메일 형식이 아닙니다');

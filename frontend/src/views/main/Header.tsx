@@ -14,13 +14,17 @@ interface props {
 function Header({setOpen}: props){
   const [email2, setEmail2] = useState<string>('') 
   const [cookies, setCookies] = useCookies();
-  const { user } = useUserStore();
-
+  const { user, removeUser } = useUserStore();
+ 
   useEffect(() => {
     console.log(cookies);
     console.log(user);
   }, [cookies]);
 
+  const logOutHandler = () => {
+    setCookies('token', '', {expires: new Date()});
+    removeUser();
+  }
     return (
       <header>
         <div className="h_nav_bar4">
@@ -56,12 +60,12 @@ function Header({setOpen}: props){
               ) : (
                 <>
                   <div className='login_btn4'>
-                    <a onClick={() => setOpen(true)}>로그아웃</a>
+                    <a onClick={() => logOutHandler()}>로그아웃</a>
                   </div>
                   {/* loged - in status display */}
-                  <div className='login_btn4' >
+                  {/* <div className='login_btn4' >
                     <a href=""> /logout</a>
-                  </div>
+                  </div> */}
                   <div className='sing_up4 '>
                     <a href=""> {user.name}/ mypage</a>
                   </div>
