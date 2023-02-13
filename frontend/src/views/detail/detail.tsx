@@ -145,10 +145,12 @@ function Main5(){
             if(!response.data.status) {
                 alert('이미 장바구니에 있는 강의입니다.')
                 navigator('/cart');
+            }else {
+                alert('장바구니에 담겼습니다.')
             }
         })
         // navigator('/list/all');
-        alert('장바구니에 담겼습니다.')
+        
     }
 
     const moveMyPage = () => {
