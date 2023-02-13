@@ -23,14 +23,14 @@ function Main(){
             navigate(`/list/${getcategory}`);
         }
     }
-
+    // 검색창에서 검색
     const getDataList = () => {
         if (search.trim().length != 0){
             navigate(`/list/${search}`);
         }
     }
     
-
+    //엔터키 이벤트
     const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if(e.key === 'Enter') {
             getDataList();

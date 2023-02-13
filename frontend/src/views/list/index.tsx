@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, KeyboardEvent} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './style.css';
 import { Rating } from "@mui/material";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 
-   
+
 
 export default function List() {
     const [requestResult, setRequestResult] = useState<string>('')
@@ -18,9 +20,24 @@ export default function List() {
     const [difficulty, setDifficulty] = useState<string>('notSelect');
 
     const { getcategory } = useParams<string>();
+    
+    //엔터 할때 찾아가는 주소 및 서치
+    const getDataList = () => {
+      if (search.trim().length != 0){
+          searchHandler();
+      }
+    }
+
+    // 엔터키 이벤트
+    const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+      if(e.key === 'Enter') {
+        console.log();
+        getDataList();
+      }
+    }
 
      //상세페이지 이동
-     const gotodetail = (idClass:number) => {
+    const gotodetail = (idClass:number) => {
       axios.post(`http://localhost:3000/main5/${idClass}`);
       window.location.href = `http://localhost:3000/main5/${idClass}`;
     }
@@ -240,7 +257,6 @@ export default function List() {
     setDiscountRate(discountRate? false: true)
   }
 
-
   return (
         <>
           <div className="main-container3">
@@ -259,7 +275,7 @@ export default function List() {
                       <div className="head-bar3">
                           <div className="">강의 목록</div>
                           <div className="search3">
-                              <input type="text" id='search' className="search-input3" placeholder="개발/프로그래밍 검색" onChange={(e) => setSearch(e.target.value)}/>
+                              <input type="text" id='search' className="search-input3" placeholder="개발/프로그래밍 검색" onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress} />
                               <input type='button' className="search-btn3" value='검색' onClick={() => searchHandler()}></input>
                           </div>
                       </div>
