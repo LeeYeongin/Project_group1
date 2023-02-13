@@ -20,7 +20,7 @@ import com.project.team_1.dto.review.ReviewDTO;
 import com.project.team_1.service.ReviewService;
 
 @RestController
-@RequestMapping("/") // 여기에 강의 ID가 들어가야 한다
+@RequestMapping("/review/") // 여기에 강의 ID가 들어가야 한다
 public class ReviewController {
 	
 	@Autowired ReviewService reviewService;
@@ -44,7 +44,7 @@ public class ReviewController {
 	}
 	
 	// 리뷰 삭제
-	@DeleteMapping("/deleteReview/{idReview}")
+	@DeleteMapping("deleteReview/{idReview}")
 	public ResponseDto<?> deleteReview(@PathVariable("idReview") int idReview){
 		
 		return reviewService.ReviewDelete(idReview);

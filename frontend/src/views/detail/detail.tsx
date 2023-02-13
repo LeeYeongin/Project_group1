@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
+import { useUserStore } from "../../stores";
 import Carlist from './content2/CarList';
 import ReviewList from "./content3/ReviewList";
 import './detail.css';
@@ -15,7 +17,11 @@ function Main5(){
     // idClass 입력시 파람으로 받도록 설정
     const { idClass } = useParams<string>();
 
-    const [idUser, setIdUser] = useState<string>('aaa');
+    const [cookies] = useCookies();
+    const [idUser, setIdUser] = useState<string>('');
+
+    const [detailItems, setDetailItems] = useState<any>(null);
+    const [instruct, setInstruct] = useState<any>([]);
 
     // 구매 여부 확인
     const [status, setStatus] = useState<boolean>(true);
@@ -23,14 +29,37 @@ function Main5(){
     let classItem:any[] = [];
     let classItem2:any = [];
 
-    useEffect(() => {
-        async function URL() {
-            await axios.get((`http://localhost:4040/api/orderlist/${idUser}`)).then((response) => {
-            setSetatusItem(response.data.data);
-            })
+    // console.log(token);
+    const getClassDetailHandler = async (token: string) => {
+        const requestOption = {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
         }
+
+        axios.get('http://localhost:4040/myProfile', requestOption)
+        .then((response) => {
+            setIdUser(response.data.data.userId);
+            console.log(idUser);
+        })
+    }
+    async function URL() {
+        await axios.get((`http://localhost:4040/api/orderlist/${idUser}`)).then((response) => {
+        setSetatusItem(response.data.data);
+        })
+    }
+
+    // 클래스ID를 받아 출력하기위한 함수 부분
+    useEffect(() => {
+        axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
+            setDetailItems(response.data.data);
+            setInstruct(response.data.data.instructor);
+        })  
+    }, []);
+
+    useEffect(() => {
+        getClassDetailHandler(cookies.token);
         URL();
-        console.log("받은값2", statusItem);
         
         statusItem.map((test) => {
             classItem = test.className;
@@ -45,7 +74,7 @@ function Main5(){
 
     const navigator = useNavigate();
 
-    // 클릭시 클래스 추가 이벤트
+    // 클릭 스크롤
     const [select, setSelect] = useState<string>('');
 
     const onScrollClick = (id : string) => {
@@ -102,23 +131,12 @@ function Main5(){
         };
     });
 
-    // 클래스ID를 받아 출력하기위한 함수 부분
-    const [detailItems, setDetailItems] = useState<any>(null);
-    const [instruct, setInstruct] = useState<any>([]);
-
-    useEffect(() => {
-        axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
-            setDetailItems(response.data.data);
-            setInstruct(response.data.data.instructor);
-        })  
-    }, []);
-
     // 장바구니 이동
     const putCart = () => {
         const addCart = { idUser, idClass }
         // id와 함께 장바구니로 넘어감
         axios.post('http://localhost:4040/api/cart/add', addCart);
-        navigator('/list/all');
+        // navigator('/list/all');
     }
 
     const moveMyPage = () => {

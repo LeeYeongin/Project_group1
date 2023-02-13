@@ -29,15 +29,15 @@ const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
 
   // 페이지 이동
   const WriteReview = () => {
-    navigator(`/writeReview/${idClass}`, {state: idUser});
+    navigator(`/review/writeReview/${idClass}`, {state: idUser});
   }
 
   const UpdateReview = (idReview?: number) => {
-    navigator(`/updateReview/${idClass}/${idReview}`, {state: idUser});
+    navigator(`/review/updateReview/${idClass}/${idReview}`, {state: idUser});
   }
 
   const DeleteReview = (idReview?: number) => {
-    axios.delete(`http://localhost:4040/deleteReview/${idReview}`).catch((error) => console.log(error.message));;
+    axios.delete(`http://localhost:4040/review/deleteReview/${idReview}`).catch((error) => console.log(error.message));;
   }
 
   useEffect (() => {
@@ -53,7 +53,7 @@ const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
   const ReviewItem = reviewItems.slice(offset, offset + LIMIT).map((CONTENT) => {
     return(
       <div className='review5_main' key={CONTENT.idReview}>
-        <h3 className="reviewTitle5">{CONTENT.idUser}님</h3>
+        <h3 className="reviewTitle5">{CONTENT.idUser}</h3>
         <div className="ratingStar">
           <Rating name="read-only" value={CONTENT.grade} readOnly />
         </div>

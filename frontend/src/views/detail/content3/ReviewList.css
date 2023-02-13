@@ -25,7 +25,7 @@
   margin: 0 auto;
   padding: 15px 0;
 
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
 
   text-align: center;
@@ -116,6 +116,7 @@
   border: 1px solid #aad3ff;
   border-radius: 25px;
 
+  color:black;
   text-align: center;
 }
 
@@ -134,7 +135,7 @@
 }
 
 .disabled{
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 #cItem:hover{
