@@ -26,6 +26,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
     setPriceSum(sum)
   }
 
+  // 전체 선택
   const handleCartCheckAllHandler = (checked:boolean) => {
     let num:number[] = [];
     const idArray: any[] = [];
@@ -45,7 +46,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
       plusPriceFucntion(num2);
     }else{
       setCheckValue([]);
-      minusPriceFucntion(num2);
+      setPriceSum(0);
     }
   }
 
