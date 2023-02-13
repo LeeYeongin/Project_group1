@@ -134,12 +134,14 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-left: 7px;
 }
 
 .logout_btn4{
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 23px;
     cursor: pointer;
 }
 

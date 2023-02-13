@@ -133,9 +133,16 @@ function Main5(){
 
     // 장바구니 이동
     const putCart = () => {
-        const addCart = { idUser, idClass }
+        const requestOption = {
+            headers: {
+              Authorization: `Bearer ${cookies.token}`
+            }
+        }
+        console.log(idClass)
+        const addCart = {idClass: idClass}
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/api/cart/add', addCart);
+        axios.post('http://localhost:4040/api/cart/add', addCart, requestOption);
+        console.log(addCart)
         // navigator('/list/all');
     }
 

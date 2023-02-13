@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.project.team_1.dto.Class.PostClassId;
 import com.project.team_1.dto.cart.GetCartClassInfoDto;
 import com.project.team_1.dto.cart.GetCartClassListDto;
 import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
 import com.project.team_1.dto.cart.GetCartUserInfoDto;
+import com.project.team_1.dto.cart.PostCartId;
 import com.project.team_1.dto.payment.PaymentInfoDto;
 import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
@@ -153,8 +155,8 @@ public class CartService {
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 
-	public ResponseDto<ResultResponseDTO> addCartList(GetCartResponseDto requestBody) {
-		cartRepository.save(new CartEntity(requestBody.getIdUser(), requestBody.getIdClass()));
+	public ResponseDto<ResultResponseDTO> addCartList(PostClassId requestBody, String userId) {
+		cartRepository.save(new CartEntity(userId, requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 

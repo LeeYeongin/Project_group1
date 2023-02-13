@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.team_1.dto.Class.PostClassId;
 import com.project.team_1.dto.cart.GetCartClassListDto;
 import com.project.team_1.dto.cart.GetCartListDto;
 import com.project.team_1.dto.cart.GetCartResponseDto;
@@ -59,8 +60,8 @@ public class CartController {
 	}
 	
 	@PostMapping("add")
-	public ResponseDto<ResultResponseDTO> addCartList(@RequestBody GetCartResponseDto requestBoydy){
-		return cartService.addCartList(requestBoydy);
+	public ResponseDto<ResultResponseDTO> addCartList(@RequestBody PostClassId requestBody, @AuthenticationPrincipal String userId){
+		return cartService.addCartList(requestBody, userId);
 	}
 
 	@PostMapping("payment")
