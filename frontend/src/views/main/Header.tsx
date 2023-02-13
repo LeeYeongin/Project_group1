@@ -25,6 +25,7 @@ function Header({setOpen}: props){
   const logOutHandler = () => {
     setCookies('token', '', {expires: new Date()});
     removeUser();
+    alert("다음에 또 만나요!")
   }
 
   const gotoSignup = () => {
