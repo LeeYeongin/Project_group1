@@ -32,7 +32,8 @@ public class WebSecurityConfig {
 			// '/', '/api/auth'(적혀있는) 모듈에 대해서는 모두 허용 (인증[로그인,토큰]을 하지 않고 사용 가능하게 함)
 			.authorizeHttpRequests().antMatchers("/", "/api/auth/**",
 					"/api/carousel/**", "/api/main5/**", "/api/list/**",
-					"/api/orderlist/**", "/review/**", "/api/find/**").permitAll()
+					"/api/orderlist/**", "/review/**", "/api/find/**",
+					"/findPassword/**").permitAll()
 			// 나머지 Request에 대해서는 모두 인증된 사용자만 사용가능하게 함
 			.anyRequest().authenticated();
 		
