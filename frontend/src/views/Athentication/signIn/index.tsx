@@ -52,7 +52,7 @@ export default function Login({ open, setOpen }: props) {
       alert('로그인에 실패했습니다.');
       return;
     }
-    alert('로그인 성공');
+    alert(data.userId + "환영합니다.");
     const { token, exprTime, user } = signInResponse.data;
     const expires = new Date();
     expires.setMilliseconds(expires.setMilliseconds + exprTime);
