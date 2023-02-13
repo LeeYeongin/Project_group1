@@ -20,18 +20,11 @@ export default function Login({ open, setOpen }: props) {
   const [userPassword, setPassword] = useState<string>('');
   const [cookies, setCookies] = useCookies();
 
-  //로그인 시 엔터키 누르면 signInHandler를 통해 정보를 전달받는다.
-  const getDataList = () => {
-    if(passwordView.trim().length !=0){
-      signInHandler();
-    }
-  }
-
-  // 엔터키 이벤트
+  //로그인시 엔터키를 누르면 singInHandler가 작동하는 엔터키 이벤트
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter') {
       console.log();
-      getDataList();
+      signInHandler();
     }
   }
 
