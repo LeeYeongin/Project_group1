@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import { useState } from 'react';
+import { useState , KeyboardEvent} from 'react';
 import { useCookies } from 'react-cookie';
 import { signInApi } from '../../../apis';
 
@@ -19,6 +19,21 @@ export default function Login({ open, setOpen }: props) {
   const [userEmail, setEmail] = useState<string>('');
   const [userPassword, setPassword] = useState<string>('');
   const [cookies, setCookies] = useCookies();
+
+  //로그인 시 엔터키 누르면 signInHandler를 통해 정보를 전달받는다.
+  const getDataList = () => {
+    if(passwordView.trim().length !=0){
+      signInHandler();
+    }
+  }
+
+  // 엔터키 이벤트
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === 'Enter') {
+      console.log();
+      getDataList();
+    }
+  }
 
   const { setUser } = useUserStore();
 
@@ -98,6 +113,7 @@ export default function Login({ open, setOpen }: props) {
                   spellCheck="false"
                   placeholder="비밀번호"
                   onChange={(e) => setPassword(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
                 <span
                   className="toggle-password"
