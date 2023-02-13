@@ -21,18 +21,12 @@ export default function List() {
 
     const { getcategory } = useParams<string>();
     
-    //엔터 할때 찾아가는 주소 및 서치
-    const getDataList = () => {
-      if (search.trim().length != 0){
-          searchHandler();
-      }
-    }
-
-    // 엔터키 이벤트
+    
+    // 엔터키 이벤트 엔터키를 누르면 serachHandler 작동
     const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
       if(e.key === 'Enter') {
         console.log();
-        getDataList();
+        searchHandler();
       }
     }
 
