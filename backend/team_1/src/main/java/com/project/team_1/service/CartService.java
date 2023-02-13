@@ -156,6 +156,17 @@ public class CartService {
 	}
 
 	public ResponseDto<ResultResponseDTO> addCartList(PostClassId requestBody, String userId) {
+		CartEntity cartEntity = null;
+		
+		try {
+			cartEntity = cartRepository.findByIdUserAndIdClass(userId, requestBody.getIdClass());
+			if(cartEntity != null) {
+				return ResponseDto.setFailed("Already existed");
+			}
+		}catch (Exception error) {
+			return ResponseDto.setFailed("Add cart Faild");
+		}
+		
 		cartRepository.save(new CartEntity(userId, requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}

@@ -11,4 +11,5 @@ import com.project.team_1.entity.CartEntity;
 @Repository
 public interface CartRepository extends JpaRepository<CartEntity, Integer> {
 	List<CartEntity> findByIdUser(String idUser);
+	CartEntity findByIdUserAndIdClass(String idUser, int idClass);
 }

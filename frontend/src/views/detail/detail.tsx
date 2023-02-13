@@ -138,12 +138,17 @@ function Main5(){
               Authorization: `Bearer ${cookies.token}`
             }
         }
-        console.log(idClass)
         const addCart = {idClass: idClass}
         // id와 함께 장바구니로 넘어감
-        axios.post('http://localhost:4040/api/cart/add', addCart, requestOption);
-        console.log(addCart)
+        axios.post('http://localhost:4040/api/cart/add', addCart, requestOption)
+        .then((response) => {
+            if(!response.data.status) {
+                alert('이미 장바구니에 있는 강의입니다.')
+                navigator('/cart');
+            }
+        })
         // navigator('/list/all');
+        alert('장바구니에 담겼습니다.')
     }
 
     const moveMyPage = () => {
