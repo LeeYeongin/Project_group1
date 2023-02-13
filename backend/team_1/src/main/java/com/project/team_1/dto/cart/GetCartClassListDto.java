@@ -1,7 +1,5 @@
 package com.project.team_1.dto.cart;
 
-import com.project.team_1.entity.ClassEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

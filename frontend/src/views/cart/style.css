@@ -107,7 +107,7 @@ a {
 
 .payment2 {
     height: 100%;
-    border-left: 1px solid rgb(179, 179, 179);
+    /* border-left: 1px solid rgb(179, 179, 179); */
     text-align: right;
 
     flex-grow: 1.5;

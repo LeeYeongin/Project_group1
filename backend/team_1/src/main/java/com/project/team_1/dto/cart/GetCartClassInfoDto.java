@@ -16,13 +16,13 @@ public class GetCartClassInfoDto {
 	private String img;
 	private String className;
 	private int price;
-	private int instructor;
+	private String instructor;
 	
-	public GetCartClassInfoDto(ClassEntity classEntity) {
+	public GetCartClassInfoDto(ClassEntity classEntity, String instructor) {
 		this.img = classEntity.getImg();
 		this.className = classEntity.getClassName();
 		this.price = classEntity.getPrice();
-		this.instructor = classEntity.getInstructor();
+		this.instructor = instructor;
 	}
 	
 }

@@ -21,11 +21,13 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.dto.response.ResultResponseDTO;
 import com.project.team_1.entity.CartEntity;
 import com.project.team_1.entity.ClassEntity;
+import com.project.team_1.entity.InstructorEntity;
 import com.project.team_1.entity.OrderDtlEntity;
 import com.project.team_1.entity.OrderMstEntity;
 import com.project.team_1.entity.UserEntity;
 import com.project.team_1.repository.CartRepository;
 import com.project.team_1.repository.ClassRepository;
+import com.project.team_1.repository.InstructorRepository;
 import com.project.team_1.repository.OrderDtlRepository;
 import com.project.team_1.repository.OrderMstRepository;
 import com.project.team_1.repository.UserRepository;
@@ -36,6 +38,8 @@ public class CartService {
 	CartRepository cartRepository;
 	@Autowired
 	ClassRepository classRepository;
+	@Autowired
+	InstructorRepository instructorRepository;
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -72,11 +76,13 @@ public class CartService {
 //			for (ClassEntity classEntity: ClassList) {
 //		         dataClass.add(new GetCartClassListDto(classEntity));
 //		     }
-
+		
 		List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
 		for (CartEntity cart : CartList) {
+			int instructorId = classRepository.findById(cart.getIdClass()).get().getInstructor();
+			InstructorEntity instructor = instructorRepository.findById(instructorId).get();
 			dataClass.add(new GetCartClassListDto(cart.getIdCart(),
-					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
+					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get(), instructor.getInstructorName())));
 		}
 
 		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
@@ -107,8 +113,10 @@ public class CartService {
 
 		List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
 		for (CartEntity cart : CartList) {
+			int instructorId = classRepository.findById(cart.getIdClass()).get().getInstructor();
+			InstructorEntity instructor = instructorRepository.findById(instructorId).get();
 			dataClass.add(new GetCartClassListDto(cart.getIdCart(),
-					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
+					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get(), instructor.getInstructorName())));
 		}
 
 		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
