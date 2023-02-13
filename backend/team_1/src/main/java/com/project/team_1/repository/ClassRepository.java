@@ -16,7 +16,7 @@ public interface ClassRepository extends JpaRepository<ClassEntity, Integer> {
 	
 //	@Query("select c from CLASS c where c.category = front")
 //	List<ClassEntity> showFrontList();
-	List<ClassEntity> findFirst5ByCategory(String category);
+	List<ClassEntity> findFirst10ByCategory(String category);
 	
 	List<ClassEntity> findByClassNameContaining(String search);
 	

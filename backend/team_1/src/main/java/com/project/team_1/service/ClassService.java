@@ -48,7 +48,7 @@ public class ClassService {
    public ResponseDto<List<GetClassInfoDto>> showFrontList() {
       String category = "front";
 
-      List<ClassEntity> showFrontList = classRepository.findFirst5ByCategory(category);
+      List<ClassEntity> showFrontList = classRepository.findFirst10ByCategory(category);
       List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 
       for (ClassEntity classEntity : showFrontList) {
@@ -141,7 +141,7 @@ public class ClassService {
    public ResponseDto<List<GetClassInfoDto>> showBackList() {
       String category = "back";
 
-      List<ClassEntity> showBackList = classRepository.findFirst5ByCategory(category);
+      List<ClassEntity> showBackList = classRepository.findFirst10ByCategory(category);
       List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
 
       for (ClassEntity classEntity : showBackList) {
@@ -205,7 +205,7 @@ public class ClassService {
    public ResponseDto<List<GetClassInfoDto>> showDatabaseList() {
       String category = "database";
 
-      List<ClassEntity> showDatabaseList = classRepository.findFirst5ByCategory(category);
+      List<ClassEntity> showDatabaseList = classRepository.findFirst10ByCategory(category);
       List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
       for (ClassEntity classEntity : showDatabaseList) {
             List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();
@@ -267,7 +267,7 @@ public class ClassService {
    // FullStack List
    public ResponseDto<List<GetClassInfoDto>> showFullStackList() {
       String category = "fullstack";
-      List<ClassEntity> showFullStackList = classRepository.findFirst5ByCategory(category);
+      List<ClassEntity> showFullStackList = classRepository.findFirst10ByCategory(category);
       List<GetClassInfoDto> data = new ArrayList<GetClassInfoDto>();
       for (ClassEntity classEntity : showFullStackList) {
             List<ReviewEntity> reviewList = new ArrayList<ReviewEntity>();

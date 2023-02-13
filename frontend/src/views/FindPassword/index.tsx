@@ -14,7 +14,7 @@ export default function FindPassword() {
           </div>
           <div className="find-password-form2">
             <div className="input-id-container2">
-              <h4 className="input-label2">아이디</h4>
+              <h4 className="input-label2">이메일</h4>
               <input className="input-container2" type="text" />
             </div>
             <div className="input-telNum-container2">

@@ -28,7 +28,7 @@ const Study = ({ carouselMap }: StudyProps) => {
     dots: false,
     infinite: false,
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 2
   };
 
   //상세페이지 이동
