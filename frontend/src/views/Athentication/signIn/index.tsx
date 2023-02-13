@@ -59,7 +59,6 @@ export default function Login({ open, setOpen }: props) {
 
     setCookies('token', token, { expires });
     setUser(user);
-    // window.location.href=window.location.href;
     setOpen(false)
   };
   // if(!email.includes('@')) {

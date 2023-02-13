@@ -32,7 +32,7 @@ import com.project.team_1.repository.UserRepository;
 public class CartService {
 	@Autowired
 	CartRepository cartRepository;
-	@Autowired 
+	@Autowired
 	ClassRepository classRepository;
 	@Autowired
 	UserRepository userRepository;
@@ -40,61 +40,91 @@ public class CartService {
 	OrderMstRepository orderMstRepository;
 	@Autowired
 	OrderDtlRepository orderDtlRepository;
-	
+
 	// cart에 담긴 강의정보 불러오기
-		public ResponseDto<List<GetCartClassListDto>> getCartList(GetCartListDto dto){
-			
-			List<CartEntity> CartList = null;
+	public ResponseDto<List<GetCartClassListDto>> getCartList(GetCartListDto dto) {
+
+		List<CartEntity> CartList = null;
 //			List<ClassEntity> ClassList = new ArrayList<ClassEntity>();
-			
-			try {
-				CartList = cartRepository.findByIdUser(dto.getIdUser());
+
+		try {
+			CartList = cartRepository.findByIdUser(dto.getIdUser());
 //				
 //				if(CartList.isEmpty())
 //					return ResponseDto.setFailed("Not Exist");
-			}
-			catch (Exception e) {
-				return ResponseDto.setFailed("error");
-			}
-			
+		} catch (Exception e) {
+			return ResponseDto.setFailed("error");
+		}
+
 //			List<GetCartResponseDto> data = new ArrayList<GetCartResponseDto>();
 //			for (CartEntity cart: CartList) {
 //		         data.add(new GetCartResponseDto(cart));
 //		     }
 
-			
 //			for(GetCartResponseDto cartClassList: data) {
 //				int classID = cartClassList.getIdClass();
 //				ClassList.add(classRepository.findById(classID).get());
 //			}
-			
+
 //			List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
 //			for (ClassEntity classEntity: ClassList) {
 //		         dataClass.add(new GetCartClassListDto(classEntity));
 //		     }
-			
-			List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
-			for(CartEntity cart: CartList) {
-				dataClass.add(new GetCartClassListDto(cart.getIdCart(), new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
-			}
-			
-			return ResponseDto.setSuccess("Get Cart List Success", dataClass);
+
+		List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
+		for (CartEntity cart : CartList) {
+			dataClass.add(new GetCartClassListDto(cart.getIdCart(),
+					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
 		}
-	
-	
-	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(GetCartListDto dto){
+
+		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
+	}
+
+	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(GetCartListDto dto) {
 		UserEntity user;
 		try {
 			user = userRepository.findById(dto.getIdUser()).get();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			return ResponseDto.setFailed("error");
 		}
-		
+
 		return ResponseDto.setSuccess("Get Cart User Informaiton Success", new GetCartUserInfoDto(user));
-		
+
 	}
-	
+
+	public ResponseDto<List<GetCartClassListDto>> getCartList(String userId) {
+
+		List<CartEntity> CartList = null;
+
+		try {
+			CartList = cartRepository.findByIdUser(userId);
+		} catch (Exception e) {
+			return ResponseDto.setFailed("error");
+		}
+
+		List<GetCartClassListDto> dataClass = new ArrayList<GetCartClassListDto>();
+		for (CartEntity cart : CartList) {
+			dataClass.add(new GetCartClassListDto(cart.getIdCart(),
+					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get())));
+		}
+
+		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
+	}
+
+	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(String userId) {
+		UserEntity user;
+		try {
+			user = userRepository.findById(userId).get();
+
+		} catch (Exception e) {
+			return ResponseDto.setFailed("error");
+		}
+
+		return ResponseDto.setSuccess("Get Cart User Informaiton Success", new GetCartUserInfoDto(user));
+
+	}
+
 	// 선택한 강의정보 삭제
 //	public ResponseDto<ResultResponseDTO> deleteCartList(List<PostCartId> requestBody) {
 //		List<Integer> idCart = new ArrayList<Integer>();
@@ -109,7 +139,7 @@ public class CartService {
 //		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 //	}
 //	
-	
+
 	public ResponseDto<ResultResponseDTO> deleteCartList(List<Integer> requestBody) {
 //		List<Integer> idCart = new ArrayList<Integer>();
 //		for(PostCartId cartdto: requestBody) {
@@ -122,30 +152,28 @@ public class CartService {
 		cartRepository.deleteAllById(requestBody);
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
-	
+
 	public ResponseDto<ResultResponseDTO> addCartList(GetCartResponseDto requestBody) {
 		cartRepository.save(new CartEntity(requestBody.getIdUser(), requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
-	
 
-	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto dto){
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto dto) {
 		Date now = new Date();
 		SimpleDateFormat data = new SimpleDateFormat("yyyyMMdd");
 		String date = data.format(now);
-		int randomNum = (int)(Math.random()*100);
-		String orderNumber = "H" + date + String.valueOf(randomNum) + String.valueOf(orderMstRepository.count()+1);
-		
+		int randomNum = (int) (Math.random() * 100);
+		String orderNumber = "H" + date + String.valueOf(randomNum) + String.valueOf(orderMstRepository.count() + 1);
+
 		orderMstRepository.save(new OrderMstEntity(now, dto.getIdUser(), "결제 완료", orderNumber));
-		
-		for(int classid : dto.getIdClass()) {
+
+		for (int classid : dto.getIdClass()) {
 			ClassEntity classEntity = classRepository.findById(classid).get();
 			int price = classEntity.getPrice();
 			orderDtlRepository.save(new OrderDtlEntity(orderNumber, classid, price));
 		}
-		
+
 		return ResponseDto.setSuccess("Payment success", new ResultResponseDTO(true));
 	}
-	
 
 }

@@ -25,13 +25,15 @@ export default function MyProfile() {
         Authorization: `Bearer ${token}`
       }
     }
-    const getdata = {
-      userId: user.userId
-    };
+    // const getdata = {
+    //   userId: user.userId
+    // };
 
     axios
-      .post('http://localhost:4040/myProfile', getdata, requestOption)
+      // .post('http://localhost:4040/myProfile', getdata, requestOption)
+      .get('http://localhost:4040/myProfile', requestOption)
       .then((Response) => {
+        console.log(Response.data)
         const tmp = [];
         tmp.push({
           profile: Response.data.data.profile,

@@ -39,6 +39,17 @@ public class UserProfileService {
 		return ResponseDto.setSuccess("Get Profile Success", userinfo);
 	}
 	
+	
+	public ResponseDto<GetUserIfnoDto> getUserProfile(String userId){
+		GetUserIfnoDto userinfo;
+		try {
+			userinfo = new GetUserIfnoDto(userRepository.findById(userId).get());
+		}catch (Exception e) {
+			return ResponseDto.setFailed("error");
+		}
+		return ResponseDto.setSuccess("Get Profile Success", userinfo);
+	}
+	
 	public ResponseDto<ResultResponseDTO> deleteUser(String idUser) {
 		userRepository.deleteById(idUser);
 		

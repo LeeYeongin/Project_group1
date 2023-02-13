@@ -77,6 +77,7 @@ function Header({setOpen}: props){
                 <div className="myprofile4">
                   <a href='/myProfile'>
                     <AccountCircleIcon fontSize="large"/>
+                    {/* {user.name}님 환영합니다. */}
                   </a>
                 </div>
               </>

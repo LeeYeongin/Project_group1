@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { error } from 'console';
 import React, { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie';
 import Totoro from '../../asset/img/totoro.png';
+import { useUserStore } from '../../stores';
 import CartList from './cartlist';
 import NoCartList from './nocartlist';
 import './style.css';
@@ -16,26 +18,35 @@ export default function Cart() {
   const [priceSum, setPriceSum] = useState<number>(0);
   const [showList, setShowList] = useState<boolean>(false);
 
+  const [cookies, setCookies] = useCookies();
+  const {user} = useUserStore();
+
+  useEffect(() => {
+    console.log(cookies);
+    console.log(user);
+  }, [cookies]);
+
   const cartHandler = () => {
     const getdata = {
       idUser: " "
     };
+
+    console.log(cookies)
+    console.log('user:' + user)
+
+    const requestOption = {
+      headers: {
+        Authorization: `Bearer ${cookies.token}`
+      }
+    }
     
-    axios.post("http://localhost:4040/api/cart/", getdata)
+    axios
+    // .post("http://localhost:4040/api/cart/", getdata)
+    .get("http://localhost:4040/api/cart/", requestOption)
     .then((Response) => {
       const tmp = [];
       // let sum = 0;
       setRequestResult('Success!!');
-
-      axios.post("http://localhost:4040/api/cart/user", getdata)
-      .then((Response) => {
-          setName(Response.data.data.name)
-          setEmail(Response.data.data.email)
-          setTelNum(Response.data.data.telNum)
-      })
-      .catch((error) => {
-        setRequestResult('Failed!!');
-      })
 
       if(Response.data.data.length === 0){
         setShowList(false);
@@ -61,6 +72,18 @@ export default function Cart() {
       setRequestResult('Failed!!');
       console.log(requestResult);
     })
+
+    axios
+    // .post("http://localhost:4040/api/cart/user", getdata)
+    .get("http://localhost:4040/api/cart/user", requestOption)
+      .then((Response) => {
+          setName(Response.data.data.name)
+          setEmail(Response.data.data.email)
+          setTelNum(Response.data.data.telNum)
+      })
+      .catch((error) => {
+        setRequestResult('Failed!!');
+      })
   }
 
   const showListHandler = () => {

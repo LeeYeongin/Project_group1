@@ -3,6 +3,7 @@ package com.project.team_1.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,16 @@ public class CartController {
 	@PostMapping("user")
 	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(@RequestBody GetCartListDto requestBody){
 		return cartService.getCartUserInfo(requestBody);
+	}
+	
+	@GetMapping("")
+	public ResponseDto<List<GetCartClassListDto>> getCartList(@AuthenticationPrincipal String userId){
+		return cartService.getCartList(userId);
+	}
+	
+	@GetMapping("user")
+	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(@AuthenticationPrincipal String userId){
+		return cartService.getCartUserInfo(userId);
 	}
 	
 //	@PostMapping("delete")
