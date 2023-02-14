@@ -17,8 +17,8 @@ public class ChangePasswordController {
 
 	@Autowired LoginService loginService;
 	
-	@PostMapping("")
-	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody){
-		return 
-	}
+//	@PostMapping("")
+//	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody){
+//		return 
+//	}
 }

@@ -20,7 +20,7 @@ public class LoginService {
       UserEntity user;
       
       try {
-         user = userRepository.findByUserIdAndTelnum(dto.getUserId(), dto.getTelnum());
+         user = userRepository.findByIdUserAndTelnum(dto.getUserId(), dto.getTelnum());
          
       } catch (Exception e) {
          return ResponseDto.setFailed("Error");
@@ -36,19 +36,19 @@ public class LoginService {
       
    }
    
-   public ResponseDto<FindPasswordDto> changePassword (ChangePasswordDto dto){
-	   UserEntity user = null;
-	   String password = dto.getPassword();
-	   String password2 = dto.getPassword2();
-	   
-	   if(!password.equals(password2)) {
-		   return ResponseDto.setFailed("failed");
-	   }
-	   
+//   public ResponseDto<FindPasswordDto> changePassword (ChangePasswordDto dto){
+//	   UserEntity user = null;
+//	   String password = dto.getPassword();
+//	   String password2 = dto.getPassword2();
+//	   
+//	   if(!password.equals(password2)) {
+//		   return ResponseDto.setFailed("failed");
+//	   }
+//	   
 	   
 	   
 		   
 	  
 	   
-   }
+//   }
 }

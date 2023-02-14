@@ -75,7 +75,7 @@ public class AuthService {
 
 		UserEntity userEntity = null;
 		try {
-			userEntity = userRepository.findByUserId(id);
+			userEntity = userRepository.findByIdUser(id);
 			// 잘못된 이메일
 			if (userEntity == null) return ResponseDto.setFailed("Sign In failed");
 			// 잘못된 패스워드
@@ -101,7 +101,7 @@ public class AuthService {
 		UserEntity userEntity;
 		
 		try {
-			userEntity = userRepository.findByUserId(userid);
+			userEntity = userRepository.findByIdUser(userid);
 		}catch(Exception e) {
 			return ResponseDto.setFailed("잘못된 아이디입니다");
 		}

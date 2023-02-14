@@ -8,11 +8,11 @@ import com.project.team_1.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
 	
-	public boolean existsByUserIdAndPassword(String UserId, String password);
+	public boolean existsByIdUserAndPassword(String idUser, String password);
 	
 	UserEntity findByName(String name);
 	UserEntity findByNameAndTelnum(String name, String telnum);
-	UserEntity findByUserIdAndTelnum(String userId, String telnum);
-	public UserEntity findByUserId(String userId); 
+	UserEntity findByIdUserAndTelnum(String idUser, String telnum);
+	public UserEntity findByIdUser(String idUser); 
 	//********************************************
 }

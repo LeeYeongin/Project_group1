@@ -28,7 +28,7 @@ public class FindIdService {
 			} catch (Exception error) {
 				return ResponseDto.setFailed("Data base Error!");
 			}
-			FindIdResponseDto findIdResponseDto = new FindIdResponseDto(userEntity.getUserId());
+			FindIdResponseDto findIdResponseDto = new FindIdResponseDto(userEntity.getIdUser());
 			return ResponseDto.setSuccess("FindId success", findIdResponseDto);
 		}
 }

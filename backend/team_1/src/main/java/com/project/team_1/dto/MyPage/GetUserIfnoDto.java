@@ -22,7 +22,7 @@ public class GetUserIfnoDto {
 	private String description;
 	
 	public GetUserIfnoDto(UserEntity user) {
-		this.userId = user.getUserId();
+		this.userId = user.getIdUser();
 		this.profile = user.getProfile();
 		this.nickname = user.getNickname();
 		this.name = user.getName();
