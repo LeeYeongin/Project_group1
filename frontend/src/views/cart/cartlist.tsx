@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 interface props {
     itemList: any[];
@@ -13,6 +14,12 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
   const [check, setCheck] = useState<boolean>(false);
   const [isAllCheck, setIsAllCheck] = useState<boolean>(false);
   const [requestResult, setRequestResult] = useState<string>('')
+  const [cookies, setCookies] = useCookies();
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`
+    }
+  }
 
   const plusPriceFucntion = (price: number) => {
     let sum = priceSum; 
@@ -66,7 +73,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
   }
 
   const deleteHandler = () => {
-    axios.post("http://localhost:4040/api/cart/delete", checkValue)
+    axios.post("http://localhost:4040/api/cart/delete", checkValue, requestOption)
     .then((Response) => {
       setRequestResult('Success!!');
       setCheckValue([])

@@ -41,11 +41,9 @@ export default function Cart() {
     }
     
     axios
-    // .post("http://localhost:4040/api/cart/", getdata)
     .get("http://localhost:4040/api/cart/", requestOption)
     .then((Response) => {
       const tmp = [];
-      // let sum = 0;
       setRequestResult('Success!!');
 
       if(Response.data.data.length === 0){
@@ -74,7 +72,6 @@ export default function Cart() {
     })
 
     axios
-    // .post("http://localhost:4040/api/cart/user", getdata)
     .get("http://localhost:4040/api/cart/user", requestOption)
       .then((Response) => {
           setName(Response.data.data.name)
