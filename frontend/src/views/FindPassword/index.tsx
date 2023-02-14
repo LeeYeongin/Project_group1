@@ -22,7 +22,7 @@ export default function FindPassword() {
       telnum: telnum
     }
 
-    await axios.post("http://localhost:4040/findPassword/", getdata)
+    await axios.post("http://localhost:4040/api/find/password", getdata)
     .then((Response) => {
       if(Response.data.data.result){
         navigator('/changePassword',  { state: { value: userId } });
