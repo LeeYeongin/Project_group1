@@ -1,12 +1,12 @@
 .boardBody5{
-    width: 400px;
-    height: 560px;
+    width: 800px;
+    height: 100%;
 
-    margin: 20px auto;
+    margin: 5vh auto;
     border: 1px solid #eee;
     border-radius: 10px;
 
-    background-color: #ebf1ff;
+    background-color: #e3ebff;
 }
 
 /* 아이디 */
@@ -36,10 +36,10 @@
 
 .boardText5{
   width: 100%;
-  height: 450px;
+  height: 600px;
 
   border: 0;
-  padding: 5%;
+  padding: 5% 5% 0;
 
   font-size: 16px;
   font-weight: bold;
@@ -47,7 +47,7 @@
 
 .boardText5 > textarea{
   width: 100%;
-  height: 80%;
+  height: 100%;
 
   border: 0;
 
@@ -57,9 +57,10 @@
 .starRating{
   display: flex;
 
-  height: 16%;
+  width: 90%;
+  height: 20%;
 
-  margin: auto;
+  margin: 20px auto;
   padding: 5px;
 
   align-items: center;
@@ -87,6 +88,8 @@
 .boardFooter{
   display: flex;
 
+  margin: 20px 0;
+
   justify-content: space-around;
 }
 
@@ -94,7 +97,10 @@
   width: 40%;
   height: 40px;
 
-  border: 0;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
 
   font-weight: bold;
+
+  background-color: #eaeaea;
 }

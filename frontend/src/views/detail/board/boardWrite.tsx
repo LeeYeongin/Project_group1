@@ -56,11 +56,11 @@ const BoardWrite = () => {
           </div>
           <div className="boardText5">
             <textarea className="reviewArea" placeholder="리뷰작성" onChange={handleTextArea}/>
-            {/* 별점기능 */}
-            <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
-              <Rating className="WriteRating" value={grade} size='large' onChange={(event, newgrade) => {setGrade(newgrade);}}/>
-            </Box> 
           </div>
+          {/* 별점기능 */}
+          <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
+            <Rating className="WriteRating" value={grade} size='large' onChange={(event, newgrade) => {setGrade(newgrade);}}/>
+          </Box> 
           <div className="boardFooter">
             <button type="button" className="writeBtn5" onClick={WriteBtn}>작성</button>
           </div>

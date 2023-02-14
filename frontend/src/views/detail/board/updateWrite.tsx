@@ -57,11 +57,11 @@ function BoardUpdate() {
         </div>
         <div className="boardText5">
         <textarea className="reviewArea" placeholder="수정하는 내용" onChange={handleTextArea}/>
-          {/* 별점기능 */}
-          <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
-            <Rating className="WriteRating" value={grade} size='large' onChange={(event, newGrade) => {setGrade(newGrade);}}/>
-          </Box> 
         </div>
+        {/* 별점기능 */}
+        <Box sx={{'& > legend': { mt: 2 }}} className="starRating">
+          <Rating className="WriteRating" value={grade} size='large' onChange={(event, newGrade) => {setGrade(newGrade);}}/>
+        </Box> 
         <div className="boardFooter">
           <button type="button" className="writeBtn5" onClick={UpdateBtn}>작성</button>
         </div>
