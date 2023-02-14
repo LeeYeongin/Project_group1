@@ -45,7 +45,7 @@ function App() {
           <Route path="orderList" element={<OrderList/>}/>
           <Route path="modifiyProfile" element={<ModifiyProfile/>}/>
           <Route path="myProfile/writed/:idUser" element={<MyPosting/>}/>
-          <Route path="findPassword/changePassword" element={<ChangePassword/>}/>
+          <Route path="changePassword" element={<ChangePassword/>}/>
         </Route>
       </Routes>
     </div>

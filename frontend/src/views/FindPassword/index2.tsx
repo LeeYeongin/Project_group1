@@ -1,7 +1,36 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import './style2.css'
 
 export default function ChangePassword() {
+  const navigator = useNavigate();
+  const location = useLocation();
+  const userId = location.state.value;
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  
+  const changePasswordHandler = async () => {
+    console.log(userId)
+    const data = {
+      idUser: userId,
+      password: password,
+      password2: confirmPassword
+    }
+
+    await axios.patch("http://localhost:4040/changePassword/", data)
+    .then((Response) => {
+      if(Response.data.data.result){
+        alert("비밀번호가 성공적으로 변경되었습니다.")
+        navigator('/')
+      } else{
+        alert("다시 입력하세요!")
+      }
+    })
+    
+  }
+  
+
   return (
     <>
       <div className="change-password-wrapper2">
@@ -15,14 +44,14 @@ export default function ChangePassword() {
           <div className="change-password-form2">
             <div className="change-password-input-container2">
               <h4 className="input-label2">새로운 비밀번호</h4>
-              <input className="input-container2" type="text" />
+              <input className="input-container2" type="text"  onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <div className="check-new-password-input-container2">
               <h4 className="input-label2">비밀번호 확인</h4>
-              <input className="input-container2" type="text" />
+              <input className="input-container2" type="text" onChange={(e) => setConfirmPassword(e.target.value)}/>
             </div>
             <div className="btn-container2">
-              <button className="change-password-btn2">비밀번호 변경</button>
+              <button className="change-password-btn2" onClick={changePasswordHandler}>비밀번호 변경</button>
             </div>
           </div>
         </div>

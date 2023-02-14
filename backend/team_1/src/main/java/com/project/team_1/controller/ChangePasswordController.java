@@ -1,7 +1,7 @@
 package com.project.team_1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +17,8 @@ public class ChangePasswordController {
 
 	@Autowired LoginService loginService;
 	
-//	@PostMapping("")
-//	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody){
-//		return 
-//	}
+	@PatchMapping("")
+	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody){
+		return loginService.changePassword(requestBody);
+	}
 }

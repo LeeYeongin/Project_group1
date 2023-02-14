@@ -22,13 +22,10 @@ export default function FindPassword() {
       telnum: telnum
     }
 
-    console.log(userId)
-    console.log(telnum)
-
     await axios.post("http://localhost:4040/findPassword/", getdata)
     .then((Response) => {
       if(Response.data.data.result){
-        navigator('changePassword');
+        navigator('/changePassword',  { state: { value: userId } });
       } else{
         alert("다시 입력하세요!")
       }

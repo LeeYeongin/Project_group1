@@ -33,7 +33,7 @@ public class WebSecurityConfig {
 			.authorizeHttpRequests().antMatchers("/", "/api/auth/**",
 					"/api/carousel/**", "/api/main5/**", "/api/list/**",
 					"/api/orderlist/**", "/review/**", "/api/find/**",
-					"/findPassword/**").permitAll()
+					"/findPassword/**", "/changePassword/**").permitAll()
 			// 나머지 Request에 대해서는 모두 인증된 사용자만 사용가능하게 함
 			.anyRequest().authenticated();
 		
