@@ -1,6 +1,8 @@
 import { areArraysEqual } from '@mui/base';
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import ChangePassword from './index2';
 import './style.css'
 
 //비밀번호 변경 이동
@@ -11,26 +13,27 @@ const gotoChangePassword = () => {
 export default function FindPassword() {
   const [userId, setUserId] = useState<string>('');
   const [telnum, setTelnum] = useState<string>('');
-  const [result, setResult] = useState<boolean>(false);
+  const navigator = useNavigate();
 
-  const findPasswordHandler = () => {
+  const findPasswordHandler = async () => {
 
     const getdata = {
       userId: userId,
       telnum: telnum
     }
 
-    axios.post("http://localhost:4040/findPassword/", getdata)
+    console.log(userId)
+    console.log(telnum)
+
+    await axios.post("http://localhost:4040/findPassword/", getdata)
     .then((Response) => {
-      
-      setResult(Response.data.data.result);
-      
+      if(Response.data.data.result){
+        navigator('changePassword');
+      } else{
+        alert("다시 입력하세요!")
+      }
     })
-    if(result){
-      gotoChangePassword();
-    } else{
-      alert("다시 입력하세요!")
-    }
+    
   }
 
   return (

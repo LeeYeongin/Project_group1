@@ -22,9 +22,9 @@ import MyPosting from './views/MyPage/MyPosting';
 import { useCookies } from 'react-cookie';
 import { useUserStore } from './stores';
 import axios from 'axios';
+import ChangePassword from './views/FindPassword/index2';
 
 function App() {
-
   return (
 
     <div>
@@ -45,6 +45,7 @@ function App() {
           <Route path="orderList" element={<OrderList/>}/>
           <Route path="modifiyProfile" element={<ModifiyProfile/>}/>
           <Route path="myProfile/writed/:idUser" element={<MyPosting/>}/>
+          <Route path="findPassword/changePassword" element={<ChangePassword/>}/>
         </Route>
       </Routes>
     </div>

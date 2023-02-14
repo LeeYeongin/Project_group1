@@ -23,5 +23,4 @@ public class OrderListController {
 	public ResponseDto<List<GetOrderListDto>>getShowOrderList(@PathVariable("idUser") String idUser){
 		return orderListService.showOrderList(idUser);
 	}
-	
 }
