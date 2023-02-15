@@ -35,8 +35,8 @@ public class UserProfileController {
 		return userService.getUserProfile(userId);
 	}
 	
-	@GetMapping("/writed/{idUser}")
-	public ResponseDto<List<GetUserPostingDto>> getUserPosting(@PathVariable("idUser") String requestBody) {
-		return userService.getUserPosting(requestBody);
+	@GetMapping("/writed")
+	public ResponseDto<List<GetUserPostingDto>> getUserPosting(@AuthenticationPrincipal String idUser) {
+		return userService.getUserPosting(idUser);
 	}
 }

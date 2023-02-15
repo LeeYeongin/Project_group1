@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
 import SideBar from '../MyPageSideBar';
 import './style.css';
@@ -9,12 +10,17 @@ const gotopage = (idClass: number) => {
 };
 
 export default function MyPosting() {
-  const idUser = 'aaa';
+  const [cookies, setCookies] = useCookies();
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`
+    }
+  }
   const [postList, setPostList] = useState<any[]>([]);
 
   const myPostingHandler = () => {
     axios
-      .get(`http://localhost:4040/myProfile/writed/${idUser}`)
+      .get(`http://localhost:4040/myProfile/writed/`,requestOption)
       .then((Response) => {
         setPostList(Response.data.data);
       })
