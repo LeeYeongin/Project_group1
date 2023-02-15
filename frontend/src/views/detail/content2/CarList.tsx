@@ -24,7 +24,10 @@ const CarDetail = ({section, curriItems} : DetailProps) => {
     return (
         <ul className="car5_title" onClick={() => setMenu(isOpen => !isOpen)} key={section}><h4>강의 {section}</h4>
             {itemList.map((item) => (
-                <li className={isOpen ? "car5_item" : "hide_item"}><span>강의 {item.part} {item.video}</span></li>
+                <li className={isOpen ? "car5_item" : "hide_item"}>
+                    강의 {item.part}
+                    <iframe className={isOpen ? "car5_video" : "hide_video"} width="560" height="315" src={item.video} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                </li>
             ))}
         </ul>
     )

@@ -10,7 +10,6 @@
 
 .car5_title{
     padding: 5px 0 0 0;
-
     border-bottom: 1px solid white;
 }
 
@@ -23,9 +22,7 @@
 .car5_item{
     padding: 10px 0;
     border-top: 1px solid white;
-}
 
-.car5_item > span{
     font-size: 18px;
     font-weight: bold;
 }
@@ -36,11 +33,18 @@
 
     width: 0;
     height: 0;
+
+    color: transparent;
+    font-size: 0;
 }
 
-.hide_item > span{
-    color: transparent;
+.car5_video {
+    width: 90%;
+    
+    margin: 0 5%;
+}
 
-    font-size: 0;
-    max-height: 0px;
+.hide_video{
+    width: 0;
+    height: 0;
 }
