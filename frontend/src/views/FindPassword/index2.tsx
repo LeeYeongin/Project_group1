@@ -33,9 +33,7 @@ export default function ChangePassword() {
         alert("다시 입력하세요!")
       }
     })
-    
   }
-  
 
   return (
     <>

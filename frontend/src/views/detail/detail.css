@@ -32,6 +32,7 @@ h1{
 
 .detail5_main{
     width: auto;
+    height: auto;
 }
 
 /* 상단보기란 */
@@ -134,7 +135,7 @@ h1{
 }
 
 .detail5_content{
-    height: 3240px;
+    height: auto;
 
     display: flex;
 }
@@ -147,12 +148,10 @@ h1{
 
 .scroll{
     padding-top: 80px ;
-
-    height: 1000px;
 }
 
 .con5{
-    height: 32.5%;
+    min-height: 1000px;
 }
 
 .con5 > p { 
@@ -193,6 +192,8 @@ h1{
 /* 커리큘럼 */
 
 #content2{
+    height: auto;
+
     border: 1px solid #eee;
     border-radius: 5px;
     margin-bottom: 10px;

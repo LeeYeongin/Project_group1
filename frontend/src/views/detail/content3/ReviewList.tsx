@@ -88,7 +88,7 @@ const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
             {/* section이 마지막 섹션이면 비활성화 */}
             <button className="rightBtn" onClick={() => setSection(section + 1)} disabled={section * 5 >= (reviewItems.length - 1) / 4}>&gt;</button>
           </div>
-         <button type="button" className="writeReview5" onClick={WriteReview}>작성하기</button>
+         <button type="button" className={idUser ? "writeReview5" : "writeReview5 disabled"} onClick={WriteReview}>작성하기</button>
        </div>
     </div>
   )
