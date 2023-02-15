@@ -30,6 +30,7 @@ public class AuthService {
 		String userEmail = dto.getUserId();
 		String userPassword = dto.getPassword();
 		String userPasswordConfirm = dto.getPasswordConfirm();
+		String userTelnum = dto.getTelNum();
 
 		// email 중복 확인
 		try {
@@ -43,6 +44,10 @@ public class AuthService {
 		// 비밀번호가 서로 다르면 failed response 반환!
 		if (!userPassword.equals(userPasswordConfirm))
 			return ResponseDto.setFailed("Password does not matched!");
+		
+		if (userTelnum.isEmpty()) {
+			return ResponseDto.setFailed("failed");
+		}
 
 		// UserEntity 생성
 		UserEntity UserEntity = new UserEntity(dto);
