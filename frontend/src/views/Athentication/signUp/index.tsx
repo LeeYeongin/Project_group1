@@ -26,7 +26,7 @@ export default function Signup() {
       name: userName,
       telNum: userPhone,
     };
-  
+
     const signUpResponse = await signUpApi(data);
 
     if (!signUpResponse) {

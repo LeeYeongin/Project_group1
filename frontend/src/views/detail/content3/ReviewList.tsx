@@ -63,8 +63,6 @@ const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
         <div className='reviewSubmit'>
             <button type="button" className={idUser === CONTENT.idUser ? 'loginEnable' : 'loginDisable'} onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
             <button type="button" className={idUser === CONTENT.idUser ? 'loginEnable' : 'loginDisable'} onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button>
-            {/* <button type="button" onClick={() => UpdateReview(CONTENT.idReview)}>수정하기</button>
-            <button type="button" onClick={() => DeleteReview(CONTENT.idReview)}>삭제하기</button> */}
         </div>
       </div>
     )

@@ -191,7 +191,7 @@ function Main5(){
                             </div>
                             <div id='content2' className= 'con5' ref={idRef2}>
                                 <h1>커리큘럼</h1>
-                                <Carlist curriItems = {detailItems.curriculumList}/>
+                                <Carlist status={status} idUser={idUser} curriItems = {detailItems.curriculumList}/>
                             </div>
                             <div id='content3' className= 'con5'  ref={idRef3}>
                                 <h1>수강평</h1>
