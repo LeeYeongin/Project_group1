@@ -15,6 +15,8 @@ export default function Signup() {
   const [userPasswordConfirm, setUserPasswordConfirm] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
+
+  const emailExt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
   
   // const [requestResult, setRequestResult] = useState<string>('');
 
@@ -86,9 +88,9 @@ export default function Signup() {
                       placeholder="example@habby.com"
                       onChange={(e) => setUserEmail(e.target.value)}
                     />
-                    {/* <span className="form--error--email--hide">
+                    {!emailExt.test(userEmail) && (<span className="form--error--email--hide">
                     이메일 형식이 올바르지 않습니다.
-                  </span> */}
+                  </span>)}
                   </div>
                 </div>
                 <div className="form--input-block">
