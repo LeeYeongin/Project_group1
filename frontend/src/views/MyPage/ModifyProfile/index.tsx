@@ -29,6 +29,10 @@ export default function ModifiyProfile() {
     }
   }
 
+  const gotoModifiy = () => {
+    window.location.href = `http://localhost:3000/modifiyProfile`;
+  }
+  
   const getUserInfoHandler = async () => {
     // const getdata = {
     //   idUser: 'aaa',
@@ -130,6 +134,7 @@ export default function ModifiyProfile() {
       .catch((error) => {});
 
     alert('회원수정 성공');
+    gotoModifiy()
   };
 
   const goToChangePassword = () => {

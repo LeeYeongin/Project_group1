@@ -3,9 +3,10 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 
 import './style.css';
+import { useCookies } from 'react-cookie';
 
 
-const url = `http://localhost:4040/orderlist/aaa`;
+const url = `http://localhost:4040/api/orderlist`;
 const classUrl = `http://localhost:4040/classlist`;
 
 
@@ -33,12 +34,18 @@ const gotopage = (idClass:number) => {
 
 function BasicExample() {
 
-    const [orders, setOrders] = useState<OrderList[]>([]);  
+    const [orders, setOrders] = useState<OrderList[]>([]);
+    const [cookies, setCookies] = useCookies();
+    const requestOption = {
+        headers: {
+          Authorization: `Bearer ${cookies.token}`
+        }
+      }
 
     useEffect(() => {
     async function fetchData(){
         try{
-            const response = await axios.get(url);
+            const response = await axios.get(url, requestOption);
             console.log(response.data);
             const orderInfo = []
             
