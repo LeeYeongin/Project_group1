@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 import SideBar from '../MyPageSideBar';
 import './style.css';
 
@@ -20,6 +21,7 @@ export default function ModifiyProfile() {
   const [flag, setFlag] = useState<boolean>(false)
   const [cookies, setCookies] = useCookies();
   const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
+  const navigator = useNavigate();
 
   const requestOption = {
     headers: {
@@ -130,6 +132,11 @@ export default function ModifiyProfile() {
     alert('회원수정 성공');
   };
 
+  const goToChangePassword = () => {
+    navigator('/changePassword',  { state: { value: email } });
+  }
+
+
   return (
     <>
       <div className="head-bar1">
@@ -191,13 +198,14 @@ export default function ModifiyProfile() {
                 </div>
                 <div className="list01">
                   <div className="list11">비밀번호</div>
-                  <div className="list31">
-                    <input
+                  <div className="changePassword" onClick={goToChangePassword}>
+                    비밀번호 변경
+                    {/* <input
                       className="userInput"
                       type="text"
                       defaultValue={userProfile?.at(0).password}
                       onChange={(e) => setPassword(e.target.value)}
-                    />
+                    /> */}
                   </div>
                 </div>
                 <div className="list01">

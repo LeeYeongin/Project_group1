@@ -134,6 +134,21 @@ body {
     background-color: rgb(243, 243, 243);
 }
 
+.changePassword {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+
+    width: 120px;
+    height: 40px;
+
+    background-color: #2779cc;
+    color: white;
+
+    cursor: pointer;
+    outline: none;
+}
+
 .userInput{
     width: 720px;
     border: none;
