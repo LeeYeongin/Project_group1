@@ -21,16 +21,12 @@ export default function Cart() {
   const [cookies, setCookies] = useCookies();
   const {user} = useUserStore();
 
-  useEffect(() => {
-    console.log(cookies);
-    console.log(user);
-  }, [cookies]);
+  // useEffect(() => {
+  //   console.log(cookies);
+  //   console.log(user);
+  // }, [cookies]);
 
   const cartHandler = () => {
-    const getdata = {
-      idUser: " "
-    };
-
     console.log(cookies)
     console.log('user:' + user)
 
@@ -93,7 +89,7 @@ export default function Cart() {
   }
 
   useEffect(() => {
-    cartHandler()
+      cartHandler()
   },[])
 
   return (

@@ -33,8 +33,8 @@ public class ModifiyProfileController {
 		return userService.getUserProfile(userId);
 	}
 	
-	@GetMapping("{idUser}")
-	public ResponseDto<ResultResponseDTO> deleteUser(@PathVariable("idUser") String idUser){
+	@GetMapping("/delete")
+	public ResponseDto<ResultResponseDTO> deleteUser(@AuthenticationPrincipal String idUser){
 		return userService.deleteUser(idUser);
 	}
 	

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../../../stores';
 import SideBar from '../MyPageSideBar';
 import './style.css';
 
@@ -22,6 +23,7 @@ export default function ModifiyProfile() {
   const [cookies, setCookies] = useCookies();
   const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
   const navigator = useNavigate();
+  const { user, removeUser } = useUserStore();
 
   const requestOption = {
     headers: {
@@ -69,12 +71,15 @@ export default function ModifiyProfile() {
   }, []);
 
   const deleteUser = (arg: any) => {
-    const getdata = 'aaa';
+    // const getdata = 'aaa';
 
     axios
-      .get('http://localhost:4040/modifiyProfile/' + getdata)
+      .get('http://localhost:4040/modifiyProfile/delete',requestOption)
       .then((Response) => {
         alert('회원탈퇴 성공!!!');
+        setCookies('token', '', {expires: new Date()});
+        removeUser();
+        window.location.href = `http://localhost:3000/`;
       })
       .catch((error) => {});
   };
