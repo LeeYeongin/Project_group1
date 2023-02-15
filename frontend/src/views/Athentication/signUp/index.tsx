@@ -6,6 +6,8 @@ import './style.css';
 // import Box from '@mui/material/Box';
 // import TextField from '@mui/material/TextField';
 import { signUpApi } from '../../../apis';
+import axios from 'axios';
+
 
 export default function Signup() {
   const [userEmail, setUserEmail] = useState<string>('');
@@ -13,7 +15,7 @@ export default function Signup() {
   const [userPasswordConfirm, setUserPasswordConfirm] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
-
+  
   // const [requestResult, setRequestResult] = useState<string>('');
 
   const signupHandler = async () => {
@@ -24,6 +26,7 @@ export default function Signup() {
       name: userName,
       telNum: userPhone,
     };
+  
     const signUpResponse = await signUpApi(data);
 
     if (!signUpResponse) {
@@ -189,6 +192,7 @@ export default function Signup() {
                       name="phone"
                       id="phone"
                       className="form--input phone1"
+                      placeholder='-없이 숫자만 입력하세요'
                       onChange={(e) => setUserPhone(e.target.value)}
                     />
                   </div>
