@@ -20,7 +20,7 @@ export default function MyPosting() {
 
   const myPostingHandler = () => {
     axios
-      .get(`http://localhost:4040/myProfile/writed/`,requestOption)
+      .get(`http://localhost:4040/myProfile/writed/`, requestOption)
       .then((Response) => {
         setPostList(Response.data.data);
       })

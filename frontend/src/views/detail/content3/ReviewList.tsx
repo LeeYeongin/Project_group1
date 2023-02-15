@@ -38,6 +38,7 @@ const ReviewList = ({reviewItems, idClass, idUser}: ItemProps) => {
 
   const DeleteReview = (idReview?: number) => {
     axios.delete(`http://localhost:4040/review/deleteReview/${idReview}`).catch((error) => console.log(error.message));;
+    window.location.reload();
   }
 
   useEffect (() => {

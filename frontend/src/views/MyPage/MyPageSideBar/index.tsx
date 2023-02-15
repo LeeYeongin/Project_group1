@@ -1,4 +1,6 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 // 프로필로 이동
 const gotoProfile = () => {
@@ -20,12 +22,31 @@ const gotoOrderlist = () => {
 const gotoModifiy = () => {
   window.location.href = `http://localhost:3000/modifiyProfile`;
 };
-// 작성한 게시글 이동
-const gotoMyPosting = () => {
-  window.location.href = `http://localhost:3000/myProfile/writed/aaa`;
-};
 
 export default function SideBar() {
+
+const [idUser, setIdUser] = useState<string>('');
+const [cookies, setCookies] = useCookies();
+const requestOption = {
+  headers: {
+    Authorization: `Bearer ${cookies.token}`
+  }
+}
+
+axios.get(`http://localhost:4040/myProfile/writed/`, requestOption)
+      .then((Response) => {
+        setIdUser(Response.data.data[0].idUser);
+        console.log(Response.data.data[0].idUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+// 작성한 게시글 이동
+const gotoMyPosting = () => {
+  window.location.href = `http://localhost:3000/myProfile/writed/${idUser}`;
+};
+
   return (
     <div className="side-menu1">
       <div className="menu1">
