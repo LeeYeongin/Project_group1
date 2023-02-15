@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import SideBar from '../MyPageSideBar';
 import './style.css';
 
@@ -10,20 +11,29 @@ const gotoModifiy = () => {
 
 export default function ModifiyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
-  const [profile, setProfile] = useState<string>('');
+  const [profile, setProfile] = useState<any>();
   const [nickname, setNickname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [telNum, setTelNum] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [flag, setFlag] = useState<boolean>(false)
+  const [cookies, setCookies] = useCookies();
+  const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
 
-  const getUserInfoHandler = () => {
-    const getdata = {
-      idUser: 'aaa',
-    };
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`
+    }
+  }
 
-    axios
-      .post('http://localhost:4040/modifiyProfile', getdata)
+  const getUserInfoHandler = async () => {
+    // const getdata = {
+    //   idUser: 'aaa',
+    // };
+    await axios
+      // .post('http://localhost:4040/modifiyProfile', getdata)
+      .get('http://localhost:4040/modifiyProfile',requestOption)
       .then((Response) => {
         const tmp = [];
         tmp.push({
@@ -63,7 +73,30 @@ export default function ModifiyProfile() {
       .catch((error) => {});
   };
 
+  const handleChangeFile = (event:any) => {
+    setFlag(true);
+    setProfile(event[0]);
+  }
+
+  const uploadHandler = async() => {
+    const data = new FormData();
+    data.append("file", profile);
+
+    await axios.post('http://localhost:4040/api/file/upload', data)
+    .then((Response) => {
+      setProfile(Response.data)
+      console.log(Response.data)
+    }).catch((error) => {
+      console.log(error.data)
+    })
+  }
+
   const modifiyHandler = () => {
+    if(flag)
+      uploadHandler();
+
+    console.log(profile)
+
     const getdata = {
       profile: profile,
       name: userProfile?.at(0).name,
@@ -74,8 +107,8 @@ export default function ModifiyProfile() {
       description: description,
     };
 
-    axios
-      .patch('http://localhost:4040/modifiyProfile', getdata)
+   axios
+      .patch('http://localhost:4040/modifiyProfile', getdata, requestOption)
       .then((Response) => {
         const tmp = [];
 
@@ -93,7 +126,6 @@ export default function ModifiyProfile() {
         setUserProfile(tmp);
       })
       .catch((error) => {});
-    gotoModifiy();
 
     alert('회원수정 성공');
   };
@@ -114,10 +146,13 @@ export default function ModifiyProfile() {
                   <div className="list21">
                     <div className="image1">
                       <img
-                        src={userProfile?.at(0).profile}
+                        src={apiUrl + userProfile?.at(0).profile}
                         alt=""
                         className="img1"
                       />
+                      <form action="">
+                        <input type="file" onChange={(e) => handleChangeFile(e.target.files)} />
+                      </form>
                     </div>
                   </div>
                 </div>

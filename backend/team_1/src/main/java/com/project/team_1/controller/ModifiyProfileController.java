@@ -1,6 +1,7 @@
 package com.project.team_1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +23,14 @@ public class ModifiyProfileController {
 	@Autowired
 	UserProfileService userService;
 	
-	@PostMapping("")
-	public ResponseDto<GetUserIfnoDto> getUserProfile(@RequestBody UserIdDto requestBody) {
-		return userService.getUserProfile(requestBody);
+//	@PostMapping("")
+//	public ResponseDto<GetUserIfnoDto> getUserProfile(@RequestBody UserIdDto requestBody) {
+//		return userService.getUserProfile(requestBody);
+//	}
+	
+	@GetMapping("")
+	public ResponseDto<GetUserIfnoDto> getUserProfile(@AuthenticationPrincipal String userId) {
+		return userService.getUserProfile(userId);
 	}
 	
 	@GetMapping("{idUser}")
@@ -33,7 +39,7 @@ public class ModifiyProfileController {
 	}
 	
 	@PatchMapping("")
-	public ResponseDto<GetUserIfnoDto> setUserProfile(@RequestBody SetUserDto requestBody) {
+	public ResponseDto<GetUserIfnoDto> setUserProfile(@RequestBody SetUserDto requestBody, @AuthenticationPrincipal String userId) {
 		return userService.setUserProfile(requestBody);
 	}
 	

@@ -32,6 +32,7 @@ public class UserEntity {
 		this.idUser = dto.getUserId();
 		this.password = dto.getPassword();
 		this.name = dto.getName();
+		this.profile = "profile.png";
 		this.telnum = dto.getTelNum();
 		this.email = dto.getUserId();
 		this.nickname = dto.getUserId().substring(0,dto.getUserId().indexOf('@'));

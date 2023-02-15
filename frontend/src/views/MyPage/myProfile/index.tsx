@@ -10,7 +10,8 @@ export default function MyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
   const [cookies, setCookies] = useCookies();
   const {user} = useUserStore();
-  console.log(user)
+  const [profile, setProfile] = useState<any>();
+  const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
 
   useEffect(() => {
     console.log(cookies);
@@ -18,18 +19,13 @@ export default function MyProfile() {
   }, [cookies]);
 
   const getUserInfoHandler = async (token: string) => {
-    console.log(token)
-    console.log(user)
     const requestOption = {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
-    // const getdata = {
-    //   userId: user.userId
-    // };
 
-    axios
+    await axios
       // .post('http://localhost:4040/myProfile', getdata, requestOption)
       .get('http://localhost:4040/myProfile', requestOption)
       .then((Response) => {
@@ -42,16 +38,30 @@ export default function MyProfile() {
           description: Response.data.data.description,
         });
         setUserProfile(tmp);
-        console.log(userProfile?.at(0).email);
-        console.log(userProfile?.at(0).description);
-        console.log(userProfile?.at(0).nickname);
       })
       .catch((error) => {});
+
+      // console.log(userProfile)
+      // getUserImg(userProfile?.at(0).profile)
+      
   };
 
   useEffect(() => {
     getUserInfoHandler(cookies.token);
+    // console.log(userProfile)
+    // getUserImg();
   }, []);
+
+  // const getUserImg = async () => {
+  //   console.log(userProfile)
+  //   // const imageName = userProfile?.at(0).profile
+  //   // console.log(imageName)
+  //    await axios.get(`http://localhost:4040/myProfile/image/profile.png`)
+  //   .then((Response) => {
+  //     setProfile(Response.data)
+  //     console.log(profile)
+  //   })
+  // };
 
   
   return (
@@ -70,7 +80,7 @@ export default function MyProfile() {
                   <div className="list21">
                     <div className="image1">
                       <img
-                        src={userProfile?.at(0).profile}
+                        src={apiUrl + userProfile?.at(0).profile}
                         alt=""
                         className="img1"
                       />

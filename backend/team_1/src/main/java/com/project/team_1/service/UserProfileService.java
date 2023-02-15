@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +31,7 @@ public class UserProfileService {
 	ReviewRepository reviewRepository;
 	@Autowired
 	ClassRepository classRepository;
+
 	
 	public ResponseDto<GetUserIfnoDto> getUserProfile(UserIdDto dto){
 		GetUserIfnoDto userinfo;
@@ -36,6 +40,8 @@ public class UserProfileService {
 		}catch (Exception e) {
 			return ResponseDto.setFailed("error");
 		}
+		
+		System.out.println(userinfo.getProfile());
 		return ResponseDto.setSuccess("Get Profile Success", userinfo);
 	}
 	
