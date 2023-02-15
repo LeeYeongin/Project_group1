@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -93,23 +93,24 @@ export default function ModifiyProfile() {
     const data = new FormData();
     data.append("file", profile);
 
-    await axios.post('http://localhost:4040/api/file/upload', data)
-    .then((Response) => {
-      setProfile(Response.data)
-      console.log(Response.data)
-    }).catch((error) => {
+    const response = await axios.post('http://localhost:4040/api/file/upload', data).catch((error) => {
       console.log(error.data)
     })
+
+    return (response as AxiosResponse<any, any>).data;
   }
 
-  const modifiyHandler = () => {
-    if(flag)
-      uploadHandler();
+  const modifiyHandler = async () => {
+    let profile2 = '';
+    if(flag) {
+      profile2 = await uploadHandler();
+    }
+      
 
     console.log(profile)
 
     const getdata = {
-      profile: profile,
+      profile: profile2,
       name: userProfile?.at(0).name,
       nickname: nickname,
       email: email,
