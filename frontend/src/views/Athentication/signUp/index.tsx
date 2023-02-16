@@ -8,7 +8,6 @@ import './style.css';
 import { signUpApi } from '../../../apis';
 import axios from 'axios';
 
-
 export default function Signup() {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
@@ -16,9 +15,43 @@ export default function Signup() {
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
 
+  const [userEmailCheck, setUserEmailCheck] = useState<boolean>(true);
+  const [userPasswordCheck, setUserPasswordCheck] = useState<boolean>(true);
+  const [userPasswordConfirmCheck, setUserPasswordConfirmCheck] =
+    useState<boolean>(true);
+  useState<boolean>(true);
+
   const emailExt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-  
+  const passwordExt = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,32}$/;
+
   // const [requestResult, setRequestResult] = useState<string>('');
+
+  const onEmailHandler = (value: string) => {
+    setUserEmail(value);
+    if (value.length === 0) {
+      setUserEmailCheck(true);
+      return;
+    }
+    setUserEmailCheck(emailExt.test(value));
+  };
+
+  const onPasswordHandler = (value: string) => {
+    setUserPassword(value);
+    if (value.length === 0) {
+      setUserPasswordCheck(true);
+      return;
+    }
+    setUserPasswordCheck(passwordExt.test(value));
+  };
+
+  const onUserPasswordConfirmHandler = (value: string) => {
+    setUserPasswordConfirm(value);
+    if (value.length === 0) {
+      setUserPasswordConfirmCheck(true);
+      return;
+    }
+    setUserPasswordConfirmCheck(userPassword === value);
+  };
 
   const signupHandler = async () => {
     const data = {
@@ -36,7 +69,7 @@ export default function Signup() {
       return;
     }
     if (!signUpResponse.status) {
-      console.log(signUpResponse)
+      console.log(signUpResponse);
       alert('회원가입에 실패했습니다.');
       return;
     }
@@ -86,11 +119,13 @@ export default function Signup() {
                       type="email"
                       className="e-sign-up-input--e-email"
                       placeholder="example@habby.com"
-                      onChange={(e) => setUserEmail(e.target.value)}
+                      onChange={(e) => onEmailHandler(e.target.value)}
                     />
-                    {!emailExt.test(userEmail) && (<span className="form--error--email--hide">
-                    이메일 형식이 올바르지 않습니다.
-                  </span>)}
+                    {!userEmailCheck && (
+                      <span className="form--error--email--hide">
+                        이메일 형식이 올바르지 않습니다.
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="form--input-block">
@@ -105,7 +140,8 @@ export default function Signup() {
                       spellCheck="false"
                       id="password"
                       placeholder="비밀번호"
-                      onChange={(e) => setUserPassword(e.target.value)}
+                      value={userPassword}
+                      onChange={(e) => onPasswordHandler(e.target.value)}
                     />
                     <span
                       className="toggle-password"
@@ -120,23 +156,18 @@ export default function Signup() {
                       ></i>
                     </span>
                   </div>
-                  {/* <p className="form-password-guide-area--hide">
-                  <span className="form-password-guide-hidden-line--error">
-                    영문/숫자/특수문자/ 2가지 이상 포함
-                  </span>
-                  <br />
-                  <span className="form-password-guide-hidden-line--error">
-                    8자 이상 32자 이하 입력 (공백 제외)
-                  </span>
-                  <br />
-                  <span className="form-password-guide-hidden-line--error">
-                    연속 3자 이상 동일한 문자/숫자 제외
-                  </span>
-                  <br />
-                  <span className="form-password-guide-hidden-line--un-acceptable">
-                    비밀번호에 사용할 수 없는 문자가 포함되어 있습니다.
-                  </span>
-                </p> */}
+                  {!userPasswordCheck && (
+                    <div className="form-password-guide-area--hide">
+                      <span className="form-password-guide-hidden-line--error">
+                        영문/숫자/특수문자/ 2가지 이상 포함
+                      </span>
+                      <br />
+                      <span className="form-password-guide-hidden-line--error">
+                        8자 이상 32자 이하 입력 (공백 제외)
+                      </span>
+                      <br />
+                    </div>
+                  )}
                 </div>
                 <div className="form--input-block">
                   <label htmlFor="passwordConfirm" className="form--label">
@@ -150,7 +181,7 @@ export default function Signup() {
                       spellCheck="false"
                       id="passwordConfirm"
                       placeholder="비밀번호 확인"
-                      onChange={(e) => setUserPasswordConfirm(e.target.value)}
+                      onChange={(e) => onUserPasswordConfirmHandler(e.target.value)}
                     />
                     <span
                       className="toggle-password"
@@ -166,9 +197,11 @@ export default function Signup() {
                     </span>
                   </div>
                   <span className="form--error--hide"></span>
-                  {/* <span className="form--error--passwordConfirm">
-                    비밀번호가 일치하지 않습니다.
-                  </span> */}
+                  {!userPasswordConfirmCheck && (
+                    <span className="form--error--passwordConfirm">
+                      비밀번호가 일치하지 않습니다.
+                    </span>
+                  )}
                 </div>
                 <div className="form--input-block">
                   <label htmlFor="name1" className="form--label">
@@ -194,7 +227,7 @@ export default function Signup() {
                       name="phone"
                       id="phone"
                       className="form--input phone1"
-                      placeholder='-없이 숫자만 입력하세요'
+                      placeholder="-없이 숫자만 입력하세요"
                       onChange={(e) => setUserPhone(e.target.value)}
                     />
                   </div>
