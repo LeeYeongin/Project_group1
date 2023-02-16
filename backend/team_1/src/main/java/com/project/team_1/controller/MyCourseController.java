@@ -19,7 +19,7 @@ import com.project.team_1.dto.response.ResponseDto;
 import com.project.team_1.service.ClassService;
 
 @RestController
-@RequestMapping("myCourse/")
+@RequestMapping("/myCourse/")
 public class MyCourseController {
 
    @Autowired ClassService classService;

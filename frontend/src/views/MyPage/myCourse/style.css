@@ -13,21 +13,23 @@ body {
 
     width: 100%;
     height: 100%;
+
+    /* background-color: aqua; */
 }
 .list {
-    display: flex;
+    /* display: flex; */
 
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 
     /* border-top: 1px solid rgb(187, 186, 186); */
     padding: 5px;
 
-    width: 100%;
-    height: 80%;
+    /* width: 100%; */
+    /* height: 80%; */
     margin-top: 15px;
     margin-bottom: 15px;
+    /* background-color: beige; */
 }
-
 
 
 .my-course-container-header {
@@ -46,12 +48,23 @@ body {
 .my-course-wrapper {
     display: block;
     /* flex-wrap: wrap; */
+
+    /* background-color: blueviolet; */
 }
 
 .my-course-item {
+    display: flex;
     padding: 12px 0px;
 
-    width: 265px;
+    
+
+    /* background-color: brown; */
+}
+
+.my-course-item-img{
+    display: flex;
+    width: 100px;
+    height: 100px;
 }
 
 .my-course-item-title {
