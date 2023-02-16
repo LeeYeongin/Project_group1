@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { error } from 'console';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 import Totoro from '../../asset/img/totoro.png';
 import { useUserStore } from '../../stores';
 import CartList from './cartlist';
@@ -9,97 +10,132 @@ import NoCartList from './nocartlist';
 import './style.css';
 
 export default function Cart() {
-  const [requestResult, setRequestResult] = useState<string>('')
+  const [requestResult, setRequestResult] = useState<string>('');
   const [itemList, setItemList] = useState<any[]>([]);
-  const [name, setName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [telNum, setTelNum] = useState<string>('')
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [telNum, setTelNum] = useState<string>('');
   const [checkValue, setCheckValue] = useState<number[]>([]);
   const [priceSum, setPriceSum] = useState<number>(0);
   const [showList, setShowList] = useState<boolean>(false);
-
   const [cookies, setCookies] = useCookies();
-  const {user} = useUserStore();
+  const navigator = useNavigate();
 
-  // useEffect(() => {
-  //   console.log(cookies);
-  //   console.log(user);
-  // }, [cookies]);
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`,
+    },
+  };
+
+  const gotopage = (idClass: number) => {
+    window.location.href = `http://localhost:3000/main5/${idClass}`;
+  };
 
   const cartHandler = () => {
-    console.log(cookies)
-    console.log('user:' + user)
-
-    const requestOption = {
-      headers: {
-        Authorization: `Bearer ${cookies.token}`
-      }
-    }
-    
     axios
-    .get("http://localhost:4040/api/cart/", requestOption)
-    .then((Response) => {
-      const tmp = [];
-      setRequestResult('Success!!');
-
-      if(Response.data.data.length === 0){
-        setShowList(false);
-      }else{
-        console.log(Response.data);
-        for (let i = 0; i < Response.data.data.length; i++) {
-          tmp.push({
-            idCart: Response.data.data[i].idCart,
-            img: Response.data.data[i].classInfo.img,
-            className: Response.data.data[i].classInfo.className,
-            price: Response.data.data[i].classInfo.price,
-            instructor: Response.data.data[i].classInfo.instructor,
-            isCheck: false
-          })
-        }
-
-        setItemList(tmp);
-        setShowList(true);
-      }
-      console.log(requestResult);
-    })
-    .catch((error) => {
-      setRequestResult('Failed!!');
-      console.log(requestResult);
-    })
-
-    axios
-    .get("http://localhost:4040/api/cart/user", requestOption)
+      .get('http://localhost:4040/api/cart/', requestOption)
       .then((Response) => {
-          setName(Response.data.data.name)
-          setEmail(Response.data.data.email)
-          setTelNum(Response.data.data.telNum)
+        const tmp = [];
+        setRequestResult('Success!!');
+
+        if (Response.data.data.length === 0) {
+          setShowList(false);
+        } else {
+          console.log(Response.data);
+          for (let i = 0; i < Response.data.data.length; i++) {
+            tmp.push({
+              idCart: Response.data.data[i].idCart,
+              img: Response.data.data[i].classInfo.img,
+              className: Response.data.data[i].classInfo.className,
+              price: Response.data.data[i].classInfo.price,
+              instructor: Response.data.data[i].classInfo.instructor,
+              isCheck: false,
+            });
+          }
+
+          setItemList(tmp);
+          setShowList(true);
+        }
+        console.log(requestResult);
       })
       .catch((error) => {
         setRequestResult('Failed!!');
+        console.log(requestResult);
+      });
+
+    axios
+      .get('http://localhost:4040/api/cart/user', requestOption)
+      .then((Response) => {
+        setName(Response.data.data.name);
+        setEmail(Response.data.data.email);
+        setTelNum(Response.data.data.telNum);
       })
-  }
+      .catch((error) => {
+        setRequestResult('Failed!!');
+      });
+  };
 
   const showListHandler = () => {
-    if(!showList){
-      return <NoCartList/>
-    }else{
-      return <CartList 
-      itemList={itemList} checkValue={checkValue} setCheckValue={setCheckValue} setPriceSum={setPriceSum} priceSum={priceSum}/>
+    if (!showList) {
+      return <NoCartList />;
+    } else {
+      return (
+        <CartList
+          itemList={itemList}
+          checkValue={checkValue}
+          setCheckValue={setCheckValue}
+          setPriceSum={setPriceSum}
+          priceSum={priceSum}
+        />
+      );
     }
-  }
+  };
+
+  const paymentHandler = () => {
+    if(checkValue.length === 0){
+      alert('결제할 강의가 없습니다.')
+      return
+    }
+    console.log(checkValue)
+    const data = {
+      idCart: checkValue,
+    };
+
+    axios
+      .post('http://localhost:4040/api/cart/payment', data, requestOption)
+      .then((response) => {
+        alert('결제가 완료되었습니다.');
+        axios
+          .post(
+            'http://localhost:4040/api/cart/delete',
+            checkValue,
+            requestOption
+          )
+          .then((Response) => {
+            setRequestResult('Success!!');
+            setCheckValue([]);
+          })
+          .catch((error) => {
+            setRequestResult('Failed!!');
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      window.location.href = `http://localhost:3000/cart`;
+  };
 
   useEffect(() => {
-      cartHandler()
-  },[])
+    cartHandler();
+  }, []);
 
   return (
     <div className="container-wrapper2">
       <div className="container2">
         <div className="cart-section2">
           <h1 className="cart-name2">수강바구니</h1>
-          <div className="cart-container2">
-            {showListHandler()}
-          </div>
+          <div className="cart-container2">{showListHandler()}</div>
         </div>
         <div className="side-container2">
           <div className="buyer-info2">
@@ -140,7 +176,7 @@ export default function Cart() {
               <span>총 결제금액</span>
               <span>{priceSum}원</span>
             </div>
-            <button className="payment-btn2" onClick={() => cartHandler()}>
+            <button className="payment-btn2" onClick={() => paymentHandler()}>
               결제하기
             </button>
           </div>

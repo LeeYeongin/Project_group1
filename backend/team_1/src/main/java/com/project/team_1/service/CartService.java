@@ -61,8 +61,8 @@ public class CartService {
 		for (CartEntity cart : CartList) {
 			int instructorId = classRepository.findById(cart.getIdClass()).get().getInstructor();
 			InstructorEntity instructor = instructorRepository.findById(instructorId).get();
-			dataClass.add(new GetCartClassListDto(cart.getIdCart(),
-					new GetCartClassInfoDto(classRepository.findById(cart.getIdClass()).get(), instructor.getInstructorName())));
+			dataClass.add(new GetCartClassListDto(cart.getIdCart(), new GetCartClassInfoDto(
+					classRepository.findById(cart.getIdClass()).get(), instructor.getInstructorName())));
 		}
 		return ResponseDto.setSuccess("Get Cart List Success", dataClass);
 	}
@@ -87,36 +87,36 @@ public class CartService {
 
 	public ResponseDto<ResultResponseDTO> addCartList(PostClassId requestBody, String userId) {
 		CartEntity cartEntity = null;
-		
+
 		try {
 			cartEntity = cartRepository.findByIdUserAndIdClass(userId, requestBody.getIdClass());
-			if(cartEntity != null) {
+			if (cartEntity != null) {
 				return ResponseDto.setFailed("Already existed");
 			}
-		}catch (Exception error) {
+		} catch (Exception error) {
 			return ResponseDto.setFailed("Add cart Faild");
 		}
-		
+
 		cartRepository.save(new CartEntity(userId, requestBody.getIdClass()));
 		return ResponseDto.setSuccess("Succes delete cart list", new ResultResponseDTO(true));
 	}
 
-	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto dto) {
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto dto, String userId) {
 		Date now = new Date();
 		SimpleDateFormat data = new SimpleDateFormat("yyyyMMdd");
 		String date = data.format(now);
 		int randomNum = (int) (Math.random() * 100);
 		String orderNumber = "H" + date + String.valueOf(randomNum) + String.valueOf(orderMstRepository.count() + 1);
 
-		orderMstRepository.save(new OrderMstEntity(now, dto.getIdUser(), "결제 완료", orderNumber));
+		orderMstRepository.save(new OrderMstEntity(now, userId, "결제 완료", orderNumber));
 
-		for (int classid : dto.getIdClass()) {
-			ClassEntity classEntity = classRepository.findById(classid).get();
+		for (int cartid : dto.getIdCart()) {
+			int idClass = cartRepository.findById(cartid).get().getIdClass();
+			ClassEntity classEntity = classRepository.findById(idClass).get();
 			int price = classEntity.getPrice();
-			orderDtlRepository.save(new OrderDtlEntity(orderNumber, classid, price));
+			orderDtlRepository.save(new OrderDtlEntity(orderNumber, idClass, price));
 		}
 
 		return ResponseDto.setSuccess("Payment success", new ResultResponseDTO(true));
 	}
-
 }

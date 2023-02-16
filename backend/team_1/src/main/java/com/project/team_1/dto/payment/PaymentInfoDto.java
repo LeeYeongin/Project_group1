@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class PaymentInfoDto {
-	private String idUser;
-	private int idClass[];
+//	private String idUser;
+	private int idCart[];
 }

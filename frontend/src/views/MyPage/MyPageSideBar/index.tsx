@@ -44,7 +44,7 @@ axios.get(`http://localhost:4040/myProfile/writed/`, requestOption)
 
 // 작성한 게시글 이동
 const gotoMyPosting = () => {
-  window.location.href = `http://localhost:3000/myProfile/writed/${idUser}`;
+  window.location.href = `http://localhost:3000/myProfile/writed`;
 };
 
   return (

@@ -39,37 +39,12 @@ function Main5(){
         await axios.get('http://localhost:4040/myProfile', requestOption)
         .then((response) => {
             setIdUser(response.data.data.userId);
-            console.log(idUser);
         })
 
         await axios.get('http://localhost:4040/api/orderlist', requestOption).then((response) => {
             setSetatusItem(response.data.data);
-            console.log("test2", statusItem);
         })
     }
-
-    // 클래스ID를 받아 출력하기위한 함수 부분
-    useEffect(() => {
-        axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
-            setDetailItems(response.data.data);
-            setInstruct(response.data.data.instructor);
-        })  
-    }, []);
-
-    useEffect(() => {
-        getClassDetailHandler(cookies.token);
-        
-        statusItem.map((test) => {
-            classItem = test.className;
-            console.log("aaa", classItem);
-
-            classItem.map((test2) => {
-                if(test2.idClass == idClass){
-                    setStatus(true);
-                }
-            })
-        })
-    }, []);
 
     const navigator = useNavigate();
 
@@ -120,15 +95,6 @@ function Main5(){
           setScrollActive(false);
         }
     }
-    useEffect(() => {
-        function scrollListener() {
-            window.addEventListener("scroll", handleScroll);
-        }
-        scrollListener();
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    });
 
     // 장바구니 이동
     const putCart = () => {
@@ -156,8 +122,34 @@ function Main5(){
         navigator('/myCourse');
     }
 
-    console.log("test", idUser);
+    // 페이지가 열릴때 발생하는 이벤트 모음
+    useEffect(() => {
+        axios.get(`http://localhost:4040/api/main5/${idClass}/`).then((response) => {
+            setDetailItems(response.data.data);
+            setInstruct(response.data.data.instructor);
+        })  
 
+        getClassDetailHandler(cookies.token);
+        
+        statusItem.map((test) => {
+            classItem = test.className;
+            console.log("aaa", classItem);
+
+            classItem.map((test2) => {
+                if(test2.idClass == idClass){
+                    setStatus(true);
+                }
+            })
+        })
+
+        function scrollListener() {
+            window.addEventListener("scroll", handleScroll);
+        }
+        scrollListener();
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [statusItem]);
     // 출력부분
     return(
         <>

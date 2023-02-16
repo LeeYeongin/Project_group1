@@ -45,7 +45,7 @@ public class CartController {
 	}
 
 	@PostMapping("payment")
-	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody){
-		return cartService.payClass(requestBody);
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody, @AuthenticationPrincipal String userId){
+		return cartService.payClass(requestBody, userId);
 	}
 }
