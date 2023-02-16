@@ -24,10 +24,9 @@ function Main5(){
     const [instruct, setInstruct] = useState<any>([]);
 
     // 구매 여부 확인
-    const [status, setStatus] = useState<boolean>(true);
+    const [status, setStatus] = useState<boolean>(false);
     const [statusItem, setSetatusItem] = useState<any[]>([]);
     let classItem:any[] = [];
-    let classItem2:any = [];
 
     // console.log(token);
     const getClassDetailHandler = async (token: string) => {
@@ -37,15 +36,15 @@ function Main5(){
             }
         }
 
-        axios.get('http://localhost:4040/myProfile', requestOption)
+        await axios.get('http://localhost:4040/myProfile', requestOption)
         .then((response) => {
             setIdUser(response.data.data.userId);
             console.log(idUser);
         })
-    }
-    async function URL() {
-        await axios.get((`http://localhost:4040/api/orderlist/${idUser}`)).then((response) => {
-        setSetatusItem(response.data.data);
+
+        await axios.get('http://localhost:4040/api/orderlist', requestOption).then((response) => {
+            setSetatusItem(response.data.data);
+            console.log("test2", statusItem);
         })
     }
 
@@ -59,14 +58,14 @@ function Main5(){
 
     useEffect(() => {
         getClassDetailHandler(cookies.token);
-        URL();
         
         statusItem.map((test) => {
             classItem = test.className;
+            console.log("aaa", classItem);
+
             classItem.map((test2) => {
-                classItem2 = test2.idClass;
-                if(classItem2 == idClass){
-                    setStatus(false);
+                if(test2.idClass == idClass){
+                    setStatus(true);
                 }
             })
         })
@@ -157,6 +156,8 @@ function Main5(){
         navigator('/myCourse');
     }
 
+    console.log("test", idUser);
+
     // 출력부분
     return(
         <>
@@ -202,8 +203,8 @@ function Main5(){
                         <div className='detail5_payment'>
                             <div className='pay_body5'>
                                 <div className='money'>{detailItems.price}원</div>
-                                <button id='login_backet' className={status ? 'backet5' : 'disabled'} onClick={putCart}>장바구니</button>
-                                <button id='login_backet' className={status ? 'disabled' : 'backet5'} onClick={moveMyPage}>마이페이지로 이동</button>
+                                <button id='login_backet' className={status ? 'disabled' : 'backet5'} onClick={putCart}>장바구니</button>
+                                <button id='login_backet' className={status ? 'backet5' : 'disabled'} onClick={moveMyPage}>마이페이지로 이동</button>
                                 <div className='sub5'>
                                     <ul>
                                         <li id="teacher" key={instruct[0].idInstructor}>
