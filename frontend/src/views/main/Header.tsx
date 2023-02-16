@@ -15,22 +15,26 @@ interface props {
 function Header({setOpen}: props){
   const [email2, setEmail2] = useState<string>('') 
   const [cookies, setCookies] = useCookies();
-
-  const { user, removeUser } = useUserStore();
+  const { user, setUser, removeUser } = useUserStore();
  
   useEffect(() => {
-    console.log(cookies);
-    console.log(user);
-  }, [cookies]);
+    // alert(cookies.token);
+    if (cookies.token && !user) {
+      axios.get('http://localhost:4040/myProfile', { headers: { Authorization: `Bearer ${cookies.token}` } }).then((response) => {
+        const data = response.data.data;
+        setUser(data);
+      })
+    }
+    if (!cookies.token) {
+      removeUser();
+    }
+  }, [cookies.token, user]);
 
   const logOutHandler = () => {
-    setCookies('token', '', {expires: new Date()});
+    setCookies('token', '', {path : '/', expires: new Date()});
     removeUser();
-    alert("다음에 또 만나요!");
-    // window.location.reload();
+    alert("다음에 또 만나요!")
   }
-
-  console.log("확인", cookies);
 
   const gotoSignup = () => {
     window.location.href = `http://localhost:3000/signup`;

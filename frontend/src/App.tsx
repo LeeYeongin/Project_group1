@@ -25,9 +25,13 @@ import axios from 'axios';
 import ChangePassword from './views/FindPassword/index2';
 
 function App() {
+  
+  const [open, setOpen] = useState(false);
   return (
 
-    <div>
+    <div className={open ? 'enable-scroll' : ''}>
+    <Login open={open} setOpen={setOpen} />
+    <Header setOpen={setOpen} />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
@@ -48,20 +52,15 @@ function App() {
           <Route path="changePassword" element={<ChangePassword/>}/>
         </Route>
       </Routes>
+      <Footer />
     </div>
 
   );
 }
 
 function Layout() {
-  const [open, setOpen] = useState(false);
   return (
-    <div className={open ? 'enable-scroll' : ''}>
-      <Login open={open} setOpen={setOpen} />
-      <Header setOpen={setOpen} />
       <Outlet />
-      <Footer />
-    </div>
   );
 }
 export default App;

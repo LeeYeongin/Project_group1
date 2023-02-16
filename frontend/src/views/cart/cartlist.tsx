@@ -10,6 +10,10 @@ interface props {
     priceSum: number;
 }
 
+const gotopage = (idClass:number) => {
+  window.location.href = `http://localhost:3000/main5/${idClass}`;
+}
+
 export default function CartList({itemList, checkValue, setCheckValue, setPriceSum, priceSum}: props) {
   const [check, setCheck] = useState<boolean>(false);
   const [isAllCheck, setIsAllCheck] = useState<boolean>(false);
@@ -106,7 +110,7 @@ export default function CartList({itemList, checkValue, setCheckValue, setPriceS
           </div>
           <div className="cart-course-info2">
             <h3 className="course-title2">
-              <a href="#">{item.className}</a>
+              <a onClick={()=>gotopage(item.idClass)}>{item.className}</a>
             </h3>
             <div>
               <span>{item.instructor}</span>

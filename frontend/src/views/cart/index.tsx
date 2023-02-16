@@ -23,12 +23,12 @@ export default function Cart() {
 
   const requestOption = {
     headers: {
-      Authorization: `Bearer ${cookies.token}`,
+      Authorization: `Bearer ${cookies.token}`
     },
   };
 
-  const gotopage = (idClass: number) => {
-    window.location.href = `http://localhost:3000/main5/${idClass}`;
+  const gotocart = () => {
+    window.location.href = `http://localhost:3000/cart`;
   };
 
   const cartHandler = () => {
@@ -50,7 +50,10 @@ export default function Cart() {
               price: Response.data.data[i].classInfo.price,
               instructor: Response.data.data[i].classInfo.instructor,
               isCheck: false,
+              idClass: Response.data.data[i].classInfo.idClass
             });
+
+            console.log(tmp)
           }
 
           setItemList(tmp);
@@ -114,6 +117,7 @@ export default function Cart() {
           .then((Response) => {
             setRequestResult('Success!!');
             setCheckValue([]);
+            gotocart();
           })
           .catch((error) => {
             setRequestResult('Failed!!');
@@ -122,9 +126,8 @@ export default function Cart() {
       .catch((error) => {
         console.log(error);
       });
-
-      window.location.href = `http://localhost:3000/cart`;
-  };
+      
+    };
 
   useEffect(() => {
     cartHandler();

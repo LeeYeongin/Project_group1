@@ -23,11 +23,6 @@ public class ModifiyProfileController {
 	@Autowired
 	UserProfileService userService;
 	
-//	@PostMapping("")
-//	public ResponseDto<GetUserIfnoDto> getUserProfile(@RequestBody UserIdDto requestBody) {
-//		return userService.getUserProfile(requestBody);
-//	}
-	
 	@GetMapping("")
 	public ResponseDto<GetUserIfnoDto> getUserProfile(@AuthenticationPrincipal String userId) {
 		return userService.getUserProfile(userId);

@@ -89,6 +89,7 @@ a {
 .course-title2 {
     margin: 0px;
     padding-bottom: 2px;
+    cursor: pointer;
 }
 .close2 {
     flex-grow: 0;
