@@ -133,7 +133,6 @@ function Main5(){
         
         statusItem.map((test) => {
             classItem = test.className;
-            console.log("aaa", classItem);
 
             classItem.map((test2) => {
                 if(test2.idClass == idClass){

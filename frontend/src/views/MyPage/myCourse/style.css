@@ -17,18 +17,10 @@ body {
     /* background-color: aqua; */
 }
 .list {
-    /* display: flex; */
-
-    /* flex-wrap: wrap; */
-
-    /* border-top: 1px solid rgb(187, 186, 186); */
     padding: 5px;
 
-    /* width: 100%; */
-    /* height: 80%; */
     margin-top: 15px;
     margin-bottom: 15px;
-    /* background-color: beige; */
 }
 
 
@@ -40,34 +32,33 @@ body {
 
 .my-course-container-find {
     padding-top: 16px;
-    /* display: flex;
-    justify-content: left; */
     align-content: left;
 }
 
 .my-course-wrapper {
     display: block;
-    /* flex-wrap: wrap; */
-
-    /* background-color: blueviolet; */
 }
 
 .my-course-item {
     display: flex;
     padding: 12px 0px;
-
-    
-
-    /* background-color: brown; */
 }
 
 .my-course-item-img{
     display: flex;
-    width: 100px;
+    width: 150px;
     height: 100px;
+
+    margin-right: 20px;
 }
 
 .my-course-item-title {
     padding: 8px 0px;
 }
 
+.my-course-a:hover{
+    cursor: pointer;
+
+    color: blue;
+    font-display: inherit;
+}

@@ -15,6 +15,7 @@ interface props {
 function Header({setOpen}: props){
   const [email2, setEmail2] = useState<string>('') 
   const [cookies, setCookies] = useCookies();
+
   const { user, removeUser } = useUserStore();
  
   useEffect(() => {
@@ -25,8 +26,11 @@ function Header({setOpen}: props){
   const logOutHandler = () => {
     setCookies('token', '', {expires: new Date()});
     removeUser();
-    alert("다음에 또 만나요!")
+    alert("다음에 또 만나요!");
+    // window.location.reload();
   }
+
+  console.log("확인", cookies);
 
   const gotoSignup = () => {
     window.location.href = `http://localhost:3000/signup`;

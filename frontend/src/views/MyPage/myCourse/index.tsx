@@ -15,7 +15,6 @@ export default function MyCourse() {
   }
 
   const getMyCourseList = () => {
-    
     axios
       .get('http://localhost:4040/myCourse/', requestOption)
       .then((Response) => {
@@ -25,21 +24,27 @@ export default function MyCourse() {
           for (let j = 0; j < Response.data.data[i].className.length; j++) {
             tmp.push({
               img: Response.data.data[i].className[j].img,
+              idClass: Response.data.data[i].className[j].idClass,
               className: Response.data.data[i].className[j].className,
             });
             console.log(tmp);
           }
         }
-        console.log(tmp);
+        console.log("aaa", tmp);
         setMyCourseList(tmp);
-        console.log(myCourseList);
+        console.log("test", myCourseList);
       })
       .catch((error) => {});
   };
 
+  //상세페이지 이동
+  const gotopage = (idClass:number) => {
+    window.location.href = `http://localhost:3000/main5/${idClass}`;
+  }
+
   useEffect(() => {
     getMyCourseList();
-  });
+  },[]);
   return (
     <>
       <div className="head-bar1">
@@ -59,7 +64,7 @@ export default function MyCourse() {
                         <img src={list.img} alt="" />
                       </div>
                       <div className="my-course-item-title">
-                        {list.className}
+                        <a className="my-course-a" onClick={() => gotopage(list.idClass)}>{list.className}</a>
                       </div>
                     </div>
                   </div>
