@@ -1,17 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import Totoro from '../../../asset/img/totoro.png';
 import SideBar from '../MyPageSideBar';
 import './style.css';
 
 export default function MyCourse() {
   const [myCourseList, setMyCourseList] = useState<any[]>([]);
+  const [cookies, setCookies] = useCookies();
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`
+    }
+  }
 
   const getMyCourseList = () => {
-    const getdata = 'aaa';
-
+    
     axios
-      .get('http://localhost:4040/myCourse/' + getdata)
+      .get('http://localhost:4040/myCourse/', requestOption)
       .then((Response) => {
         const tmp = [];
         console.log(Response.data.data.length);

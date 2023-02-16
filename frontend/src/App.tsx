@@ -44,7 +44,7 @@ function App() {
           <Route path="myCourse" element={<MyCourse />}/>
           <Route path="orderList" element={<OrderList/>}/>
           <Route path="modifiyProfile" element={<ModifiyProfile/>}/>
-          <Route path="myProfile/writed/:idUser" element={<MyPosting/>}/>
+          <Route path="myProfile/writed" element={<MyPosting/>}/>
           <Route path="changePassword" element={<ChangePassword/>}/>
         </Route>
       </Routes>
