@@ -168,8 +168,8 @@ export default function ModifiyProfile() {
                         alt=""
                         className="img1"
                       />
-                      <form action="">
-                        <input type="file" onChange={(e) => handleChangeFile(e.target.files)} />
+                      <form className='file-input'>
+                        <input type="file" accept="image/jpeg, image/png" onChange={(e) => handleChangeFile(e.target.files)} />
                       </form>
                     </div>
                   </div>
