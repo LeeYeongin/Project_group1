@@ -7,6 +7,7 @@ import Logo from '../../asset/images/logo.png';
 import { useUserStore } from '../../stores';
 import DropButton from './DropButton'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from 'react-router-dom';
 
 interface props {
   setOpen: any;
@@ -16,6 +17,7 @@ function Header({setOpen}: props){
   const [email2, setEmail2] = useState<string>('') 
   const [cookies, setCookies] = useCookies();
   const { user, setUser, removeUser } = useUserStore();
+  const navigate = useNavigate();
  
   useEffect(() => {
     // alert(cookies.token);
@@ -34,6 +36,7 @@ function Header({setOpen}: props){
     setCookies('token', '', {path : '/', expires: new Date()});
     removeUser();
     alert("다음에 또 만나요!")
+    navigate(`/`)
   }
 
   const gotoSignup = () => {
