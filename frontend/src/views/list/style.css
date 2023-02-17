@@ -145,6 +145,10 @@ body {
   position:relative;
   top:1px;
   }
+  .click{
+    color: #3498db;
+  }
+
   .hr3 {
     display: inline;
     margin-left: 5px;

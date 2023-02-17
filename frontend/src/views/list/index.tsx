@@ -45,7 +45,7 @@ export default function List() {
     )
   }   
 
-    const allCategoryHandler = () => {
+    const allCategoryHandler = (id:string) => {
       setItemList([]);
       setgrade(0);
 
@@ -68,6 +68,7 @@ export default function List() {
         }
         setItemList(tmp);
         setCategory('all');
+        setClickMenu(id);
       })
       .catch((error) =>{
         setRequestResult('Failed!');
@@ -215,7 +216,10 @@ export default function List() {
 
 
 //--------------------------------------------------------------------------------------
-  const listHandler = (arg: string, arg2: string, arg3: boolean) => {
+
+  const [clickMenu, setClickMenu] = useState<string>('');
+
+  const listHandler = (arg: string, arg2: string, arg3: boolean, id:string) => {
     const getdata = {
       category: arg, 
       difficulty: arg2,
@@ -245,6 +249,8 @@ export default function List() {
     .catch((error) =>{
       setRequestResult('Failed!');
     })
+
+    setClickMenu(id);
   }
 
   const discount = () => {
@@ -258,7 +264,7 @@ export default function List() {
                   <div className="container3 main23">
                       <div className="side-bar3">
                         {/*ClassService category 명과 일치 할것 아니면 못 읽어들임 */}
-                          <div className="side-menu3 side-menu23" onClick={() => allCategoryHandler()}>전체강의</div>
+                          <div className="side-menu3 side-menu23" onClick={() => allCategoryHandler('all')}>전체강의</div>
                           <div className="side-menu3 side-menu23" onClick={() => categoryHandler('front')}>프론드엔드</div>
                           <div className="side-menu3 side-menu23" onClick={() => categoryHandler('back')}>백엔드</div>
                           <div className="side-menu3 side-menu23" onClick={() => categoryHandler('database')}>데이터베이스</div>
@@ -274,13 +280,13 @@ export default function List() {
                           </div>
                       </div>
                       <div className="choice-menu3">
-                          <div className="myButton3" onClick={() => {setDifficulty('notSelect'); (category==='all') ? allCategoryHandler():categoryHandler(category)}}>전체</div>
+                          <div className={clickMenu === 'all' ? "myButton3 click" : "myButton3"} onClick={() => {setDifficulty('notSelect'); (category==='all') ? allCategoryHandler('all'):categoryHandler(category)}} >전체</div>
                           <div className="hr3"></div>
-                          <div className="myButton3 fa-regular3 fa-percent3" onClick={() => {discount(); listHandler(category, difficulty, discountRate)}}>할인중</div>
+                          <div className={clickMenu === 'discount' ? "myButton3 fa-regular3 fa-percent3 click" : "myButton3 fa-regular3 fa-percent3"} onClick={() => {discount(); listHandler(category, difficulty, discountRate, 'discount')}}>할인중</div>
                           <div className="hr3"></div>
-                          <div className="myButton3 fa-regular3 fa-star3" onClick={() => {setDifficulty('easy'); listHandler(category, difficulty, discountRate)}}>입문</div>
-                          <div className="myButton3 fa-regular3 fa-star-half-stroke3"  onClick={() => {setDifficulty('middle'); listHandler(category, difficulty, discountRate)}}>초급</div>
-                          <div className="myButton3 fa-solid3 fa-star3"  onClick={() => {setDifficulty('hard'); listHandler(category, difficulty, discountRate)}}>중급이상</div>
+                          <div className={clickMenu === 'easy' ? "myButton3 fa-regular3 fa-star3 click" : "myButton3 fa-regular3 fa-star3"} onClick={() => {setDifficulty('easy'); listHandler(category, difficulty, discountRate, 'easy')}}>입문</div>
+                          <div className={clickMenu === 'middle' ? "myButton3 fa-regular3 fa-star-half-stroke3 click" : "myButton3 fa-regular3 fa-star-half-stroke3"}  onClick={() => {setDifficulty('middle'); listHandler(category, difficulty, discountRate, 'middle')}}>초급</div>
+                          <div className={clickMenu === 'hard' ? "myButton3 fa-solid3 fa-star3 click" : "myButton3 fa-solid3 fa-star3"}  onClick={() => {setDifficulty('hard'); listHandler(category, difficulty, discountRate, 'hard')}}>중급이상</div>
                       </div>
                       <div className="list3">
                           {itemList.map((item:any) => (
