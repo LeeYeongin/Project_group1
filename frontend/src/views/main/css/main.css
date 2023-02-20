@@ -1,402 +1,345 @@
 body {
-    margin: 0;
-    /* display: block; */
-    /* width: 100%; */
-    max-width:100%;
-    height: 100%;
-    /* background-color: #d4e8fd; */
+  margin: 0;
+  max-width: 100%;
+  height: 100%;
 }
 
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* 해더 */
 header {
-    /* margin-left: 100px; */
-    display: flex;
-    justify-content: space-around;
-    height: 70px;
-    /* max-width: 1400px; */
-    /* background-color: bisque; */
-    border-bottom: 1px solid #d4e8fd;
+  display: flex;
+  justify-content: space-around;
+  height: 70px;
+  border-bottom: 1px solid #d4e8fd;
 }
 
 .h_nav_bar4 {
-    display: flex;
-    width: 80%;
-    height: 100%;
-    /* background-color: blueviolet; */
+  display: flex;
+  width: 80%;
+  height: 100%;
 }
 
 /* 상단 좌측 */
 
 .nav_bar_left4 {
-    display: flex;
-    float: left;
-    width: 250px;
-    height: 100%;
-    margin-left: 90px;
-    /* background-color: aqua; */
+  display: flex;
+  float: left;
+  width: 250px;
+  height: 100%;
+  margin-left: 90px;
 }
 
 .logo_box4 {
-    cursor: pointer;
-    position: relative;
-    display: flex;
+  cursor: pointer;
+  position: relative;
+  display: flex;
 }
 
 .logo_mark4 {
-    /* display: flex; */
-    /* float: left; */
-    /* align-items: center; */
-    height: 70px;
-    /* width: 70px; */
+  height: 70px;
 }
 
 .head_lecture_category4 {
-    display: flex;
-    align-items: center;
-    /* float: right; */
+  display: flex;
+  align-items: center;
 }
 
-#dropdown-basic-button{
-    color: #000;
-    background: none;
-    border: none;
+#dropdown-basic-button {
+  color: #000;
+  background: none;
+  border: none;
 }
 
 /* 상단 우측 */
 .nav_bar_right4 {
-    display: flex;
-    /* position: relative; */
-    width: 290px;
-    height: 100%;
-    margin-left: 50%;
-    /* background : yellowgreen; */
+  display: flex;
+  width: 290px;
+  height: 100%;
+  margin-left: 50%;
 }
 
 .cart4 {
-    display: flex;
-    justify-content: center;
-    width: 44px;
-    height: 45px;
-    padding: 20px;
-    /* color: aqua; */
-    /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  width: 44px;
+  height: 45px;
+  padding: 20px;
 }
 
 .login_btn4 {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
 }
 
-.disable{
-    width: 0;
-    height: 0;
+.disable {
+  width: 0;
+  height: 0;
 }
 
-.disable > a{
-    font-size: 0;
+.disable > a {
+  font-size: 0;
 }
 
-.login_btn4 :hover{
-    color: #000;
+.login_btn4 :hover {
+  color: #000;
 }
 
-.login_btn4 a{
-    text-align: center;
-    color: #000;
-    text-decoration: none;
+.login_btn4 a {
+  text-align: center;
+  color: #000;
+  text-decoration: none;
 }
 
 .sign_up4 {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
 }
 
-.sign_up4 :hover{
-    color: #000;
+.sign_up4 :hover {
+  color: #000;
 }
 
-.sign_up4 a{
-    color: #000;
-    text-decoration: none;
+.sign_up4 a {
+  color: #000;
+  text-decoration: none;
 }
 
 .myprofile4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    margin-left: 7px;
+  margin-left: 7px;
 }
 
-.logout_btn4{
-    display: flex;
-    justify-content: center;
-    padding: 23px;
-    cursor: pointer;
+.logout_btn4 {
+  display: flex;
+  justify-content: center;
+  padding: 23px;
+  cursor: pointer;
 }
 
-.logout_btn4 :hover{
-    color: #000;
+.logout_btn4 :hover {
+  color: #000;
 }
 
-.logout_btn4 a{
-    color: #000;
-    text-decoration: none;
+.logout_btn4 a {
+  color: #000;
+  text-decoration: none;
 }
-
 
 /* 검색 */
 .search_container4 {
-    display: flex;
-    justify-content: center;
-    /* width: 100%; */
-    margin-top: 50px;
-    height: 123px;
-    /* background-color: coral; */
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  height: 123px;
 }
 
 .search_container_content4 {
-    width: 65%;
-    height: 100%;
-    /* background-color: yellow; */
+  width: 65%;
+  height: 100%;
 }
 
 .search_container_content4 h3 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .search_wrapper4 {
-    /* 컬러 지우지 말것 */
-    display: flex;
-    margin: 0 25%;
-    width: 50%;
-    height: 54px;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    background-color: rgb(255, 255, 255);
-    border: 2px solid #2779cc;
+  /* 컬러 지우지 말것 */
+  display: flex;
+  margin: 0 25%;
+  width: 50%;
+  height: 54px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #2779cc;
 }
 
-
 .m_search_input4 {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    border: none;
-    outline: none;
-    padding-left: 20px;
-    background: none;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  background: none;
+  font-size: 16px;
 }
 
 .m_search_input_submit4 {
-    display: flex;
-    margin-top: 13px;
-    margin-left: 200px;
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
+  display: flex;
+  margin-top: 13px;
+  margin-left: 200px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
 }
-
 
 /* 아이콘 목록 */
 .lecture_icon_list4 {
-    display: flex;
-    justify-content: center;
-    height: 141px;
-    
+  display: flex;
+  justify-content: center;
+  height: 141px;
 }
 
 .icon_list_wrapper4 {
-    display: flex;
-    justify-content: space-around;
-    width: 65%;
-    height: 100%;
-    align-items: center;
-    
+  display: flex;
+  justify-content: space-around;
+  width: 65%;
+  height: 100%;
+  align-items: center;
 }
 
 .icon_list_wrapper4 a {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    /* border: 1px solid; */
+  display: block;
+  color: #000;
+  text-decoration: none;
 }
 
-
 .icon_list_wrapper4 li {
-    display: flex;
-    justify-content: center;
-    margin: 0 30px;
-    /* border : 1px solid; */
-    float: left;
+  display: flex;
+  justify-content: center;
+  margin: 0 30px;
+  float: left;
 }
 
 .icon_list_card4 {
-    width: 110px;
-    height: 90px;
+  width: 110px;
+  height: 90px;
 }
 
-.icon_list_card4 a:hover{
-    color: #000;
+.icon_list_card4 a:hover {
+  color: #000;
 }
 
 .course_icon4 {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    width: 34px;
-    height: 34px;
+  width: 34px;
+  height: 34px;
 
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .img_title4 {
-    text-align: center;
-    width: auto;
-    height: 24px;
-    font-size: 14px;
+  text-align: center;
+  width: auto;
+  height: 24px;
+  font-size: 14px;
 }
 
 /* 강의 목록 */
 
 .course_dashboard4 {
-    /* padding: 0 1px; */
-    padding-left: 21vw;
-    /* display: block; */
-    width: 100%;
-    /* max-width: 1400px; */
-    /* position: absolute; */
-    /* background-color: #d4e8fd; */
-    align-items: center;
+  padding-left: 21vw;
+  width: 100%;
+  align-items: center;
 }
 
 .course_dashboard_list4 {
-    /* margin-left: 10px; */
-    /* padding-left: 10px; */
-    display: block;
-    position: relative;
-    width: 60vw;
-    /* height: 100%; */
-    /* background: tomato; */
+  display: block;
+  position: relative;
+  width: 60vw;
 }
 
-.course_dashboard_card4{
-    /* padding-left: 10px; */
-    margin-bottom: 30px;
-    /* border: 1px solid; */
+.course_dashboard_card4 {
+  margin-bottom: 30px;
 }
 
-.course_card4{ 
-    margin-left: 10px;
-    width: 215px;
-    /* background-color: #d4e8fd; */
-    border-radius: 5px;
-    /* border: 1px solid #d4e8fd; */
+.course_card4 {
+  margin-left: 10px;
+  width: 215px;
+  border-radius: 5px;
 }
-
 
 .course_face4 {
-    width: 100%;
-    height: 140px;
-    margin: 0 auto;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  width: 100%;
+  height: 140px;
+  margin: 0 auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .course_title4 {
-    /* margin: 0 auto; */
-    /* padding: 0; */
-    width: 100%;
-    height: 45px;
-    font-weight: 600;
-    /* 말줄임표 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    /* background-color: cadetblue; */
+  width: 100%;
+  height: 45px;
+  font-weight: 600;
+  /* 말줄임표 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .course_instructor4 {
-    /* margin: 0 auto; */
-    /* padding: 0 5px; */
-    width: 80%;
-    height: 25px;
-    color: #7d7d7d;
+  width: 80%;
+  height: 25px;
+  color: #7d7d7d;
 
-    /* 말줄임표 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    /* background-color: springgreen; */
+  /* 말줄임표 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .course_rating4 {
-    /* margin: 0 auto; */
-    /* padding: 0 5px; */
-    width: 80%;
-    height: 25px;
-    /* background-color: burlywood; */
+  width: 80%;
+  height: 25px;
 }
 
 .course_price4 {
-    /* margin: 0 auto; */
-    /* padding: 0 5px; */
-    width: 80%;
-    height: 25px;
-    font-weight: 600;
-    color: #175cbe;
-    /* background-color: violet; */
+  width: 80%;
+  height: 25px;
+  font-weight: 600;
+  color: #175cbe;
 }
 
 .course_studentCount4 {
-    /* margin: 0 25px; */
-    padding: 0 5px;
-    width: fit-content;
-    height: 25px;
-    background-color: #F6d5ea;
-    border-radius: 3px;
+  padding: 0 5px;
+  width: fit-content;
+  height: 25px;
+  background-color: #f6d5ea;
+  border-radius: 3px;
 }
-
 
 /* 하단 */
 footer {
-    height: 200px;
-    color: white;
-    background-color: #303740;
+  height: 200px;
+  color: white;
+  background-color: #303740;
 }
 
-footer ul{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 
-footer li{
-    text-align: center;
+footer li {
+  text-align: center;
 }
 
-footer li :last-child{
-    color: #BDBDBD;
+footer li :last-child {
+  color: #bdbdbd;
 }

@@ -22,31 +22,33 @@ import com.project.team_1.service.ReviewService;
 @RestController
 @RequestMapping("/review/") // 여기에 강의 ID가 들어가야 한다
 public class ReviewController {
-	
-	@Autowired ReviewService reviewService;
-	
+
+	@Autowired
+	ReviewService reviewService;
+
 	// 리뷰 작성
 	@PostMapping("writeReview")
 	public ResponseDto<ResultResponseDTO> writeReview(@RequestBody ReviewDTO reviewDto) {
 		return reviewService.ReviewWrite(reviewDto);
 	}
-	
+
 	// 리뷰 불러오기(강의ID에 따른 내용가져오기)
-	@GetMapping("/re/"+"{idClass}")
-	public ResponseDto<List<GetReviewResponseDTO>> getReview(@PathVariable("idClass") int idClass){
+	@GetMapping("/re/" + "{idClass}")
+	public ResponseDto<List<GetReviewResponseDTO>> getReview(@PathVariable("idClass") int idClass) {
 		return reviewService.getReview(idClass);
 	}
-	
+
 	// 리뷰 수정
-	@PatchMapping("updateReview"+"/{idReview}")
-	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto, @PathVariable("idReview") int idReview){
+	@PatchMapping("updateReview" + "/{idReview}")
+	public ResponseDto<ResultResponseDTO> updateReview(@RequestBody PatchReviewDTO patchDto,
+			@PathVariable("idReview") int idReview) {
 		return reviewService.ReviewUpdate(patchDto, idReview);
 	}
-	
+
 	// 리뷰 삭제
 	@DeleteMapping("deleteReview/{idReview}")
-	public ResponseDto<?> deleteReview(@PathVariable("idReview") int idReview){
-		
+	public ResponseDto<?> deleteReview(@PathVariable("idReview") int idReview) {
+
 		return reviewService.ReviewDelete(idReview);
 	}
 }

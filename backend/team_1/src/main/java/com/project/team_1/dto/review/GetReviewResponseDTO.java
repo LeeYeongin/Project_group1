@@ -17,7 +17,7 @@ public class GetReviewResponseDTO {
 	private String Content;
 	private int IdClass;
 	private int Grade;
-	
+
 	public GetReviewResponseDTO(ReviewEntity review) {
 		this.ReviewID = review.getIdReview();
 		this.UserID = review.getIdUser();

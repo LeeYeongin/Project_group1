@@ -8,10 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.project.team_1.entity.OrderDtlEntity;
 
-
 @Repository
-public interface OrderDtlRepository extends JpaRepository<OrderDtlEntity, Integer>{
-//	@Query("select od as OrderDtl")
-	List<OrderDtlEntity>findByOrderNumber(String orderNumber);
-	
+public interface OrderDtlRepository extends JpaRepository<OrderDtlEntity, Integer> {
+	List<OrderDtlEntity> findByOrderNumber(String orderNumber);
+
 }

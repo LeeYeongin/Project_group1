@@ -23,7 +23,7 @@ export default function Cart() {
 
   const requestOption = {
     headers: {
-      Authorization: `Bearer ${cookies.token}`
+      Authorization: `Bearer ${cookies.token}`,
     },
   };
 
@@ -50,10 +50,10 @@ export default function Cart() {
               price: Response.data.data[i].classInfo.price,
               instructor: Response.data.data[i].classInfo.instructor,
               isCheck: false,
-              idClass: Response.data.data[i].classInfo.idClass
+              idClass: Response.data.data[i].classInfo.idClass,
             });
 
-            console.log(tmp)
+            console.log(tmp);
           }
 
           setItemList(tmp);
@@ -95,11 +95,11 @@ export default function Cart() {
   };
 
   const paymentHandler = () => {
-    if(checkValue.length === 0){
-      alert('결제할 강의가 없습니다.')
-      return
+    if (checkValue.length === 0) {
+      alert('결제할 강의가 없습니다.');
+      return;
     }
-    console.log(checkValue)
+    console.log(checkValue);
     const data = {
       idCart: checkValue,
     };
@@ -126,8 +126,7 @@ export default function Cart() {
       .catch((error) => {
         console.log(error);
       });
-      
-    };
+  };
 
   useEffect(() => {
     cartHandler();

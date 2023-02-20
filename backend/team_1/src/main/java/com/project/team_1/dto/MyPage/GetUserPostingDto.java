@@ -17,7 +17,7 @@ public class GetUserPostingDto {
 	private String contents;
 	private int idClass;
 	private String className;
-	
+
 	public GetUserPostingDto(ReviewEntity reviewEntity, String className) {
 		this.idReview = reviewEntity.getIdReview();
 		this.idUser = reviewEntity.getIdUser();

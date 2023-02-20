@@ -1,9 +1,9 @@
 import { areArraysEqual } from '@mui/base';
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ChangePassword from './index2';
-import './style.css'
+import './style.css';
 
 //비밀번호 변경 이동
 const gotoChangePassword = () => {
@@ -16,22 +16,21 @@ export default function FindPassword() {
   const navigator = useNavigate();
 
   const findPasswordHandler = async () => {
-
     const getdata = {
       userId: userId,
-      telnum: telnum
-    }
+      telnum: telnum,
+    };
 
-    await axios.post("http://localhost:4040/api/find/password", getdata)
-    .then((Response) => {
-      if(Response.data.data.result){
-        navigator('/changePassword',  { state: { value: userId } });
-      } else{
-        alert("다시 입력하세요!")
-      }
-    })
-    
-  }
+    await axios
+      .post('http://localhost:4040/api/find/password', getdata)
+      .then((Response) => {
+        if (Response.data.data.result) {
+          navigator('/changePassword', { state: { value: userId } });
+        } else {
+          alert('다시 입력하세요!');
+        }
+      });
+  };
 
   return (
     <>
@@ -46,14 +45,27 @@ export default function FindPassword() {
           <div className="find-password-form2">
             <div className="input-id-container2">
               <h4 className="input-label2">이메일</h4>
-              <input className="input-container2" type="text"  onChange={(e) => setUserId(e.target.value)}/>
+              <input
+                className="input-container2"
+                type="text"
+                onChange={(e) => setUserId(e.target.value)}
+              />
             </div>
             <div className="input-telNum-container2">
               <h4 className="input-label2">전화번호</h4>
-              <input className="input-container2" type="text" onChange={(e) => setTelnum(e.target.value)}/>
+              <input
+                className="input-container2"
+                type="text"
+                onChange={(e) => setTelnum(e.target.value)}
+              />
             </div>
             <div className="btn-container2">
-              <button className="find-password-btn2" onClick={findPasswordHandler}>비밀번호 찾기</button>
+              <button
+                className="find-password-btn2"
+                onClick={findPasswordHandler}
+              >
+                비밀번호 찾기
+              </button>
             </div>
           </div>
         </div>

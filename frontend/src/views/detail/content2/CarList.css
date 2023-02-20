@@ -1,50 +1,50 @@
-.car5_list{
-    width: 95%;
+.car5_list {
+  width: 95%;
 
-    margin: 10px auto;
+  margin: 10px auto;
 
-    background-color: #c9e3ff;
-    border: 1px solid white;
-    border-radius: 5px;
+  background-color: #c9e3ff;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
-.car5_title{
-    padding: 5px 0 0 0;
-    border-bottom: 1px solid white;
+.car5_title {
+  padding: 5px 0 0 0;
+  border-bottom: 1px solid white;
 }
 
-.car5_title > h4{
-    margin: 5px 0;
-    font-size: 26px;
-    font-weight: bold;
+.car5_title > h4 {
+  margin: 5px 0;
+  font-size: 26px;
+  font-weight: bold;
 }
 
-.car5_item{
-    padding: 10px 0;
-    border-top: 1px solid white;
+.car5_item {
+  padding: 10px 0;
+  border-top: 1px solid white;
 
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.hide_item{
-    padding: 0;
-    font-size: 0;
+.hide_item {
+  padding: 0;
+  font-size: 0;
 
-    width: 0;
-    height: 0;
+  width: 0;
+  height: 0;
 
-    color: transparent;
-    font-size: 0;
+  color: transparent;
+  font-size: 0;
 }
 
 .car5_video {
-    width: 90%;
-    
-    margin: 0 5%;
+  width: 90%;
+
+  margin: 0 5%;
 }
 
-.hide_video{
-    width: 0;
-    height: 0;
+.hide_video {
+  width: 0;
+  height: 0;
 }

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/board")
 public class BoardController {
-	
+
 	@GetMapping("/")
 	public String getBoard(@AuthenticationPrincipal String userEmail) {
 		return "로그인된 사용자는 " + userEmail + "입니다.";
 	}
-	
+
 }

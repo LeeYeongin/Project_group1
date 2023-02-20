@@ -17,7 +17,7 @@ public class GetCurriculumResponseDto {
 	private String part;
 	private String video;
 	private int idClass;
-	
+
 	public GetCurriculumResponseDto(CurriculumEntity curriculum) {
 		this.idCurriculum = curriculum.getIdCurriculum();
 		this.section = curriculum.getSection();

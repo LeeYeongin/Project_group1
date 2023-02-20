@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.project.team_1.entity.OrderMstEntity;
 
 @Repository
-public interface OrderMstRepository extends JpaRepository<OrderMstEntity, Integer>{
-	
+public interface OrderMstRepository extends JpaRepository<OrderMstEntity, Integer> {
+
 	List<OrderMstEntity> findByIdUser(String idUser);
 }

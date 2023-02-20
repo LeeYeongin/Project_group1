@@ -1,4 +1,4 @@
- package com.project.team_1.service;
+package com.project.team_1.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,55 +25,40 @@ import com.project.team_1.repository.OrderMstRepository;
 
 @Service
 public class OrderListService {
-	
+
 	@Autowired
 	OrderMstRepository orderMstRepository;
-	
+
 	@Autowired
 	OrderDtlRepository orderDtlRepository;
-	
+
 	@Autowired
 	ClassRepository classRepository;
-	
-	public ResponseDto<List<GetOrderListDto>>showOrderList(String idUser){
+
+	public ResponseDto<List<GetOrderListDto>> showOrderList(String idUser) {
 		List<GetOrderListDto> data = new ArrayList<GetOrderListDto>();
 		List<OrderMstEntity> orderMst;
-		
+
 		try {
 			orderMst = orderMstRepository.findByIdUser(idUser);
-		}catch(Exception e){
+		} catch (Exception e) {
 			return ResponseDto.setFailed("xxx");
 		}
-		
-		for(OrderMstEntity orderMstEntity : orderMst) {
+
+		for (OrderMstEntity orderMstEntity : orderMst) {
 			List<OrderDtlEntity> orderDtl = orderDtlRepository.findByOrderNumber(orderMstEntity.getOrderNumber());
-//			List<ClassEntity> classEntity = new ArrayList<ClassEntity>();
-//			List<String> className = new ArrayList<String>();
 			List<ClassNameDto> className = new ArrayList<ClassNameDto>();
 			int priceSum = 0;
-			for(OrderDtlEntity orderDtlEntity : orderDtl) {
+			for (OrderDtlEntity orderDtlEntity : orderDtl) {
 				int idClass = classRepository.findById(orderDtlEntity.getIdClass()).get().getIdClass();
 				String img = classRepository.findById(orderDtlEntity.getIdClass()).get().getImg();
 				String name = classRepository.findById(orderDtlEntity.getIdClass()).get().getClassName();
 				className.add(new ClassNameDto(idClass, img, name));
-				priceSum +=  classRepository.findById(orderDtlEntity.getIdClass()).get().getPrice();
+				priceSum += classRepository.findById(orderDtlEntity.getIdClass()).get().getPrice();
 			}
-			
-			data.add( new GetOrderListDto(orderMstEntity, className, priceSum));
+
+			data.add(new GetOrderListDto(orderMstEntity, className, priceSum));
 		}
-		
-		
-//		GetOrderListDto data = 
-//				GetOrderListDto
-//				.builder()
-//				.idUser(idUser)
-//				.orderNumber(orderMstEntity.getOrderNumber())
-//				.orderDate(orderMstEntity.getOrderDate())
-//				.status(orderMstEntity.getStatus())
-//				.orderDtlList(orderDtl)
-//				.classEntity(classEntity)
-//				.build();
-		
 		return ResponseDto.setSuccess("getClassList success", data);
 	}
 }

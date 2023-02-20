@@ -13,11 +13,10 @@ public interface CurriculumRepository extends JpaRepository<CurriculumEntity, In
 
 	@Query("select distinct section from CURRICULUM c where c.idClass = ?1 order by section")
 	List<String> findAllSection(int idClass);
-	
+
 	@Query("select c from CURRICULUM c where c.idClass = ?1")
 	List<CurriculumEntity> findAllCurriculum(int idClass);
 }
-
 
 //강의(강의ID, ~~)
 //커리큘럼(커리큘럼ID[PK}, 섹션, 파트, 강의ID[PK])

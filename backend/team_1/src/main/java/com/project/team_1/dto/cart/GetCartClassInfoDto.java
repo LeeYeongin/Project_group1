@@ -18,7 +18,7 @@ public class GetCartClassInfoDto {
 	private int price;
 	private String instructor;
 	private int idClass;
-	
+
 	public GetCartClassInfoDto(ClassEntity classEntity, String instructor) {
 		this.img = classEntity.getImg();
 		this.className = classEntity.getClassName();
@@ -26,5 +26,5 @@ public class GetCartClassInfoDto {
 		this.instructor = instructor;
 		this.idClass = classEntity.getIdClass();
 	}
-	
+
 }

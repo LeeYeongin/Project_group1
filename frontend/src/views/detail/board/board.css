@@ -1,17 +1,17 @@
-.boardBody5{
-    width: 800px;
-    height: 100%;
+.boardBody5 {
+  width: 800px;
+  height: 100%;
 
-    margin: 5vh auto;
-    border: 1px solid #eee;
-    border-radius: 10px;
+  margin: 5vh auto;
+  border: 1px solid #eee;
+  border-radius: 10px;
 
-    background-color: #e3ebff;
+  background-color: #e3ebff;
 }
 
 /* 아이디 */
 
-.boardHead5{
+.boardHead5 {
   display: flex;
 
   width: 100%;
@@ -21,7 +21,8 @@
   border-bottom: 1px solid #ccc;
 }
 
-.board_ID, .input_ID{
+.board_ID,
+.input_ID {
   margin: auto;
 
   width: 40%;
@@ -34,7 +35,7 @@
 
 /* 리뷰 내용 */
 
-.boardText5{
+.boardText5 {
   width: 100%;
   height: 600px;
 
@@ -45,7 +46,7 @@
   font-weight: bold;
 }
 
-.boardText5 > textarea{
+.boardText5 > textarea {
   width: 100%;
   height: 100%;
 
@@ -54,7 +55,7 @@
   resize: none;
 }
 
-.starRating{
+.starRating {
   display: flex;
 
   width: 90%;
@@ -69,23 +70,23 @@
   background-color: #ccc;
 }
 
-.WriteRating{
+.WriteRating {
   align-items: center;
 }
 
-.WriteRating label span{
+.WriteRating label span {
   width: 30px;
   height: 30px;
 }
 
-.WriteRating svg{
+.WriteRating svg {
   width: 100%;
   height: 100%;
 }
 
 /* 작성 수정 버튼 */
 
-.boardFooter{
+.boardFooter {
   display: flex;
 
   margin: 20px 0;
@@ -93,7 +94,7 @@
   justify-content: space-around;
 }
 
-.writeBtn5{
+.writeBtn5 {
   width: 40%;
   height: 40px;
 

@@ -16,12 +16,12 @@ import com.project.team_1.service.OrderListService;
 @RestController
 @RequestMapping("/api/orderlist")
 public class OrderListController {
-	
+
 	@Autowired
 	OrderListService orderListService;
-	
+
 	@GetMapping("")
-	public ResponseDto<List<GetOrderListDto>>getShowOrderList(@AuthenticationPrincipal String idUser){
+	public ResponseDto<List<GetOrderListDto>> getShowOrderList(@AuthenticationPrincipal String idUser) {
 		return orderListService.showOrderList(idUser);
 	}
 }

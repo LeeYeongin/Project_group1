@@ -1,421 +1,411 @@
 * {
-    box-sizing: border-box;
-    font-size: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
 /*--------------body-------------------*/
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .container2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    flex-wrap: wrap;
-    min-height: 100vh;
+  flex-wrap: wrap;
+  min-height: 100vh;
 
-    margin: 0px 100px;
+  margin: 0px 100px;
 }
 
 .cart-section2 {
-    margin: 0px 32px 120px 0px;
+  margin: 0px 32px 120px 0px;
 
-    flex-grow: 2.5;
+  flex-grow: 2.5;
 }
 
 .cart-name2 {
-    margin: 0px;
-    padding: 32px 0px 16px;
+  margin: 0px;
+  padding: 32px 0px 16px;
 
-    font-size: 24px;
-    font-weight: 800;
+  font-size: 24px;
+  font-weight: 800;
 }
 
 .cart-control2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    padding: 0px 0px 12px;
+  padding: 0px 0px 12px;
 
-    border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
 .cancel-control2 {
-    padding: 0px 12px;
+  padding: 0px 12px;
 
-    height: 40px;
+  height: 40px;
 
-    background-color: white;
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  background-color: white;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .cart-list2 {
-    display: flex;
-    align-items: flex-start;
-    height: 115px;
+  display: flex;
+  align-items: flex-start;
+  height: 115px;
 
-    padding: 16px 0px;
+  padding: 16px 0px;
 
-    border-bottom: 1px solid #dcddde;
+  border-bottom: 1px solid #dcddde;
 }
 
 .course-select2 {
-    flex-grow: 0;
+  flex-grow: 0;
 }
 
 .cart-course-img2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    /* width: 118px; */
-    flex-grow: 0.5;
-    height: 100%;
-    overflow: hidden;
+  flex-grow: 0.5;
+  height: 100%;
+  overflow: hidden;
 }
 
 .cart-course-info2 {
-    flex-grow: 3.5;
+  flex-grow: 3.5;
 }
 
 .course-title2 {
-    margin: 0px;
-    padding-bottom: 2px;
-    cursor: pointer;
+  margin: 0px;
+  padding-bottom: 2px;
+  cursor: pointer;
 }
 .close2 {
-    flex-grow: 0;
+  flex-grow: 0;
 }
 
 .close-btn2 {
-    padding: 4px 16px;
+  padding: 4px 16px;
 
-    background-color: white;
-    border: 0px;
+  background-color: white;
+  border: 0px;
 }
 
 .fa-xmark2 {
-    color: grey;
+  color: grey;
 }
 
 .payment2 {
-    height: 100%;
-    /* border-left: 1px solid rgb(179, 179, 179); */
-    text-align: right;
+  height: 100%;
+  text-align: right;
 
-    flex-grow: 1.5;
-    font-size: 16px;
-    font-weight: 700;
+  flex-grow: 1.5;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .side-container2 {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 
-    padding-top: 32px;
-    flex-grow: 1;
+  padding-top: 32px;
+  flex-grow: 1;
 }
 
 .buyer-info2 {
-    margin-bottom: 4px;
-    padding: 16px 20px;
+  margin-bottom: 4px;
+  padding: 16px 20px;
 
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .buyer-info-header2 {
-    margin-bottom: 8px;
-    padding-bottom: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
 
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    border-bottom: 1px solid rgb(179, 179, 179);;
+  border-bottom: 1px solid rgb(179, 179, 179);
 }
 
 .fa-circle-question2 {
-    color: grey;
+  color: grey;
 }
 
 .modify-btn2 {
-    color: grey;
-    font-weight: 700;
-    text-decoration: underline;
+  color: grey;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .label2 {
-    width: 80px;
+  width: 80px;
 }
 
 dt {
-    width: 80px;
-    font-size: 14px;
-    color: grey;
+  width: 80px;
+  font-size: 14px;
+  color: grey;
 }
 
 dd {
-    margin: 0px;
-    font-size: 14px;
-    color: grey;
+  margin: 0px;
+  font-size: 14px;
+  color: grey;
 }
 
 .buyer-name2 {
-    display: flex;
+  display: flex;
 }
 
 .buyer-email2 {
-    display: flex;
+  display: flex;
 }
 
 .buyer-telphone2 {
-    display: flex;
+  display: flex;
 }
 
 .payment-container2 {
-    padding: 20px;
+  padding: 20px;
 
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .coupon-using2 {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .coupon-header2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .coupon-select2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .coupon-input2 {
-    margin-right: 8px;
-    padding: 0px 12px;
-    
-    width: 60%;
-    height: 40px;
-    /* flex-grow: 2; */
+  margin-right: 8px;
+  padding: 0px 12px;
 
-    text-align: right;
+  width: 60%;
+  height: 40px;
 
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  text-align: right;
 
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .coupon-select-btn2 {
-    padding: 0px 12px;
+  padding: 0px 12px;
 
-    width: 40%;
-    height: 40px;
+  width: 40%;
+  height: 40px;
 
-    /* flex-grow: 1; */
+  font-size: 14px;
 
-    font-size: 14px;
-
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .point-using2 {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .point-header2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .point-select2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .point-input2 {
-    margin-right: 8px;
-    padding: 0px 12px;
-    
-    width: 60%;
-    height: 40px;
-    /* flex-grow: 2; */
+  margin-right: 8px;
+  padding: 0px 12px;
 
-    text-align: right;
+  width: 60%;
+  height: 40px;
 
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  text-align: right;
 
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .point-select-btn2 {
-    padding: 0px 12px;
+  padding: 0px 12px;
 
-    width: 40%;
-    height: 40px;
+  width: 40%;
+  height: 40px;
 
-    /* flex-grow: 1; */
+  font-size: 14px;
 
-    font-size: 14px;
-
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 .price-regular2 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .price-discount2 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    margin-top: 4px;
+  margin-top: 4px;
 }
 
 .show-detail2 {
-    padding: 0px;
+  padding: 0px;
 
-    background-color: white;
-    border: 0px;
+  background-color: white;
+  border: 0px;
 
-    color: grey;
+  color: grey;
 }
 
 .price-pay2 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    margin-top: 4px;
+  margin-top: 4px;
 }
 
 .payment-btn2 {
-    margin-top: 16px;
-    width: 100%;
-    height: 38px;
+  margin-top: 16px;
+  width: 100%;
+  height: 38px;
 
-    background-color:  #2779cc;
-    color: white;
-    border: 0px;
-    border-radius: 5px;
+  background-color: #2779cc;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
 }
 
 .recommend-container2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    margin: 0px 100px;
+  margin: 0px 100px;
 }
 
 .recommend-list-title2 {
-    text-align: left;
-    width: 100%;
-    padding: 70px 0px 0px;
-    font-size: 20px;
+  text-align: left;
+  width: 100%;
+  padding: 70px 0px 0px;
+  font-size: 20px;
 }
 
 .recommend-list2 {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    padding: 6px 0px;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 6px 0px;
+  width: 100%;
 }
 
 .recommend-cousrse-card-wrapper2 {
-    position: relative;
-    margin: 10px;
+  position: relative;
+  margin: 10px;
 }
 
 .add-cart2 {
-    display: none;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    background-color: rgba(71, 70, 70, 0.352);
+  display: none;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  background-color: rgba(71, 70, 70, 0.352);
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .add-cart-btn-container2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    gap: 10%;
+  gap: 10%;
 
-    height: 100%;
+  height: 100%;
 }
 
 .cart-btn2 {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 
-    border: 0px;
-    background-color: rgba(98, 98, 98, 0.701);
-    border-radius: 100%;
+  border: 0px;
+  background-color: rgba(98, 98, 98, 0.701);
+  border-radius: 100%;
 }
 
 .add-cart-course-info2 {
-    background-color: white;
+  background-color: white;
 }
 
-.recommend-cousrse-card-wrapper2:hover .add-cart2{
-    display: block;
+.recommend-cousrse-card-wrapper2:hover .add-cart2 {
+  display: block;
 }
 
 .card-img2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    width: 200px;
-    height: 162.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  width: 200px;
+  height: 162.5px;
 
-    cursor: pointer;
+  overflow: hidden;
+
+  cursor: pointer;
 }
 
-.btn-container2{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-container2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-more-class-btn {
-    margin-top: 150px;
-    padding: 1px 70px;
-    height: 38px;
+  margin-top: 150px;
+  padding: 1px 70px;
+  height: 38px;
 
-    background-color:  #2779cc;
-    color: white;
-    border: 0px;
-    border-radius: 5px;
+  background-color: #2779cc;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
 }

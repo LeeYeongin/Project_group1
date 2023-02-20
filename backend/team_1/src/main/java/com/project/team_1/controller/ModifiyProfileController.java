@@ -22,21 +22,21 @@ import com.project.team_1.service.UserProfileService;
 public class ModifiyProfileController {
 	@Autowired
 	UserProfileService userService;
-	
+
 	@GetMapping("")
 	public ResponseDto<GetUserIfnoDto> getUserProfile(@AuthenticationPrincipal String userId) {
 		return userService.getUserProfile(userId);
 	}
-	
+
 	@GetMapping("/delete")
-	public ResponseDto<ResultResponseDTO> deleteUser(@AuthenticationPrincipal String idUser){
+	public ResponseDto<ResultResponseDTO> deleteUser(@AuthenticationPrincipal String idUser) {
 		return userService.deleteUser(idUser);
 	}
-	
+
 	@PatchMapping("")
-	public ResponseDto<GetUserIfnoDto> setUserProfile(@RequestBody SetUserDto requestBody, @AuthenticationPrincipal String userId) {
+	public ResponseDto<GetUserIfnoDto> setUserProfile(@RequestBody SetUserDto requestBody,
+			@AuthenticationPrincipal String userId) {
 		return userService.setUserProfile(requestBody);
 	}
-	
-	
+
 }

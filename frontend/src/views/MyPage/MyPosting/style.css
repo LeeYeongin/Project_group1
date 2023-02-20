@@ -1,28 +1,26 @@
 .myPosting-main-contianer {
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
 }
 .posting-sub-title {
-    margin-top: 20px;
-    font-size: 20px;
-    /* font-weight: 600; */
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .posting-list-wrapper {
-    margin-top: 30px;
-    border-bottom: 1px solid #c6c6c6;
-    width: 100%;
-    height: 110px;
+  margin-top: 30px;
+  border-bottom: 1px solid #c6c6c6;
+  width: 100%;
+  height: 110px;
 }
 
 .posting-title {
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .posting-contents {
-    padding: 15px;
-    height: 80px;
-
+  padding: 15px;
+  height: 80px;
 }

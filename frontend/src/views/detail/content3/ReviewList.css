@@ -1,4 +1,4 @@
-.review5_list{
+.review5_list {
   display: flex;
   flex-wrap: wrap;
 
@@ -7,7 +7,7 @@
   margin: auto 0;
 }
 
-.review5_main{
+.review5_main {
   display: inline-block;
   width: 45%;
   height: 60%;
@@ -18,7 +18,7 @@
   border-radius: 10px;
 }
 
-.reviewTitle5{
+.reviewTitle5 {
   width: 50%;
   height: 15%;
 
@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-.ratingStar{
+.ratingStar {
   width: 80%;
 
   margin: 5px 10%;
@@ -39,39 +39,39 @@
   text-align: center;
 }
 
-.ratingStar span{
+.ratingStar span {
   position: inherit;
 }
 
-.ratingStar svg{
+.ratingStar svg {
   width: 20px;
   height: 20px;
 }
 
 /*  */
 
-.reviewBody{
+.reviewBody {
   margin: 0 auto;
 
   width: 90%;
   height: 60%;
 }
 
-.reviewBody > p{
+.reviewBody > p {
   font-size: 14px;
   margin: 0 auto;
 }
 
-.reviewSubmit{
+.reviewSubmit {
   display: flex;
-  
+
   margin: 5% 0;
   width: 100%;
 
   justify-content: space-between;
 }
 
-.loginEnable{
+.loginEnable {
   margin: 0 5%;
 
   width: 80%;
@@ -85,16 +85,16 @@
   background-color: transparent;
 }
 
-.loginEnable:hover{
+.loginEnable:hover {
   background-color: #89c2ff;
 }
 
-.loginDisable{
+.loginDisable {
   display: none;
 }
 
 /* 보여주는 항목 변경 */
-.review5_change{
+.review5_change {
   display: flex;
   width: 95%;
   height: 80px;
@@ -102,47 +102,48 @@
   margin: 0 auto;
 }
 
-.reviewCollect5{
+.reviewCollect5 {
   width: 80%;
 
   display: flex;
   justify-content: space-around;
 }
 
-.reviewCollect5 > button{
+.reviewCollect5 > button {
   width: 30px;
   height: 30px;
 
   border: 1px solid #aad3ff;
   border-radius: 25px;
 
-  color:black;
+  color: black;
   text-align: center;
 }
 
-.leftBtn, .rightBtn{
+.leftBtn,
+.rightBtn {
   width: 20px;
   height: 20px;
 }
 
-.off{
+.off {
   width: 0;
   height: 0;
 }
 
-.selectItem{
+.selectItem {
   background-color: #87c1ff;
 }
 
-.disabled{
+.disabled {
   background-color: transparent;
 }
 
-#cItem:hover{
+#cItem:hover {
   background-color: #c6d4e3;
 }
 
-.writeReview5{
+.writeReview5 {
   background-color: antiquewhite;
   border: 1px solid black;
   border-radius: 10px;
@@ -154,6 +155,6 @@
   font-weight: bold;
 }
 
-.writeReview5:hover{
+.writeReview5:hover {
   background-color: rgb(255, 233, 233);
 }

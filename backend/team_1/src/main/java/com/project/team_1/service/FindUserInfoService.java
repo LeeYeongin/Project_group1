@@ -19,9 +19,9 @@ public class FindUserInfoService {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
+
 	public ResponseDto<FindIdResponseDto> FindId(FindIdDto dto) {
 
 		String name = dto.getName();

@@ -17,12 +17,12 @@ import com.project.team_1.service.ClassService;
 @RequestMapping("/myCourse/")
 public class MyCourseController {
 
-   @Autowired ClassService classService;
-   
-   @GetMapping("")
-   public ResponseDto<List<GetOrderListDto>>getShowOrderList(@AuthenticationPrincipal String idUser){
-      return classService.showOrderList(idUser);
-   }
-   
-}
+	@Autowired
+	ClassService classService;
 
+	@GetMapping("")
+	public ResponseDto<List<GetOrderListDto>> getShowOrderList(@AuthenticationPrincipal String idUser) {
+		return classService.showOrderList(idUser);
+	}
+
+}

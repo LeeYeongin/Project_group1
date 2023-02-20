@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './style2.css';
 
@@ -7,7 +7,7 @@ export default function IndexModal() {
   const userId = location.state.userId;
   const name = location.state.name;
 
-  console.log(userId)
+  console.log(userId);
   return (
     <>
       <div className="main_container333">
@@ -16,7 +16,9 @@ export default function IndexModal() {
             <div>아이디 찾기 결과</div>
           </div>
           <div className="main333">
-            <div><i className="fa-regular fa-circle-check"></i></div>
+            <div>
+              <i className="fa-regular fa-circle-check"></i>
+            </div>
             <div className="name333">{name}님의 아이디는 아래와 같습니다.</div>
             <div className="result333">{userId}</div>
             <div className="footer333">

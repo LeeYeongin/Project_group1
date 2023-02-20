@@ -13,9 +13,9 @@ export default function MyPosting() {
   const [cookies, setCookies] = useCookies();
   const requestOption = {
     headers: {
-      Authorization: `Bearer ${cookies.token}`
-    }
-  }
+      Authorization: `Bearer ${cookies.token}`,
+    },
+  };
   const [postList, setPostList] = useState<any[]>([]);
 
   const myPostingHandler = () => {

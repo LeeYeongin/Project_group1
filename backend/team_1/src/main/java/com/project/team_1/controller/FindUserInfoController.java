@@ -18,10 +18,10 @@ import com.project.team_1.service.FindUserInfoService;
 @RestController
 @RequestMapping("/api/find")
 public class FindUserInfoController {
-	
+
 	@Autowired
 	FindUserInfoService findUserInfoService;
-	
+
 	@PostMapping("/id")
 	public ResponseDto<FindIdResponseDto> Id(@RequestBody FindIdDto requestBody) {
 		ResponseDto<FindIdResponseDto> result = findUserInfoService.FindId(requestBody);
@@ -29,12 +29,12 @@ public class FindUserInfoController {
 	}
 
 	@PostMapping("/password")
-	   public ResponseDto<FindPasswordDto> getPassword(@RequestBody GetFindPasswordDto requestBody){
-	      return findUserInfoService.getPassword(requestBody);
+	public ResponseDto<FindPasswordDto> getPassword(@RequestBody GetFindPasswordDto requestBody) {
+		return findUserInfoService.getPassword(requestBody);
 	}
-	
+
 	@PatchMapping("/changePassword")
-	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody){
+	public ResponseDto<FindPasswordDto> changPassword(@RequestBody ChangePasswordDto requestBody) {
 		return findUserInfoService.changePassword(requestBody);
 	}
 }

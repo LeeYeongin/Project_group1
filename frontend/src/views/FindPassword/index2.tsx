@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './style2.css'
+import './style2.css';
 
 export default function ChangePassword() {
   const navigator = useNavigate();
@@ -15,25 +15,26 @@ export default function ChangePassword() {
     if (passwordView === 'password') setPasswordView('text');
     if (passwordView === 'text') setPasswordView('password');
   };
-  
+
   const changePasswordHandler = async () => {
-    console.log(userId)
+    console.log(userId);
     const data = {
       idUser: userId,
       password: password,
-      password2: confirmPassword
-    }
+      password2: confirmPassword,
+    };
 
-    await axios.patch("http://localhost:4040/api/find/changePassword", data)
-    .then((Response) => {
-      if(Response.data.data.result){
-        alert("비밀번호가 성공적으로 변경되었습니다.")
-        navigator('/')
-      } else{
-        alert("다시 입력하세요!")
-      }
-    })
-  }
+    await axios
+      .patch('http://localhost:4040/api/find/changePassword', data)
+      .then((Response) => {
+        if (Response.data.data.result) {
+          alert('비밀번호가 성공적으로 변경되었습니다.');
+          navigator('/');
+        } else {
+          alert('다시 입력하세요!');
+        }
+      });
+  };
 
   return (
     <>

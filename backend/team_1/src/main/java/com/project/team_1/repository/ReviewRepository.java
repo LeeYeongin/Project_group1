@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.project.team_1.entity.ReviewEntity;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer>{
+public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
 
 	List<ReviewEntity> findByIdClass(int idClass);
+
 	List<ReviewEntity> findByIdUser(String idUser);
 }

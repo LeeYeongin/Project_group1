@@ -24,28 +24,28 @@ const gotoModifiy = () => {
 };
 
 export default function SideBar() {
+  const [idUser, setIdUser] = useState<string>('');
+  const [cookies, setCookies] = useCookies();
+  const requestOption = {
+    headers: {
+      Authorization: `Bearer ${cookies.token}`,
+    },
+  };
 
-const [idUser, setIdUser] = useState<string>('');
-const [cookies, setCookies] = useCookies();
-const requestOption = {
-  headers: {
-    Authorization: `Bearer ${cookies.token}`
-  }
-}
+  axios
+    .get(`http://localhost:4040/myProfile/writed/`, requestOption)
+    .then((Response) => {
+      setIdUser(Response.data.data[0].idUser);
+      console.log(Response.data.data[0].idUser);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-axios.get(`http://localhost:4040/myProfile/writed/`, requestOption)
-      .then((Response) => {
-        setIdUser(Response.data.data[0].idUser);
-        console.log(Response.data.data[0].idUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-// 작성한 게시글 이동
-const gotoMyPosting = () => {
-  window.location.href = `http://localhost:3000/myProfile/writed`;
-};
+  // 작성한 게시글 이동
+  const gotoMyPosting = () => {
+    window.location.href = `http://localhost:3000/myProfile/writed`;
+  };
 
   return (
     <div className="side-menu1">

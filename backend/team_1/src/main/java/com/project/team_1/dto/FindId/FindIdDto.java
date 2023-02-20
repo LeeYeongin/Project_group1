@@ -11,11 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class FindIdDto {
-	
+
 	@NotBlank
 	private String name;
 	@NotBlank
 	private String telnum;
-	
 
 }

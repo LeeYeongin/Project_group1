@@ -13,12 +13,13 @@ import com.project.team_1.service.ClassDetailService;
 @RestController
 @RequestMapping("/api/main5/")
 public class ClassDetailController {
-	
-	@Autowired ClassDetailService service;
-	
+
+	@Autowired
+	ClassDetailService service;
+
 	@GetMapping("{idClass}/")
-	public ResponseDto<GetClassDetailResponseDto> readAllDetail(@PathVariable("idClass") int idClass){
-		
+	public ResponseDto<GetClassDetailResponseDto> readAllDetail(@PathVariable("idClass") int idClass) {
+
 		return service.readAllDetail(idClass);
 	}
 }

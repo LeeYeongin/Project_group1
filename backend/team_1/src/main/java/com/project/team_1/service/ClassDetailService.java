@@ -26,14 +26,14 @@ public class ClassDetailService {
 	ReviewRepository reviewRepo;
 	@Autowired
 	InstructorRepository instructRepo;
-	
+
 	public ResponseDto<GetClassDetailResponseDto> readAllDetail(int idClass) {
-		
+
 		ClassEntity classEntity;
-		
+
 		try {
 			classEntity = classRepo.findById(idClass).get();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return ResponseDto.setFailed("강의 출력 실패");
 		}
 
@@ -41,25 +41,15 @@ public class ClassDetailService {
 		List<CurriculumEntity> curriculumList = curriRepo.findAllCurriculum(idClass);
 		// 리뷰 가져오기
 		List<ReviewEntity> reviewList = reviewRepo.findByIdClass(idClass);
-		
+
 		List<InstructorEntity> instructor = instructRepo.findByIdInstructor(classEntity.getInstructor());
-		
-		GetClassDetailResponseDto responseData =
-				GetClassDetailResponseDto
-				.builder()
-				.idClass(idClass)
-				.img(classEntity.getImg())
-				.className(classEntity.getClassName())
-				.instructor(instructor)
-				.classInfoSimple(classEntity.getClassInfoSimple())
-				.price(classEntity.getPrice())
-				.classInfoDtl(classEntity.getClassInfoDtl())
-				.category(classEntity.getCategory())
-				.difficulty(classEntity.getDifficulty())
-				.curriculumList(curriculumList)
-				.reviewList(reviewList)
-				.build();
-		
+
+		GetClassDetailResponseDto responseData = GetClassDetailResponseDto.builder().idClass(idClass)
+				.img(classEntity.getImg()).className(classEntity.getClassName()).instructor(instructor)
+				.classInfoSimple(classEntity.getClassInfoSimple()).price(classEntity.getPrice())
+				.classInfoDtl(classEntity.getClassInfoDtl()).category(classEntity.getCategory())
+				.difficulty(classEntity.getDifficulty()).curriculumList(curriculumList).reviewList(reviewList).build();
+
 		// 전체 출력
 		return ResponseDto.setSuccess("강의 상세 출력", responseData);
 	}

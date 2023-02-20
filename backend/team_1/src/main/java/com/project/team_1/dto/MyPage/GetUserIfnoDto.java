@@ -20,7 +20,7 @@ public class GetUserIfnoDto {
 	private String password;
 	private String telNum;
 	private String description;
-	
+
 	public GetUserIfnoDto(UserEntity user) {
 		this.userId = user.getIdUser();
 		this.profile = user.getProfile();

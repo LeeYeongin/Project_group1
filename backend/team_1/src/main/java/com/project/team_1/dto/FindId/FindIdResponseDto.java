@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class FindIdResponseDto {
-	
+
 	private String userId;
 
 }

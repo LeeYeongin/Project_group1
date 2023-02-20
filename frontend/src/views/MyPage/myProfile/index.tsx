@@ -9,7 +9,7 @@ import './style.css';
 export default function MyProfile() {
   const [userProfile, setUserProfile] = useState<any[]>();
   const [cookies, setCookies] = useCookies();
-  const {user} = useUserStore();
+  const { user } = useUserStore();
   const [profile, setProfile] = useState<any>();
   const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
 
@@ -21,15 +21,14 @@ export default function MyProfile() {
   const getUserInfoHandler = async (token: string) => {
     const requestOption = {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
     await axios
-      // .post('http://localhost:4040/myProfile', getdata, requestOption)
       .get('http://localhost:4040/myProfile', requestOption)
       .then((Response) => {
-        console.log(Response.data)
+        console.log(Response.data);
         const tmp = [];
         tmp.push({
           profile: Response.data.data.profile,
@@ -40,30 +39,12 @@ export default function MyProfile() {
         setUserProfile(tmp);
       })
       .catch((error) => {});
-
-      // console.log(userProfile)
-      // getUserImg(userProfile?.at(0).profile)
-      
   };
 
   useEffect(() => {
     getUserInfoHandler(cookies.token);
-    // console.log(userProfile)
-    // getUserImg();
   }, []);
 
-  // const getUserImg = async () => {
-  //   console.log(userProfile)
-  //   // const imageName = userProfile?.at(0).profile
-  //   // console.log(imageName)
-  //    await axios.get(`http://localhost:4040/myProfile/image/profile.png`)
-  //   .then((Response) => {
-  //     setProfile(Response.data)
-  //     console.log(profile)
-  //   })
-  // };
-
-  
   return (
     <>
       <div className="head-bar1">

@@ -25,7 +25,6 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseDto<?> signUp(@RequestBody SignupDto requestBody) {
 		ResponseDto<?> result = authSeivce.signUp(requestBody);
-//			System.out.println(requestBody.toString());
 		return result;
 	}
 
@@ -34,9 +33,9 @@ public class AuthController {
 		ResponseDto<SigninResponseDto> result = authSeivce.signIn(requestBody);
 		return result;
 	}
-	
+
 	@GetMapping("/signIn/{userId}")
-	public ResponseDto<GetUserIfnoDto> getSignIn(@PathVariable("userId")String Userid){
+	public ResponseDto<GetUserIfnoDto> getSignIn(@PathVariable("userId") String Userid) {
 		return authSeivce.getSignIn(Userid);
 	}
 

@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="REVIEW")
-@Table(name="REVIEW")
+@Entity(name = "REVIEW")
+@Table(name = "REVIEW")
 public class ReviewEntity {
-	
+
 	@Id
 	private int idReview;
 	private String idUser;

@@ -1,290 +1,291 @@
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-    margin: 0;
-    height: auto;
+body {
+  margin: 0;
+  height: auto;
 
-    font-size: 20px;
-    color: #000;
+  font-size: 20px;
+  color: #000;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-a{
-    color: black;
-    text-decoration: none;
+a {
+  color: black;
+  text-decoration: none;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
-ul, li{
-    margin: 0;
-    list-style: none;
+ul,
+li {
+  margin: 0;
+  list-style: none;
 }
 
-h1{
-    margin: 0;
-    padding-top: 14%;
-    padding-left: 20px;
+h1 {
+  margin: 0;
+  padding-top: 14%;
+  padding-left: 20px;
 }
 
-.detail5_main{
-    width: auto;
-    height: auto;
+.detail5_main {
+  width: auto;
+  height: auto;
 }
 
 /* 상단보기란 */
-.detail5_topbanner{
-    margin-top: 50px;
-    height: 500px;
+.detail5_topbanner {
+  margin-top: 50px;
+  height: 500px;
 }
 
-.detail5_top_body{
-    display: flex;
-    width: 50%;
-    height: 100%;
+.detail5_top_body {
+  display: flex;
+  width: 50%;
+  height: 100%;
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    border: 1px solid #eee;
-    border-radius: 5px;
+  border: 1px solid #eee;
+  border-radius: 5px;
 
-    background-color: #fff;
+  background-color: #fff;
 }
 
 /* 강의 이미지 */
-.detail5_img{
-    margin: auto;
+.detail5_img {
+  margin: auto;
 
-    border: 1px solid #fff;
-    border-radius: 5%;
+  border: 1px solid #fff;
+  border-radius: 5%;
 
-    width: 40%;
-    height: 70%;
+  width: 40%;
+  height: 70%;
 
-    background-color: rgb(255, 192, 192);
+  background-color: rgb(255, 192, 192);
 }
 
 /* 강의 설명및 제목 */
-.detail5_title{
-    margin: auto;
+.detail5_title {
+  margin: auto;
 
-    width: 50%;
-    height: 60%;
+  width: 50%;
+  height: 60%;
 
-    color: #000;
+  color: #000;
 
-    padding-left: 10px;
-    border-radius: 15px;
+  padding-left: 10px;
+  border-radius: 15px;
 }
 
-#item5_title{
-    font-size: 28px;
+#item5_title {
+  font-size: 28px;
 }
 
 /* 상세 메뉴[클릭이벤트 추가] */
-.detail5_menu5{
-    width: 100%;
-    height: 80px;
+.detail5_menu5 {
+  width: 100%;
+  height: 80px;
 }
 
-.menu5_list{
-    display: flex;
+.menu5_list {
+  display: flex;
 
-    width: 48%;
-    height: 100%;
+  width: 48%;
+  height: 100%;
 
-    margin: 0 auto;
-    padding-left: 2%;
+  margin: 0 auto;
+  padding-left: 2%;
 }
 
 .fixed {
-    position:fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
 
-    border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 
-    background-color: #fff;
+  background-color: #fff;
 }
 /* 메뉴 리스트 */
-.menu5{
-    width: 80px;
-    height: 60px;
+.menu5 {
+  width: 80px;
+  height: 60px;
 
-    margin: 10px;
+  margin: 10px;
 
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.view{
-    background-color: #eee;
+.view {
+  background-color: #eee;
 }
 
 /* 상세보기[강의소개, 커리큘럼, 수강평]*/
 
-#content1{
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+#content1 {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.detail5_content{
-    height: auto;
+.detail5_content {
+  height: auto;
 
-    display: flex;
+  display: flex;
 }
 
-.detail5_content_main{
-    width: 30%;
-    height: 100%;
-    margin-left: auto;
+.detail5_content_main {
+  width: 30%;
+  height: 100%;
+  margin-left: auto;
 }
 
-.scroll{
-    padding-top: 80px ;
+.scroll {
+  padding-top: 80px;
 }
 
-.con5{
-    min-height: 1000px;
+.con5 {
+  min-height: 1000px;
 }
 
-.con5 > p { 
-    padding-left: 20px;
-    
-    font-size: 20px;
-    font-weight: bold;
+.con5 > p {
+  padding-left: 20px;
+
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.explan{
-    padding-top: 10px;
-    padding-left: 20px;
+.explan {
+  padding-top: 10px;
+  padding-left: 20px;
 }
 
-#item5_infoDtl{
-    margin-top: 20px;
+#item5_infoDtl {
+  margin-top: 20px;
 
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.instruct5{
-    display: flex;
+.instruct5 {
+  display: flex;
 }
 
-.instruct_img{
-    width: 150px;
-    height: 150px;
+.instruct_img {
+  width: 150px;
+  height: 150px;
 
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
-.instruct_dtl{
-    font-size: 16px;
-    font-weight: bold;
+.instruct_dtl {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* 커리큘럼 */
 
-#content2{
-    height: auto;
+#content2 {
+  height: auto;
 
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-#con5tent2 > h1{
+#con5tent2 > h1 {
   padding-bottom: 10px;
 }
 
 /* 수강 리뷰 */
-#content3{
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+#content3 {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-#content3 > h1{
+#content3 > h1 {
   padding-top: 80px;
   padding-bottom: 20px;
 }
 
 /* 장바구니 */
-.detail5_payment{
-    width: 20%;
-    margin: 0 auto 0 0;
+.detail5_payment {
+  width: 20%;
+  margin: 0 auto 0 0;
 }
 
-.pay_body5{
-    position: sticky;
-    top: 150px;
-    margin: 20px auto;
-    width: 90%;
+.pay_body5 {
+  position: sticky;
+  top: 150px;
+  margin: 20px auto;
+  width: 90%;
 
-    border: 1px solid rgb(228, 228, 228);
-    border-radius: 5px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 5px;
 }
 
-.money{
-    margin: 0 auto;
-    padding-top: 10px;
-    width: 90%;
+.money {
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 90%;
 
-    font-size: 20px;
-    font-weight: 600;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.backet5{
-    margin: 5%;
-    border: 1px solid black;
-    border-radius: 10px;
+.backet5 {
+  margin: 5%;
+  border: 1px solid black;
+  border-radius: 10px;
 
-    width: 90%;
-    height: 50px;
+  width: 90%;
+  height: 50px;
 
-    color: #fff;
+  color: #fff;
 
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 
-    text-align: center;
-    background-color: #6fb7ff;
+  text-align: center;
+  background-color: #6fb7ff;
 }
 
-.backet5:hover{
-    color: #000;
+.backet5:hover {
+  color: #000;
 
-    background-color: #2799bd;
+  background-color: #2799bd;
 }
 
-.sub5{
-    padding-bottom: 10px;
+.sub5 {
+  padding-bottom: 10px;
 
-    font-size: 14px;
+  font-size: 14px;
 }
 
-.sub5 ul{
-    padding-left: 5%;
+.sub5 ul {
+  padding-left: 5%;
 }
 
-.sub5 li{
-    padding-bottom: 10px;
+.sub5 li {
+  padding-bottom: 10px;
 
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.disabled{
-    width: 0;
-    height: 0;
+.disabled {
+  width: 0;
+  height: 0;
 
-    border: none;
+  border: none;
 
-    font-size: 0;
+  font-size: 0;
 }

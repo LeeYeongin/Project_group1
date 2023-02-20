@@ -32,68 +32,66 @@ public class UserProfileService {
 	@Autowired
 	ClassRepository classRepository;
 
-	
-	public ResponseDto<GetUserIfnoDto> getUserProfile(UserIdDto dto){
+	public ResponseDto<GetUserIfnoDto> getUserProfile(UserIdDto dto) {
 		GetUserIfnoDto userinfo;
 		try {
 			userinfo = new GetUserIfnoDto(userRepository.findById(dto.getUserId()).get());
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return ResponseDto.setFailed("error");
 		}
-		
+
 		System.out.println(userinfo.getProfile());
 		return ResponseDto.setSuccess("Get Profile Success", userinfo);
 	}
-	
-	
-	public ResponseDto<GetUserIfnoDto> getUserProfile(String userId){
+
+	public ResponseDto<GetUserIfnoDto> getUserProfile(String userId) {
 		GetUserIfnoDto userinfo;
 		try {
 			userinfo = new GetUserIfnoDto(userRepository.findById(userId).get());
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return ResponseDto.setFailed("error");
 		}
 		return ResponseDto.setSuccess("Get Profile Success", userinfo);
 	}
-	
+
 	public ResponseDto<ResultResponseDTO> deleteUser(String idUser) {
 		userRepository.deleteById(idUser);
-		
+
 		return ResponseDto.setSuccess("SUCCESS", new ResultResponseDTO(true));
 	}
-	
+
 	public ResponseDto<GetUserIfnoDto> setUserProfile(SetUserDto dto) {
 		String name = dto.getName();
-		
+
 		UserEntity user = null;
 		try {
 			user = userRepository.findByName(name);
 		} catch (Exception e) {
 			return ResponseDto.setFailed("failed");
 		}
-		
+
 		user.setProfile(dto.getProfile());
 		user.setNickname(dto.getNickname());
 		user.setEmail(dto.getEmail());
 		user.setPassword(dto.getPassword());
 		user.setTelnum(dto.getTelNum());
 		user.setDescription(dto.getDescription());
-		
+
 		userRepository.save(user);
-		
-		return ResponseDto.setSuccess("success",new GetUserIfnoDto(user));
-		
+
+		return ResponseDto.setSuccess("success", new GetUserIfnoDto(user));
+
 	}
-	
+
 	public ResponseDto<List<GetUserPostingDto>> getUserPosting(String idUser) {
 		List<GetUserPostingDto> data = new ArrayList<GetUserPostingDto>();
 		List<ReviewEntity> reviewEntity;
 		reviewEntity = reviewRepository.findByIdUser(idUser);
-		for(ReviewEntity review : reviewEntity) {
+		for (ReviewEntity review : reviewEntity) {
 			String className = classRepository.findById(review.getIdClass()).get().getClassName();
 			data.add(new GetUserPostingDto(review, className));
 		}
-		
+
 		return ResponseDto.setSuccess("success", data);
 	}
 }

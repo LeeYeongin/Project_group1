@@ -22,19 +22,14 @@ import com.project.team_1.service.UserProfileService;
 @RestController
 @RequestMapping("/myProfile")
 public class UserProfileController {
-	@Autowired 
+	@Autowired
 	UserProfileService userService;
-	
-//	@PostMapping("")
-//	public ResponseDto<GetUserIfnoDto> getUserProfile(@RequestBody UserIdDto requestBody) {
-//		return userService.getUserProfile(requestBody);
-//	}
-	
+
 	@GetMapping("")
 	public ResponseDto<GetUserIfnoDto> getUserProfile(@AuthenticationPrincipal String userId) {
 		return userService.getUserProfile(userId);
 	}
-	
+
 	@GetMapping("/writed")
 	public ResponseDto<List<GetUserPostingDto>> getUserPosting(@AuthenticationPrincipal String idUser) {
 		return userService.getUserPosting(idUser);

@@ -13,19 +13,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileService {
 	@Value("${file.dir}")
 	private String dir;
-	
+
 	public Resource getImage(String imageName) {
 		try {
-			return new UrlResource("file:"+ dir + imageName);
+			return new UrlResource("file:" + dir + imageName);
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	public String fileUpload(MultipartFile file) {
 		// file이 있는지 검사
-		if (file.isEmpty()) return null;
-		
+		if (file.isEmpty())
+			return null;
+
 		// Original file name 가져옴
 		String originalFileName = file.getOriginalFilename();
 		// 확장자를 가져옴 (image.png)
@@ -36,14 +37,14 @@ public class FileService {
 		String saveName = uuid + extension;
 		// 파일이 저장된 실제 경로
 		String savePath = dir + saveName;
-		
+
 		// 해당 파일을 실제로 해당 경로에 저장
 		try {
 			file.transferTo(new File(savePath));
 		} catch (Exception e) {
 			return null;
 		}
-		
+
 		return saveName;
 	}
 }

@@ -10,9 +10,9 @@ export default function MyCourse() {
   const [cookies, setCookies] = useCookies();
   const requestOption = {
     headers: {
-      Authorization: `Bearer ${cookies.token}`
-    }
-  }
+      Authorization: `Bearer ${cookies.token}`,
+    },
+  };
 
   const getMyCourseList = () => {
     axios
@@ -30,21 +30,21 @@ export default function MyCourse() {
             console.log(tmp);
           }
         }
-        console.log("aaa", tmp);
+        console.log('aaa', tmp);
         setMyCourseList(tmp);
-        console.log("test", myCourseList);
+        console.log('test', myCourseList);
       })
       .catch((error) => {});
   };
 
   //상세페이지 이동
-  const gotopage = (idClass:number) => {
+  const gotopage = (idClass: number) => {
     window.location.href = `http://localhost:3000/main5/${idClass}`;
-  }
+  };
 
   useEffect(() => {
     getMyCourseList();
-  },[]);
+  }, []);
   return (
     <>
       <div className="head-bar1">
@@ -64,7 +64,12 @@ export default function MyCourse() {
                         <img src={list.img} alt="" />
                       </div>
                       <div className="my-course-item-title">
-                        <a className="my-course-a" onClick={() => gotopage(list.idClass)}>{list.className}</a>
+                        <a
+                          className="my-course-a"
+                          onClick={() => gotopage(list.idClass)}
+                        >
+                          {list.className}
+                        </a>
                       </div>
                     </div>
                   </div>

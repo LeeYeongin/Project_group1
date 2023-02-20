@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="CURRICULUM")
-@Table(name="CURRICULUM")
+@Entity(name = "CURRICULUM")
+@Table(name = "CURRICULUM")
 public class CurriculumEntity {
 
 	@Id

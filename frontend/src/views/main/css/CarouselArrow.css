@@ -1,22 +1,19 @@
-
 /* Caoursel arrows */
 
 .slick-prev,
-.slick-next{
-    z-index: 1;
+.slick-next {
+  z-index: 1;
 }
 
 .slick-prev:before,
-.slick-next:before{
-    font-size: 40px;
-    color: #175cbe;
+.slick-next:before {
+  font-size: 40px;
+  color: #175cbe;
 }
 
-.slick-next{
-    padding-right: 10px;
-    /* display: flex; */
-    /* position: absoulte; */
+.slick-next {
+  padding-right: 10px;
 }
 .slick-prev {
-    left: -40px;
+  left: -40px;
 }

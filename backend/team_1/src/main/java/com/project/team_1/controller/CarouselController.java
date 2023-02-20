@@ -18,67 +18,65 @@ import com.project.team_1.service.ClassService;
 @RestController
 @RequestMapping("/api/carousel/")
 public class CarouselController {
-	
-	@Autowired ClassService classService;
-	
-	@Autowired ClassDetailService classDetailService;
-	
-	//Front
-	
+
+	@Autowired
+	ClassService classService;
+
+	@Autowired
+	ClassDetailService classDetailService;
+
+	// Front
+
 	@GetMapping("front")
-	public ResponseDto<List<GetClassInfoDto>>getShowFrontList(){
+	public ResponseDto<List<GetClassInfoDto>> getShowFrontList() {
 		return classService.showFrontList();
 	}
-	
+
 	@PostMapping("front")
-	public ResponseDto<GetClassDetailResponseDto>getshowFrontList(@RequestBody GetClassDetailResponseDto requestBody) {
+	public ResponseDto<GetClassDetailResponseDto> getshowFrontList(@RequestBody GetClassDetailResponseDto requestBody) {
 		System.out.println(requestBody.getIdClass());
 		return classDetailService.readAllDetail(requestBody.getIdClass());
 	}
-	
-	//Back
 
-	
+	// Back
+
 	@GetMapping("back")
-	public ResponseDto<List<GetClassInfoDto>>getShowBackList(){
+	public ResponseDto<List<GetClassInfoDto>> getShowBackList() {
 		return classService.showBackList();
 	}
-	
+
 	@PostMapping("back")
-	public ResponseDto<GetClassDetailResponseDto>getShowBackList(@RequestBody GetClassDetailResponseDto requestBody) {
+	public ResponseDto<GetClassDetailResponseDto> getShowBackList(@RequestBody GetClassDetailResponseDto requestBody) {
 		System.out.println(requestBody.getIdClass());
 		return classDetailService.readAllDetail(requestBody.getIdClass());
 	}
-	
-	//Database
-	
+
+	// Database
+
 	@GetMapping("db")
-	public ResponseDto<List<GetClassInfoDto>>getShowDatabaseList(){
+	public ResponseDto<List<GetClassInfoDto>> getShowDatabaseList() {
 		return classService.showDatabaseList();
 	}
-	
+
 	@PostMapping("db")
-	public ResponseDto<GetClassDetailResponseDto>getShowDatabaseList(@RequestBody GetClassDetailResponseDto requestBody) {
+	public ResponseDto<GetClassDetailResponseDto> getShowDatabaseList(
+			@RequestBody GetClassDetailResponseDto requestBody) {
 		System.out.println(requestBody.getIdClass());
 		return classDetailService.readAllDetail(requestBody.getIdClass());
 	}
 
-	
-	//FullStack
-	
+	// FullStack
+
 	@GetMapping("full")
-	public ResponseDto<List<GetClassInfoDto>>getShowFullStackList(){
+	public ResponseDto<List<GetClassInfoDto>> getShowFullStackList() {
 		return classService.showFullStackList();
 	}
-	
+
 	@PostMapping("full")
-	public ResponseDto<GetClassDetailResponseDto>getShowFullStackList(@RequestBody GetClassDetailResponseDto requestBody) {
+	public ResponseDto<GetClassDetailResponseDto> getShowFullStackList(
+			@RequestBody GetClassDetailResponseDto requestBody) {
 		System.out.println(requestBody.getIdClass());
 		return classDetailService.readAllDetail(requestBody.getIdClass());
 	}
-
-	
-
-	
 
 }

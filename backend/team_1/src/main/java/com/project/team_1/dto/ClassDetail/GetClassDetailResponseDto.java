@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetClassDetailResponseDto {
-	
+
 	private int idClass;
 	private String img;
 	private String className;
@@ -29,9 +29,9 @@ public class GetClassDetailResponseDto {
 	private List<InstructorEntity> instructor;
 	private List<CurriculumEntity> curriculumList;
 	private List<ReviewEntity> reviewList;
-	
-	public GetClassDetailResponseDto(ClassEntity classEntity, List<CurriculumEntity> curriculumList, 
-									List<ReviewEntity> reviewList, List<InstructorEntity> instructor) {
+
+	public GetClassDetailResponseDto(ClassEntity classEntity, List<CurriculumEntity> curriculumList,
+			List<ReviewEntity> reviewList, List<InstructorEntity> instructor) {
 		this.idClass = classEntity.getIdClass();
 		this.img = classEntity.getImg();
 		this.className = classEntity.getClassName();
@@ -42,6 +42,6 @@ public class GetClassDetailResponseDto {
 		this.category = classEntity.getCategory();
 		this.difficulty = classEntity.getDifficulty();
 		this.curriculumList = curriculumList;
-		this.reviewList	= reviewList;
+		this.reviewList = reviewList;
 	}
 }

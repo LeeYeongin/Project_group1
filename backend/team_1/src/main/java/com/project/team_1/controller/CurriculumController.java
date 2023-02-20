@@ -17,16 +17,17 @@ import com.project.team_1.dto.response.ResponseDto;
 @RequestMapping("main5/")
 public class CurriculumController {
 
-	@Autowired CurriculumService curriculumService;
-	
+	@Autowired
+	CurriculumService curriculumService;
+
 	@GetMapping("{idClass}")
-	public ResponseDto<List<GetCurriculumSectionDto>> getAllCurriculumSection(@PathVariable("idClass") int idClass){
+	public ResponseDto<List<GetCurriculumSectionDto>> getAllCurriculumSection(@PathVariable("idClass") int idClass) {
 		return curriculumService.findAllSection(idClass);
 	}
-	
+
 	@GetMapping("curri/{idClass}")
-	public ResponseDto<List<GetCurriculumResponseDto>> getAllCurriculum(@PathVariable("idClass") int idClass){
+	public ResponseDto<List<GetCurriculumResponseDto>> getAllCurriculum(@PathVariable("idClass") int idClass) {
 		return curriculumService.findAll(idClass);
 	}
-	
+
 }

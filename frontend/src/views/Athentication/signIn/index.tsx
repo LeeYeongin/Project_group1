@@ -1,13 +1,10 @@
 // import axios from 'axios';
-import { useState , KeyboardEvent} from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { useCookies } from 'react-cookie';
 import { signInApi } from '../../../apis';
 
 import mainIcon from '../../../asset/images/main.png';
 import { useUserStore } from '../../../stores';
-// import kakao from '../../asset/images/icon_kakao.png';
-// import google from '../../asset/images/icon_google.png';
-// import naver from '../../asset/images/icon_naver.png';
 import './style.css';
 
 interface props {
@@ -22,11 +19,11 @@ export default function Login({ open, setOpen }: props) {
 
   //로그인시 엔터키를 누르면 singInHandler가 작동하는 엔터키 이벤트
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       console.log();
       signInHandler();
     }
-  }
+  };
 
   const { setUser } = useUserStore();
 
@@ -50,41 +47,36 @@ export default function Login({ open, setOpen }: props) {
     };
 
     const signInResponse = await signInApi(data);
-    
+
     if (!signInResponse) {
       alert('로그인에 실패했습니다.');
       return;
     }
     if (!signInResponse.status) {
-      console.log(signInResponse)
+      console.log(signInResponse);
       alert('로그인에 실패했습니다.');
       return;
     }
-    alert(data.userId + "환영합니다.");
+    alert(data.userId + '환영합니다.');
     const { token, exprTime, user } = signInResponse.data;
     const expires = new Date();
     expires.setMilliseconds(expires.setMilliseconds + exprTime);
 
     setCookies('token', token, { expires });
     setUser(user);
-    setOpen(false)
+    setOpen(false);
   };
-  // if(!email.includes('@')) {
-  //   alert('이메일 형식이 아닙니다');
-  //   return;
-  // }
+
   return (
     <>
       <div className={open ? 'modal-background' : 'modal-hide'}></div>
       <div className={open ? 'modal' : 'modal-hide'}>
-        {/* <div className="dimmed"></div> */}
         <div className="sign-in-modal">
           <div className="closeButton">
             <div className="header-close-button" onClick={() => handleClose()}>
               <i className="fa-solid fa-xmark"></i>
             </div>
           </div>
-          {/* <hr className="social-sign-in__line" /> */}
           <div className="header--logo">
             <img className="icon-brand-logo" src={mainIcon} alt="메인아이콘" />
           </div>
@@ -95,13 +87,11 @@ export default function Login({ open, setOpen }: props) {
                 placeholder="이메일"
                 data-kv="email"
                 className="form__input form__input--email"
-                // type="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <div className="form__input form__input--password">
                 <input
                   className="e-sign-in-input"
-                  // value="password"
                   type={passwordView}
                   spellCheck="false"
                   placeholder="비밀번호"
@@ -141,30 +131,6 @@ export default function Login({ open, setOpen }: props) {
             </a>
           </p>
           <div className="sign-in-modal__social-sign-in">
-            {/* <span className="social-sign-in__title">간편 로그인</span>
-            <div className="social__sign-in-buttons">
-              <button className="kakao">
-                <img
-                  className="kakaoicon-sign-up"
-                  src={kakao}
-                  alt="카카오 간편 로그인"
-                />
-              </button>
-              <button className="google">
-                <img
-                  className="googleicon-sign-up"
-                  src={google}
-                  alt="구글 간편 로그인"
-                />
-              </button>
-              <button className="naver">
-                <img
-                  className="navericon-sign-up"
-                  src={naver}
-                  alt="네이버 간편 로그인"
-                />
-              </button> 
-            </div>*/}
           </div>
         </div>
       </div>

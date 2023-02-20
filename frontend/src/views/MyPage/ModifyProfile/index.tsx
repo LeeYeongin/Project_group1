@@ -19,7 +19,7 @@ export default function ModifiyProfile() {
   const [password, setPassword] = useState<string>('');
   const [telNum, setTelNum] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [flag, setFlag] = useState<boolean>(false)
+  const [flag, setFlag] = useState<boolean>(false);
   const [cookies, setCookies] = useCookies();
   const [apiUrl] = useState<string>('http://localhost:4040/api/file/image/');
   const navigator = useNavigate();
@@ -27,21 +27,21 @@ export default function ModifiyProfile() {
 
   const requestOption = {
     headers: {
-      Authorization: `Bearer ${cookies.token}`
-    }
-  }
+      Authorization: `Bearer ${cookies.token}`,
+    },
+  };
 
   const gotoModifiy = () => {
     window.location.href = `http://localhost:3000/modifiyProfile`;
-  }
-  
+  };
+
   const getUserInfoHandler = async () => {
     // const getdata = {
     //   idUser: 'aaa',
     // };
     await axios
       // .post('http://localhost:4040/modifiyProfile', getdata)
-      .get('http://localhost:4040/modifiyProfile',requestOption)
+      .get('http://localhost:4040/modifiyProfile', requestOption)
       .then((Response) => {
         const tmp = [];
         tmp.push({
@@ -74,40 +74,41 @@ export default function ModifiyProfile() {
     // const getdata = 'aaa';
 
     axios
-      .get('http://localhost:4040/modifiyProfile/delete',requestOption)
+      .get('http://localhost:4040/modifiyProfile/delete', requestOption)
       .then((Response) => {
         alert('회원탈퇴 성공!!!');
-        setCookies('token', '', {expires: new Date()});
+        setCookies('token', '', { expires: new Date() });
         removeUser();
         window.location.href = `http://localhost:3000/`;
       })
       .catch((error) => {});
   };
 
-  const handleChangeFile = (event:any) => {
+  const handleChangeFile = (event: any) => {
     setFlag(true);
     setProfile(event[0]);
-  }
+  };
 
-  const uploadHandler = async() => {
+  const uploadHandler = async () => {
     const data = new FormData();
-    data.append("file", profile);
+    data.append('file', profile);
 
-    const response = await axios.post('http://localhost:4040/api/file/upload', data).catch((error) => {
-      console.log(error.data)
-    })
+    const response = await axios
+      .post('http://localhost:4040/api/file/upload', data)
+      .catch((error) => {
+        console.log(error.data);
+      });
 
     return (response as AxiosResponse<any, any>).data;
-  }
+  };
 
   const modifiyHandler = async () => {
     let profile2 = '';
-    if(flag) {
+    if (flag) {
       profile2 = await uploadHandler();
     }
-      
 
-    console.log(profile)
+    console.log(profile);
 
     const getdata = {
       profile: profile2,
@@ -119,7 +120,7 @@ export default function ModifiyProfile() {
       description: description,
     };
 
-   axios
+    axios
       .patch('http://localhost:4040/modifiyProfile', getdata, requestOption)
       .then((Response) => {
         const tmp = [];
@@ -140,13 +141,12 @@ export default function ModifiyProfile() {
       .catch((error) => {});
 
     alert('회원수정 성공');
-    gotoModifiy()
+    gotoModifiy();
   };
 
   const goToChangePassword = () => {
-    navigator('/changePassword',  { state: { value: email } });
-  }
-
+    navigator('/changePassword', { state: { value: email } });
+  };
 
   return (
     <>
@@ -168,8 +168,12 @@ export default function ModifiyProfile() {
                         alt=""
                         className="img1"
                       />
-                      <form className='file-input'>
-                        <input type="file" accept="image/jpeg, image/png" onChange={(e) => handleChangeFile(e.target.files)} />
+                      <form className="file-input">
+                        <input
+                          type="file"
+                          accept="image/jpeg, image/png"
+                          onChange={(e) => handleChangeFile(e.target.files)}
+                        />
                       </form>
                     </div>
                   </div>
@@ -211,12 +215,6 @@ export default function ModifiyProfile() {
                   <div className="list11">비밀번호</div>
                   <div className="changePassword" onClick={goToChangePassword}>
                     비밀번호 변경
-                    {/* <input
-                      className="userInput"
-                      type="text"
-                      defaultValue={userProfile?.at(0).password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    /> */}
                   </div>
                 </div>
                 <div className="list01">

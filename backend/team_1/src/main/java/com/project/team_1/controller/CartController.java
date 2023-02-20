@@ -21,31 +21,34 @@ import com.project.team_1.service.CartService;
 @RestController
 @RequestMapping("/api/cart/")
 public class CartController {
-	
-	@Autowired CartService cartService;
+
+	@Autowired
+	CartService cartService;
 
 	@GetMapping("")
-	public ResponseDto<List<GetCartClassListDto>> getCartList(@AuthenticationPrincipal String userId){
+	public ResponseDto<List<GetCartClassListDto>> getCartList(@AuthenticationPrincipal String userId) {
 		return cartService.getCartList(userId);
 	}
-	
+
 	@GetMapping("user")
-	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(@AuthenticationPrincipal String userId){
+	public ResponseDto<GetCartUserInfoDto> getCartUserInfo(@AuthenticationPrincipal String userId) {
 		return cartService.getCartUserInfo(userId);
 	}
-	
+
 	@PostMapping("delete")
-	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<Integer> requestBody){
+	public ResponseDto<ResultResponseDTO> deleteCartList(@RequestBody List<Integer> requestBody) {
 		return cartService.deleteCartList(requestBody);
 	}
-	
+
 	@PostMapping("add")
-	public ResponseDto<ResultResponseDTO> addCartList(@RequestBody PostClassId requestBody, @AuthenticationPrincipal String userId){
+	public ResponseDto<ResultResponseDTO> addCartList(@RequestBody PostClassId requestBody,
+			@AuthenticationPrincipal String userId) {
 		return cartService.addCartList(requestBody, userId);
 	}
 
 	@PostMapping("payment")
-	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody, @AuthenticationPrincipal String userId){
+	public ResponseDto<ResultResponseDTO> payClass(@RequestBody PaymentInfoDto requestBody,
+			@AuthenticationPrincipal String userId) {
 		return cartService.payClass(requestBody, userId);
 	}
 }

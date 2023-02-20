@@ -22,9 +22,8 @@ public class AuthService {
 	UserRepository userRepository;
 	@Autowired
 	TokenProvider tokenProvider;
-	
+
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
 
 	public ResponseDto<?> signUp(SignupDto dto) {
 		String userEmail = dto.getUserId();
@@ -44,14 +43,14 @@ public class AuthService {
 		// 비밀번호가 서로 다르면 failed response 반환!
 		if (!userPassword.equals(userPasswordConfirm))
 			return ResponseDto.setFailed("Password does not matched!");
-		
+
 		if (userTelnum.isEmpty()) {
 			return ResponseDto.setFailed("failed");
 		}
 
 		// UserEntity 생성
 		UserEntity UserEntity = new UserEntity(dto);
-		
+
 		// 비밀번호 암호화
 		String encodedPassword = passwordEncoder.encode(userPassword);
 		UserEntity.setPassword(encodedPassword);
@@ -70,28 +69,21 @@ public class AuthService {
 	public ResponseDto<SigninResponseDto> signIn(SignInDto dto) {
 		String id = dto.getUserId();
 		String password = dto.getPassword();
-//		try {
-//			boolean existed = userRepository.existsByIdAndPassword(id, password);
-//			if (!existed)
-//				return ResponseDto.setFailed("Sign In Informaion Does Not Match");
-//		} catch (Exception error) {
-//			return ResponseDto.setFailed("Data Base Error!");
-//		}
-
 		UserEntity userEntity = null;
 		try {
 			userEntity = userRepository.findByIdUser(id);
 			// 잘못된 이메일
-			if (userEntity == null) return ResponseDto.setFailed("Sign In failed");
+			if (userEntity == null)
+				return ResponseDto.setFailed("Sign In failed");
 			// 잘못된 패스워드
 			if (!passwordEncoder.matches(password, userEntity.getPassword())) {
 				return ResponseDto.setFailed("Sign In failed");
 			}
-				  
+
 		} catch (Exception error) {
 			return ResponseDto.setFailed("Data Base Error!");
 		}
-		
+
 		userEntity.setPassword("");
 
 		String token = tokenProvider.create(id);
@@ -104,10 +96,10 @@ public class AuthService {
 
 	public ResponseDto<GetUserIfnoDto> getSignIn(String userid) {
 		UserEntity userEntity;
-		
+
 		try {
 			userEntity = userRepository.findByIdUser(userid);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return ResponseDto.setFailed("잘못된 아이디입니다");
 		}
 		return ResponseDto.setSuccess("불러오기 성공", new GetUserIfnoDto(userEntity));

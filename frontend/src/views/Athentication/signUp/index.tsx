@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 // import mainIcon from '../../asset/images/main.png';
 import './style.css';
-// import axios from 'axios';
-
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
 import { signUpApi } from '../../../apis';
 import axios from 'axios';
 
@@ -22,9 +18,8 @@ export default function Signup() {
   useState<boolean>(true);
 
   const emailExt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-  const passwordExt = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,32}$/;
-
-  // const [requestResult, setRequestResult] = useState<string>('');
+  const passwordExt =
+    /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,32}$/;
 
   const onEmailHandler = (value: string) => {
     setUserEmail(value);
@@ -92,20 +87,9 @@ export default function Signup() {
         <section className="signup">
           <div className="sign-up-container">
             <div className="join_membership" role="banner">
-              <a href="/" className="logo">
-                {/* <img className="brand-logo" src={mainIcon} alt="메인아이콘" /> */}
-              </a>
+              <a href="/" className="logo"></a>
             </div>
             <h2 className="signup--title">회원가입</h2>
-            {/* <aside className="signup--messages">
-          <h3 className="visually-hidden">회원가입 메세지</h3>
-          <div
-            className="signup--messages-slider"
-            style={"transition: transform 1s ease-in-out 0s; transform: translate(-100%);"} >
-            <p className="signup__message">해삐에서 다양한 성장의 기회를 얻으세요!</p>
-            <p className="signup__message">나의 성장을 돕는 IT 실무 지식 플랫폼</p>
-          </div>
-        </aside> */}
             <div className="signup--main">
               <form className="signup--form">
                 <div className="form--input-block">
@@ -135,7 +119,6 @@ export default function Signup() {
                   <div className="form--input e-password">
                     <input
                       className="e-sign-up-input--password"
-                      // value="password"
                       type={passwordView}
                       spellCheck="false"
                       id="password"
@@ -181,7 +164,9 @@ export default function Signup() {
                       spellCheck="false"
                       id="passwordConfirm"
                       placeholder="비밀번호 확인"
-                      onChange={(e) => onUserPasswordConfirmHandler(e.target.value)}
+                      onChange={(e) =>
+                        onUserPasswordConfirmHandler(e.target.value)
+                      }
                     />
                     <span
                       className="toggle-password"
@@ -232,26 +217,12 @@ export default function Signup() {
                     />
                   </div>
                 </div>
-                {/* <Box>
-                  <TextField
-                    id="standard-basic"
-                    label="Standard"
-                    variant="standard"
-                  /> */}
-                {/* <h3>{requestResult}</h3> */}
                 <button
                   onClick={() => signupHandler()}
                   className="e-signup-button"
                 >
                   회원 가입
                 </button>
-                {/* </Box> */}
-
-                {/* <div className="form-footer">
-              <span className="footer--policy">
-                " 가입 시, 통합 계정으로 인프랩이 제공하는 서비스를 모두 이용하실 수 있습니다. "
-              </span>
-            </div> */}
               </form>
             </div>
           </div>

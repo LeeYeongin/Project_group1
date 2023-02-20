@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="USER")
-@Table(name="USER")
+@Entity(name = "USER")
+@Table(name = "USER")
 public class UserEntity {
 
 	@Id
@@ -27,7 +27,7 @@ public class UserEntity {
 	private String email;
 	private String telnum;
 	private String description;
-	
+
 	public UserEntity(SignupDto dto) {
 		this.idUser = dto.getUserId();
 		this.password = dto.getPassword();
@@ -35,18 +35,18 @@ public class UserEntity {
 		this.profile = "profile.png";
 		this.telnum = dto.getTelNum();
 		this.email = dto.getUserId();
-		this.nickname = dto.getUserId().substring(0,dto.getUserId().indexOf('@'));
+		this.nickname = dto.getUserId().substring(0, dto.getUserId().indexOf('@'));
 	}
-	
+
 	public UserEntity(UserEntity userEntity) {
-	      this.idUser = userEntity.getIdUser();
-	      this.password = userEntity.getPassword();
-	      this.name = userEntity.getName();
-	      this.profile = userEntity.getProfile();
-	      this.nickname = userEntity.getNickname();
-	      this.email = userEntity.getEmail();
-	      this.telnum = userEntity.getTelnum();
-	      this.description = userEntity.getDescription();
-	   }
+		this.idUser = userEntity.getIdUser();
+		this.password = userEntity.getPassword();
+		this.name = userEntity.getName();
+		this.profile = userEntity.getProfile();
+		this.nickname = userEntity.getNickname();
+		this.email = userEntity.getEmail();
+		this.telnum = userEntity.getTelnum();
+		this.description = userEntity.getDescription();
+	}
 
 }

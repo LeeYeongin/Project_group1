@@ -18,16 +18,13 @@ export default function FindId() {
     await axios
       .post('http://localhost:4040/api/find/id', getdata)
       .then((Response) => {
-        
         if (Response.data.status) {
-        //   alert(Response.data.data.userId);
-        setUserId(Response.data.data.userId);
-        const id = Response.data.data.userId;
-        // console.log(userId)
-        navigator('/indexModal',  { state: { userId: id, name: name } });
+          setUserId(Response.data.data.userId);
+          const id = Response.data.data.userId;
+          navigator('/indexModal', { state: { userId: id, name: name } });
         } else {
-            alert('다시 입력하세요!');
-          }
+          alert('다시 입력하세요!');
+        }
       });
   };
   return (
@@ -61,9 +58,9 @@ export default function FindId() {
             </div>
             <div className="main433">
               <div className="success33">
-                  <div className="findID-btn" onClick={findIdHandler}>
-                    아이디 찾기
-                  </div>
+                <div className="findID-btn" onClick={findIdHandler}>
+                  아이디 찾기
+                </div>
               </div>
             </div>
           </div>
