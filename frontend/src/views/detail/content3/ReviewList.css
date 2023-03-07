@@ -19,7 +19,6 @@
 }
 
 .reviewTitle5 {
-  width: 50%;
   height: 15%;
 
   margin: 0 auto;
@@ -65,7 +64,6 @@
 .reviewSubmit {
   display: flex;
 
-  margin: 5% 0;
   width: 100%;
 
   justify-content: space-between;
